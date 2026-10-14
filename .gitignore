@@ -1,0 +1,18 @@
+# Dependencies and build output
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Local runtime data: recreated by setup_db.py / server.py (demo data, includes tampering demos)
+polyvote_relational.db
+mongo_audit_ledger.json
+
+# OS and stray folders
+desktop.ini
+Thumbs.db
+PolyVote/

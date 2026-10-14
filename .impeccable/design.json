@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-15T00:00:00Z",
+  "title": "Design System: PolyVote",
+  "extensions": {
+    "tonalRampSources": {
+      "neutral": "Project neutrals (Vercel scale) as shipped in styles.css",
+      "blue": "GitHub Primer blue scale, containing the shipped #0969da, #54aeff, #ddf4ff",
+      "green": "GitHub Primer green scale, containing the shipped #1a7f37, #4ac26b, #dafbe1",
+      "yellow": "GitHub Primer yellow scale, containing the shipped #9a6700, #d4a72c, #fff8c5",
+      "red": "GitHub Primer red scale, containing the shipped #cf222e, #a40e26, #ffebe9"
+    },
+    "colorMeta": {
+      "bg": { "role": "neutral", "displayName": "Canvas", "canonical": "#ffffff", "dark": "#0a0a0a", "cssVar": "--bg", "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "bg-subtle": { "role": "neutral", "displayName": "Subtle", "canonical": "#fafafa", "dark": "#111111", "cssVar": "--bg-subtle", "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "bg-muted": { "role": "neutral", "displayName": "Muted", "canonical": "#f2f2f2", "dark": "#1c1c1c", "cssVar": "--bg-muted", "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "border": { "role": "neutral", "displayName": "Hairline", "canonical": "#ebebeb", "dark": "#262626", "cssVar": "--border", "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "border-strong": { "role": "neutral", "displayName": "Strong Hairline", "canonical": "#d4d4d4", "dark": "#3a3a3a", "cssVar": "--border-strong", "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "text": { "role": "neutral", "displayName": "Text", "canonical": "#171717", "dark": "#ededed", "cssVar": "--text", "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "text-2": { "role": "neutral", "displayName": "Secondary Text", "canonical": "#5c5c5c", "dark": "#a1a1a1", "cssVar": "--text-2", "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "text-3": { "role": "neutral", "displayName": "Tertiary Text", "canonical": "#737373", "dark": "#8f8f8f", "cssVar": "--text-3", "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "ink": { "role": "primary", "displayName": "Ink", "canonical": "#171717", "dark": "#ededed", "cssVar": "--ink", "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "ink-hover": { "role": "primary", "displayName": "Ink Hover", "canonical": "#383838", "dark": "#cfcfcf", "cssVar": "--ink-hover", "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "on-ink": { "role": "primary", "displayName": "On Ink", "canonical": "#ffffff", "dark": "#0a0a0a", "cssVar": "--on-ink", "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "accent": { "role": "secondary", "displayName": "Accent Blue", "canonical": "#0969da", "dark": "#4493f8", "cssVar": "--accent", "tonalRamp": ["#0a3069", "#0550ae", "#0969da", "#218bff", "#54aeff", "#80ccff", "#b6e3ff", "#ddf4ff"] },
+      "accent-soft": { "role": "secondary", "displayName": "Accent Soft", "canonical": "#ddf4ff", "dark": "#121d2f", "cssVar": "--accent-soft", "tonalRamp": ["#0a3069", "#0550ae", "#0969da", "#218bff", "#54aeff", "#80ccff", "#b6e3ff", "#ddf4ff"] },
+      "accent-border": { "role": "secondary", "displayName": "Accent Border", "canonical": "#54aeff66", "dark": "#388bfd66", "cssVar": "--accent-border", "tonalRamp": ["#0a3069", "#0550ae", "#0969da", "#218bff", "#54aeff", "#80ccff", "#b6e3ff", "#ddf4ff"] },
+      "success": { "role": "tertiary", "displayName": "Success Green", "canonical": "#1a7f37", "dark": "#3fb950", "cssVar": "--success", "tonalRamp": ["#044f1e", "#116329", "#1a7f37", "#2da44e", "#4ac26b", "#6fdd8b", "#aceebb", "#dafbe1"] },
+      "success-soft": { "role": "tertiary", "displayName": "Success Soft", "canonical": "#dafbe1", "dark": "#12261e", "cssVar": "--success-soft", "tonalRamp": ["#044f1e", "#116329", "#1a7f37", "#2da44e", "#4ac26b", "#6fdd8b", "#aceebb", "#dafbe1"] },
+      "success-border": { "role": "tertiary", "displayName": "Success Border", "canonical": "#4ac26b66", "dark": "#2ea04366", "cssVar": "--success-border", "tonalRamp": ["#044f1e", "#116329", "#1a7f37", "#2da44e", "#4ac26b", "#6fdd8b", "#aceebb", "#dafbe1"] },
+      "attention": { "role": "tertiary", "displayName": "Attention Amber", "canonical": "#9a6700", "dark": "#d29922", "cssVar": "--attention", "tonalRamp": ["#4d2d00", "#633c01", "#7d4e00", "#9a6700", "#bf8700", "#d4a72c", "#fae17d", "#fff8c5"] },
+      "attention-soft": { "role": "tertiary", "displayName": "Attention Soft", "canonical": "#fff8c5", "dark": "#272115", "cssVar": "--attention-soft", "tonalRamp": ["#4d2d00", "#633c01", "#7d4e00", "#9a6700", "#bf8700", "#d4a72c", "#fae17d", "#fff8c5"] },
+      "attention-border": { "role": "tertiary", "displayName": "Attention Border", "canonical": "#d4a72c66", "dark": "#bb800966", "cssVar": "--attention-border", "tonalRamp": ["#4d2d00", "#633c01", "#7d4e00", "#9a6700", "#bf8700", "#d4a72c", "#fae17d", "#fff8c5"] },
+      "danger": { "role": "tertiary", "displayName": "Danger Red", "canonical": "#cf222e", "dark": "#f85149", "cssVar": "--danger", "tonalRamp": ["#82071e", "#a40e26", "#cf222e", "#fa4549", "#ff8182", "#ffaba8", "#ffcecb", "#ffebe9"] },
+      "danger-hover": { "role": "tertiary", "displayName": "Danger Hover", "canonical": "#a40e26", "dark": "#ff7b72", "cssVar": "--danger-hover", "tonalRamp": ["#82071e", "#a40e26", "#cf222e", "#fa4549", "#ff8182", "#ffaba8", "#ffcecb", "#ffebe9"] },
+      "danger-emphasis": { "role": "tertiary", "displayName": "Danger Emphasis", "canonical": "#cf222e", "dark": "#da3633", "cssVar": "--danger-emphasis", "tonalRamp": ["#82071e", "#a40e26", "#cf222e", "#fa4549", "#ff8182", "#ffaba8", "#ffcecb", "#ffebe9"] },
+      "danger-emphasis-hover": { "role": "tertiary", "displayName": "Danger Emphasis Hover", "canonical": "#a40e26", "dark": "#b62324", "cssVar": "--danger-emphasis-hover", "tonalRamp": ["#82071e", "#a40e26", "#cf222e", "#fa4549", "#ff8182", "#ffaba8", "#ffcecb", "#ffebe9"] },
+      "danger-soft": { "role": "tertiary", "displayName": "Danger Soft", "canonical": "#ffebe9", "dark": "#25171c", "cssVar": "--danger-soft", "tonalRamp": ["#82071e", "#a40e26", "#cf222e", "#fa4549", "#ff8182", "#ffaba8", "#ffcecb", "#ffebe9"] },
+      "danger-border": { "role": "tertiary", "displayName": "Danger Border", "canonical": "#ff818266", "dark": "#f8514966", "cssVar": "--danger-border", "tonalRamp": ["#82071e", "#a40e26", "#cf222e", "#fa4549", "#ff8182", "#ffaba8", "#ffcecb", "#ffebe9"] },
+      "on-danger": { "role": "tertiary", "displayName": "On Danger", "canonical": "#ffffff", "dark": "#ffffff", "cssVar": null, "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "scrim": { "role": "neutral", "displayName": "Scrim", "canonical": "rgba(0, 0, 0, 0.32)", "dark": "rgba(0, 0, 0, 0.32)", "cssVar": null, "tonalRamp": ["#0a0a0a", "#171717", "#383838", "#5c5c5c", "#8f8f8f", "#a1a1a1", "#d4d4d4", "#f2f2f2"] },
+      "bg-dark": { "role": "neutral", "displayName": "Canvas (dark)", "canonical": "#0a0a0a", "lightCounterpart": "bg" },
+      "bg-subtle-dark": { "role": "neutral", "displayName": "Subtle (dark)", "canonical": "#111111", "lightCounterpart": "bg-subtle" },
+      "bg-muted-dark": { "role": "neutral", "displayName": "Muted (dark)", "canonical": "#1c1c1c", "lightCounterpart": "bg-muted" },
+      "border-dark": { "role": "neutral", "displayName": "Hairline (dark)", "canonical": "#262626", "lightCounterpart": "border" },
+      "border-strong-dark": { "role": "neutral", "displayName": "Strong Hairline (dark)", "canonical": "#3a3a3a", "lightCounterpart": "border-strong" },
+      "text-dark": { "role": "neutral", "displayName": "Text (dark)", "canonical": "#ededed", "lightCounterpart": "text" },
+      "text-2-dark": { "role": "neutral", "displayName": "Secondary Text (dark)", "canonical": "#a1a1a1", "lightCounterpart": "text-2" },
+      "text-3-dark": { "role": "neutral", "displayName": "Tertiary Text (dark)", "canonical": "#8f8f8f", "lightCounterpart": "text-3" },
+      "ink-dark": { "role": "primary", "displayName": "Ink (dark)", "canonical": "#ededed", "lightCounterpart": "ink" },
+      "ink-hover-dark": { "role": "primary", "displayName": "Ink Hover (dark)", "canonical": "#cfcfcf", "lightCounterpart": "ink-hover" },
+      "on-ink-dark": { "role": "primary", "displayName": "On Ink (dark)", "canonical": "#0a0a0a", "lightCounterpart": "on-ink" },
+      "accent-dark": { "role": "secondary", "displayName": "Accent Blue (dark)", "canonical": "#4493f8", "lightCounterpart": "accent" },
+      "accent-soft-dark": { "role": "secondary", "displayName": "Accent Soft (dark)", "canonical": "#121d2f", "lightCounterpart": "accent-soft" },
+      "accent-border-dark": { "role": "secondary", "displayName": "Accent Border (dark)", "canonical": "#388bfd66", "lightCounterpart": "accent-border" },
+      "success-dark": { "role": "tertiary", "displayName": "Success Green (dark)", "canonical": "#3fb950", "lightCounterpart": "success" },
+      "success-soft-dark": { "role": "tertiary", "displayName": "Success Soft (dark)", "canonical": "#12261e", "lightCounterpart": "success-soft" },
+      "success-border-dark": { "role": "tertiary", "displayName": "Success Border (dark)", "canonical": "#2ea04366", "lightCounterpart": "success-border" },
+      "attention-dark": { "role": "tertiary", "displayName": "Attention Amber (dark)", "canonical": "#d29922", "lightCounterpart": "attention" },
+      "attention-soft-dark": { "role": "tertiary", "displayName": "Attention Soft (dark)", "canonical": "#272115", "lightCounterpart": "attention-soft" },
+      "attention-border-dark": { "role": "tertiary", "displayName": "Attention Border (dark)", "canonical": "#bb800966", "lightCounterpart": "attention-border" },
+      "danger-dark": { "role": "tertiary", "displayName": "Danger Red (dark)", "canonical": "#f85149", "lightCounterpart": "danger" },
+      "danger-hover-dark": { "role": "tertiary", "displayName": "Danger Hover (dark)", "canonical": "#ff7b72", "lightCounterpart": "danger-hover" },
+      "danger-soft-dark": { "role": "tertiary", "displayName": "Danger Soft (dark)", "canonical": "#25171c", "lightCounterpart": "danger-soft" },
+      "danger-border-dark": { "role": "tertiary", "displayName": "Danger Border (dark)", "canonical": "#f8514966", "lightCounterpart": "danger-border" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Voter home page title only; 24px under 640px." },
+      "headline": { "displayName": "Headline", "purpose": "Every other page h1: admin page heads, sign-in, ballot, receipt." },
+      "title": { "displayName": "Title", "purpose": "Section and dialog titles (h2)." },
+      "title-sm": { "displayName": "Title Small", "purpose": "Box header titles, round headings, h3." },
+      "body-lg": { "displayName": "Body Large", "purpose": "Candidate names, voter election names, round-bar rows; 400 weight for the home intro paragraph (max 60ch)." },
+      "body": { "displayName": "Body", "purpose": "Default text, table cells; buttons and tabs at 500." },
+      "body-sm": { "displayName": "Body Small", "purpose": "Hints, subtle meta lines, table heads, small buttons." },
+      "label": { "displayName": "Label", "purpose": "Field labels and status words." },
+      "caption": { "displayName": "Caption", "purpose": "Primer Labels, counters, sidebar group names in sentence case." },
+      "figure": { "displayName": "Figure", "purpose": "The three reconcile counts, tabular." },
+      "mono": { "displayName": "Mono", "purpose": "Receipt tokens, block hashes, registration numbers, election IDs, demo credentials. Never for counts." }
+    },
+    "shadows": [
+      { "name": "pop", "value": "0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 16px -4px rgba(0, 0, 0, 0.08), 0 24px 32px -8px rgba(0, 0, 0, 0.08)", "dark": "0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 16px -4px rgba(0, 0, 0, 0.5), 0 24px 32px -8px rgba(0, 0, 0, 0.5)", "purpose": "Dialogs, toasts and the open mobile drawer: surfaces that float." },
+      { "name": "bar", "value": "0 -1px 2px rgba(0, 0, 0, 0.03), 0 -8px 16px -8px rgba(0, 0, 0, 0.08)", "dark": "0 -8px 16px -8px rgba(0, 0, 0, 0.6)", "purpose": "Upward shadow on the fixed mobile ballot submit bar." },
+      { "name": "focus-ring", "value": "0 0 0 3px var(--accent-soft)", "purpose": "State ring on focused inputs and selects, with the border turned accent. Not decorative." },
+      { "name": "current-step-ring", "value": "0 0 0 3px var(--bg-muted)", "purpose": "State ring on the current admin lifecycle dot. Not decorative." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The single easing curve for every eased transition and entry." },
+      { "name": "state", "value": "150ms", "purpose": "Hover and colour changes on buttons, inputs, rows, tabs, nav links." },
+      { "name": "overlay-in", "value": "200ms", "purpose": "Dialog pop-in (rise 4px, scale from 0.98, fade) and mobile drawer slide." },
+      { "name": "toast-in", "value": "250ms", "purpose": "Toast rises 8px and fades in." },
+      { "name": "data", "value": "400ms", "purpose": "Round-bar and meter width changes." },
+      { "name": "spin", "value": "0.7s linear infinite", "purpose": "Spinner." },
+      { "name": "pulse", "value": "1.4s ease-in-out infinite", "purpose": "Skeleton pulse to 55% opacity." },
+      { "name": "press", "value": "translateY(0.5px)", "purpose": "Button active nudge." },
+      { "name": "reduced-motion", "value": "0.01ms", "purpose": "prefers-reduced-motion collapses all animation and transition durations." }
+    ],
+    "breakpoints": [
+      { "name": "drawer", "value": "900px", "purpose": "Admin sidebar becomes an off-canvas drawer; ballot goes single-column with a fixed bottom submit bar." },
+      { "name": "grid-stack", "value": "860px", "purpose": "Two-column admin grids stack." },
+      { "name": "how-stack", "value": "720px", "purpose": "Home explainer trio stacks." },
+      { "name": "phone", "value": "640px", "purpose": "16px gutters, display 32 to 24px, round bars reflow under name and count." },
+      { "name": "narrow-phone", "value": "560px", "purpose": "12px Box insets, reconcile strip stacks, election rows wrap." }
+    ],
+    "containers": [
+      { "name": "public-shell", "value": "1040px" },
+      { "name": "medium", "value": "680px" },
+      { "name": "narrow", "value": "420px" },
+      { "name": "admin-main", "value": "1200px" },
+      { "name": "sidebar", "value": "240px (260px as mobile drawer)" },
+      { "name": "ballot-panel", "value": "320px" },
+      { "name": "dialog", "value": "min(460px, calc(100vw - 32px))" }
+    ],
+    "browserSurfaces": {
+      "colorScheme": "light on :root; dark under prefers-color-scheme: dark",
+      "scrollbar": "scrollbar-color: var(--border-strong) transparent; thin in table wraps; hidden on tab strips",
+      "selection": "background var(--accent-soft), color var(--text)",
+      "caret": "var(--accent)",
+      "accentColor": "var(--ink)",
+      "favicon": "32px inline SVG: #171717 tile, 8px corners, white 2px-stroke ballot-box glyph; same in both schemes",
+      "fonts": "@fontsource-variable/geist and @fontsource-variable/geist-mono, self-hosted",
+      "themeColorMeta": "absent"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink-black primary action; one per view region.",
+      "html": "<button class=\"ds-btn ds-btn-primary\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg>New election</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 6px; border: 1px solid var(--border-strong, #d4d4d4); background: var(--bg, #fff); color: var(--text, #171717); font: 500 14px/1 'Geist Variable', ui-sans-serif, system-ui, sans-serif; cursor: pointer; white-space: nowrap; transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1), border-color 150ms cubic-bezier(0.16, 1, 0.3, 1), color 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn svg { width: 16px; height: 16px; flex: none; } .ds-btn:active { transform: translateY(0.5px); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #0969da); outline-offset: 2px; } .ds-btn-primary { background: var(--ink, #171717); border-color: var(--ink, #171717); color: var(--on-ink, #fff); } .ds-btn-primary:hover { background: var(--ink-hover, #383838); border-color: var(--ink-hover, #383838); }"
+    },
+    {
+      "name": "Default and Ghost Buttons",
+      "kind": "button",
+      "refersTo": "button-default",
+      "description": "Outlined default for secondary actions; ghost for top-bar links, back links and icon actions.",
+      "html": "<div style=\"display:flex;gap:8px\"><button class=\"ds-btn2\">Count ballots</button><button class=\"ds-btn2 ds-btn2-ghost\">Check receipt</button><button class=\"ds-btn2 ds-btn2-sm\">Copy</button></div>",
+      "css": ".ds-btn2 { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 6px; border: 1px solid var(--border-strong, #d4d4d4); background: var(--bg, #fff); color: var(--text, #171717); font: 500 14px/1 'Geist Variable', ui-sans-serif, system-ui, sans-serif; cursor: pointer; transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1), color 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn2:hover { background: var(--bg-muted, #f2f2f2); } .ds-btn2:focus-visible { outline: 2px solid var(--accent, #0969da); outline-offset: 2px; } .ds-btn2-ghost { background: transparent; border-color: transparent; color: var(--text-2, #5c5c5c); } .ds-btn2-ghost:hover { background: var(--bg-muted, #f2f2f2); color: var(--text, #171717); } .ds-btn2-sm { height: 28px; padding: 0 10px; font-size: 13px; }"
+    },
+    {
+      "name": "Danger Buttons",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Outline danger for lifecycle-ending actions; solid danger only inside a destructive confirm dialog.",
+      "html": "<div style=\"display:flex;gap:8px\"><button class=\"ds-btn-danger\">Close voting</button><button class=\"ds-btn-danger ds-btn-danger-solid\">Delete</button></div>",
+      "css": ".ds-btn-danger { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 6px; border: 1px solid var(--border-strong, #d4d4d4); background: var(--bg, #fff); color: var(--danger, #cf222e); font: 500 14px/1 'Geist Variable', ui-sans-serif, system-ui, sans-serif; cursor: pointer; transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1), border-color 150ms cubic-bezier(0.16, 1, 0.3, 1), color 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-danger:hover { background: var(--danger, #cf222e); border-color: var(--danger, #cf222e); color: #fff; } .ds-btn-danger:focus-visible { outline: 2px solid var(--accent, #0969da); outline-offset: 2px; } .ds-btn-danger-solid { background: var(--danger, #cf222e); border-color: var(--danger, #cf222e); color: #fff; } .ds-btn-danger-solid:hover { background: var(--danger-hover, #a40e26); border-color: var(--danger-hover, #a40e26); }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "36px field with an accent border and 3px soft ring on focus; mono for tokens and registration numbers.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-receipt\">Already voted? Check your receipt</label><input id=\"ds-receipt\" class=\"ds-input ds-input-mono\" placeholder=\"Paste your receipt token\"><span class=\"ds-hint\">Tokens are case-sensitive.</span></div>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; max-width: 360px; } .ds-field-label { font: 500 13px/1.5 'Geist Variable', ui-sans-serif, sans-serif; color: var(--text, #171717); } .ds-input { height: 36px; padding: 0 12px; width: 100%; border: 1px solid var(--border-strong, #d4d4d4); border-radius: 6px; background: var(--bg, #fff); color: var(--text, #171717); font: 400 14px 'Geist Variable', ui-sans-serif, sans-serif; transition: border-color 150ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-input::placeholder { color: var(--text-3, #737373); } .ds-input:hover { border-color: var(--text-3, #737373); } .ds-input:focus { outline: none; border-color: var(--accent, #0969da); box-shadow: 0 0 0 3px var(--accent-soft, #ddf4ff); } .ds-input-mono { font-family: 'Geist Mono Variable', ui-monospace, Consolas, monospace; } .ds-hint { font-size: 13px; color: var(--text-3, #737373); }"
+    },
+    {
+      "name": "Box with Rows and Status",
+      "kind": "card",
+      "refersTo": "box",
+      "description": "GitHub Box: #fafafa header, hairline rows, dot-plus-word status, ink Vote action.",
+      "html": "<section class=\"ds-box\"><div class=\"ds-box-head\"><h2>Elections</h2><span class=\"ds-subtle\">1 open for voting</span></div><div class=\"ds-row\"><span class=\"ds-status ds-status-voting\">Voting open</span><div class=\"ds-row-main\"><strong>Robotics Club</strong><span class=\"ds-subtle\">Election #3 · 5 candidates</span></div><button class=\"ds-row-btn\">Vote</button></div><div class=\"ds-row\"><span class=\"ds-status ds-status-nomination\">Nominations</span><div class=\"ds-row-main\"><strong>Debate Society</strong><span class=\"ds-subtle\">Election #2 · 2 candidates</span></div><span class=\"ds-subtle\">Not open yet</span></div><div class=\"ds-row\"><span class=\"ds-status\">Closed</span><div class=\"ds-row-main\"><strong>CS Society</strong><span class=\"ds-subtle\">Election #1 · 4 candidates</span></div><span class=\"ds-subtle\">Voting ended</span></div></section>",
+      "css": ".ds-box { background: var(--bg, #fff); border: 1px solid var(--border, #ebebeb); border-radius: 6px; font: 400 14px/1.5 'Geist Variable', ui-sans-serif, sans-serif; color: var(--text, #171717); max-width: 640px; } .ds-box-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 49px; padding: 12px 16px; background: var(--bg-subtle, #fafafa); border-bottom: 1px solid var(--border, #ebebeb); border-radius: 6px 6px 0 0; } .ds-box-head h2 { margin: 0; font-size: 14px; font-weight: 600; } .ds-subtle { color: var(--text-3, #737373); font-size: 13px; } .ds-row { display: flex; align-items: center; gap: 16px; padding: 16px; border-top: 1px solid var(--border, #ebebeb); transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-box-head + .ds-row { border-top: none; } .ds-row:hover { background: var(--bg-subtle, #fafafa); } .ds-row-main { flex: 1; min-width: 0; } .ds-row-main strong { display: block; font-weight: 500; font-size: 16px; } .ds-status { display: inline-flex; align-items: center; gap: 6px; width: 120px; flex: none; font-size: 13px; white-space: nowrap; } .ds-status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--text-3, #737373); } .ds-status-voting::before { background: var(--success, #1a7f37); } .ds-status-nomination::before { background: var(--attention, #9a6700); } .ds-row-btn { height: 32px; padding: 0 12px; border-radius: 6px; border: 1px solid var(--ink, #171717); background: var(--ink, #171717); color: var(--on-ink, #fff); font: 500 14px/1 'Geist Variable', sans-serif; cursor: pointer; } .ds-row-btn:hover { background: var(--ink-hover, #383838); } .ds-row-btn:focus-visible { outline: 2px solid var(--accent, #0969da); outline-offset: 2px; }"
+    },
+    {
+      "name": "Underline Tabs with Counters",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "Section tabs on a hairline baseline; 2px ink underline marks the active tab; counters are muted pills.",
+      "html": "<nav class=\"ds-tabs\"><a class=\"ds-tab ds-tab-active\" href=\"#\">Overview</a><a class=\"ds-tab\" href=\"#\">Candidates <span class=\"ds-counter\">5</span></a><a class=\"ds-tab\" href=\"#\">Voters <span class=\"ds-counter\">20</span></a><a class=\"ds-tab\" href=\"#\">Results <span class=\"ds-counter\">21</span></a></nav>",
+      "css": ".ds-tabs { display: flex; gap: 8px; box-shadow: inset 0 -1px 0 var(--border, #ebebeb); overflow-x: auto; scrollbar-width: none; font-family: 'Geist Variable', ui-sans-serif, sans-serif; } .ds-tab { display: inline-flex; align-items: center; gap: 8px; padding: 8px 4px 10px; margin: 0 4px; border-bottom: 2px solid transparent; color: var(--text-2, #5c5c5c); font-weight: 500; font-size: 14px; text-decoration: none; white-space: nowrap; transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1), border-color 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-tab:first-child { margin-left: 0; } .ds-tab:hover { color: var(--text, #171717); border-bottom-color: var(--border-strong, #d4d4d4); } .ds-tab:focus-visible { outline: 2px solid var(--accent, #0969da); outline-offset: 2px; border-radius: 6px; } .ds-tab-active { color: var(--text, #171717); border-bottom-color: var(--ink, #171717); } .ds-counter { display: inline-block; min-width: 20px; padding: 0 6px; border-radius: 999px; background: var(--bg-muted, #f2f2f2); color: var(--text-2, #5c5c5c); font-size: 12px; font-weight: 500; line-height: 18px; text-align: center; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Labels",
+      "kind": "chip",
+      "refersTo": "label",
+      "description": "Primer Labels: 20px pills marking facts about a row.",
+      "html": "<div style=\"display:flex;gap:8px;flex-wrap:wrap\"><span class=\"ds-label\">Eshaan Iyer eliminated</span><span class=\"ds-label ds-label-success\">Majority reached</span><span class=\"ds-label ds-label-attention\">Pending</span><span class=\"ds-label ds-label-danger\">Modified</span><span class=\"ds-label ds-label-accent\">Admin</span></div>",
+      "css": ".ds-label { display: inline-flex; align-items: center; gap: 4px; height: 20px; padding: 0 7px; border-radius: 999px; border: 1px solid var(--border-strong, #d4d4d4); font: 500 12px/1 'Geist Variable', ui-sans-serif, sans-serif; color: var(--text-2, #5c5c5c); white-space: nowrap; } .ds-label-success { color: var(--success, #1a7f37); border-color: var(--success-border, #4ac26b66); background: var(--success-soft, #dafbe1); } .ds-label-attention { color: var(--attention, #9a6700); border-color: var(--attention-border, #d4a72c66); background: var(--attention-soft, #fff8c5); } .ds-label-danger { color: var(--danger, #cf222e); border-color: var(--danger-border, #ff818266); background: var(--danger-soft, #ffebe9); } .ds-label-accent { color: var(--accent, #0969da); border-color: var(--accent-border, #54aeff66); background: var(--accent-soft, #ddf4ff); }"
+    },
+    {
+      "name": "Flashes",
+      "kind": "custom",
+      "refersTo": "flash-success",
+      "description": "Primer flashes: bold verdict then evidence, soft fill with translucent border.",
+      "html": "<div style=\"display:flex;flex-direction:column;gap:12px;max-width:560px\"><div class=\"ds-flash ds-flash-ok\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m9 12 2 2 4-4\"/></svg><div><strong>Sweep passed.</strong> Every ledger receipt matches its ballot in the database.</div></div><div class=\"ds-flash ds-flash-warn\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\"/><path d=\"M12 9v4\"/><path d=\"M12 17h.01\"/></svg><span>These counts don't agree.</span></div><div class=\"ds-flash ds-flash-danger\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m15 9-6 6\"/><path d=\"m9 9 6 6\"/></svg><div><strong>Tampering detected.</strong> 2 ballots no longer match their ledger receipt.</div></div></div>",
+      "css": ".ds-flash { display: flex; gap: 10px; align-items: flex-start; padding: 12px 16px; border-radius: 6px; border: 1px solid; font: 400 14px/1.5 'Geist Variable', ui-sans-serif, sans-serif; color: var(--text, #171717); } .ds-flash svg { width: 16px; height: 16px; flex: none; margin-top: 2px; } .ds-flash strong { font-weight: 600; } .ds-flash-ok { background: var(--success-soft, #dafbe1); border-color: var(--success-border, #4ac26b66); } .ds-flash-ok svg { color: var(--success, #1a7f37); } .ds-flash-warn { background: var(--attention-soft, #fff8c5); border-color: var(--attention-border, #d4a72c66); } .ds-flash-warn svg { color: var(--attention, #9a6700); } .ds-flash-danger { background: var(--danger-soft, #ffebe9); border-color: var(--danger-border, #ff818266); } .ds-flash-danger svg { color: var(--danger, #cf222e); }"
+    },
+    {
+      "name": "Reconcile Strip",
+      "kind": "custom",
+      "refersTo": "reconcile-cell",
+      "description": "Flush three-count strip under a Box header; a disagreeing count turns amber. The system's replacement for stat tiles.",
+      "html": "<section class=\"ds-rbox\"><div class=\"ds-rbox-head\"><h2>Integrity sweep</h2></div><div class=\"ds-reconcile\"><div><div class=\"ds-rlabel\">Ballots in database</div><div class=\"ds-rv ds-rv-off\">21</div></div><div><div class=\"ds-rlabel\">Ledger receipts</div><div class=\"ds-rv\">22</div></div><div><div class=\"ds-rlabel\">Voters marked as voted</div><div class=\"ds-rv\">22</div></div></div></section>",
+      "css": ".ds-rbox { background: var(--bg, #fff); border: 1px solid var(--border, #ebebeb); border-radius: 6px; font-family: 'Geist Variable', ui-sans-serif, sans-serif; color: var(--text, #171717); max-width: 640px; } .ds-rbox-head { padding: 12px 16px; background: var(--bg-subtle, #fafafa); border-bottom: 1px solid var(--border, #ebebeb); border-radius: 6px 6px 0 0; } .ds-rbox-head h2 { margin: 0; font-size: 14px; font-weight: 600; } .ds-reconcile { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); } .ds-reconcile > div { padding: 12px 16px; } .ds-reconcile > div + div { border-left: 1px solid var(--border, #ebebeb); } .ds-rlabel { font-size: 13px; color: var(--text-3, #737373); } .ds-rv { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 2px; } .ds-rv-off { color: var(--attention, #9a6700); }"
+    },
+    {
+      "name": "Round Bars",
+      "kind": "custom",
+      "refersTo": "round-bar-track",
+      "description": "Instant-runoff round: name, bar, count with percentage; lead bar green in the final round, eliminated struck through.",
+      "html": "<div class=\"ds-round\"><div class=\"ds-rb ds-rb-lead\"><span class=\"ds-rb-name\">Arun Kumar</span><span class=\"ds-rb-bar\"><span style=\"width:100%\"></span></span><span class=\"ds-rb-votes\">11 <span class=\"ds-rb-pct\">55.0%</span></span></div><div class=\"ds-rb\"><span class=\"ds-rb-name\">Chaitanya Reddy</span><span class=\"ds-rb-bar\"><span style=\"width:82%\"></span></span><span class=\"ds-rb-votes\">9 <span class=\"ds-rb-pct\">45.0%</span></span></div><div class=\"ds-rb ds-rb-out\"><span class=\"ds-rb-name\">Diya Sharma</span><span class=\"ds-rb-bar\"><span style=\"width:9%\"></span></span><span class=\"ds-rb-votes\">1 <span class=\"ds-rb-pct\">4.8%</span></span></div></div>",
+      "css": ".ds-round { max-width: 640px; padding: 16px; font: 400 16px/1.5 'Geist Variable', ui-sans-serif, sans-serif; color: var(--text, #171717); } .ds-rb { display: grid; grid-template-columns: 180px minmax(0, 1fr) 104px; gap: 12px; align-items: center; padding: 6px 0; } .ds-rb-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .ds-rb-bar { height: 20px; border-radius: 3px; background: var(--bg-muted, #f2f2f2); overflow: hidden; } .ds-rb-bar > span { display: block; height: 100%; min-width: 2px; border-radius: 3px; background: var(--text-3, #737373); transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-rb-lead .ds-rb-bar > span { background: var(--success, #1a7f37); } .ds-rb-out { color: var(--text-3, #737373); } .ds-rb-out .ds-rb-name { text-decoration: line-through; } .ds-rb-out .ds-rb-bar > span { background: var(--border-strong, #d4d4d4); } .ds-rb-votes { text-align: right; font-variant-numeric: tabular-nums; } .ds-rb-pct { font-size: 13px; color: var(--text-3, #737373); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Open Ledger",
+    "overview": "PolyVote is a working product of the Vercel and GitHub class, played straight. Every screen leads with its task, every piece of state carries a word, and nothing on the page is there to decorate. The ledger in the name is literal: the product exists to prove that stored votes match what voters cast, so the visual system behaves like a ledger too. Hairline rules, labelled rows, numbers that line up, and proof shown in place rather than asserted.\n\nThe world is built from two well-known materials. Vercel supplies the ground: a white canvas, a #fafafa second layer, hairline borders, near-black ink, black primary buttons, Geist and Geist Mono. GitHub Primer supplies the state vocabulary: success green, attention amber, danger red, and an accent blue kept for links, focus, selection and information. The two meet in Primer's own structures (Boxes of rows, underline tabs with counters, Labels, flashes) set in Vercel's neutrals. Light is the default scene because results are projected and ballots are cast on phones in daylight; dark follows the operating system.\n\nDensity is that of an operator console: 14px body, 32px controls, 12 to 16px row insets. The system refuses the generic AI-dashboard default outright. It has no stat tiles, no tinted cards, no gradients, no eyebrow labels, no nested boxes and no decorative halos.",
+    "keyCharacteristics": [
+      "White ground, #fafafa headers and hover rows, hairline #ebebeb borders; depth comes from tone and rules, not shadow.",
+      "Ink-black primary action; blue is never a button fill.",
+      "State colours only report state, and always next to a word.",
+      "Box-and-row lists, underline tabs with counters, dot-plus-word status.",
+      "Geist Sans for everything; Geist Mono only for identifiers.",
+      "6px corners everywhere except dialogs (12px), pills for Labels and counters, and 4px for inline tokens."
+    ],
+    "rules": [
+      { "name": "The Ink Primary Rule", "body": "The primary action is an ink-black button. Blue never fills a button; it belongs to links, focus, selection and information.", "section": "colors" },
+      { "name": "The State-Only Colour Rule", "body": "Green, amber and red appear only to report state: status dots, Labels, flashes, the lead round bar, a disagreeing count. They are never decoration, section colour or brand colour.", "section": "colors" },
+      { "name": "The Dot-Plus-Word Rule", "body": "No meaning is carried by colour alone. Every status dot sits beside its word (\"Voting open\", \"Nominations\", \"Closed\"), and every amber count is also explained by a flash.", "section": "colors" },
+      { "name": "The Mono-for-Identifiers Rule", "body": "Geist Mono is reserved for strings a person copies or compares character by character: tokens, hashes, registration numbers, IDs. Counts and percentages stay in Geist with tabular figures.", "section": "typography" },
+      { "name": "The Three Weights Rule", "body": "Only 400, 500 and 600. Emphasis comes from weight 500 or ink colour, never from 700, uppercase or letter-spacing.", "section": "typography" },
+      { "name": "The Box-and-Row Rule", "body": "Collections are a bordered Box of hairline-divided rows with a #fafafa header, never a grid of cards.", "section": "layout" },
+      { "name": "The Flush Strip Rule", "body": "A sub-region inside a Box is separated by hairlines and stays flush to the Box edges. A Box never contains another Box.", "section": "layout" },
+      { "name": "The Flat-at-Rest Rule", "body": "Nothing on the page plane casts a shadow. Only dialogs, toasts, the drawer and the bottom bar float, and only they carry one.", "section": "elevation" },
+      { "name": "The Two Radii Rule", "body": "Containers and controls are 6px and dialogs are 12px. Any other radius belongs to a pill, a dot or an inline token, never to a container.", "section": "shapes" }
+    ],
+    "dos": [
+      "**Do** make the primary action an Ink button (#171717 light, #ededed dark) and keep at most one per view region.",
+      "**Do** put collections in a Box of hairline rows with a #fafafa header, and put counts in that header as subtle text or in tab counters.",
+      "**Do** show state as an 8px dot plus its word, or as a Primer Label, and pair every colour signal with text.",
+      "**Do** report proof as a reconcile strip, summary list or flash with a bold verdict followed by the evidence.",
+      "**Do** use 6px corners for containers and controls and 12px for dialogs only.",
+      "**Do** use Geist Mono only for tokens, hashes, registration numbers and IDs, and tabular Geist for every count.",
+      "**Do** keep shadows to floating surfaces (dialogs, toasts, drawer, bottom bar).",
+      "**Do** keep 150ms transitions on the house ease-out, and honour reduced motion."
+    ],
+    "donts": [
+      "**Don't** build stat tiles or KPI cards. Counts go in a flush reconcile strip, a summary list or a table column.",
+      "**Don't** tint cards. Box bodies stay canvas white; soft state fills belong only to flashes, Labels and the Danger zone header.",
+      "**Don't** use gradients anywhere: not on surfaces, buttons, bars or text.",
+      "**Don't** put eyebrow labels or kickers above headings, and don't use uppercase or letter-spaced micro-labels. Context goes in a subtle line under the title.",
+      "**Don't** nest a Box inside a Box. Split regions with hairlines flush to the edges.",
+      "**Don't** add decorative halos, glows or coloured shadows. The only rings are the input focus ring and the current-step ring, and both report state.",
+      "**Don't** fill a button with Accent Blue, and don't use blue to mean anything but link, focus, selection or information.",
+      "**Don't** reach for a dialog unless the action commits a ballot, changes the lifecycle, or destroys data."
+    ]
+  }
+}
