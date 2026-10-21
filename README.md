@@ -55,9 +55,7 @@ Sessions are kept in server memory, so restarting the server signs everyone out.
 
 The frontend follows a written design system:
 
-- `PRODUCT.md`: users, purpose and principles.
-- `DESIGN.md` + `.impeccable/design.json`: the visual system (Vercel neutrals, GitHub Primer state colours, Geist type). Read these before changing UI.
-- `.impeccable/briefs/app.md`: the direction contract the build was reviewed against.
+- `DESIGN.md`: the visual system (Vercel neutrals, GitHub Primer state colours, Geist type). Read it before changing UI.
 
 ## Streamlit UI (original)
 
