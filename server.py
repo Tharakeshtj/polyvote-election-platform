@@ -21,7 +21,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from audit_ledger import append_ballot_receipt, get_ledger, verify_chain_integrity
+from audit_ledger import append_ballot_receipt, backend_info, get_ledger, verify_chain_integrity
 from election_core import check_election_integrity, get_db, hash_pw, init_admin_db, wipe_all_database_data
 from setup_db import setup_database
 from tally_engine import calculate_irv_winner
@@ -159,6 +159,17 @@ def public_elections():
             "FROM ELECTION e JOIN ORGANIZATION o ON e.org_id = o.org_id ORDER BY e.election_id DESC"
         ).fetchall()
     return [dict(r) for r in rows]
+
+
+@app.get("/api/config")
+def public_config():
+    """Optional PUBLIC_URL (set in .env) lets the voter-page QR point at the public link even when opened on localhost."""
+    return {'public_url': os.environ.get('PUBLIC_URL', '').strip().rstrip('/') or None}
+
+
+@app.get("/api/health")
+def health():
+    return {'status': 'ok', 'ledger': backend_info()}
 
 
 @app.get("/api/receipts/{ballot_token}")

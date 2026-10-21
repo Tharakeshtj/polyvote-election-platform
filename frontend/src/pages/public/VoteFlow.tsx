@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { ArrowDown, ArrowLeft, ArrowUp, Check, KeyRound, Lock, LogOut, ReceiptText, ShieldCheck, Vote, X } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowUp, Check, KeyRound, Lock, LogOut, ReceiptText, ShieldCheck, Smartphone, Vote, X } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 import { errorMessage, publicApi, voterApi, type CastResult, type PublicElection, type VoterBallot } from '../../api';
 import { Avatar, ConfirmDialog, CopyButton, EmptyState, FormError, PageLoading, Spinner, useToast } from '../../components/ui';
 
@@ -138,6 +139,36 @@ function SignIn({ election, onSignedIn }: { election: PublicElection; onSignedIn
           <Lock size={14} /> Your registration number is only used to check you haven’t voted yet.
         </div>
       </form>
+      <PhoneQR electionId={election.election_id} />
+    </div>
+  );
+}
+
+// Scan-to-vote card. Shown on larger screens only; a phone is already on the right device.
+function PhoneQR({ electionId }: { electionId: number }) {
+  const [base, setBase] = useState(window.location.origin);
+  const onLocalhost = /^(localhost|127\.|\[::1\])/.test(window.location.hostname);
+  useEffect(() => {
+    if (onLocalhost) publicApi.config().then((c) => { if (c.public_url) setBase(c.public_url); }).catch(() => {});
+  }, [onLocalhost]);
+  const url = `${base}/vote/${electionId}`;
+  const unreachable = onLocalhost && base === window.location.origin;
+
+  return (
+    <div className="card phone-qr">
+      <div className="card-body row" style={{ gap: 16, alignItems: 'center' }}>
+        <div className="qr-frame" aria-hidden={unreachable}>
+          <QRCodeSVG value={url} size={112} marginSize={0} level="M" bgColor="#ffffff" fgColor="#000000" />
+        </div>
+        <div className="stack-sm">
+          <h3 style={{ display: 'flex', alignItems: 'center', gap: 6 }}><Smartphone size={16} /> Vote from your phone</h3>
+          <p className="hint">Scan this code with your phone camera to open this ballot.</p>
+          <code className="hint" style={{ wordBreak: 'break-all' }}>{url}</code>
+          {unreachable && (
+            <p className="hint">This address only works on this computer. Open the public link here instead, or set <code>PUBLIC_URL</code> in <code>.env</code>.</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

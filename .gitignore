@@ -8,6 +8,9 @@ __pycache__/
 *.pyc
 .venv/
 
+# Secrets (MONGO_URI etc.)
+.env
+
 # Local runtime data: recreated by setup_db.py / server.py (demo data, includes tampering demos)
 polyvote_relational.db
 mongo_audit_ledger.json
@@ -16,3 +19,6 @@ mongo_audit_ledger.json
 desktop.ini
 Thumbs.db
 PolyVote/
+
+# Local tooling
+.claude/

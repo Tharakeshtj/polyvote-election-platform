@@ -466,3 +466,8 @@ dialog.modal::backdrop { background: rgba(0, 0, 0, 0.32); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* Scan-to-vote QR on the sign-in page (hidden on phones) */
+.phone-qr { margin-top: 16px; }
+.qr-frame { background: #fff; padding: 8px; border-radius: var(--r-md, 8px); border: 1px solid var(--border); line-height: 0; flex: none; }
+@media (max-width: 720px) { .phone-qr { display: none; } }

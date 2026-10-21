@@ -160,6 +160,7 @@ function asAdmin<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
 export const publicApi = {
   elections: () => request<PublicElection[]>('/elections'),
   receipt: (token: string) => request<Receipt>(`/receipts/${encodeURIComponent(token.trim())}`),
+  config: () => request<{ public_url: string | null }>('/config'),
 };
 
 export const voterApi = {

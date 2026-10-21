@@ -5,7 +5,7 @@ import os
 import sqlite3
 from collections import defaultdict
 
-from audit_ledger import get_ledger, LEDGER_FILE
+from audit_ledger import get_ledger, clear_ledger
 
 DB_PATH = 'polyvote_relational.db'
 
@@ -24,6 +24,10 @@ def init_admin_db():
                     password_hash TEXT)''')
     if conn.execute("SELECT COUNT(*) FROM ADMIN_USERS").fetchone()[0] == 0:
         conn.execute("INSERT INTO ADMIN_USERS (username, password_hash) VALUES (?, ?)", ('admin', hash_pw('admin123')))
+    # ADMIN_PASSWORD (from .env) overrides the default so a public demo is not left on admin123.
+    admin_pw = os.environ.get('ADMIN_PASSWORD', '').strip()
+    if admin_pw:
+        conn.execute("UPDATE ADMIN_USERS SET password_hash = ? WHERE username = 'admin'", (hash_pw(admin_pw),))
     conn.commit()
     conn.close()
 
@@ -36,8 +40,7 @@ def wipe_all_database_data():
     cursor.execute("PRAGMA foreign_keys = ON;")
     conn.commit()
     conn.close()
-    if os.path.exists(LEDGER_FILE):
-        with open(LEDGER_FILE, 'w') as f: json.dump([], f)
+    clear_ledger()
 
 def check_election_integrity(election_id):
     conn = get_db()

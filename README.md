@@ -53,7 +53,7 @@ Sessions are kept in server memory, so restarting the server signs everyone out.
 
 ## Design system
 
-The frontend follows [Impeccable](https://impeccable.style/) (installed as a project skill in `.claude/skills/impeccable`, without its engine binary or hooks):
+The frontend follows a written design system:
 
 - `PRODUCT.md`: users, purpose and principles.
 - `DESIGN.md` + `.impeccable/design.json`: the visual system (Vercel neutrals, GitHub Primer state colours, Geist type). Read these before changing UI.
