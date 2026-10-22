@@ -1,0 +1,30 @@
+# Optional second service: real emailed one-time codes through an SMTP relay on port 2525
+# (Render's free plan blocks ports 25, 465 and 587, so Gmail's own SMTP cannot be used there).
+# Copy the service block into render.yaml and fill the values in Render's dashboard. See DEPLOY.md.
+services:
+  - type: web
+    name: polyvote-live
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: HOSTED_DEMO
+        value: "true"
+      - key: OTP_REQUIRED
+        value: "true"
+      - key: OTP_DEMO_HINT
+        value: "false"
+      - key: SMTP_HOST
+        value: smtp-relay.brevo.com
+      - key: SMTP_PORT
+        value: "2525"
+      - key: SMTP_USER             # your Brevo SMTP login
+        sync: false
+      - key: SMTP_PASS             # your Brevo SMTP key (not your Brevo password)
+        sync: false
+      - key: SMTP_FROM             # the sender address verified in Brevo, e.g. your Gmail
+        sync: false
+      - key: DEMO_EMAIL            # seeded voters' codes go to you+25bce0001@gmail.com etc.
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false

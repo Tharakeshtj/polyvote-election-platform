@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { ExternalLink, Link2, LogOut, Menu, Settings, Users, Vote } from 'lucide-react';
+import { ExternalLink, Link2, LogOut, Mail, Menu, Settings, Users, Vote } from 'lucide-react';
 import { useAdminAuth } from '../../auth';
 import { Avatar, BrandMark } from '../../components/ui';
 
@@ -24,6 +24,7 @@ export default function AdminLayout() {
           <Vote /> Elections
         </NavLink>
         <NavLink to="/admin/ledger" className="nav-link"><Link2 /> Audit ledger</NavLink>
+        <NavLink to="/admin/outbox" className="nav-link"><Mail /> Mail outbox</NavLink>
         <div className="nav-label">System</div>
         <NavLink to="/admin/admins" className="nav-link"><Users /> Administrators</NavLink>
         <NavLink to="/admin/settings" className="nav-link"><Settings /> Settings</NavLink>

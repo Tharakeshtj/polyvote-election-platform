@@ -51,6 +51,18 @@ Sessions are kept in server memory, so restarting the server signs everyone out.
 5. **Results & audit → Run sweep** flags the tampered ballots; **Calculate winner** shows the round-by-round tally.
 6. **/verify** with the receipt token shows whether that ballot is still counted.
 
+## Email one-time code (second factor)
+
+Set `OTP_REQUIRED=true` in `.env` and a correct password is no longer enough: a 6-digit code is emailed to the voter's address (valid 5 minutes, one use, 3 guesses). Add voter emails on the **Voters** tab, and every code also appears under **Admin, Mail outbox**. For real email set `SMTP_USER` and `SMTP_PASS` (a Gmail App Password). Copy `.env.example` to `.env` for all settings. The `Sample PolyVote` demo copy and `DEMO_SCRIPT.md` show a ready class demo.
+
+## Public demo link and guide
+
+`Dockerfile` and `render.yaml` deploy a free public demo (HOSTED_DEMO seeds a demo election on every start; the one-time code is shown on screen because a public demo has no mailbox). The `/demo` page lists every page of the app with links and a three-minute tour. `DEPLOY.md` explains the free hosting steps and an optional real-email instance. The hosted demo link is listed in `docs/DEMO_WALKTHROUGH.md`.
+
+## Tests and evidence
+
+`python experiments/run_experiments.py <tag>` runs 47 scenarios (database rules, API abuse, tampering, one-time-code tests) plus benchmarks on a throwaway copy, and `python experiments/summarize.py` builds the tables and charts used in `docs/PolyVote_Review_III.docx`.
+
 ## Design system
 
 The frontend follows a written design system:

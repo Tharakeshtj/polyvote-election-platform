@@ -22,12 +22,17 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from audit_ledger import append_ballot_receipt, backend_info, get_ledger, verify_chain_integrity
-from election_core import check_election_integrity, get_db, hash_pw, init_admin_db, wipe_all_database_data
+from election_core import check_election_integrity, get_db, hash_pw, init_admin_db, roster_hash, wipe_all_database_data
 from setup_db import setup_database
 from tally_engine import calculate_irv_winner
+import hosted_demo
+from verification import otp
+from verification.routes import build_router
 
 setup_database()
 init_admin_db()
+if hosted_demo.enabled():
+    hosted_demo.seed_if_empty()
 
 app = FastAPI(title="PolyVote API")
 
@@ -143,9 +148,36 @@ def voter_login(body: VoterLoginIn):
         raise HTTPException(401, "Incorrect password.")
     if row['has_voted']:
         raise HTTPException(409, "You have already voted in this election.")
+    if otp.required():
+        try:
+            return {'otp_required': True, **otp.start(body.election_id, reg_no)}
+        except otp.OtpError as exc:
+            raise HTTPException(exc.status, exc.message)
+    return issue_voter_session(body.election_id, reg_no)
+
+
+def issue_voter_session(election_id: int, reg_no: str) -> dict:
+    """Create the real voter session. Called after the password (and, when enabled, the emailed code) checked out."""
+    with db() as conn:
+        require_status(election_or_404(conn, election_id), 'VOTING')
+        row = conn.execute(
+            "SELECT participation_id, has_voted FROM VOTER_PARTICIPATION WHERE student_reg_no = ? AND election_id = ?", (reg_no, election_id)
+        ).fetchone()
+    if not row:
+        raise HTTPException(404, "That registration number isn't on this election's roster.")
+    if row['has_voted']:
+        raise HTTPException(409, "You have already voted in this election.")
     token = secrets.token_urlsafe(32)
-    SESSIONS[token] = {'role': 'voter', 'participation_id': row['participation_id'], 'election_id': body.election_id, 'reg_no': reg_no}
+    SESSIONS[token] = {'role': 'voter', 'participation_id': row['participation_id'], 'election_id': election_id, 'reg_no': reg_no}
     return {'token': token, 'reg_no': reg_no}
+
+
+def roster(election_id: int) -> list[str]:
+    with db() as conn:
+        return [r[0] for r in conn.execute("SELECT student_reg_no FROM VOTER_PARTICIPATION WHERE election_id = ? ORDER BY participation_id", (election_id,))]
+
+
+app.include_router(build_router(require_admin, issue_voter_session, roster))
 
 
 # ---------------------------------------------------------------- public + voter
@@ -164,7 +196,13 @@ def public_elections():
 @app.get("/api/config")
 def public_config():
     """Optional PUBLIC_URL (set in .env) lets the voter-page QR point at the public link even when opened on localhost."""
-    return {'public_url': os.environ.get('PUBLIC_URL', '').strip().rstrip('/') or None}
+    return {
+        'public_url': os.environ.get('PUBLIC_URL', '').strip().rstrip('/') or None,
+        'hosted_demo': hosted_demo.enabled(),
+        'otp_demo_hint': otp.demo_hint(),
+        # The demo guide may print the default admin login only when no ADMIN_PASSWORD was set on a public demo.
+        'admin_public': hosted_demo.enabled() and not os.environ.get('ADMIN_PASSWORD', '').strip(),
+    }
 
 
 @app.get("/api/health")
@@ -229,7 +267,7 @@ def cast_ballot(body: BallotIn, auth=Depends(require_voter)):
             [(ballot_token, cid, e_id, rank) for cid, rank in payload],
         )
         conn.commit()
-        block = append_ballot_receipt(e_id, ballot_token, payload)
+        block = append_ballot_receipt(e_id, ballot_token, payload, roster_hash(conn, e_id))
     SESSIONS.pop(token, None)
     return {'ballot_token': ballot_token, 'block_index': block['index'], 'block_hash': block['curr_hash'], 'timestamp': block['timestamp']}
 
@@ -415,8 +453,9 @@ def simulate_ballots(e_id: int, body: CountIn, _=Depends(require_admin)):
             )
             receipts.append((token, payload))
         conn.commit()
+        rh = roster_hash(conn, e_id)
         for token, payload in receipts:
-            append_ballot_receipt(e_id, token, payload)
+            append_ballot_receipt(e_id, token, payload, rh)
     return {'cast': len(unvoted)}
 
 
@@ -578,6 +617,8 @@ def add_admin(body: AdminLoginIn, _=Depends(require_admin)):
 def factory_reset(body: ResetIn, _=Depends(require_admin)):
     if body.confirm != 'RESET':
         raise HTTPException(422, "Type RESET to confirm.")
+    if hosted_demo.enabled():
+        raise HTTPException(403, "Factory reset is disabled on the public demo; it resets itself when the server restarts.")
     with WRITE_LOCK:
         wipe_all_database_data()
     for token in [t for t, s in SESSIONS.items() if s['role'] == 'voter']:

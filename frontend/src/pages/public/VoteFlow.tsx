@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowDown, ArrowLeft, ArrowUp, Check, KeyRound, Lock, LogOut, ReceiptText, ShieldCheck, Smartphone, Vote, X } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
-import { errorMessage, publicApi, voterApi, type CastResult, type PublicElection, type VoterBallot } from '../../api';
+import { errorMessage, publicApi, voterApi, type CastResult, type OtpChallenge, type PublicElection, type VoterBallot } from '../../api';
 import { Avatar, ConfirmDialog, CopyButton, EmptyState, FormError, PageLoading, Spinner, useToast } from '../../components/ui';
 
 type Step = 'signin' | 'ballot' | 'done';
@@ -94,19 +94,35 @@ function SignIn({ election, onSignedIn }: { election: PublicElection; onSignedIn
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [challenge, setChallenge] = useState<OtpChallenge | null>(null);
 
   const submit = async (ev: FormEvent) => {
     ev.preventDefault();
     setBusy(true);
     setError(null);
     try {
-      const { token } = await voterApi.login(election.election_id, regNo, password);
-      onSignedIn(token, await voterApi.ballot(token));
+      const res = await voterApi.login(election.election_id, regNo, password);
+      if ('otp_required' in res) {
+        setChallenge(res);
+        setBusy(false);
+        return;
+      }
+      onSignedIn(res.token, await voterApi.ballot(res.token));
     } catch (e) {
       setError(errorMessage(e));
       setBusy(false);
     }
   };
+
+  if (challenge) {
+    return (
+      <OtpStep
+        challenge={challenge}
+        onBack={() => { setChallenge(null); setPassword(''); }}
+        onVerified={async (token) => onSignedIn(token, await voterApi.ballot(token))}
+      />
+    );
+  }
 
   return (
     <div className="narrow">
@@ -140,6 +156,90 @@ function SignIn({ election, onSignedIn }: { election: PublicElection; onSignedIn
         </div>
       </form>
       <PhoneQR electionId={election.election_id} />
+    </div>
+  );
+}
+
+// Second factor: a 6-digit code emailed to the address on the voter's roster entry.
+function OtpStep({ challenge, onBack, onVerified }: {
+  challenge: OtpChallenge; onBack: () => void; onVerified: (token: string) => Promise<void>;
+}) {
+  const toast = useToast();
+  const [code, setCode] = useState('');
+  const [hint, setHint] = useState(challenge.email_hint);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [wait, setWait] = useState(challenge.resend_after);
+  const [demoCode, setDemoCode] = useState(challenge.demo_code);
+
+  useEffect(() => {
+    if (wait <= 0) return;
+    const t = window.setTimeout(() => setWait((w) => w - 1), 1000);
+    return () => window.clearTimeout(t);
+  }, [wait]);
+
+  const submit = async (ev: FormEvent) => {
+    ev.preventDefault();
+    setBusy(true);
+    setError(null);
+    try {
+      const { token } = await voterApi.otpVerify(challenge.challenge, code);
+      await onVerified(token);
+    } catch (e) {
+      setError(errorMessage(e));
+      setBusy(false);
+    }
+  };
+
+  const resend = async () => {
+    setError(null);
+    try {
+      const r = await voterApi.otpResend(challenge.challenge);
+      setHint(r.email_hint);
+      setWait(r.resend_after);
+      setDemoCode(r.demo_code);
+      setCode('');
+      toast('success', 'A new code is on its way.');
+    } catch (e) {
+      setError(errorMessage(e));
+    }
+  };
+
+  return (
+    <div className="narrow">
+      <button className="btn btn-ghost btn-sm" style={{ marginLeft: -10, marginBottom: 12 }} onClick={onBack}><ArrowLeft /> Back</button>
+      <form className="card" onSubmit={submit}>
+        <div className="card-body stack">
+          <div>
+            <h1>Check your email</h1>
+            <p className="muted" style={{ marginTop: 4 }}>We sent a 6-digit code to <strong style={{ color: 'var(--text)' }}>{hint}</strong>. It expires in {Math.round(challenge.expires_in / 60)} minutes.</p>
+          </div>
+          {demoCode && (
+            <div className="callout callout-info" role="note">
+              <ShieldCheck />
+              <span><strong>Demo mode.</strong> This public demo cannot email you, so the code is shown here: <code style={{ fontSize: 16, letterSpacing: 2 }}>{demoCode}</code>. A live deployment sends it by email only.</span>
+            </div>
+          )}
+          <div className="field">
+            <label htmlFor="otp">Verification code</label>
+            <input
+              id="otp" className="input input-lg input-mono" autoFocus inputMode="numeric" autoComplete="one-time-code" placeholder="123456"
+              maxLength={6} required value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
+            />
+          </div>
+          <FormError message={error} />
+          <button className="btn btn-primary btn-lg btn-block" disabled={busy || code.length !== 6}>
+            {busy ? <Spinner /> : <ShieldCheck />}
+            Verify and continue
+          </button>
+          <button type="button" className="btn btn-ghost btn-sm" disabled={wait > 0} onClick={resend}>
+            {wait > 0 ? `Resend code in ${wait}s` : 'Resend code'}
+          </button>
+        </div>
+        <div className="card-foot subtle row" style={{ gap: 8 }}>
+          <Lock size={14} /> This confirms the person signing in is the voter on the roster, not just someone holding the password.
+        </div>
+      </form>
     </div>
   );
 }

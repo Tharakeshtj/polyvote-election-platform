@@ -42,21 +42,31 @@ def wipe_all_database_data():
     conn.close()
     clear_ledger()
 
+def roster_hash(conn, election_id):
+    """SHA-256 over the election's (candidate_id, name) pairs; sealed into every ledger block."""
+    pairs = conn.execute("SELECT candidate_id, name FROM CANDIDATE WHERE election_id = ? ORDER BY candidate_id", (election_id,)).fetchall()
+    return hashlib.sha256(json.dumps([list(p) for p in pairs]).encode()).hexdigest()
+
 def check_election_integrity(election_id):
     conn = get_db()
     rows = conn.execute("SELECT ballot_token, candidate_id, preference_rank FROM BALLOT_RANKS WHERE election_id = ? ORDER BY ballot_token, preference_rank", (election_id,)).fetchall()
+    voted_flags = conn.execute("SELECT COALESCE(SUM(has_voted), 0) FROM VOTER_PARTICIPATION WHERE election_id = ?", (election_id,)).fetchone()[0]
+    current_roster = roster_hash(conn, election_id)
     conn.close()
 
     # Only pull ledger blocks for this specific election
-    ledger_dict = {b['ballot_token']: b['vote_data_hash'] for b in get_ledger() if b.get('election_id') == election_id}
+    blocks = [b for b in get_ledger() if b.get('election_id') == election_id]
+    ledger_dict = {b['ballot_token']: b['vote_data_hash'] for b in blocks}
 
+    empty = {"modified": [], "deleted": [], "injected": [], "roster_changed": False, "count_mismatch": None}
     if not rows and not ledger_dict:
-        return True, "No votes cast yet.", {"modified": [], "deleted": []}
+        return True, "No votes cast yet.", empty
 
     grouped = defaultdict(list)
     for t, c, r in rows: grouped[t].append((c, r))
 
-    report = {"modified": [], "deleted": []}
+    report = dict(empty)
+    report["modified"], report["deleted"] = [], []
 
     # 1. Check for Modified Votes (In SQL, but hash doesn't match Ledger)
     for t, votes in grouped.items():
@@ -70,9 +80,25 @@ def check_election_integrity(election_id):
         if t not in grouped:
             report["deleted"].append(t)
 
-    is_valid = not (report["modified"] or report["deleted"])
-    total_anomalies = len(report["modified"]) + len(report["deleted"])
+    # 3. Injected ballots: in SQL with no receipt at all
+    report["injected"] = [t for t in grouped if t not in ledger_dict]
+
+    # 4. Candidate names changed after votes were sealed
+    sealed = {b['roster_hash'] for b in blocks if b.get('roster_hash')}
+    report["roster_changed"] = bool(sealed) and sealed != {current_roster}
+
+    # 5. Three-way reconciliation: voter flags, ballots and receipts must agree
+    counts = {"voted_flags": int(voted_flags), "ballots": len(grouped), "receipts": len(ledger_dict)}
+    if len(set(counts.values())) > 1:
+        report["count_mismatch"] = counts
+
+    is_valid = not (report["modified"] or report["deleted"] or report["injected"] or report["roster_changed"] or report["count_mismatch"])
+    total_anomalies = len(report["modified"]) + len(report["deleted"]) + len(report["injected"])
 
     if not is_valid:
-        return False, f"Integrity Breach! {total_anomalies} ballot record(s) compromised.", report
+        parts = []
+        if total_anomalies: parts.append(f"{total_anomalies} ballot record(s) compromised")
+        if report["roster_changed"]: parts.append("candidate names changed since voting")
+        if report["count_mismatch"]: parts.append("voter flags, ballots and receipts disagree")
+        return False, "Integrity Breach! " + "; ".join(parts) + ".", report
     return True, "Relational DB perfectly matches immutable ledger.", report

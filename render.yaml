@@ -1,0 +1,16 @@
+# Render Blueprint for the public demo (free plan, builds from the Dockerfile).
+# The demo needs no secrets: the one-time code is shown on screen, and /demo explains every page.
+# For real emailed codes use render-live.example.yaml (needs an SMTP relay account; see DEPLOY.md).
+services:
+  - type: web
+    name: polyvote-demo
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: HOSTED_DEMO
+        value: "true"
+      - key: OTP_REQUIRED
+        value: "true"
+      - key: OTP_DEMO_HINT
+        value: "true"

@@ -1,0 +1,402 @@
+{
+  "tag": "nokey",
+  "prevention": [
+    {
+      "id": "A1",
+      "attack": "Mark an already-voted voter as voted again",
+      "expected": "trigger",
+      "outcome": "prevented",
+      "detail": "DBMS Trigger Violation: Voter has already submitted a ballot."
+    },
+    {
+      "id": "A2",
+      "attack": "Insert a rank outside 1-3 (rank 4)",
+      "expected": "CHECK",
+      "outcome": "prevented",
+      "detail": "CHECK constraint failed: preference_rank BETWEEN 1 AND 3"
+    },
+    {
+      "id": "A3",
+      "attack": "Rank the same candidate twice on one ballot",
+      "expected": "composite PK",
+      "outcome": "not_prevented",
+      "detail": "statement succeeded"
+    },
+    {
+      "id": "A4",
+      "attack": "Rank a candidate that does not exist (FK enforcement on)",
+      "expected": "FK",
+      "outcome": "prevented",
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "id": "A5",
+      "attack": "Rank a nonexistent candidate from a default connection (FK pragma off)",
+      "expected": "FK",
+      "outcome": "not_prevented",
+      "detail": "statement succeeded"
+    },
+    {
+      "id": "A6",
+      "attack": "Register the same reg. number twice in one election",
+      "expected": "UNIQUE",
+      "outcome": "prevented",
+      "detail": "UNIQUE constraint failed: VOTER_PARTICIPATION.student_reg_no, VOTER_PARTICIPATION.election_id"
+    },
+    {
+      "id": "A7",
+      "attack": "Set has_voted to an invalid value (2)",
+      "expected": "CHECK",
+      "outcome": "prevented",
+      "detail": "CHECK constraint failed: has_voted IN (0, 1)"
+    }
+  ],
+  "api_abuse": [
+    {
+      "id": "B1",
+      "attack": "Log in with a wrong password",
+      "expected": "rejected (401)",
+      "outcome": "prevented",
+      "detail": "HTTP 401"
+    },
+    {
+      "id": "B2",
+      "attack": "Log in with a reg. number not on the roster",
+      "expected": "rejected (404)",
+      "outcome": "prevented",
+      "detail": "HTTP 404"
+    },
+    {
+      "id": "B3",
+      "attack": "SQL injection in the reg. number field",
+      "expected": "rejected",
+      "outcome": "prevented",
+      "detail": "HTTP 404"
+    },
+    {
+      "id": "B4",
+      "attack": "Replay a session token after the ballot was cast",
+      "expected": "rejected (401)",
+      "outcome": "prevented",
+      "detail": "cast 200, replay 401"
+    },
+    {
+      "id": "B5",
+      "attack": "Log in again after voting",
+      "expected": "rejected (409)",
+      "outcome": "prevented",
+      "detail": "HTTP 409"
+    },
+    {
+      "id": "B6",
+      "attack": "Cast a ballot with no session",
+      "expected": "rejected (401)",
+      "outcome": "prevented",
+      "detail": "HTTP 401"
+    },
+    {
+      "id": "B7",
+      "attack": "Use a voter token on an admin endpoint",
+      "expected": "rejected (403)",
+      "outcome": "prevented",
+      "detail": "HTTP 403"
+    },
+    {
+      "id": "B8",
+      "attack": "Rank another election's candidates",
+      "expected": "rejected (422)",
+      "outcome": "prevented",
+      "detail": "HTTP 422"
+    },
+    {
+      "id": "B9",
+      "attack": "Rank the same candidate twice via the API",
+      "expected": "rejected (422)",
+      "outcome": "prevented",
+      "detail": "HTTP 422"
+    },
+    {
+      "id": "B10",
+      "attack": "Submit an incomplete ranking",
+      "expected": "rejected (422)",
+      "outcome": "prevented",
+      "detail": "HTTP 422"
+    },
+    {
+      "id": "B11",
+      "attack": "20 simultaneous casts from the same voter",
+      "expected": "exactly one accepted",
+      "outcome": "prevented",
+      "detail": "1 accepted, 1 ballot rows for the voter"
+    },
+    {
+      "id": "B12",
+      "attack": "Log in after the election is closed",
+      "expected": "rejected (409)",
+      "outcome": "prevented",
+      "detail": "HTTP 409"
+    },
+    {
+      "id": "B13",
+      "attack": "Re-open a closed election",
+      "expected": "rejected (409)",
+      "outcome": "prevented",
+      "detail": "HTTP 409"
+    }
+  ],
+  "tamper": [
+    {
+      "id": "C1",
+      "attack": "Swap the 1st and 2nd choice on one ballot",
+      "expected": "detected",
+      "outcome": "detected",
+      "detail": "flags: sweep; counts {'voted_flags': 40, 'ballots': 40, 'receipts': 40}"
+    },
+    {
+      "id": "C2",
+      "attack": "Replace the first-choice candidate on one ballot",
+      "expected": "detected",
+      "outcome": "detected",
+      "detail": "flags: sweep; counts {'voted_flags': 40, 'ballots': 40, 'receipts': 40}"
+    },
+    {
+      "id": "C3",
+      "attack": "Delete one ballot",
+      "expected": "detected",
+      "outcome": "detected",
+      "detail": "flags: sweep, counters; counts {'voted_flags': 40, 'ballots': 39, 'receipts': 40}"
+    },
+    {
+      "id": "C4",
+      "attack": "Delete a ballot and clear a voted flag to hide the gap",
+      "expected": "detected",
+      "outcome": "detected",
+      "detail": "flags: sweep, counters; counts {'voted_flags': 39, 'ballots': 39, 'receipts': 40}"
+    },
+    {
+      "id": "C5",
+      "attack": "Inject a ballot with no receipt",
+      "expected": "detected",
+      "outcome": "detected",
+      "detail": "flags: sweep, counters; counts {'voted_flags': 40, 'ballots': 41, 'receipts': 40}"
+    },
+    {
+      "id": "C6",
+      "attack": "Ballot stuffing: inject ballot, forge receipt, set a voted flag",
+      "expected": "detected",
+      "outcome": "undetected",
+      "detail": "flags: none; counts {'voted_flags': 41, 'ballots': 41, 'receipts': 41}"
+    },
+    {
+      "id": "C7",
+      "attack": "Edit a ledger block without repairing the chain",
+      "expected": "detected",
+      "outcome": "detected",
+      "detail": "flags: sweep, chain; counts {'voted_flags': 40, 'ballots': 40, 'receipts': 40}"
+    },
+    {
+      "id": "C8",
+      "attack": "Delete a block from the middle of the ledger",
+      "expected": "detected",
+      "outcome": "detected",
+      "detail": "flags: sweep, chain, counters; counts {'voted_flags': 40, 'ballots': 40, 'receipts': 39}"
+    },
+    {
+      "id": "C9",
+      "attack": "Truncate the last block of the ledger",
+      "expected": "detected",
+      "outcome": "detected",
+      "detail": "flags: sweep, counters; counts {'voted_flags': 40, 'ballots': 40, 'receipts': 39}"
+    },
+    {
+      "id": "C10",
+      "attack": "Change a ballot and rebuild the whole chain consistently (attacker has no secret key)",
+      "expected": "detected",
+      "outcome": "undetected",
+      "detail": "flags: none; counts {'voted_flags': 40, 'ballots': 40, 'receipts': 40}"
+    },
+    {
+      "id": "C11",
+      "attack": "Swap two candidates\u2019 names after voting",
+      "expected": "detected",
+      "outcome": "detected",
+      "detail": "flags: sweep; counts {'voted_flags': 40, 'ballots': 40, 'receipts': 40}"
+    },
+    {
+      "id": "C12",
+      "attack": "Reset a voted flag, then let that voter cast a second ballot",
+      "expected": "detected",
+      "outcome": "detected",
+      "detail": "flags: sweep, counters; counts {'voted_flags': 40, 'ballots': 41, 'receipts': 41}"
+    },
+    {
+      "id": "C13",
+      "attack": "Add a ghost voter to the roster and vote as them through the API",
+      "expected": "detected",
+      "outcome": "undetected",
+      "detail": "flags: none; counts {'voted_flags': 41, 'ballots': 41, 'receipts': 41}"
+    }
+  ],
+  "privacy": [
+    {
+      "check": "Columns shared by BALLOT_RANKS and VOTER_PARTICIPATION (excluding election_id)",
+      "result": "none",
+      "columns_ballot": [
+        "ballot_token",
+        "candidate_id",
+        "election_id",
+        "preference_rank"
+      ],
+      "columns_voter": [
+        "participation_id",
+        "election_id",
+        "student_reg_no",
+        "password_hash",
+        "has_voted"
+      ]
+    },
+    {
+      "check": "Fields stored in a ledger block",
+      "result": [
+        "ballot_token",
+        "curr_hash",
+        "election_id",
+        "index",
+        "prev_hash",
+        "roster_hash",
+        "timestamp",
+        "vote_data_hash"
+      ]
+    }
+  ],
+  "otp": [
+    {
+      "id": "F1",
+      "attack": "Correct password alone does not create a voting session",
+      "expected": "no token issued; challenge id is not a session",
+      "outcome": "passed",
+      "detail": "login 200, challenge used as bearer: 401"
+    },
+    {
+      "id": "F2",
+      "attack": "Correct emailed code unlocks the ballot",
+      "expected": "session issued, ballot accepted",
+      "outcome": "passed",
+      "detail": "verify 200, cast 200"
+    },
+    {
+      "id": "F3",
+      "attack": "A used code cannot be replayed",
+      "expected": "rejected (410)",
+      "outcome": "passed",
+      "detail": "HTTP 410"
+    },
+    {
+      "id": "F4",
+      "attack": "Three wrong codes lock the challenge",
+      "expected": "401, 401, 410 then the right code is refused",
+      "outcome": "passed",
+      "detail": "[401, 401, 410], then correct code: 410"
+    },
+    {
+      "id": "F5",
+      "attack": "An expired code is refused",
+      "expected": "rejected (410)",
+      "outcome": "passed",
+      "detail": "HTTP 410"
+    },
+    {
+      "id": "F6",
+      "attack": "Resend is rate-limited to one per 30 seconds",
+      "expected": "immediate resend 429, later resend 200",
+      "outcome": "passed",
+      "detail": "429 then 200"
+    },
+    {
+      "id": "F7",
+      "attack": "A resent code invalidates the previous one",
+      "expected": "old code rejected",
+      "outcome": "passed",
+      "detail": "old code: HTTP 401"
+    },
+    {
+      "id": "F8",
+      "attack": "A challenge allows at most 5 codes",
+      "expected": "sixth send refused (429)",
+      "outcome": "passed",
+      "detail": "HTTP 429"
+    },
+    {
+      "id": "F9",
+      "attack": "A voter with no email on file cannot proceed",
+      "expected": "409 with a clear message",
+      "outcome": "passed",
+      "detail": "HTTP 409"
+    },
+    {
+      "id": "F10",
+      "attack": "Plaintext codes are absent from the verification database",
+      "expected": "code not found in any table",
+      "outcome": "passed",
+      "detail": "checked OTP_CHALLENGE, MAIL_LOG, VOTER_CONTACT"
+    },
+    {
+      "id": "F11",
+      "attack": "Repeated sign-ins are rate-limited",
+      "expected": "sixth challenge in 15 min refused (429)",
+      "outcome": "passed",
+      "detail": "[200, 200, 200, 200, 200, 429, 429]"
+    },
+    {
+      "id": "F12",
+      "attack": "Codes are 6 digits including leading zeros",
+      "expected": "all length 6, mostly distinct",
+      "outcome": "passed",
+      "detail": "4982 distinct of 5000"
+    },
+    {
+      "id": "F13",
+      "attack": "A failed email send does not break sign-in",
+      "expected": "challenge still issued; failure logged; code stays in the outbox",
+      "outcome": "passed",
+      "detail": "login 200, mail status \"failed: ConnectionRefusedError\""
+    },
+    {
+      "id": "F14",
+      "attack": "Voter email is not stored in the election database",
+      "expected": "no email column in any election table",
+      "outcome": "passed",
+      "detail": "election tables: ['ADMIN_USERS', 'BALLOT_RANKS', 'CANDIDATE', 'ELECTION', 'ORGANIZATION', 'VOTER_PARTICIPATION', 'sqlite_sequence']"
+    }
+  ],
+  "bench": {
+    "100": {
+      "cast_ms": 10.73,
+      "sweep_ms": 3.55,
+      "chain_verify_ms": 1.44,
+      "tally_ms": 10.26,
+      "receipt_lookup_ms": 8.96,
+      "ledger_file_kb": 48.7,
+      "chain_ok": true
+    },
+    "1000": {
+      "cast_ms": 27.79,
+      "sweep_ms": 16.6,
+      "chain_verify_ms": 8.06,
+      "tally_ms": 15.36,
+      "receipt_lookup_ms": 6.67,
+      "ledger_file_kb": 449.5,
+      "chain_ok": true
+    },
+    "10000": {
+      "cast_ms": 337.68,
+      "sweep_ms": 130.89,
+      "chain_verify_ms": 85.87,
+      "tally_ms": 62.0,
+      "receipt_lookup_ms": 34.87,
+      "ledger_file_kb": 4466.1,
+      "chain_ok": true
+    }
+  },
+  "seconds": 8.5
+}

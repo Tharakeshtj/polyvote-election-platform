@@ -28,7 +28,7 @@ export default function ResultsTab({ election }: TabProps) {
   ];
   const off = outliers(counts.map((c) => c.value));
   const mismatch = off.size > 0;
-  const anomalies = sweep ? sweep.modified.length + sweep.deleted.length : 0;
+  const anomalies = sweep ? sweep.modified.length + sweep.deleted.length + sweep.injected.length : 0;
 
   return (
     <div className="stack">
@@ -61,12 +61,12 @@ export default function ResultsTab({ election }: TabProps) {
           {mismatch && (
             <div className="callout callout-warn">
               <AlertTriangle />
-              <span>These counts don’t agree. The sweep only checks ballots that have a ledger receipt, so a ballot added straight to the database won’t show up as an anomaly below.</span>
+              <span>These counts don’t agree. Run the sweep to see which ballots or flags are responsible.</span>
             </div>
           )}
 
           {!sweep && !mismatch && <p className="muted">Run the sweep to compare every sealed ballot with the database.</p>}
-          {sweep && (anomalies === 0 ? (
+          {sweep && (sweep.valid ? (
             <div className="callout callout-ok" role="status">
               <ShieldCheck />
               <div>
@@ -78,13 +78,15 @@ export default function ResultsTab({ election }: TabProps) {
             <div className="callout callout-danger" role="alert">
               <ShieldAlert />
               <div>
-                <strong>Tampering detected.</strong> {anomalies} ballot{anomalies === 1 ? '' : 's'} no longer match their ledger receipt
-                ({sweep.modified.length} modified, {sweep.deleted.length} deleted).
+                <strong>Tampering detected.</strong> {anomalies > 0 && <>{anomalies} ballot{anomalies === 1 ? '' : 's'} don’t match the ledger
+                ({sweep.modified.length} modified, {sweep.deleted.length} deleted, {sweep.injected.length} without a receipt). </>}
+                {sweep.roster_changed && <>Candidate names changed after voting began. </>}
+                {sweep.count_mismatch && <>Voter flags ({sweep.count_mismatch.voted_flags}), ballots ({sweep.count_mismatch.ballots}) and receipts ({sweep.count_mismatch.receipts}) disagree.</>}
               </div>
             </div>
           ))}
         </div>
-        {sweep && anomalies > 0 && (
+        {sweep && !sweep.valid && anomalies > 0 && (
               <div className="table-wrap" style={{ borderTop: '1px solid var(--border)' }}>
                 <table className="table">
                   <thead><tr><th>Ballot token</th><th>Anomaly</th><th>What the ledger shows</th></tr></thead>
@@ -101,6 +103,13 @@ export default function ResultsTab({ election }: TabProps) {
                         <td><span className="row" style={{ gap: 6 }}><code>{shortHash(t, 8)}</code><CopyButton text={t} label="" /></span></td>
                         <td><span className="label label-danger">Deleted</span></td>
                         <td className="muted">A sealed ballot is missing from the database.</td>
+                      </tr>
+                    ))}
+                    {sweep.injected.map((t) => (
+                      <tr key={`i${t}`}>
+                        <td><span className="row" style={{ gap: 6 }}><code>{shortHash(t, 8)}</code><CopyButton text={t} label="" /></span></td>
+                        <td><span className="label label-danger">No receipt</span></td>
+                        <td className="muted">This ballot is in the database but was never sealed in the ledger.</td>
                       </tr>
                     ))}
                   </tbody>

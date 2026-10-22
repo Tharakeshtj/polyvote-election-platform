@@ -1,0 +1,20 @@
+{
+  "100": {
+    "append_ms_median": 135.9,
+    "append_ms_p90": 157.4,
+    "verify_ms": 231.1,
+    "chain_ok": true
+  },
+  "1000": {
+    "append_ms_median": 147.2,
+    "append_ms_p90": 170.4,
+    "verify_ms": 702.8,
+    "chain_ok": true
+  },
+  "10000": {
+    "append_ms_median": 139.4,
+    "append_ms_p90": 163.5,
+    "verify_ms": 3045.8,
+    "chain_ok": true
+  }
+}

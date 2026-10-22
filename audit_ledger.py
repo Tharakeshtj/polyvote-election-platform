@@ -5,6 +5,7 @@ otherwise in a local JSON file. The backend is chosen once at import time.
 """
 import json
 import hashlib
+import hmac
 import os
 import threading
 from datetime import datetime
@@ -45,7 +46,8 @@ if MONGO_URI:
 
 
 def backend_info():
-    return {"backend": "mongodb" if _coll is not None else "json", "detail": _backend_note}
+    return {"backend": "mongodb" if _coll is not None else "json", "detail": _backend_note,
+            "sealing": "hmac-sha256" if LEDGER_KEY else "sha256"}
 
 
 def get_ledger():
@@ -74,7 +76,21 @@ def clear_ledger():
             save_ledger([])
 
 
-def _seal(election_id, ballot_token, ranked_payload, index, prev_hash):
+# Optional secret that turns the chain into an HMAC chain. Keep it outside the database and the
+# ledger store: someone who can only edit those cannot recompute a valid chain without it.
+# Blocks up to LEGACY_UNTIL (written before the key existed) keep plain SHA-256.
+LEDGER_KEY = os.environ.get('LEDGER_KEY', '').strip().encode()
+LEGACY_UNTIL = int(os.environ.get('LEDGER_LEGACY_UNTIL', '0') or 0)
+
+
+def _block_hash(index, block):
+    data = json.dumps(block, sort_keys=True).encode()
+    if LEDGER_KEY and index > LEGACY_UNTIL:
+        return hmac.new(LEDGER_KEY, data, hashlib.sha256).hexdigest()
+    return hashlib.sha256(data).hexdigest()
+
+
+def _seal(election_id, ballot_token, ranked_payload, index, prev_hash, roster_hash=None):
     # Sort payload to ensure deterministic hashing
     payload_str = json.dumps(sorted(ranked_payload, key=lambda x: x[1]), sort_keys=True)
     block = {
@@ -85,18 +101,20 @@ def _seal(election_id, ballot_token, ranked_payload, index, prev_hash):
         "vote_data_hash": hashlib.sha256(payload_str.encode()).hexdigest(),
         "prev_hash": prev_hash,
     }
-    block['curr_hash'] = hashlib.sha256(json.dumps(block, sort_keys=True).encode()).hexdigest()
+    if roster_hash:
+        block["roster_hash"] = roster_hash
+    block['curr_hash'] = _block_hash(index, block)
     return block
 
 
-def append_ballot_receipt(election_id, ballot_token, ranked_payload):
+def append_ballot_receipt(election_id, ballot_token, ranked_payload, roster_hash=None):
     if _coll is not None:
         # The unique index on `index` makes a concurrent writer fail instead of forking the chain.
         for _ in range(5):
             last = _coll.find_one({}, {'_id': 0}, sort=[('index', -1)])
             block = _seal(election_id, ballot_token, ranked_payload,
                           (last['index'] + 1) if last else 1,
-                          last['curr_hash'] if last else GENESIS)
+                          last['curr_hash'] if last else GENESIS, roster_hash)
             try:
                 _coll.insert_one(dict(block))
                 return block
@@ -107,7 +125,7 @@ def append_ballot_receipt(election_id, ballot_token, ranked_payload):
     with _file_lock:
         chain = get_ledger()
         block = _seal(election_id, ballot_token, ranked_payload, len(chain) + 1,
-                      chain[-1]['curr_hash'] if chain else GENESIS)
+                      chain[-1]['curr_hash'] if chain else GENESIS, roster_hash)
         chain.append(block)
         save_ledger(chain)
         return block
@@ -125,8 +143,8 @@ def verify_chain_integrity():
 
         temp_block = curr_block.copy()
         temp_block.pop('curr_hash', None)
-        recalc_hash = hashlib.sha256(json.dumps(temp_block, sort_keys=True).encode()).hexdigest()
-        if recalc_hash != curr_block.get('curr_hash'):
+        recalc_hash = _block_hash(curr_block['index'], temp_block)
+        if not hmac.compare_digest(recalc_hash, str(curr_block.get('curr_hash'))):
             return False, f"Data tampered at block {curr_block['index']}"
 
     return True, "Chain intact. Cryptographic ledger is valid."

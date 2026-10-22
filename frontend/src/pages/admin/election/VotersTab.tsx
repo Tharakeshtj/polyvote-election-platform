@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react';
-import { Search, UserPlus, Users, UsersRound } from 'lucide-react';
+import { Mail, Search, UserPlus, Users, UsersRound } from 'lucide-react';
 import { adminApi, errorMessage, type Voter } from '../../../api';
 import { EmptyState, PageLoading, Spinner, useToast } from '../../../components/ui';
 import type { TabProps } from './ElectionPage';
@@ -15,8 +15,11 @@ export default function VotersTab({ election, reload }: TabProps) {
   const [filter, setFilter] = useState<Filter>('all');
   const [page, setPage] = useState(0);
 
+  const [contacts, setContacts] = useState<Record<string, string>>({});
+
   const load = useCallback(() => {
     adminApi.voters(election.election_id).then(setVoters).catch((e) => toast('error', errorMessage(e)));
+    adminApi.contacts(election.election_id).then(setContacts).catch(() => {});
   }, [election.election_id, toast]);
   useEffect(load, [load]);
 
@@ -55,11 +58,12 @@ export default function VotersTab({ election, reload }: TabProps) {
           <>
             <div className="table-wrap">
               <table className="table">
-                <thead><tr><th>Registration no.</th><th>Status</th></tr></thead>
+                <thead><tr><th>Registration no.</th><th>Email (for OTP)</th><th>Status</th></tr></thead>
                 <tbody>
                   {rows.map((v) => (
                     <tr key={v.participation_id}>
                       <td className="mono">{v.student_reg_no}</td>
+                      <td className={contacts[v.student_reg_no] ? 'mono' : 'subtle'}>{contacts[v.student_reg_no] ?? 'none'}</td>
                       <td>{v.has_voted ? <span className="label label-success">Voted</span> : <span className="label">Not voted</span>}</td>
                     </tr>
                   ))}
@@ -80,28 +84,39 @@ export default function VotersTab({ election, reload }: TabProps) {
 
       {editable ? (
         <div className="stack">
-          <AddVoter electionId={election.election_id} onDone={refresh} />
+          <AddVoter electionId={election.election_id} voters={voters} onDone={refresh} />
           <BulkRegister electionId={election.election_id} onDone={refresh} />
+          <EmailTools electionId={election.election_id} onDone={refresh} />
         </div>
       ) : null}
     </div>
   );
 }
 
-function AddVoter({ electionId, onDone }: { electionId: number; onDone: () => Promise<void> }) {
+function nextRegNo(voters: Voter[] | null): string {
+  const nums = (voters ?? []).map((v) => /^25BCE(\d{4})$/.exec(v.student_reg_no)?.[1]).filter(Boolean).map(Number);
+  return `25BCE${String((nums.length ? Math.max(...nums) : 0) + 1).padStart(4, '0')}`;
+}
+
+function AddVoter({ electionId, voters, onDone }: { electionId: number; voters: Voter[] | null; onDone: () => Promise<void> }) {
   const toast = useToast();
   const [reg, setReg] = useState('');
-  const [pw, setPw] = useState('');
+  const [pw, setPw] = useState('vote123');
+  const [email, setEmail] = useState('');
   const [busy, setBusy] = useState(false);
+  // Pre-fill the next free registration number so a live add is just "type an email, press Enter".
+  useEffect(() => { if (!reg && voters) setReg(nextRegNo(voters)); }, [voters, reg]);
 
   const submit = async (ev: FormEvent) => {
     ev.preventDefault();
     setBusy(true);
     try {
       const { reg_no } = await adminApi.addVoter(electionId, reg, pw);
-      toast('success', `${reg_no} added to the roster.`);
+      if (email.trim()) await adminApi.setContact(electionId, reg_no, email.trim());
+      toast('success', email.trim() ? `${reg_no} added; their code will go to ${email.trim()}.` : `${reg_no} added to the roster.`);
       setReg('');
-      setPw('');
+      setPw('vote123');
+      setEmail('');
       await onDone();
     } catch (e) {
       toast('error', errorMessage(e));
@@ -120,12 +135,64 @@ function AddVoter({ electionId, onDone }: { electionId: number; onDone: () => Pr
         </div>
         <div className="field">
           <label htmlFor="vp">Access password</label>
-          <input id="vp" type="password" className="input" autoComplete="new-password" value={pw} onChange={(e) => setPw(e.target.value)} />
+          <input id="vp" type="text" className="input" autoComplete="off" value={pw} onChange={(e) => setPw(e.target.value)} />
           <span className="hint">Share this with the voter privately.</span>
+        </div>
+        <div className="field">
+          <label htmlFor="ve">Email address (receives their one-time code)</label>
+          <input id="ve" type="email" className="input" autoComplete="off" placeholder="name@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <button className="btn btn-primary" disabled={busy || !reg.trim() || !pw}>{busy && <Spinner />} Add voter</button>
       </div>
     </form>
+  );
+}
+
+// Voter emails for the emailed one-time code. Stored in the separate verification database, never with ballots.
+function EmailTools({ electionId, onDone }: { electionId: number; onDone: () => Promise<void> }) {
+  const toast = useToast();
+  const [reg, setReg] = useState('');
+  const [email, setEmail] = useState('');
+  const [base, setBase] = useState('');
+  const [busy, setBusy] = useState<'one' | 'fill' | null>(null);
+
+  const run = async (kind: 'one' | 'fill', fn: () => Promise<string>) => {
+    setBusy(kind);
+    try {
+      toast('success', await fn());
+      await onDone();
+    } catch (e) {
+      toast('error', errorMessage(e));
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  return (
+    <div className="card">
+      <div className="card-header"><h2 className="section-title"><Mail /> Voter emails</h2></div>
+      <div className="card-body stack">
+        <form className="stack-sm" onSubmit={(ev) => { ev.preventDefault(); run('one', async () => { await adminApi.setContact(electionId, reg, email); setReg(''); setEmail(''); return `Email saved for ${reg.trim().toUpperCase()}.`; }); }}>
+          <div className="field">
+            <label htmlFor="ce-reg">Registration no.</label>
+            <input id="ce-reg" className="input input-mono" placeholder="25BCE0001" value={reg} onChange={(e) => setReg(e.target.value.toUpperCase())} />
+          </div>
+          <div className="field">
+            <label htmlFor="ce-mail">Email address</label>
+            <input id="ce-mail" type="email" className="input" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <button className="btn" disabled={busy !== null || !reg.trim() || !email.trim()}>{busy === 'one' && <Spinner />} Save email</button>
+        </form>
+        <hr style={{ border: 0, borderTop: '1px solid var(--border)', margin: 0 }} />
+        <form className="stack-sm" onSubmit={(ev) => { ev.preventDefault(); run('fill', async () => `Set ${(await adminApi.fillContacts(electionId, base)).filled} addresses.`); }}>
+          <p className="muted">Demo shortcut: <code>you@gmail.com</code> becomes <code>you+25bce0001@gmail.com</code> for every voter, and all of them arrive in your one inbox.</p>
+          <div className="row">
+            <input type="email" className="input" placeholder="you@gmail.com" value={base} onChange={(e) => setBase(e.target.value)} aria-label="Base email address" />
+            <button className="btn" disabled={busy !== null || !base.trim()}>{busy === 'fill' && <Spinner />} Fill all</button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 

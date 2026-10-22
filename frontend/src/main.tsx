@@ -8,12 +8,14 @@ import PublicLayout from './pages/public/PublicLayout';
 import Landing from './pages/public/Landing';
 import VoteFlow from './pages/public/VoteFlow';
 import VerifyReceipt from './pages/public/VerifyReceipt';
+import DemoGuide from './pages/public/DemoGuide';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminLayout from './pages/admin/AdminLayout';
 import ElectionsPage from './pages/admin/ElectionsPage';
 import NewElectionPage from './pages/admin/NewElectionPage';
 import ElectionPage from './pages/admin/election/ElectionPage';
 import LedgerPage from './pages/admin/LedgerPage';
+import OutboxPage from './pages/admin/OutboxPage';
 import AdminsPage from './pages/admin/AdminsPage';
 import SettingsPage from './pages/admin/SettingsPage';
 
@@ -28,6 +30,7 @@ createRoot(document.getElementById('root')!).render(
               <Route path="vote" element={<Navigate to="/" replace />} />
               <Route path="vote/:electionId" element={<VoteFlow />} />
               <Route path="verify" element={<VerifyReceipt />} />
+              <Route path="demo" element={<DemoGuide />} />
             </Route>
             <Route path="admin/login" element={<AdminLogin />} />
             <Route
@@ -42,6 +45,7 @@ createRoot(document.getElementById('root')!).render(
               <Route path="elections/new" element={<NewElectionPage />} />
               <Route path="elections/:id/:tab?" element={<ElectionPage />} />
               <Route path="ledger" element={<LedgerPage />} />
+              <Route path="outbox" element={<OutboxPage />} />
               <Route path="admins" element={<AdminsPage />} />
               <Route path="settings" element={<SettingsPage />} />
             </Route>

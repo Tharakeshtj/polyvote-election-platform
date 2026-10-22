@@ -79,6 +79,9 @@ export interface IntegrityResult {
   message: string;
   modified: string[];
   deleted: string[];
+  injected: string[];
+  roster_changed: boolean;
+  count_mismatch: { voted_flags: number; ballots: number; receipts: number } | null;
 }
 
 export interface TallyRound {
@@ -157,15 +160,45 @@ function asAdmin<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
   });
 }
 
+export interface PublicConfig {
+  public_url: string | null;
+  hosted_demo: boolean;
+  otp_demo_hint: boolean;
+  admin_public: boolean;
+}
+
 export const publicApi = {
   elections: () => request<PublicElection[]>('/elections'),
   receipt: (token: string) => request<Receipt>(`/receipts/${encodeURIComponent(token.trim())}`),
-  config: () => request<{ public_url: string | null }>('/config'),
+  config: () => request<PublicConfig>('/config'),
 };
+
+export interface OtpChallenge {
+  otp_required: true;
+  challenge: string;
+  email_hint: string;
+  expires_in: number;
+  resend_after: number;
+  demo_code?: string;
+}
+
+export interface OutboxEntry {
+  sent_at: number;
+  election_id: number;
+  reg_no: string;
+  email: string;
+  status: string;
+  code: string | null;
+  expired: boolean;
+}
 
 export const voterApi = {
   login: (election_id: number, reg_no: string, password: string) =>
-    request<{ token: string; reg_no: string }>('/voter/login', { method: 'POST', body: { election_id, reg_no, password } }),
+    request<{ token: string; reg_no: string } | OtpChallenge>('/voter/login', { method: 'POST', body: { election_id, reg_no, password } }),
+  otpVerify: (challenge: string, code: string) =>
+    request<{ token: string; reg_no: string }>('/voter/otp/verify', { method: 'POST', body: { challenge, code } }),
+  otpResend: (challenge: string) =>
+    request<{ email_hint: string; expires_in: number; resend_after: number; demo_code?: string }>('/voter/otp/resend', { method: 'POST', body: { challenge } }),
   ballot: (token: string) => request<VoterBallot>('/voter/ballot', { token }),
   cast: (token: string, ranking: number[]) => request<CastResult>('/voter/ballot', { method: 'POST', body: { ranking }, token }),
   logout: (token: string) => request<null>('/logout', { method: 'POST', token }).catch(() => null),
@@ -195,6 +228,12 @@ export const adminApi = {
   bulkVoters: (id: number, count: number) =>
     asAdmin<{ added: number; first: string; password: string }>(`${e(id)}/voters/bulk`, 'POST', { count }),
   simulate: (id: number, count: number) => asAdmin<{ cast: number }>(`${e(id)}/simulate`, 'POST', { count }),
+
+  contacts: (id: number) => asAdmin<Record<string, string>>(`${e(id)}/contacts`),
+  setContact: (id: number, reg_no: string, email: string) => asAdmin(`${e(id)}/contacts`, 'PUT', { reg_no, email }),
+  fillContacts: (id: number, base_email: string) => asAdmin<{ filled: number }>(`${e(id)}/contacts/fill`, 'POST', { base_email }),
+  otpStatus: () => asAdmin<{ required: boolean; smtp_configured: boolean; smtp_host: string; sender: string | null; ttl_seconds: number; max_attempts: number }>('/admin/otp/status'),
+  otpOutbox: () => asAdmin<OutboxEntry[]>('/admin/otp/outbox'),
 
   integrity: (id: number) => asAdmin<IntegrityResult>(`${e(id)}/integrity`),
   tally: (id: number) => asAdmin<TallyResult>(`${e(id)}/tally`),
