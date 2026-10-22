@@ -3,7 +3,7 @@
 # Copy the service block into render.yaml and fill the values in Render's dashboard. See DEPLOY.md.
 services:
   - type: web
-    name: polyvote-live
+    name: polyvote-bacse202-live
     runtime: docker
     plan: free
     healthCheckPath: /api/health

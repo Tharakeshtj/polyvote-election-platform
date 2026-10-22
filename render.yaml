@@ -3,7 +3,7 @@
 # For real emailed codes use render-live.example.yaml (needs an SMTP relay account; see DEPLOY.md).
 services:
   - type: web
-    name: polyvote-demo
+    name: polyvote-bacse202
     runtime: docker
     plan: free
     healthCheckPath: /api/health
