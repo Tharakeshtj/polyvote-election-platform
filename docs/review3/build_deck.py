@@ -116,14 +116,14 @@ def slide(kicker, title):
 s = slide('PICKING UP FROM REVIEW 2', 'Review 2 left a short list; two new features lead it')
 card(s, 0.5, 1.2, 3.4, 3.8)
 chip(s, 0.7, 1.34, 'REVIEW 2 ENDED WITH')
-bullets(s, 0.7, 1.75, 3.0, 3.2, ['About 75% of the scope built and demonstrated.', 'Open: MongoDB Atlas, hosting, injected-ballot detection.', 'Faculty feedback: confirm the voter with a second factor.', 'Deferred on purpose: Oracle with PL/SQL, POSITION entity.'], size=11)
+bullets(s, 0.7, 1.75, 3.0, 3.2, ['A working system built and demonstrated.', 'Open: MongoDB Atlas, hosting, injected-ballot detection.', 'Faculty feedback: confirm the voter with a second factor.', 'Deferred on purpose: Oracle with PL/SQL, POSITION entity.'], size=11)
 card(s, 4.1, 1.2, 2.6, 3.8, fill=LAV)
 chip(s, 4.3, 1.34, 'NEW: EMAIL OTP')
 tb(s, 4.3, 1.75, 2.2, 3.2, [[('A correct password is no longer enough.', {'bold': True, 'color': NAVY})], [('A 6-digit code is emailed to the voter, valid 5 minutes, one use, 3 guesses.', {})], [('', {})], [('Answers the Review 2 comment.', {'italic': True, 'color': MUTED})]], size=11, color=INK, after=4)
 card(s, 6.9, 1.2, 2.6, 3.8, fill=LAV)
 chip(s, 7.1, 1.34, 'NEW: QR VOTING')
 tb(s, 7.1, 1.75, 2.2, 3.2, [[('Scan, sign in, vote.', {'bold': True, 'color': NAVY})], [('The vote page shows a QR code for the public link, so any phone opens the ballot in seconds.', {})], [('', {})], [('Works with the emailed code on the same phone.', {'italic': True, 'color': MUTED})]], size=11, color=INK, after=4)
-notes(s, 'We pick up exactly where Review 2 ended. At Review 2 we were at about seventy-five percent, with MongoDB Atlas, hosting and injected-ballot detection still open, and the faculty comment that we should confirm the person voting is the person whose credentials are used. '
+notes(s, 'We pick up exactly where Review 2 ended. At Review 2 we had a working system, with MongoDB Atlas, hosting and injected-ballot detection still open, and the faculty comment that we should confirm the person voting is the person whose credentials are used. '
          'Two new features lead this review. First, the emailed one-time code: a correct password is no longer enough, because a six-digit code goes to the voter\'s email, valid for five minutes, usable once, with three guesses. '
          'Second, QR voting: the vote page shows a QR code for the public link, so any phone can open the ballot in seconds, and the same phone can receive the emailed code. The rest of the deck shows how they work, the evidence, and how this compares with similar systems.')
 
@@ -606,7 +606,37 @@ notes(s, 'Why SQLite, and how Oracle is possible. We chose SQLite because there 
 
 # Review 2 roadmap slide: say plainly what happened to its open items
 s20 = prs.slides[R2_COUNT - 2]
-tb(s20, 6.85, 3.12, 2.55, 0.5, 'Final review: MongoDB and hosting delivered; Oracle, PL/SQL, DCL roles and POSITION left out, SQLite kept.', size=8.5, color=NAVY, italic=True)
+def copy_fill(src, dst):
+    from copy import deepcopy
+    sp_src, sp_dst = src._element.spPr, dst._element.spPr
+    for tag in ('a:solidFill', 'a:noFill', 'a:gradFill', 'a:ln'):
+        for el in sp_dst.findall(qn(tag)):
+            sp_dst.remove(el)
+    for tag in ('a:solidFill', 'a:noFill', 'a:gradFill', 'a:ln'):
+        for el in sp_src.findall(qn(tag)):
+            sp_dst.append(deepcopy(el))
+
+
+chip1, chip2, chip3 = by_name(s20, 169), by_name(s20, 173), by_name(s20, 177)
+copy_fill(chip1, chip2)
+set_runs_text(chip2, ['REVIEW 2 · DONE'])
+set_runs_text(by_name(s20, 174), ['Working implementation with live outputs and a tamper demonstration.'])
+set_runs_text(chip3, ['REVIEW 3 · NOW'])
+set_runs_text(by_name(s20, 178), ['This is the final review: MongoDB Atlas, emailed code, public hosting, evaluation and comparison with existing systems.'])
+set_runs_text(by_name(s20, 180), ['Delivered · ', 'MongoDB Atlas ledger, emailed one-time code, public link and QR voting', 'Evidence · ', '47 test scenarios and a comparison with 33 systems', 'Left out · ', 'Oracle with PL/SQL and DCL roles, and the POSITION entity (SQLite kept)'])
+notes(s20, 'Looking at the three reviews together. Review 1 presented the design and Review 2 presented the working implementation with live outputs and a tamper demonstration; both are done. '
+           'This is Review 3, the final review. We delivered the MongoDB Atlas ledger, the emailed one-time code, public hosting with phone voting, a 47-scenario evaluation and a comparison with 33 existing systems. '
+           'Oracle with PL/SQL procedures and DCL roles, and the POSITION entity, were left out, and SQLite was kept; the conclusion slides at the end explain why and how Oracle would be possible.')
+
+# slide 2 (Review 2 recap): remove the percentage
+s2 = prs.slides[1]
+for sh in s2.shapes:
+    if sh.name == 'TextBox 18':
+        set_runs_text(sh, ['Done'])
+    elif sh.name == 'TextBox 19':
+        set_runs_text(sh, ['Reviews 1 and 2'])
+notes_s2 = s2.notes_slide.notes_text_frame.text.replace('Overall about seventy-five percent of the Review 1 scope is done. What remains is the final-review work:', 'Reviews 1 and 2 are done. What was left for the final review, which is this review, was:')
+notes(s2, notes_s2)
 
 # ================================================================== thank-you slide to the end
 set_runs_text(by_name(thanks_slide, 189), ['PROJECT CONCLUSION · REVIEW 3'])
