@@ -687,53 +687,50 @@ notes(s, 'This is the back-up slide for any question that starts with how do you
          'The search method and its limits are at the bottom: twenty-three web queries, twenty GitHub repository searches, thirty-three systems, on the twenty-third of October, without GitHub code search or non-English and private repositories.')
 
 # ================================================================== 29-30 conferences (from research)
-# Curated from docs/review3/conferences_open.md (re-checked on each venue's official page on 2026-10-23; recheck before paying)
-s = slide('OPEN FOR SUBMISSION TODAY · BY FEE', 'Venues still accepting papers, cheapest first')
-table(s, 0.4, 1.1, 9.2, ['#', 'Venue', 'Submit by', 'Student fee', 'Where', 'IEEE/Springer indexing', 'Fit'], [
-    ['1', 'Confluence 2027', '4 Dec 2026', 'INR 8,000 + GST', 'Noida, India', 'Submitted for IEEE Xplore', 'Good'],
-    ['2', 'INDIACom-2027', '7 Dec 2026', 'INR 8,000 + GST', 'New Delhi, India', 'IEEE approval pending', 'Good'],
-    ['3', 'IEM-ICDC 2027', '10 Dec 2026', 'INR 8,000', 'Kolkata, India', 'Springer awaited; 10+ pages', 'Stretch'],
-    ['4', 'ICRCICN 2027', '30 Nov 2026', 'INR 8,500', 'Kalyani, India (hybrid)', 'IEEE record 73691; conditional', 'Stretch'],
-    ['5', 'ICESICSC-2027', '30 Oct 2026', 'INR 9,000', 'Bhubaneswar, India', 'Says published by IEEE', 'Good'],
-    ['6', 'i-PACT 2027 (VIT)', '31 May 2027', 'INR 12,000', 'Vellore, India', 'Recommended to IEEE', 'Stretch'],
-    ['7', 'ISDFS 2027', '31 Jan 2027', 'USD 500 (~INR 47,000)', 'San Jose, USA (online ok)', 'Submitted for IEEE Xplore', 'Stretch'],
-    ['8', 'ICISSP 2027', '29 Oct 2026', 'EUR 640 (~INR 68,000)', 'Valletta, Malta', 'Submitted for evaluation', 'Good'],
-    ['9', 'DATA 2027', '16 Feb / 25 Mar', 'EUR 640 (~INR 68,000)', 'Rome, Italy', 'Not confirmed', 'Good'],
-    ['10', 'ICEIS 2027', '17 Nov / 21 Dec', 'EUR 680 (~INR 72,000)', 'Rome, Italy', 'Submitted for evaluation', 'Good'],
-], [0.3, 1.7, 1.2, 1.7, 1.8, 2.0, 0.6], size=8.5, row_h=0.33, header_size=9, head_h=0.34)
-tb(s, 0.4, 4.85, 9.2, 0.45, 'Fees are per accepted paper and excluding travel, GST and bank charges; INR is approximate at 22 Oct 2026 rates. No venue has yet confirmed indexing; "submitted for" is a plan, not a result.', size=9, color=MUTED, italic=True)
-notes(s, 'These are the venues we found that are still accepting papers today, sorted by the student author fee. The cheapest are Indian conferences at about eight to nine thousand rupees: Confluence at Amity Noida, closing the fourth of December; INDIACom in New Delhi, closing the seventh of December, with a six page limit; IEM-ICDC in Kolkata; ICRCICN at Kalyani; and ICESICSC at KIIT Bhubaneswar, which closes on the thirtieth of October. '
-         'i-PACT is at VIT Vellore in September 2027 for twelve thousand rupees. The international ones cost fifty to seventy-five thousand rupees before travel. The important caveat is the last column: none of these venues has confirmed indexing yet. Every one says submitted for, proposed, or approval awaited, so they are plans, not results, and indexing should be checked on the publisher\'s site before paying. '
-         'Fees are normally paid after acceptance, and are approximate in rupees.')
+# India only, host institution in the NIRF top 100 (India Rankings 2025). Source: docs/review3/conferences_nirf.md, checked 2026-10-23.
+s = slide('INDIA ONLY · NIRF TOP-100 HOSTS · OPEN TODAY', 'India only, NIRF top-100 hosts, cheapest first')
+table(s, 0.4, 1.08, 9.2, ['#', 'Venue', 'Host university (NIRF 2025 rank)', 'Submit by', 'Student fee, INR', 'Held', 'Indexing'], [
+    ['1', 'SCES-2027', 'MNNIT Allahabad, Prayagraj (Engineering 62)', '15 Nov 2026*', '5,900 incl. GST', '12-14 Mar 2027', 'Claimed'],
+    ['2', 'IEEE COEP CON 2027', 'COEP Technological Univ., Pune (Engineering 90)', '31 Mar 2027', '6,000†', '4-6 Jun 2027', 'Claimed'],
+    ['3', 'IEEE SANKALP 2027', 'ABV-IIITM, Gwalior (Engineering 96)', '30 Nov 2026', '7,000', '9-11 Apr 2027', 'IEEE record #73342 shown'],
+    ['4', 'ICESICSC-2027', 'KIIT, Bhubaneswar (Overall 27)', '30 Oct 2026', '9,000', '20-21 Feb 2027', 'Claimed'],
+    ['5', 'Confluence 2027', 'Amity University, Noida (Overall 37)', '4 Dec 2026', '9,440 incl. GST', '21-22 Jan 2027', 'IEEE record #71526 shown'],
+    ['6', 'INDIACom-2027', 'BVICAM, Bharati Vidyapeeth, New Delhi (parent only, University 59)', '7 Dec 2026', '9,440 incl. GST', '7-9 Apr 2027', 'Claimed'],
+    ['7', 'i-PACT 2027', 'VIT, Vellore (Overall 21)', '31 May 2027', '12,000', '2-3 Sep 2027', 'Claimed'],
+    ['8', 'ICICC-2027', 'Shaheed Sukhdev College, Univ. of Delhi (parent only, Overall 15)', '30 Oct 2026', '13,000', '5-6 Feb 2027', 'Claimed (LNNS "approved")']],
+    [0.3, 1.45, 2.85, 1.0, 1.15, 1.15, 1.5], size=8, header_size=8.5, row_h=0.4, head_h=0.3)
+tb(s, 0.4, 4.7, 9.2, 0.6, '*Page marks the date tentative.  †Fee read from a flattened table.  "IEEE record shown" means a record number is on the official page, not checked on the IEEE site; nothing here is confirmed for IEEE Xplore. Also qualify, but off-topic or no published fee: ICSEAMS (Amrita), ICCIDS (SSN), PerCom work-in-progress (BITS Pilani Goa), NCC (IISc). Dropped, host not in the top 100: ICRCICN, IEM-ICDC, iConCISE, ICPCSN.', size=8, color=MUTED, italic=True)
+notes(s, 'We narrowed the list to conferences held in India and hosted by an institution in the NIRF top one hundred, using the 2025 India Rankings, which are the latest published; a 2026 edition has not been released, so ranks could change. '
+         'The cheapest is SCES at Motilal Nehru National Institute in Prayagraj, about five thousand nine hundred rupees. SANKALP at the IIIT in Gwalior costs seven thousand and shows an IEEE record number. ICESICSC at KIIT closes on the thirtieth of October. Confluence at Amity Noida is nine thousand four hundred and forty with tax and also shows an IEEE record number. '
+         'INDIACom and ICICC are borderline, because only the parent university is ranked, not the institute or college that hosts. i-PACT is on our own campus at VIT. '
+         'Indexing: a record number on an official page is not confirmation of IEEE Xplore, and every other venue only claims it. We dropped ICRCICN, IEM-ICDC, iConCISE and ICPCSN because their hosts are not in the top one hundred.')
+
+s = slide('CAN WE GET THE MONEY BACK?', 'Reimbursement: nothing is documented yet')
+card(s, 0.5, 1.2, 4.4, 3.2)
+chip(s, 0.7, 1.34, 'WHAT WE FOUND')
+bullets(s, 0.7, 1.75, 4.0, 2.6, [('VIT:', 'the public Research Promotion Policy (2019) supports conference fees for faculty only, up to INR 20,000 a year in India. The student schemes (Raman Research Award, TRA fellowships) do not cover conference fees.'),
+                                  ('Organisers:', 'none publish a student waiver. Confluence, INDIACom and ICICC say fees are non-refundable.')], size=10.5)
+card(s, 5.1, 1.2, 4.4, 3.2)
+chip(s, 5.3, 1.34, 'WHAT TO DO BEFORE PAYING')
+bullets(s, 5.3, 1.75, 4.0, 2.6, ['Ask the School Dean or Programme Chair, the Office of Academic Research and Student Welfare whether an undergraduate scheme exists, and get the answer in writing.', 'Ask whether VIT credit needs IEEE Xplore indexing, before picking a venue.', 'Until then, budget the fee as our own cost: about INR 5,900 to 9,440 for the cheaper venues.'], size=10.5)
+card(s, 0.5, 4.55, 9.0, 0.55, fill=LAV)
+tb(s, 0.7, 4.6, 8.6, 0.45, 'The policy we read is from 2019; a newer or unpublished scheme may exist. We have not found one, and we are not assuming one.', size=10.5, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, 'The team asked whether we get the money back. We searched for it and the honest answer is that nothing public says so. VIT\'s published Research Promotion Policy, approved in April 2019, supports conference registration only for faculty, up to twenty thousand rupees a year within India. '
+         'The student schemes it lists, the Raman Research Award and the TRA fellowships, are for journal incentives and research fellowships, not conference fees. VIT\'s own conference pages list normal student fees with no waiver. None of the conferences on the previous slide publishes a student waiver, and Confluence, INDIACom and ICICC state fees are non-refundable. '
+         'So we will not promise reimbursement. Before paying, ask the School Dean or Programme Chair, the Office of Academic Research and the student welfare office, get the answer in writing, and ask whether VIT credit requires IEEE Xplore indexing. The policy we read is from 2019, so a newer scheme may exist.')
 
 s = slide('RECOMMENDED SUBMISSION ORDER', 'One venue at a time: dual submission is not allowed')
-table(s, 0.5, 1.2, 9.0, ['Step', 'Venue', 'Submit by', 'Decision', 'Why this order'], [
-    ['1', 'ICISSP 2027 (Malta)', '29 Oct 2026', '4 Dec 2026', 'Best topical fit open now; EUR 640 plus travel'],
-    ['2a', 'INDIACom-2027 (Delhi)', '7 Dec 2026', '8 Feb 2027', 'Cheap India fallback if step 1 fails; IEEE not confirmed'],
-    ['2b', 'Confluence 2027 (Noida)', '4 Dec 2026', '25 Dec 2026', 'Alternative to 2a if you want a fast answer'],
-    ['3', 'ICEIS, IFIP SEC or ICDF2C', '15-21 Dec 2026', 'mid-Feb 2027', 'Better-quality fallbacks; higher fees and travel'],
-    ['4', 'ISDFS 2027 (online ok)', '31 Jan 2027', '15 Feb 2027', 'IEEE-submitted, USD 500, can present online'],
-    ['5', 'ICEDEG or DATA/SECRYPT', 'Feb-Mar 2027', 'Apr-May 2027', 'Best audience; the highest cost'],
-], [0.6, 2.3, 1.4, 1.3, 3.4], size=9.5, row_h=0.46)
-tb(s, 0.5, 4.5, 9.0, 0.75, [[('Before submitting: ', {'bold': True, 'color': NAVY}), ('check the publisher\'s page, remove author names where double-blind, follow each venue\'s AI-disclosure rule, and recheck the deadline. Journals cost USD 2,000 to 3,000 in fees: only as a later extended version.', {})]], size=10.5)
-notes(s, 'The recommended order, remembering that we cannot submit to two venues at the same time. ICISSP closes on the twenty-ninth of October, so it is first if we can adapt the paper to their template in time; the decision arrives on the fourth of December. '
-         'If that fails, INDIACom or Confluence are the cheap Indian options; pick one, not both. Confluence gives the fastest answer, by the twenty-fifth of December, but the deadline is the same day as the ICISSP decision. '
-         'Then ICEIS, IFIP SEC or ICDF2C as better-quality fallbacks, ISDFS in January with online presentation, and ICEDEG or DATA in the spring. Before submitting: verify the publisher on its own page, remove author names for double-blind venues, follow each venue\'s AI-disclosure policy, and recheck the deadline, because dates move.')
-
-s = slide('ROOMMATE LIST: REALITY CHECK', 'The venues are real; "easy" is not supported')
-card(s, 0.5, 1.2, 4.4, 3.8)
-chip(s, 0.7, 1.34, 'HOLDS UP')
-bullets(s, 0.7, 1.75, 4.0, 3.2, [('ICRTAC:', 'real, VIT Chennai SCOPE, 9th edition 10-11 Dec 2026, but closed: the page shows no late route.'), ('ICSCAN:', 'real; the 7th edition ran in June 2026.'),
-                                  ('i-PACT:', 'real, at VIT Vellore in Sep 2027, but it is a power-engineering conference.'), ('E-Vote-ID:', 'real and the best topical fit.'),
-                                  ('DASFAA / ICDE demo tracks:', 'exist, but are competitive.')], size=10.5)
-card(s, 5.1, 1.2, 4.4, 3.8)
-chip(s, 5.3, 1.34, 'COULD NOT BE SUPPORTED')
-bullets(s, 5.3, 1.75, 4.0, 3.2, [('"75% acceptance":', 'no venue publishes it; ICRTAC 2024 took 36 of 315 papers, about 11%.'), ('"Springer" for ICRTAC:', 'only the 2024 edition; 2026 says IEEE Xplore, subject to review.'),
-                                  ('ICSCAN / ICCCNT "IEEE":', 'not confirmed on the official sites.'), ('ViTECoN:', 'no current call found.'),
-                                  ('"Fast to accept":', 'very short reviews are a warning sign, not a feature.')], size=10.5)
-notes(s, 'We also checked the list your roommates found. The venues are real. ICRTAC is run by VIT Chennai SCOPE and its ninth edition is on the tenth and eleventh of December, but its paper deadline passed in August. ICSCAN held its seventh edition in June. i-PACT is real but is a power-engineering conference. E-Vote-ID is real and the best topical match. '
-         'What we could not support is the claim that these are easy or have seventy-five percent acceptance: no venue publishes such a figure, and the numbers we found point the other way, for example ICRTAC 2024 accepted thirty-six of three hundred and fifteen papers, about eleven percent. '
-         'Also, ICRTAC 2026 says IEEE Xplore, not Springer, and IEEE sponsorship for ICSCAN and ICCCNT is not confirmed on their official sites. A very fast acceptance is a warning sign, so we recommend choosing on fit and verified indexing.')
+table(s, 0.5, 1.2, 9.0, ['Step', 'Venue', 'Host university', 'Submit by', 'Why this order'], [
+    ['1', 'IEEE SANKALP 2027', 'ABV-IIITM Gwalior', '30 Nov 2026', 'IEEE record number shown; security and distributed-database tracks; INR 7,000'],
+    ['2', 'Confluence 2027', 'Amity University, Noida', '4 Dec 2026', 'IEEE record number shown; INR 9,440; fast decision'],
+    ['3', 'ICESICSC-2027', 'KIIT, Bhubaneswar', '30 Oct 2026', 'Closes in 7 days; only if the paper already fits their template'],
+    ['4', 'INDIACom-2027', 'BVICAM, Bharati Vidyapeeth', '7 Dec 2026', 'Borderline host: only the parent university is ranked'],
+    ['5', 'i-PACT 2027', 'VIT, Vellore', '31 May 2027', 'Our own campus, but a power-engineering conference']],
+    [0.6, 1.9, 2.1, 1.2, 3.2], size=9.5, row_h=0.5)
+tb(s, 0.5, 4.2, 9.0, 1.0, [[('Before submitting: ', {'bold': True, 'color': NAVY}), ('check the IEEE site for each record number, recheck the deadline and the NIRF edition (a 2026 list may be published), remove author names where double-blind, and follow each venue\'s AI-disclosure rule. Journals cost USD 2,000 to 3,000 in fees: only as a later extended version.', {})]], size=10.5)
+notes(s, 'The recommended order within the India and NIRF filter, remembering that we cannot submit to two venues at the same time. SANKALP at the IIIT in Gwalior is first: it shows an IEEE record number, has security and distributed-database tracks, and costs seven thousand rupees. '
+         'Confluence at Amity Noida is second, also with an IEEE record number. ICESICSC at KIIT closes on the thirtieth of October, so it is only realistic if the paper already fits its template. INDIACom is borderline because only the parent university is ranked. i-PACT is on our own campus but is a power-engineering conference. '
+         'Before submitting, verify each record number on the IEEE site, recheck deadlines and the NIRF edition, remove author names for double-blind venues, and follow each venue\'s AI-disclosure policy.')
 
 # ================================================================== thank-you slide to the end
 set_runs_text(by_name(thanks_slide, 189), ['PROJECT CONCLUSION · REVIEW 3'])

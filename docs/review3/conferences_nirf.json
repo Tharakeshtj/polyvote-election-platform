@@ -1,0 +1,496 @@
+{
+  "generated": "2026-10-23",
+  "nirf_edition_used": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+  "nirf_categories_checked": [
+    "Overall",
+    "Engineering",
+    "University"
+  ],
+  "nirf_source": "https://www.nirfindia.org/Rankings/2025/OverallRanking.html , .../EngineeringRanking.html , .../UniversityRanking.html (HTML tables fetched 2026-10-23)",
+  "nirf_2026_status": "https://www.nirfindia.org/Rankings/2026/OverallRanking.html returned HTTP 404 when fetched; Careers360 (6 Sep 2026) says no release date announced",
+  "host_tests": "A = host institution itself has a row in NIRF top 100; B = only the parent university is ranked (borderline)",
+  "qualifying_open_venues": [
+    {
+      "rank_by_fee": 1,
+      "name": "SCES-2027: 9th Students' Conference on Engineering and Systems",
+      "host_institution": "Motilal Nehru National Institute of Technology (MNNIT) Allahabad, Dept of Electrical Engineering",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "engineering_rank": 62,
+        "overall_rank": null,
+        "university_rank": null,
+        "counted_via": "Engineering"
+      },
+      "host_test": "A (host institution itself is ranked)",
+      "city": "Prayagraj (Allahabad), Uttar Pradesh, India; hybrid per page header, in-person oral/poster sessions",
+      "dates": "12-14 Mar 2027",
+      "submission_deadline": "15 Nov 2026 (page marks all dates 'tentative')",
+      "decision_date": "10 Jan 2027 (camera-ready 10 Feb 2027)",
+      "paper_length": "6 pages, IEEE double column, including references; first author must be a student",
+      "student_fee": "INR 5,900 including 18% GST (Indian student); USD 100 foreign",
+      "fee_inr_numeric": 5900,
+      "fee_notes": "Single student rate, no IEEE-member split. Registration opens 5 Feb 2027. Indexing label applies to oral-session papers only.",
+      "publisher_indexing_claim": "Oral-session papers 'shall be sent to IEEE for possible publication in IEEE Xplore'; poster-session papers only included in the conference proceeding; earlier editions (2012-2020) linked to IEEE Xplore proceedings on the site; IEEE UP Section technical sponsor in past editions",
+      "indexing_status": "claimed (no IEEE conference record number seen for 2027)",
+      "fee_waiver_info": "None published. Only 'Best Paper Award' per track. No refund text read.",
+      "fit": "stretch (electrical/communication/ML conference; track 'Computational Intelligence & ML' lists 'Wireless Networks & Security'; database-integrity paper is off-centre but it is a students-only conference)",
+      "official_url": "https://mnnit.ac.in/sces2027/",
+      "other_urls": [
+        "https://mnnit.ac.in/sces2027/registration.html",
+        "https://mnnit.ac.in/sces2027/sections/paper-submition-guidline.html",
+        "https://mnnit.ac.in/sces2027/assets/files/broucher.pdf"
+      ],
+      "status": "open"
+    },
+    {
+      "rank_by_fee": 2,
+      "name": "IEEE COEP CON 2027 (IEEE Intl Conf on Cutting-Edge Innovations, Research Advancements and Sustainable Solutions in Multidisciplinary Engineering)",
+      "host_institution": "COEP Technological University (COEP Tech), Pune, with IEEE Pune Section",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "engineering_rank": 90,
+        "overall_rank": null,
+        "university_rank": null,
+        "counted_via": "Engineering"
+      },
+      "host_test": "A",
+      "city": "Pune, Maharashtra, India",
+      "dates": "4-6 Jun 2027",
+      "submission_deadline": "31 Mar 2027 full paper (31 Jan 2027 for special-session papers). Page banners contradict each other on when submission opens ('01 Oct 2026' vs '01 Apr 2026' vs 'starts soon'); portal state not verified",
+      "decision_date": "15 Apr 2027 (camera-ready 10 May 2027)",
+      "paper_length": "6 pages (2 extra pages for an extra fee); double-blind; paper types listed in the portal form: Full, Short, Poster, Workshop, Demo",
+      "student_fee": "INR 6,000 non-IEEE early-bird (20 Apr-14 May 2027); INR 3,500 if IEEE member; regular from 15 May: INR 6,000 non-member / 5,000 member. GST not stated in the fee PDF",
+      "fee_inr_numeric": 6000,
+      "fee_notes": "The fee PDF is a plain-text table whose row labels are partly detached from the numbers (Industry, Academician, Student); student row read as 3,500 / 6,000 / 5,000 / 6,000.",
+      "publisher_indexing_claim": "'All registered and presented papers will be submitted to IEEE Xplore for possible publication subject to fulfilling the IEEE eligibility criteria'",
+      "indexing_status": "claimed (no IEEE conference record number seen)",
+      "fee_waiver_info": "None published. Plagiarism rejection 'even after registration, without refund'.",
+      "fit": "stretch (12 interdisciplinary tracks; Track 'AI Driven Data Science' and, on the home page, 'Distributed Secure Systems'; energy/instrumentation dominate)",
+      "official_url": "https://ieeecoepcon.coeptech.ac.in/",
+      "other_urls": [
+        "https://ieeecoepcon.coeptech.ac.in/author-guideline/",
+        "https://ieeecoepcon.coeptech.ac.in/wp-content/uploads/2026/10/IEEE-Registration_Fees.pdf"
+      ],
+      "status": "open (deadline far away)"
+    },
+    {
+      "rank_by_fee": 3,
+      "name": "IEEE SANKALP 2027 (Intl Conf on Sustainable AI, Networks, Knowledge and Learning Paradigms)",
+      "host_institution": "Atal Bihari Vajpayee Indian Institute of Information Technology and Management (ABV-IIITM) Gwalior",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "engineering_rank": 96,
+        "overall_rank": null,
+        "university_rank": null,
+        "counted_via": "Engineering"
+      },
+      "host_test": "A",
+      "city": "Gwalior, Madhya Pradesh, India",
+      "dates": "9-11 Apr 2027 (an older placeholder page elsewhere on the same domain said 2-4 Apr; the live home and submission pages say 9-11 Apr)",
+      "submission_deadline": "30 Nov 2026",
+      "decision_date": "11 Jan 2027 (camera-ready and registration open 15 Feb 2027; registration closes 10 Mar 2027)",
+      "paper_length": "6 pages incl. references, IEEE two-column; up to 2 extra pages with a charge; PDF max 10 MB",
+      "student_fee": "INR 7,000 non-IEEE-member; INR 6,000 IEEE member (USD 150 / 120 foreign)",
+      "fee_inr_numeric": 7000,
+      "fee_notes": "GST not stated. Registration form offers 'In-Person', 'Virtual' or 'To be decided' presentation format. Extra pages charged.",
+      "publisher_indexing_claim": "IEEE Conference Record #73342; 'All accepted and presented papers will be submitted for possible inclusion in IEEE Xplore'; home page also claims 'Scopus Indexed'",
+      "indexing_status": "confirmed record number visible on the official page (#73342; not cross-checked on IEEE site); Xplore and Scopus inclusion still conditional / claimed",
+      "fee_waiver_info": "None published. No-shows are not sent to Xplore.",
+      "fit": "good (Track 6 'Security and IoT': cybersecurity, privacy-preserving computing, blockchain security; Track 7 'Distributed Computing, Cloud Computing and Big Data': distributed databases)",
+      "official_url": "https://sankalp.iiitm.ac.in/",
+      "other_urls": [
+        "https://sankalp.iiitm.ac.in/submission",
+        "https://sankalp.iiitm.ac.in/register"
+      ],
+      "status": "open"
+    },
+    {
+      "rank_by_fee": 4,
+      "name": "ICSEAMS 2027 (Intl Conf on Sustainable Energy, Automation, Mechatronics and Storage)",
+      "host_institution": "Amrita Vishwa Vidyapeetham, School of Engineering Bengaluru, Dept of Electrical and Electronics Engineering",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "overall_rank": 17,
+        "engineering_rank": 23,
+        "university_rank": 8,
+        "counted_via": "Overall, Engineering and University"
+      },
+      "host_test": "A",
+      "city": "Bengaluru, India",
+      "dates": "17-19 Jun 2027 (17 Jun pre-conference)",
+      "submission_deadline": "31 Jan 2027",
+      "decision_date": "15 Apr 2027 (camera-ready 10 May; registration closes 15 May 2027)",
+      "paper_length": "not read",
+      "student_fee": "Student author INR 8,000 non-IEEE / INR 6,000 IEEE (co-author INR 6,000 / 4,000); USD 90 / 70 foreign",
+      "fee_inr_numeric": 8000,
+      "fee_notes": "GST not stated.",
+      "publisher_indexing_claim": "'submitted for possible inclusion in IEEE XPLORE digital library'; double-blind, Microsoft CMT",
+      "indexing_status": "claimed",
+      "fee_waiver_info": "None; the page only offers help with accommodation on request",
+      "fit": "unlikely (energy, automation, mechatronics, storage; wrong subject area)",
+      "official_url": "https://www.amrita.edu/?p=670200",
+      "other_urls": [],
+      "status": "open"
+    },
+    {
+      "rank_by_fee": 5,
+      "name": "Confluence 2027 (17th Intl Conf on Cloud Computing, Data Science and Engineering)",
+      "host_institution": "Amity School of Engineering and Technology (ASET), Amity University Uttar Pradesh, Sector 125, Noida (NIRF entry 'Amity University', Gautam Budh Nagar)",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "overall_rank": 37,
+        "engineering_rank": 37,
+        "university_rank": 22,
+        "counted_via": "Overall, Engineering and University"
+      },
+      "host_test": "A (matching of the NIRF row 'Amity University, Gautam Budh Nagar' to Amity University Uttar Pradesh, Noida is by city/district; not confirmed on a NIRF PDF)",
+      "city": "Noida, Uttar Pradesh, India; physical mode",
+      "dates": "21-22 Jan 2027",
+      "submission_deadline": "4 Dec 2026",
+      "decision_date": "25 Dec 2026 (camera-ready 30 Dec 2026; last date of registration 5 Jan 2027)",
+      "paper_length": "5-6 pages minimum-maximum; extra pages chargeable up to 8 (INR 1,000/page national)",
+      "student_fee": "Student/Research Scholar author: INR 8,000 non-IEEE / INR 7,000 IEEE member, plus 18% GST (about INR 9,440 / 8,260)",
+      "fee_inr_numeric": 9440,
+      "fee_notes": "Fee excludes 18% GST per page. Delegate-only (non-author) rate INR 2,000-2,500.",
+      "publisher_indexing_claim": "IEEE Conference Record #71526 shown; 'All accepted papers will be submitted for inclusion into IEEE Xplore subject to meeting IEEE Xplore's scope and quality requirements'; IEEE UP Section technical co-sponsor",
+      "indexing_status": "confirmed record number visible on official page (#71526; not cross-checked on IEEE site); Xplore inclusion conditional",
+      "fee_waiver_info": "None. 'Registration fees are non-refundable under any circumstances.' Simultaneous submissions not allowed.",
+      "fit": "good (cloud/distributed systems, cybersecurity and privacy, blockchain, data science)",
+      "official_url": "https://amity.edu/aset/confluence2027/",
+      "other_urls": [
+        "https://amity.edu/aset/confluence2027/Registration.aspx",
+        "https://amity.edu/aset/confluence2027/call-for-paper.aspx",
+        "https://amity.edu/aset/confluence2027/Submission.aspx"
+      ],
+      "status": "open"
+    },
+    {
+      "rank_by_fee": 6,
+      "name": "INDIACom-2027 (21st National / 14th Intl Conf on Computing for Sustainable Global Development)",
+      "host_institution": "Bharati Vidyapeeth's Institute of Computer Applications and Management (BVICAM), New Delhi - a constituent of Bharati Vidyapeeth (Deemed to be University)",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "overall_rank": null,
+        "engineering_rank": null,
+        "university_rank": 59,
+        "counted_via": "University (parent 'Bharati Vidyapeeth', Pune)"
+      },
+      "host_test": "B (borderline: the ranked entity is the parent university; BVICAM has no separate row in the Overall/Engineering/University top 100)",
+      "city": "New Delhi, India",
+      "dates": "7-9 Apr 2027",
+      "submission_deadline": "7 Dec 2026",
+      "decision_date": "8 Feb 2027 (final version 22 Feb 2027; early-bird registration also closes 22 Feb 2027)",
+      "paper_length": "6 A4 pages; up to 2 extra pages at INR 2,000/page (Indian)",
+      "student_fee": "Full-time student early bird (by 22 Feb 2027): INR 8,000 general / INR 6,400 for IEEE/IET/CSI/IETE/IE(I)/ISTE/IITP/IMP members, plus 18% GST (about INR 9,440 / 7,552); after 22 Feb INR 9,000 / 7,200; spot INR 10,000 / 8,000",
+      "fee_inr_numeric": 9440,
+      "fee_notes": "No publication fee ('free of cost'). M.Tech/B.Tech/MCA students count as full-time students; bonafide certificate needed.",
+      "publisher_indexing_claim": "'applied to the IEEE Delhi Section for technical sponsorship ... may be submitted to IEEE Xplore'; IEEE Oversight Committee listed; a link to IEEE form with confRecNum=74162 is on the page; previous years' proceedings (2015-2026) linked as on IEEE Xplore",
+      "indexing_status": "claimed (record number 74162 appears only inside a link; IEEE approval for 2027 described as applied for)",
+      "fee_waiver_info": "No waiver. Discounts: 20% co-author or BVICAM-alumni discount; 10% on 5+ registrations from one organisation (General category only); one discount at a time. 'Payments ... not refundable, even if the participants fail to attend.'",
+      "fit": "good (security and computing tracks)",
+      "official_url": "https://indiacom.org/home/call_for_paper",
+      "other_urls": [
+        "https://indiacom.org/home/registration_fee_details",
+        "https://indiacom.org/home/important_dates"
+      ],
+      "status": "open"
+    },
+    {
+      "rank_by_fee": 7,
+      "name": "ICESICSC-2027 (Intl Conf on Enhanced Systems of Intelligence, Cyber Security and Computing)",
+      "host_institution": "KIIT Deemed to be University, School of Computer Engineering, Bhubaneswar",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "overall_rank": 27,
+        "engineering_rank": 36,
+        "university_rank": 17,
+        "counted_via": "Overall, Engineering and University"
+      },
+      "host_test": "A",
+      "city": "Bhubaneswar, Odisha, India; hybrid presentation",
+      "dates": "20-21 Feb 2027",
+      "submission_deadline": "30 Oct 2026 ('firm, no extensions' on the Important Dates page)",
+      "decision_date": "20 Jan 2027 (camera-ready 30 Jan 2027)",
+      "paper_length": "maximum 6 pages, IEEE double column, double-blind via Microsoft CMT",
+      "student_fee": "Student/Research Scholar: INR 9,000 non-IEEE member / INR 8,500 IEEE member (USD 300 foreign)",
+      "fee_inr_numeric": 9000,
+      "fee_notes": "GST not stated. Registration starts only after acceptance; a no-show policy removes unregistered or unpresented papers.",
+      "publisher_indexing_claim": "'Conference proceeding will be published by IEEE.' No record number or Xplore wording on the page",
+      "indexing_status": "claimed (no record number seen)",
+      "fee_waiver_info": "None published. The menu lists Payment, Refund and Publication policy pages but all three return 404, so no refund wording could be read.",
+      "fit": "good (Track 2 'Cyber Security and Privacy' incl. privacy-preserving computing, secure authentication and access control, blockchain and security)",
+      "official_url": "https://esicconference.com/",
+      "other_urls": [
+        "https://esicconference.com/important-dates",
+        "https://esicconference.com/registration",
+        "https://esicconference.com/call-for-papers"
+      ],
+      "status": "open but closes in 7 days"
+    },
+    {
+      "rank_by_fee": 8,
+      "name": "i-PACT 2027 (6th Intl Conf on Innovations in Power and Advanced Computing Technologies)",
+      "host_institution": "Vellore Institute of Technology (VIT), Vellore, jointly with Universiti Malaya; technically co-sponsored by IEEE Madras Section",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "overall_rank": 21,
+        "engineering_rank": 16,
+        "university_rank": 14,
+        "counted_via": "Overall, Engineering and University"
+      },
+      "host_test": "A",
+      "city": "Vellore, Tamil Nadu, India; in-person",
+      "dates": "2-3 Sep 2027 (the page says 02-03 September 2027; the previous research file did not record the conference date)",
+      "submission_deadline": "31 May 2027",
+      "decision_date": "30 Jun 2027 (camera-ready with registration from 15 Jul 2027)",
+      "paper_length": "not stated (IEEE format, no embedded links)",
+      "student_fee": "Research scholars and UG/PG students: INR 12,000 (INR 10,000 IEEE member); USD 150 / 120; co-author or participant INR 5,000",
+      "fee_inr_numeric": 12000,
+      "fee_notes": "GST not stated.",
+      "publisher_indexing_claim": "'All the accepted and registered papers will be recommended to IEEE for publication in IEEE Digital Explore Library'; page shows 'Conference ID : 73849'",
+      "indexing_status": "claimed ('Conference ID 73849' shown but not labelled as an IEEE record number)",
+      "fee_waiver_info": "Multiple-paper concession: 10% off a second and 20% off a third paper. No waiver or scholarship. No separate rate for VIT students on this page.",
+      "fit": "stretch (power-engineering conference with a Computing track listing 'Computer Networks & Security', 'Security & Cryptography', 'Information Retrieval', 'Big Data Analytics')",
+      "official_url": "https://vit.ac.in/ipact",
+      "other_urls": [
+        "https://vit.ac.in/ipact/registration.html"
+      ],
+      "status": "open (far away)"
+    },
+    {
+      "rank_by_fee": 9,
+      "name": "ICICC-2027 (10th Intl Conf on Innovative Computing and Communication)",
+      "host_institution": "Shaheed Sukhdev College of Business Studies, University of Delhi (a college of DU; organised with the private firm Universal Innovators)",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "overall_rank": 15,
+        "engineering_rank": null,
+        "university_rank": 5,
+        "counted_via": "parent 'University of Delhi' (Overall and University)"
+      },
+      "host_test": "B (borderline: the ranked entity is the University of Delhi; the host here is one of its colleges; not counted as a clean pass)",
+      "city": "Rohini, New Delhi, India; in-person",
+      "dates": "5-6 Feb 2027",
+      "submission_deadline": "30 Oct 2026",
+      "decision_date": "first review notification 15 Nov 2026; revised manuscript 30 Nov 2026",
+      "paper_length": "up to 10 pages in Springer LNNS format",
+      "student_fee": "Research scholar/student: INR 12,000 early (before 30 Oct 2026) / INR 13,000 late",
+      "fee_inr_numeric": 13000,
+      "fee_notes": "Acceptance comes after the early-bird date, so the late rate is realistic. Attendee INR 5,000-6,000.",
+      "publisher_indexing_claim": "'will be published as proceedings of ICICC-2027 in Springer LNNS Series (Approved)'; previous edition said 'Scopus-indexed series'",
+      "indexing_status": "claimed ('Approved' wording, no SpringerLink volume for 2027)",
+      "fee_waiver_info": "None. 'Fees are non-refundable.'",
+      "fit": "stretch (broad computing and communication)",
+      "official_url": "https://www.icicc-conf.com/",
+      "other_urls": [],
+      "status": "open but closes in 7 days"
+    },
+    {
+      "rank_by_fee": null,
+      "name": "ICCIDS 2027 (10th Intl Conf on Computational Intelligence and Data Science)",
+      "host_institution": "Sri Sivasubramaniya Nadar College of Engineering (SSNCE), Kalavakkam, Chennai, Dept of CSE",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "overall_rank": 82,
+        "engineering_rank": 47,
+        "university_rank": null,
+        "counted_via": "Overall and Engineering"
+      },
+      "host_test": "A",
+      "city": "Kalavakkam, Chennai, Tamil Nadu, India; in-person",
+      "dates": "6-8 Jan 2027 (home page also says 'TBA 2027')",
+      "submission_deadline": "18 Nov 2026 (extended from 15 Oct 2026)",
+      "decision_date": "TBA",
+      "paper_length": "not stated (IEEE template links)",
+      "student_fee": "not published ('Price: Yet to be updated')",
+      "fee_inr_numeric": null,
+      "fee_notes": "Fees page says 'Yet to be updated'.",
+      "publisher_indexing_claim": "'The application to IEEE is currently under review'",
+      "indexing_status": "claimed (application under review)",
+      "fee_waiver_info": "None published",
+      "fit": "unlikely (computational intelligence, quantum, computer vision; theme mentions 'Secure' and topics include 'Privacy, data protection, and compliance' under federated learning)",
+      "official_url": "https://iccids.in/",
+      "other_urls": [],
+      "status": "open"
+    },
+    {
+      "rank_by_fee": null,
+      "name": "IEEE PerCom 2027 Work-in-Progress track (25th Intl Conf on Pervasive Computing and Communications)",
+      "host_institution": "General co-chairs IIT Kharagpur and PolyU Hong Kong; local organisation chairs at BITS Pilani K K Birla Goa Campus (IEEE Computer Society flagship)",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "overall_rank": 16,
+        "engineering_rank": 11,
+        "university_rank": 7,
+        "counted_via": "BITS Pilani (Overall, Engineering, University); IIT Kharagpur Overall 6 / Engineering 5"
+      },
+      "host_test": "A- (local hosts are at a ranked institution; the organiser of record is IEEE Computer Society, and the site does not name a host institution)",
+      "city": "Goa, India; in-person only",
+      "dates": "8-12 Mar 2027",
+      "submission_deadline": "17 Nov 2026 AoE (WiP track)",
+      "decision_date": "8 Jan 2027 (camera-ready 24 Jan 2027)",
+      "paper_length": "4 pages incl. references, two-column IEEE, single-blind",
+      "student_fee": "not published (registration instructions 'to be announced near the paper notification deadline')",
+      "fee_inr_numeric": null,
+      "fee_notes": "At least one author must hold a FULL registration; presentation in Goa is mandatory.",
+      "publisher_indexing_claim": "'Accepted papers are included in the PerCom Workshops proceedings, which IEEE publishes and adds to IEEE Xplore'",
+      "indexing_status": "claimed (stated plainly; no record number seen)",
+      "fee_waiver_info": "'Student Travel Award' and 'Travel Grants' pages exist but say 'Will be announced soon!' / 'Will be updated soon'; the home page names TCPP/TCCC student-participation and ACM India Council/SIGMOBILE travel-grant sponsors (eligibility and amounts not published)",
+      "fit": "unlikely (pervasive computing; WiP topics include 'Trust, security, and privacy')",
+      "official_url": "https://percom.org/call-for-wip-papers/",
+      "other_urls": [
+        "https://percom.org/",
+        "https://percom.org/organizing-committee/",
+        "https://percom.org/student-travel-award/"
+      ],
+      "status": "open"
+    },
+    {
+      "rank_by_fee": null,
+      "name": "NCC 2027 (33rd National Conference on Communications)",
+      "host_institution": "IISc Bengaluru with IIT Goa, IIT Palakkad and IIIT Bangalore (IIT Goa is not in these NIRF lists)",
+      "nirf": {
+        "edition": "NIRF India Rankings 2025 (latest published; 2026 edition not yet released as of 2026-10-23)",
+        "overall_rank": 2,
+        "engineering_rank": null,
+        "university_rank": 1,
+        "counted_via": "IISc (Overall, University); IIT Palakkad Engineering 64; IIIT Bangalore Engineering 69"
+      },
+      "host_test": "A",
+      "city": "Bengaluru, India; accepted papers must be presented in person",
+      "dates": "17-20 Feb 2027",
+      "submission_deadline": "31 Oct 2026, 23:59 IST (firm; extended from 16 Oct 2026)",
+      "decision_date": "24 Dec 2026 (camera-ready 8 Jan 2027)",
+      "paper_length": "6 pages incl. references, IEEE conference format, double-blind",
+      "student_fee": "not published on the pages read",
+      "fee_inr_numeric": null,
+      "fee_notes": "'One full registration will cover up to two accepted papers.'",
+      "publisher_indexing_claim": "'Accepted and presented papers will be indexed on IEEEXplore'",
+      "indexing_status": "claimed (no record number seen)",
+      "fee_waiver_info": "None published",
+      "fit": "unlikely (communications, signal processing, networks, RF; network security and privacy sub-topics only)",
+      "official_url": "https://ece.iisc.ac.in/~ncc2027/index.html",
+      "other_urls": [
+        "https://ece.iisc.ac.in/~ncc2027/cfp.html",
+        "https://ece.iisc.ac.in/~ncc2027/submission.html"
+      ],
+      "status": "open but closes in 8 days"
+    }
+  ],
+  "rejected_or_closed": [
+    {
+      "name": "IEEE ICRCICN 2027",
+      "host": "Kalyani Government Engineering College, Kalyani (NOT RCC Institute)",
+      "reason": "Host is not in the NIRF 2025 Overall, Engineering or University top 100 (the earlier brief named RCC Institute; the official page names KGEC)",
+      "url": "https://icrcicn.in/"
+    },
+    {
+      "name": "IEM-ICDC 2027",
+      "host": "Institute of Engineering and Management (IEM), Kolkata",
+      "reason": "Host not in NIRF 2025 top 100 in any of the three lists",
+      "url": "https://www.iemicdc.org/"
+    },
+    {
+      "name": "iConCISE 2027",
+      "host": "Asansol Engineering College, Asansol",
+      "reason": "Host not in NIRF 2025 top 100",
+      "url": "https://www.iconcise.in/"
+    },
+    {
+      "name": "ICPCSN 2027",
+      "host": "R P Sarathy Institute of Technology, Salem",
+      "reason": "Host not in NIRF 2025 top 100",
+      "url": "https://icpcsn.com/2027/"
+    },
+    {
+      "name": "IEEE CONECCT 2027",
+      "host": "IEEE Bangalore Section",
+      "reason": "Organiser is an IEEE section, not an institution; call not open until December (not verified this pass)",
+      "url": "https://2026.connect.ieeebangalore.org/"
+    },
+    {
+      "name": "ICSC 2027",
+      "host": "Jaypee Institute of Information Technology, Noida",
+      "reason": "Host not in NIRF 2025 top 100 lists read",
+      "url": "https://www.jiit.ac.in/uploads/Call_for_Paper_ICSC_2027_1_a67dfdaab3.pdf"
+    },
+    {
+      "name": "ISEC 2027",
+      "host": "Sardar Patel Institute of Technology, Mumbai",
+      "reason": "Host not in NIRF 2025 top 100; research track rounds closed 25 Sep 2026",
+      "url": "https://conf.researchr.org/home/isec-2027"
+    },
+    {
+      "name": "ICCISS-2027",
+      "host": "KIET Deemed to be University, Ghaziabad",
+      "reason": "Host not in NIRF 2025 top 100 (found via search summary only)",
+      "url": "https://icciss2027.kiet.co.in/"
+    },
+    {
+      "name": "IATMSI-2027",
+      "host": "ABV-IIITM Gwalior (host would pass)",
+      "reason": "Venue reported as Kathmandu, Nepal, 20-22 May 2027 (from search summary of the CFP PDF; PDF text could not be read), so fails the India-venue test; deadline not found",
+      "url": "https://iatmsi.iiitm.ac.in/"
+    },
+    {
+      "name": "COMSNETS 2027",
+      "host": "COMSNETS Association, Bengaluru",
+      "reason": "Organiser is a society, not a NIRF institution; pages (undergraduate forum, poster session, travel grants) are JavaScript-rendered and their content could not be read",
+      "url": "https://www.comsnets.org/"
+    },
+    {
+      "name": "ICMDRSE-2027",
+      "host": "Vishwakarma University, Pune",
+      "reason": "Host not in NIRF 2025 top 100 lists read",
+      "url": "https://icmdrse.vupune.ac.in/"
+    },
+    {
+      "name": "ICCECE 2027",
+      "host": "Techno India University, Kolkata",
+      "reason": "Host not in NIRF 2025 top 100",
+      "url": "https://easychair.org/cfp/ICCECE-2027"
+    },
+    {
+      "name": "RAIT 2027",
+      "host": "IIT (ISM) Dhanbad (host passes: Overall 35, Engineering 15)",
+      "reason": "Closed for papers: deadline 2 Oct extended to 19 Oct 2026, '550+ papers submitted'; only a Doctoral Consortium call is open until 2 Nov 2026 (aimed at doctoral researchers)",
+      "url": "https://people.iitism.ac.in/~rait/"
+    },
+    {
+      "name": "ICDCIT 2027",
+      "host": "KIIT Bhubaneswar (host passes)",
+      "reason": "Closed: full paper deadline 28 Aug 2026, notifications 15 Oct, camera-ready 23 Oct 2026. Student-symposium and project-contest tracks are advertised but their current deadlines were not readable (site returned HTTP 403 on re-fetch)",
+      "url": "https://icdcit.kiit.ac.in/23rd-icdcit-2027/"
+    },
+    {
+      "name": "IEEE DELCON 2026",
+      "host": "BITS Pilani (host passes)",
+      "reason": "Closed: submission deadline 31 Jul 2026, conference 19-21 Nov 2026 (from search summary of official BITS pages)",
+      "url": "https://www.bits-pilani.ac.in/delcon2026/important-dates/"
+    },
+    {
+      "name": "ISEA-ISAP 2026-27",
+      "host": "IIT Jammu (Engineering 56)",
+      "reason": "Closed: full-paper deadline 30 Jul 2026, notification 1 Oct 2026, conference 17-19 Dec 2026 (search summary; the IIT Jammu page itself was unreachable)",
+      "url": "https://iitjammu.ac.in/isea-isap2026/"
+    },
+    {
+      "name": "ICRTAC 2026",
+      "host": "VIT Chennai (host passes)",
+      "reason": "Closed 15 Aug 2026 (from earlier research file)",
+      "url": "https://chennai.vit.ac.in/"
+    },
+    {
+      "name": "ACM COMPUTE 2026",
+      "host": "Amrita Vishwa Vidyapeetham, Coimbatore (host passes)",
+      "reason": "Closed: submission deadline 26 Jul 2026, notification 18 Sep 2026; computing-education topic (search summary)",
+      "url": "https://isigcse.acm.org/compute/2026/"
+    },
+    {
+      "name": "IEEE ICIDeA 2026",
+      "host": "KIIT (host passes)",
+      "reason": "Conference is 29-31 Oct 2026, so the paper window is closed (deadline itself not read)",
+      "url": "https://hubs.ieee-ies.org/hubs/india-bhubaneswar/hub-events/icidea-2026/"
+    }
+  ]
+}
