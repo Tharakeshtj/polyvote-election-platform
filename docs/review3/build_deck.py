@@ -566,6 +566,48 @@ notes(s, 'The recommended order within the India and NIRF filter, remembering th
          'Confluence at Amity Noida is second, also with an IEEE record number. ICESICSC at KIIT closes on the thirtieth of October, so it is only realistic if the paper already fits its template. INDIACom is borderline because only the parent university is ranked. i-PACT is on our own campus but is a power-engineering conference. '
          'Before submitting, verify each record number on the IEEE site, recheck deadlines and the NIRF edition, remove author names for double-blind venues, and follow each venue\'s AI-disclosure policy.')
 
+# ================================================================== project conclusion
+s = slide('PROJECT CONCLUSION', 'Planned versus delivered')
+table(s, 0.5, 1.1, 9.0, ['Item planned at Reviews 1 and 2', 'Status', 'Note'], [
+    ['Multi-tenant normalised schema, views, trigger', 'Delivered', 'On SQLite'],
+    ['Instant-runoff tally and admin console', 'Delivered', 'Round-by-round results'],
+    ['Hash-chained receipts and integrity sweep', 'Delivered, extended', 'Keyed chain, five sweep rules'],
+    ['MongoDB ledger', 'Delivered', 'Atlas, with a file fallback'],
+    ['Second factor for the voter', 'Delivered', 'Emailed one-time code'],
+    ['Public hosting and phone voting', 'Delivered', 'Public link, QR code, free hosted demo configured'],
+    ['Comparative study and evaluation', 'Delivered', '47 test scenarios; 33 systems read'],
+    ['True cloud platform', 'Partly', 'Free-tier hosting only; no managed cloud database'],
+    ['Oracle with PL/SQL procedures and DCL roles', 'Left out', 'SQLite kept; the path is on the next slide'],
+    ['POSITION entity', 'Left out', 'Deferred']],
+    [4.1, 1.7, 3.2], size=9.5, header_size=9.5, row_h=0.37, head_h=0.32)
+notes(s, 'The conclusion. Against what we planned at Reviews one and two: the multi-tenant schema with views and the trigger, the instant-runoff tally and admin console, the hash-chained receipts and integrity sweep, now keyed and with five rules, the MongoDB Atlas ledger, a second factor for the voter, '
+         'public hosting with phone voting, and the comparative study with forty-seven test scenarios are all delivered. A true cloud platform is only partly done: we have free-tier hosting configured but no managed cloud database. '
+         'Two items were left out: Oracle with PL/SQL procedures and DCL roles, because we kept SQLite, and the POSITION entity, which was deferred. The next slide explains why we chose SQLite and how Oracle would be possible.')
+
+s = slide('WHY SQLITE · AND THE PATH TO ORACLE', 'Why SQLite, and how Oracle is possible')
+card(s, 0.5, 1.2, 4.4, 3.35)
+chip(s, 0.7, 1.34, 'WHY WE CHOSE SQLITE')
+bullets(s, 0.7, 1.75, 4.0, 2.8, [('Nothing to install:', 'one file, no server; anyone runs it on a laptop or free hosting with one command.'),
+                                  ('Repeatable tests:', 'the evaluation copies the database file into a throwaway sandbox, so all 47 scenarios rerun the same way.'),
+                                  ('Cost and time:', 'Oracle needs a licence or cloud account and set-up that a semester project and a hotspot demo cannot rely on.'),
+                                  ('Trade-off we accept:', 'foreign keys only where switched on, one node, no roles.')], size=10.5, after=4)
+card(s, 5.1, 1.2, 4.4, 3.35, fill=LAV)
+chip(s, 5.3, 1.34, 'HOW ORACLE WOULD FIT')
+bullets(s, 5.3, 1.75, 4.0, 2.8, [('Schema:', 'the 5 tables, 1 trigger and 2 views sit in one file; turn AUTOINCREMENT into identity columns and the trigger into PL/SQL.'),
+                                  ('Driver:', 'database calls are in a handful of modules; swap sqlite3 for python-oracledb and change the placeholders.'),
+                                  ('Add what SQLite lacks:', 'GRANT-based roles and PL/SQL procedures; foreign keys always on, which closes the one gap our tests found.'),
+                                  ('Unchanged:', 'the MongoDB ledger, the one-time-code module and the React app.')], size=10.5, after=4)
+card(s, 0.5, 4.7, 9.0, 0.45, fill=LAV)
+tb(s, 0.7, 4.73, 8.6, 0.4, 'This is the planned path, not a result: we have not run it on Oracle.', size=10.5, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, 'Why SQLite, and how Oracle is possible. We chose SQLite because there is nothing to install, it is one file, anyone can run the project with one command on a laptop or free hosting, and our evaluation copies that file into a throwaway sandbox so the forty-seven scenarios rerun identically. '
+         'Oracle would need a licence or a cloud account and a set-up that a semester project and a demo over a mobile hotspot cannot rely on. The trade-offs we accept are that foreign keys apply only on connections that switch them on, that it is a single node, and that there are no roles. '
+         'Moving to Oracle is a migration rather than a redesign. The schema is five tables, one trigger and two views in a single file, so AUTOINCREMENT becomes identity columns and the trigger becomes a PL/SQL trigger. The database calls are in a handful of modules, so we would swap the sqlite3 driver for python-oracledb and change the placeholders. '
+         'Then we would add what SQLite lacks, GRANT-based roles and PL/SQL procedures, with foreign keys always on, which closes the one gap our tests found. The MongoDB ledger, the one-time-code module and the React app would not change. To be clear, this is the planned path and we have not run it on Oracle.')
+
+# Review 2 roadmap slide: say plainly what happened to its open items
+s20 = prs.slides[R2_COUNT - 2]
+tb(s20, 6.85, 3.12, 2.55, 0.5, 'Final review: MongoDB and hosting delivered; Oracle, PL/SQL, DCL roles and POSITION left out, SQLite kept.', size=8.5, color=NAVY, italic=True)
+
 # ================================================================== thank-you slide to the end
 set_runs_text(by_name(thanks_slide, 189), ['PROJECT CONCLUSION · REVIEW 3'])
 N[0] += 1
