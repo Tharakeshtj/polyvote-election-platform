@@ -159,6 +159,13 @@ notes(s, 'The architecture. One FastAPI service that also serves the React app, 
          'The verification database is a separate file that holds voter emails and one-time-code challenges, and it is never joined to ballots. The ledger is a MongoDB Atlas collection. Secrets live in an environment file outside all three. '
          'The point of the separation is that an administrator of one store cannot touch the others; only the application host sees all three, which is why host compromise is outside our model.')
 
+# ================================================================== 9 ER
+s = slide('DATA MODEL', 'Data model: election, ledger and verification stores')
+fit_pic(s, ASSETS / 'diagrams' / 'er.png', 0.4, 1.15, 6.6, 4.1, border=False)
+bullets(s, 7.1, 1.3, 2.5, 3.8, ['Shared multi-tenant schema, scoped by election.', 'No column links a ballot to a voter.', 'Candidate roster hash sealed in the ledger.', 'Emails live in a different file; no key reaches ballots.', 'Trigger, CHECK, UNIQUE, FK enforce the rules.'], size=11)
+notes(s, 'The updated ER diagram. The left frame is the election database, unchanged in structure from Review 2 apart from what it protects. The dashed box is a ledger block, a JSON document linked to a ballot by its token, not by a foreign key. '
+         'The right frame is new: the verification database with voter contacts, challenges and a mail log. Notice there is deliberately no line from it to the ballot table. A voter\'s email can never be joined to a ballot.')
+
 # ================================================================== 11 keyed ledger
 s = slide('KEYED AUDIT LEDGER', 'Keyed chain: rebuilding it needs the secret key')
 for i, (idx, hs) in enumerate([(1, 'vote_data_hash\nroster_hash'), (2, 'vote_data_hash\nroster_hash'), (3, 'vote_data_hash\nroster_hash')]):
@@ -426,6 +433,17 @@ tb(s, 0.7, 4.6, 8.6, 0.45, 'Our claim: for small elections, PolyVote adds databa
 notes(s, 'The verdict. For the problem we target, small and medium elections such as clubs, councils and classes, PolyVote is a good fit: ranked-choice results, an afternoon to set up, free to run, proof that edits and deletions are caught, and voters who confirm by email and can vote from a phone. '
          'The cryptographic systems are the better choice when the administrator cannot be trusted, when voters must verify their own ballot content, when coercion is a threat, or when a public cryptographic audit is required. We say this openly because it makes the claim credible. '
          'Our claim is modest: for small elections PolyVote adds database-level rules and tested tamper detection to an easy setup, and it is not the strongest on verifiability.')
+
+# ================================================================== 27 before/after
+s = slide('REVIEW 2 DESIGN VERSUS FINAL DESIGN', 'What improved, measured')
+table(s, 0.5, 1.2, 9.0, ['Measure', 'Review 2', 'Final'], [
+    ['Tampering detected automatically', f'{nd("baseline")} of 13', f'{nd("patched")} of 13'], ['Forged receipt or chain rewrite', 'Undetected', 'Detected (key)'],
+    ['Candidate renaming', 'Undetected', 'Detected (sealed roster)'], ['Voter authentication', 'Password', 'Password + emailed code'],
+    ['Ledger storage', 'Local file', 'MongoDB Atlas'], ['Ledger append at 10,000 ballots', f"{b['10000']['cast_ms']:.0f} ms (file, whole cast)", f"~{M['1000']['append_ms_median']:.0f} ms (Atlas, flat)"],
+    ['Sweep at 10,000 ballots', f"{b['10000']['sweep_ms']:.0f} ms", f"{p['10000']['sweep_ms']:.0f} ms"], ['Access', 'Local only', 'Public link + QR'],
+], [4.0, 2.7, 2.3], size=10.5, row_h=0.42)
+notes(s, 'The summary of improvements over our own Review 2 design. Automatic detection of tampering rises from six to twelve of thirteen. Forged receipts, rebuilt chains and renamed candidates move from undetected to detected. Authentication goes from password only to password plus an emailed code. '
+         'The ledger moves to Atlas, and the system becomes publicly reachable. The cost is small: the sweep at ten thousand ballots goes from about one hundred and twenty-nine to about one hundred and forty-seven milliseconds.')
 
 # ================================================================== website checklist
 WC = json.loads((RES / 'web_checklist.json').read_text(encoding='utf-8'))['results']
