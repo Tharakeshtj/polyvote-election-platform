@@ -16,8 +16,8 @@ from pathlib import Path
 # The DB and ledger use paths relative to the project folder; pin cwd so the API works from any launch dir.
 os.chdir(Path(__file__).resolve().parent)
 
-from fastapi import Depends, FastAPI, Header, HTTPException
-from fastapi.responses import FileResponse
+from fastapi import Depends, FastAPI, Header, HTTPException, Request
+from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -25,7 +25,9 @@ from audit_ledger import append_ballot_receipt, backend_info, get_ledger, verify
 from election_core import check_election_integrity, get_db, hash_pw, init_admin_db, roster_hash, wipe_all_database_data
 from setup_db import setup_database
 from tally_engine import calculate_irv_winner
+import contact
 import hosted_demo
+import seo
 from verification import otp
 from verification.routes import build_router
 
@@ -628,13 +630,57 @@ def factory_reset(body: ResetIn, _=Depends(require_admin)):
 
 # ---------------------------------------------------------------- built frontend (npm run build)
 
+contact.init()
+
+
+class ContactIn(BaseModel):
+    name: str
+    email: str
+    message: str
+    website: str = ''   # honeypot: real visitors never see or fill this field
+
+
+def visitor_id(request: Request) -> str:
+    forwarded = request.headers.get('x-forwarded-for', '').split(',')[0].strip()
+    return forwarded or (request.client.host if request.client else 'unknown')
+
+
+@app.post("/api/contact")
+def send_contact(body: ContactIn, request: Request):
+    try:
+        contact.submit(visitor_id(request), body.name, body.email, body.message, body.website)
+    except contact.ContactError as exc:
+        raise HTTPException(exc.status, exc.message)
+    return {'ok': True}
+
+
+@app.get("/api/admin/contact")
+def list_contact(_=Depends(require_admin)):
+    return contact.recent()
+
+
 DIST = Path('frontend/dist')
 if DIST.is_dir():
     app.mount('/assets', StaticFiles(directory=DIST / 'assets'), name='assets')
 
+    @app.get('/robots.txt', include_in_schema=False)
+    def robots_txt(request: Request):
+        return PlainTextResponse(seo.robots(seo.base_url(request)))
+
+    @app.get('/sitemap.xml', include_in_schema=False)
+    def sitemap_xml(request: Request):
+        return Response(seo.sitemap(seo.base_url(request)), media_type='application/xml')
+
     @app.get('/{path:path}', include_in_schema=False)
-    def spa(path: str):
+    def spa(path: str, request: Request):
         if path.startswith('api/'):
             raise HTTPException(404)
-        file = DIST / path
-        return FileResponse(file if path and file.is_file() else DIST / 'index.html')
+        # Real files from the build (favicon, og.png ...), never anything outside the build folder.
+        file = (DIST / path).resolve()
+        if path and path != 'index.html' and file.is_file() and DIST.resolve() in file.parents:
+            return FileResponse(file)
+        clean, target = seo.clean(path)
+        if target:
+            return RedirectResponse(target, status_code=301)
+        status, page = seo.render((DIST / 'index.html').read_text(encoding='utf-8'), seo.base_url(request), clean)
+        return HTMLResponse(page, status_code=status)

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowDown, ArrowLeft, ArrowUp, Check, KeyRound, Lock, LogOut, ReceiptText, ShieldCheck, Smartphone, Vote, X } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
+import { usePageMeta } from '../../lib/meta';
 import { errorMessage, publicApi, voterApi, type CastResult, type OtpChallenge, type PublicElection, type VoterBallot } from '../../api';
 import { Avatar, ConfirmDialog, CopyButton, EmptyState, FormError, PageLoading, Spinner, useToast } from '../../components/ui';
 
@@ -15,6 +16,7 @@ const ORDINAL = ['1st', '2nd', '3rd', '4th', '5th'];
 
 export default function VoteFlow() {
   const electionId = Number(useParams().electionId);
+  usePageMeta(`Vote in election ${electionId} | PolyVote`, 'Sign in, confirm with your emailed code, rank your choices and get a receipt.');
   const [election, setElection] = useState<PublicElection | null | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
   const [step, setStep] = useState<Step>('signin');
@@ -258,7 +260,7 @@ function PhoneQR({ electionId }: { electionId: number }) {
     <div className="card phone-qr">
       <div className="card-body row" style={{ gap: 16, alignItems: 'center' }}>
         <div className="qr-frame" aria-hidden={unreachable}>
-          <QRCodeSVG value={url} size={112} marginSize={0} level="M" bgColor="#ffffff" fgColor="#000000" />
+          <QRCodeSVG value={url} size={112} marginSize={0} level="M" bgColor="#ffffff" fgColor="#000000" title="QR code that opens this ballot on a phone" role="img" aria-label="QR code that opens this ballot on a phone" />
         </div>
         <div className="stack-sm">
           <h3 style={{ display: 'flex', alignItems: 'center', gap: 6 }}><Smartphone size={16} /> Vote from your phone</h3>

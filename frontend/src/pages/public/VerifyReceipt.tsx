@@ -3,8 +3,11 @@ import { useSearchParams } from 'react-router-dom';
 import { AlertTriangle, CheckCircle2, SearchCheck, XCircle } from 'lucide-react';
 import { errorMessage, publicApi, type Receipt } from '../../api';
 import { FormError, Spinner, formatDate } from '../../components/ui';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { usePageMeta } from '../../lib/meta';
 
 export default function VerifyReceipt() {
+  usePageMeta('Check your ballot receipt | PolyVote', 'Paste your receipt token to see whether your ballot is sealed in the audit ledger and still counted.');
   const [params, setParams] = useSearchParams();
   const [token, setToken] = useState(params.get('token') ?? '');
   const [result, setResult] = useState<Receipt | null>(null);
@@ -38,6 +41,7 @@ export default function VerifyReceipt() {
 
   return (
     <div className="medium">
+      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Check receipt' }]} />
       <header className="page-intro">
         <h1>Check a receipt</h1>
         <p>Paste the token you got after voting to confirm your ballot is in the ledger and still part of the count.</p>

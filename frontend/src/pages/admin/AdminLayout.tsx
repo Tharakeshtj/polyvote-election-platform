@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { ExternalLink, Link2, LogOut, Mail, Menu, Settings, Users, Vote } from 'lucide-react';
+import { ExternalLink, Link2, LogOut, Mail, Menu, MessageSquare, Settings, Users, Vote } from 'lucide-react';
 import { useAdminAuth } from '../../auth';
+import { usePageMeta } from '../../lib/meta';
 import { Avatar, BrandMark } from '../../components/ui';
 
 export default function AdminLayout() {
@@ -9,6 +10,9 @@ export default function AdminLayout() {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   useEffect(() => setOpen(false), [pathname]);
+  const section = pathname === '/admin' ? 'Elections' : pathname.startsWith('/admin/elections') ? 'Election' : pathname.startsWith('/admin/ledger') ? 'Audit ledger'
+    : pathname.startsWith('/admin/outbox') ? 'Mail outbox' : pathname.startsWith('/admin/messages') ? 'Contact messages' : pathname.startsWith('/admin/admins') ? 'Administrators' : 'Settings';
+  usePageMeta(`${section} | PolyVote admin`);
 
   return (
     <div className="admin-shell">
@@ -25,6 +29,7 @@ export default function AdminLayout() {
         </NavLink>
         <NavLink to="/admin/ledger" className="nav-link"><Link2 /> Audit ledger</NavLink>
         <NavLink to="/admin/outbox" className="nav-link"><Mail /> Mail outbox</NavLink>
+        <NavLink to="/admin/messages" className="nav-link"><MessageSquare /> Contact messages</NavLink>
         <div className="nav-label">System</div>
         <NavLink to="/admin/admins" className="nav-link"><Users /> Administrators</NavLink>
         <NavLink to="/admin/settings" className="nav-link"><Settings /> Settings</NavLink>

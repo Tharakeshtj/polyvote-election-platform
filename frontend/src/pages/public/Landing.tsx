@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { EyeOff, ListOrdered, ReceiptText, Vote } from 'lucide-react';
 import { errorMessage, publicApi, type PublicElection } from '../../api';
 import { EmptyState, FormError, PageLoading, StatusBadge } from '../../components/ui';
+import { usePageMeta } from '../../lib/meta';
 
 export default function Landing() {
+  usePageMeta('PolyVote | Ranked-choice elections with a tamper-evident ledger', 'Run ranked-choice elections for clubs and councils. Voting rules live in the database, every ballot is sealed in an audit ledger, and voters confirm by email.');
   const navigate = useNavigate();
   const [elections, setElections] = useState<PublicElection[] | null>(null);
   const [error, setError] = useState<string | null>(null);

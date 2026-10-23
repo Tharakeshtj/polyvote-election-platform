@@ -160,6 +160,14 @@ function asAdmin<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
   });
 }
 
+export interface ContactMessage {
+  message_id: number;
+  received_at: number;
+  name: string;
+  email: string;
+  message: string;
+}
+
 export interface PublicConfig {
   public_url: string | null;
   hosted_demo: boolean;
@@ -171,6 +179,7 @@ export const publicApi = {
   elections: () => request<PublicElection[]>('/elections'),
   receipt: (token: string) => request<Receipt>(`/receipts/${encodeURIComponent(token.trim())}`),
   config: () => request<PublicConfig>('/config'),
+  contact: (body: { name: string; email: string; message: string; website: string }) => request<{ ok: boolean }>('/contact', { method: 'POST', body }),
 };
 
 export interface OtpChallenge {
@@ -232,6 +241,7 @@ export const adminApi = {
   contacts: (id: number) => asAdmin<Record<string, string>>(`${e(id)}/contacts`),
   setContact: (id: number, reg_no: string, email: string) => asAdmin(`${e(id)}/contacts`, 'PUT', { reg_no, email }),
   fillContacts: (id: number, base_email: string) => asAdmin<{ filled: number }>(`${e(id)}/contacts/fill`, 'POST', { base_email }),
+  messages: () => asAdmin<ContactMessage[]>('/admin/contact'),
   otpStatus: () => asAdmin<{ required: boolean; smtp_configured: boolean; smtp_host: string; sender: string | null; ttl_seconds: number; max_attempts: number }>('/admin/otp/status'),
   otpOutbox: () => asAdmin<OutboxEntry[]>('/admin/otp/outbox'),
 

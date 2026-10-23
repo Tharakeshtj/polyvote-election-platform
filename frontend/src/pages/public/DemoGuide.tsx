@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Info } from 'lucide-react';
 import { publicApi, type PublicConfig } from '../../api';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { usePageMeta } from '../../lib/meta';
 
 type PageRow = { path: string; name: string; what: string; admin?: boolean };
 
@@ -10,6 +12,8 @@ const PAGES: PageRow[] = [
   { path: '/vote/1', name: 'Vote', what: 'Sign in with registration number and password, enter the emailed code, rank three candidates, review, cast, keep the receipt.' },
   { path: '/verify', name: 'Check receipt', what: 'Paste a receipt token to see whether the ballot is sealed in the ledger and still in the count.' },
   { path: '/demo', name: 'Demo guide', what: 'This page: a tour of every page and the demo logins.' },
+  { path: '/privacy', name: 'Privacy policy', what: 'What is stored about voters, where, who can see it and for how long.' },
+  { path: '/contact', name: 'Contact', what: 'Working contact form; messages appear in Admin, Contact messages.' },
   { path: '/admin/login', name: 'Admin sign-in', what: 'Officer login.', admin: true },
   { path: '/admin', name: 'Elections', what: 'All elections with status and turnout.', admin: true },
   { path: '/admin/elections/new', name: 'New election', what: 'Create an organisation and election.', admin: true },
@@ -20,17 +24,20 @@ const PAGES: PageRow[] = [
   { path: '/admin/elections/1/studio', name: 'Election: DB Studio', what: 'A simulated rogue database administrator: edit or delete ballots, then run the sweep to see it caught.', admin: true },
   { path: '/admin/ledger', name: 'Audit ledger', what: 'Every sealed receipt; the chain check shows "intact" or the first tampered block.', admin: true },
   { path: '/admin/outbox', name: 'Mail outbox', what: 'Every one-time code issued, its recipient and delivery status.', admin: true },
+  { path: '/admin/messages', name: 'Contact messages', what: 'Messages sent through the public contact form.', admin: true },
   { path: '/admin/admins', name: 'Administrators', what: 'Add officer accounts.', admin: true },
   { path: '/admin/settings', name: 'Settings', what: 'Reset (disabled on the public demo).', admin: true },
 ];
 
 export default function DemoGuide() {
+  usePageMeta('Demo guide: every page of PolyVote', 'A tour of every page of the PolyVote demo with links, demo logins and a three-minute walkthrough.');
   const [cfg, setCfg] = useState<PublicConfig | null>(null);
   useEffect(() => { publicApi.config().then(setCfg).catch(() => {}); }, []);
   const demo = cfg?.hosted_demo;
 
   return (
     <div className="stack" style={{ maxWidth: 860, margin: '0 auto' }}>
+      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Demo guide' }]} />
       <div>
         <h1>{demo ? 'Demo guide' : 'Guide to every page'}</h1>
         <p className="muted" style={{ marginTop: 4 }}>

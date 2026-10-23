@@ -27,7 +27,17 @@ export default function PublicLayout() {
       <main className="public-main">
         <Outlet />
       </main>
-      <footer className="public-foot">PolyVote · ranked-choice elections with a tamper-evident ballot ledger</footer>
+      <footer className="public-foot">
+        <nav aria-label="Footer" style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 16px', justifyContent: 'center', marginBottom: 6 }}>
+          <Link to="/">Home</Link>
+          <Link to="/demo">Demo guide</Link>
+          <Link to="/verify">Check a receipt</Link>
+          <Link to="/privacy">Privacy policy</Link>
+          <Link to="/contact">Contact</Link>
+          <a href="https://github.com/Tharakeshtj/polyvote-election-platform" target="_blank" rel="noreferrer">Source code</a>
+        </nav>
+        PolyVote · ranked-choice elections with a tamper-evident ballot ledger
+      </footer>
     </div>
   );
 }
