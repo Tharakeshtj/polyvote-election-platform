@@ -628,15 +628,29 @@ notes(s20, 'Looking at the three reviews together. Review 1 presented the design
            'This is Review 3, the final review. We delivered the MongoDB Atlas ledger, the emailed one-time code, public hosting with phone voting, a 47-scenario evaluation and a comparison with 33 existing systems. '
            'Oracle with PL/SQL procedures and DCL roles, and the POSITION entity, were left out, and SQLite was kept; the conclusion slides at the end explain why and how Oracle would be possible.')
 
-# slide 2 (Review 2 recap): remove the percentage
+# slide 2: Review 1 done, Review 2 done, Review 3 now
 s2 = prs.slides[1]
-for sh in s2.shapes:
-    if sh.name == 'TextBox 18':
-        set_runs_text(sh, ['Done'])
-    elif sh.name == 'TextBox 19':
-        set_runs_text(sh, ['Reviews 1 and 2'])
-notes_s2 = s2.notes_slide.notes_text_frame.text.replace('Overall about seventy-five percent of the Review 1 scope is done. What remains is the final-review work:', 'Reviews 1 and 2 are done. What was left for the final review, which is this review, was:')
-notes(s2, notes_s2)
+S2 = {sh.name: sh for sh in s2.shapes}
+set_runs_text(S2['Kicker'], ['WHERE WE STAND · FINAL REVIEW'])
+set_runs_text(S2['Title'], ['Reviews 1 and 2 are done; this is Review 3'])
+set_runs_text(S2['Rounded Rectangle 6'], ['DONE'])
+set_runs_text(S2['TextBox 7'], ['Review 1'])
+set_runs_text(S2['Rounded Rectangle 10'], ['DONE'])
+set_runs_text(S2['TextBox 11'], ['Review 2'])
+set_runs_text(S2['TextBox 12'], ['A working system: React voter booth and admin console, FastAPI service, SQLite schema with trigger and views, instant-runoff tally, hash-chained receipts and a live tamper test.'])
+set_runs_text(S2['Rounded Rectangle 14'], ['NOW'])
+set_runs_text(S2['TextBox 15'], ['Review 3 · final review'])
+set_runs_text(S2['TextBox 16'], ['MongoDB Atlas ledger, emailed one-time code and QR voting, public hosting, a 47-scenario evaluation and a comparison with existing systems.'])
+set_runs_text(S2['TextBox 18'], ['Done'])
+set_runs_text(S2['TextBox 19'], ['Reviews 1 and 2'])
+hint = S2['TextBox 20']
+set_runs_text(hint, ['We did not use Oracle: ', 'SQLite stood in for it throughout (see the conclusion slides).'])
+for para in list(hint.text_frame.paragraphs)[1:]:
+    para._p.getparent().remove(para._p)
+notes(s2, 'A short recap of where we stand. Review 1 is done: we presented the design, the relational schema and ER diagram, the security approach, the literature review and a planned architecture on Oracle, MongoDB and Streamlit. '
+          'Review 2 is done: a working system with a React voter booth and admin console, a FastAPI service, a SQLite schema with trigger and views, the instant-runoff tally, hash-chained receipts and a live tamper test. '
+          'Review 3, this one, is the final review: the MongoDB Atlas ledger, the emailed one-time code with QR voting, public hosting, a 47-scenario evaluation and a comparison with existing systems. '
+          'One thing to flag early: we did not use Oracle. SQLite stood in for it throughout, and the conclusion slides at the end explain why and how Oracle would fit.')
 
 # ================================================================== thank-you slide to the end
 set_runs_text(by_name(thanks_slide, 189), ['PROJECT CONCLUSION · REVIEW 3'])
