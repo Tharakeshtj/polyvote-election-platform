@@ -1,0 +1,131 @@
+{
+  "base": "http://localhost:8030",
+  "results": [
+    {
+      "n": 1,
+      "item": "Server-side rendering (pre-rendered shell)",
+      "result": "PASS",
+      "evidence": "Each page ships an <h1>, description and links in the HTML itself, before any JavaScript runs. The interactive app is a React single-page app that replaces this shell (so this is a pre-rendered shell, not full SSR)."
+    },
+    {
+      "n": 2,
+      "item": "HTTPS and mobile viewport",
+      "result": "N/A",
+      "evidence": "Scheme http; viewport meta present. (HTTPS comes from the host, e.g. Render; local runs are http)"
+    },
+    {
+      "n": 3,
+      "item": "robots.txt",
+      "result": "PASS",
+      "evidence": "HTTP 200; ['User-agent: *', 'Allow: /', 'Disallow: /admin']"
+    },
+    {
+      "n": 4,
+      "item": "sitemap.xml",
+      "result": "PASS",
+      "evidence": "HTTP 200; 5 URLs listed; 0 do not return 200."
+    },
+    {
+      "n": 5,
+      "item": "Unique title tags",
+      "result": "PASS",
+      "evidence": "/: PolyVote | Ranked-choice elections with a tamper-evident ledger; /demo: Demo guide: every page of PolyVote; /verify: Check your ballot receipt | PolyVote; /privacy: Privacy policy | PolyVote; /contact: Contact PolyVote"
+    },
+    {
+      "n": 6,
+      "item": "Meta descriptions",
+      "result": "PASS",
+      "evidence": "/: 158 chars; /demo: 97 chars; /verify: 100 chars; /privacy: 94 chars; /contact: 92 chars"
+    },
+    {
+      "n": 7,
+      "item": "One H1 per page",
+      "result": "PASS",
+      "evidence": "H1 count in served HTML: {'/': 1, '/demo': 1, '/verify': 1, '/privacy': 1, '/contact': 1}"
+    },
+    {
+      "n": 8,
+      "item": "Canonical tags",
+      "result": "PASS",
+      "evidence": "{'/': 'http://localhost:8030/', '/demo': 'http://localhost:8030/demo', '/verify': 'http://localhost:8030/verify', '/privacy': 'http://localhost:8030/privacy', '/contact': 'http://localhost:8030/contact'}"
+    },
+    {
+      "n": 9,
+      "item": "Open Graph images",
+      "result": "PASS",
+      "evidence": "og:image http://localhost:8030/og.png -> HTTP 200, 39281 bytes PNG; og:title, og:description and twitter:card present."
+    },
+    {
+      "n": 10,
+      "item": "Custom 404 page",
+      "result": "PASS",
+      "evidence": "HTTP 404; page says \"Page not found\" with links back."
+    },
+    {
+      "n": 11,
+      "item": "301 redirects",
+      "result": "PASS",
+      "evidence": "/vote -> 301 /; /home -> 301 /; /demo/ -> 301 /demo"
+    },
+    {
+      "n": 12,
+      "item": "Alt text on images",
+      "result": "PASS",
+      "evidence": "0 <img> tags in served HTML, 0 without alt. The QR code is an SVG with a title and aria-label; the logo is decorative SVG."
+    },
+    {
+      "n": 13,
+      "item": "WebP images",
+      "result": "N/A",
+      "evidence": "The app has no raster images in its pages (UI is SVG and CSS). The only raster file is og.png, kept as PNG because link-preview crawlers do not reliably read WebP."
+    },
+    {
+      "n": 14,
+      "item": "Lazy loading",
+      "result": "PASS",
+      "evidence": "Entry script loads 26 route chunks on demand: ['AdminLayout', 'AdminLogin', 'AdminsPage', 'Breadcrumbs', 'Contact', 'DemoGuide', 'ElectionPage', 'ElectionsPage', 'LedgerPage', 'MessagesPage']"
+    },
+    {
+      "n": 15,
+      "item": "Organization schema",
+      "result": "PASS",
+      "evidence": "JSON-LD types on home: ['Organization', 'WebApplication', 'BreadcrumbList']"
+    },
+    {
+      "n": 16,
+      "item": "Breadcrumbs",
+      "result": "PASS",
+      "evidence": "BreadcrumbList JSON-LD served on /demo (Home > Demo guide). The visible breadcrumb trail is drawn by the app on each public page and is shown in the screenshots."
+    },
+    {
+      "n": 17,
+      "item": "Internal links",
+      "result": "PASS",
+      "evidence": "5 internal links in the served home page: ['/', '/demo', '/verify', '/privacy', '/contact']"
+    },
+    {
+      "n": 18,
+      "item": "Google Analytics",
+      "result": "N/A",
+      "evidence": "Built in but off: set GA_MEASUREMENT_ID (G-XXXXXXXXXX) on the server to inject the tag. Needs your own Analytics property."
+    },
+    {
+      "n": 19,
+      "item": "Search Console",
+      "result": "N/A",
+      "evidence": "Built in but off: set GOOGLE_SITE_VERIFICATION to the token from Search Console; sitemap.xml and robots.txt are ready to submit."
+    },
+    {
+      "n": 20,
+      "item": "Privacy policy",
+      "result": "PASS",
+      "evidence": "/privacy -> HTTP 200; linked from the footer of every public page."
+    },
+    {
+      "n": 21,
+      "item": "Working contact form",
+      "result": "PASS",
+      "evidence": "valid message -> HTTP 200 (stored; admins read it under Contact messages); invalid input -> HTTP 422; honeypot -> HTTP 200 (silently dropped)."
+    }
+  ]
+}
