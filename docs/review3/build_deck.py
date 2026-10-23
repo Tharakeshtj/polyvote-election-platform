@@ -669,5 +669,137 @@ el = prs.slides._sldIdLst[R2_COUNT - 1]
 prs.slides._sldIdLst.remove(el)
 prs.slides._sldIdLst.append(el)
 
+
+# ================================================================== final-review pass over the Review 2 slides: present tense, current facts, no percentages
+def _frames(slide):
+    def walk(shapes):
+        for sh in shapes:
+            if sh.shape_type == 6:
+                yield from walk(sh.shapes)
+            else:
+                if sh.has_text_frame:
+                    yield sh.text_frame
+                if getattr(sh, 'has_table', False) and sh.has_table:
+                    for r in sh.table.rows:
+                        for c in r.cells:
+                            yield c.text_frame
+    yield from walk(slide.shapes)
+
+
+def sub(n, old, new):
+    hit = 0
+    for tf in _frames(prs.slides[n - 1]):
+        for para in tf.paragraphs:
+            for r in para.runs:
+                if old in r.text:
+                    r.text = r.text.replace(old, new)
+                    hit += 1
+    assert hit, (n, old)
+
+
+def set_paras(n, shape_name, texts):
+    sh = [x for x in prs.slides[n - 1].shapes if x.name == shape_name][0]
+    paras = list(sh.text_frame.paragraphs)
+    for para, txt in zip(paras, texts):
+        runs = para.runs
+        runs[0].text = txt
+        for r in runs[1:]:
+            r._r.getparent().remove(r._r)
+    for para in paras[len(texts):]:
+        para._p.getparent().remove(para._p)
+
+
+def nsub(n, old, new):
+    s_ = prs.slides[n - 1]
+    txt = s_.notes_slide.notes_text_frame.text
+    assert old in txt, (n, old)
+    s_.notes_slide.notes_text_frame.text = txt.replace(old, new)
+
+
+# footers of the Review 2 slides now read Review 3
+for k in range(2, R2_COUNT):
+    sub(k, 'Database Systems | Review 2 |', 'Database Systems | Review 3 |')
+
+# 3 rationale
+sub(3, '(cloud hosting is planned for the final review)', '(with a public HTTPS link and QR phone voting)')
+notes(prs.slides[2], 'Quick reminder of why we built this. Plurality voting can crown a winner without majority support, single-election systems are hard to reuse, and an administrator with UPDATE access can silently change results. '
+                     'Our answer is ranked-choice voting, one shared multi-tenant schema, voter identity separated from ballot content, and a hash chain over the audit records. The outcome is a reusable web service with a public link and QR phone voting.')
+
+# 4 six techniques
+sub(4, 'SHA-256 Hash Chaining', 'Keyed Hash Chaining')
+sub(4, 'Every vote event cryptographically references its prior block digest, rendering unauthorized retro-edits instantly invalid.', 'Every vote event references its prior block digest and is sealed with an HMAC key, so retro-edits fail verification.')
+sub(4, 'A relational store keeps structured entities; an append-only JSON event ledger (MongoDB document model) supports audit. Oracle and MongoDB hosting follow.', 'A relational store (SQLite) keeps structured entities; the audit ledger lives in MongoDB Atlas, with a local-file fallback.')
+sub(4, 'independently of application logic; PL/SQL packages follow with Oracle.', 'independently of application logic, backed by a five-rule integrity sweep.')
+sub(4, 'Cloud Deployment', 'Public Hosting')
+sub(4, 'Runs today as one web service (API and UI). Hosting it on a cloud platform is the remaining deployment step.', 'Runs as one web service (API and UI) behind a public HTTPS link, with QR phone voting and a free-tier hosted demo configured.')
+notes(prs.slides[3], 'These are the six techniques from Review 1. Techniques one, two and three, multi-tenancy, instant-runoff and hash chaining, work as designed, and the chain is now sealed with an HMAC key. '
+                     'Four, polyglot persistence, uses a relational SQLite store plus the audit ledger in MongoDB Atlas, with a local-file fallback. Five, integrity, is enforced by constraints and a trigger and backed by a five-rule integrity sweep. '
+                     'Six, the service runs as one web service behind a public HTTPS link with QR phone voting.')
+
+# 7 four modules
+sub(7, 'SQLite now, Oracle planned', 'SQLite')
+sub(7, 'JSON audit ledger (MongoDB planned)', 'Audit ledger (MongoDB Atlas)')
+sub(7, 'Stores one hash-chained receipt per ballot, each linked to its predecessor and re-checked by the integrity sweep.', 'Stores one HMAC-sealed receipt per ballot in MongoDB Atlas (local file as fallback), each linked to its predecessor and re-checked by the integrity sweep.')
+sub(7, 'Streamlit is retained.', 'Emailed one-time codes confirm the voter; Streamlit is retained.')
+sub(7, 'POSITION is deferred', 'POSITION not built')
+notes(prs.slides[6], 'The four modules are the same as planned, with the technology as it stands. Module one is the relational core, SQLite. Module two is the Python tally engine. Module three is the ledger of HMAC-sealed receipts in MongoDB Atlas. '
+                     'Module four is the application, React plus FastAPI, with an emailed one-time code that confirms the voter and Streamlit retained. The core entities are six tables, including ADMIN_USERS, and POSITION is not implemented. '
+                     'The privacy boundary holds: only an anonymous token connects a voter to a ballot.')
+
+# 8 architecture
+sub(8, 'Hash-chained JSON receipts', 'Keyed receipts · MongoDB Atlas')
+nsub(8, 'Flow seven appends the SHA-256 receipt to the separate ledger.', 'Flow seven appends the HMAC-sealed receipt to the separate ledger in MongoDB Atlas.')
+
+# 11 voter side
+sub(11, 'Only elections in the Voting phase can be entered.', 'Only open elections; sign in with a password and an emailed code.')
+sub(11, 'wrong password is rejected, a voter who already voted is refused, and the ballot cannot be changed once cast.', 'a wrong password is rejected, the emailed code is required, a voter who already voted is refused, and a cast ballot cannot be changed.')
+nsub(11, 'only elections in the Voting phase can be entered.', 'only elections in the Voting phase can be entered. The voter signs in with a password and then types the code emailed to them.')
+nsub(11, 'A wrong password is rejected,', 'A wrong password is rejected, the emailed code is required,')
+
+# 12 privacy
+sub(12, 'SHA-256 of the ranks + prev_hash, sealed as curr_hash', 'SHA-256 of the ranks + prev_hash, sealed as curr_hash with an HMAC key')
+nsub(12, 'chained to the previous block.', 'chained to the previous block and sealed with an HMAC key.')
+
+# 13 tally
+nsub(13, 'because the tie-break rule is something we plan to formalise.', 'because a published tie-break rule is future work.')
+
+# 14 ledger
+sub(14, 'curr_hash covers the whole block.', 'curr_hash covers the whole block and is sealed with an HMAC key.')
+nsub(14, 'compares it with its receipt.', 'compares it with its receipt. The blocks are sealed with an HMAC key, so rebuilding the chain needs the key.')
+
+# 18 status: no percentage
+sub(18, 'About 75% of the Review 1 scope is implemented', 'Implementation status: all but Oracle and POSITION')
+set_paras(18, 'TextBox 7', ['Done', 'Multi-tenant schema, trigger and views, instant-runoff tally, keyed hash-chained ledger on MongoDB Atlas, tamper detection, emailed one-time code, voter and admin applications, public hosting.'])
+set_paras(18, 'TextBox 9', ['Not implemented', 'Oracle with PL/SQL procedures and DCL', 'POSITION entity', 'A managed cloud database platform'])
+s18 = prs.slides[17]
+for sh in list(s18.shapes):
+    if getattr(sh, 'has_chart', False) and sh.has_chart:
+        sh._element.getparent().remove(sh._element)
+for nm, x, w in (('Rounded Rectangle 6', 0.5, 4.4), ('TextBox 7', 0.7, 4.0), ('Rounded Rectangle 8', 5.1, 4.4), ('TextBox 9', 5.3, 4.0)):
+    sh = [q for q in s18.shapes if q.name == nm][0]
+    sh.left, sh.width = Inches(x), Inches(w)
+    if nm.startswith('Rounded'):
+        sh.top, sh.height = Inches(1.2), Inches(2.5)
+    else:
+        sh.top, sh.height = Inches(1.35), Inches(2.3)
+        for para in sh.text_frame.paragraphs:
+            for r in para.runs:
+                r.font.size = Pt(14)
+            para.space_after = Pt(6)
+card(s18, 0.5, 3.95, 9.0, 0.8, fill=LAV)
+tb(s18, 0.7, 4.0, 8.6, 0.7, 'Why Oracle was not used: SQLite needs no set-up and keeps the tests repeatable; the schema is portable, so Oracle would be a migration (see the conclusion slides).', size=11.5, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+notes(prs.slides[17], 'Here is our progress against the Review 1 scope. On the left, what is done: the multi-tenant schema, trigger and views, the instant-runoff tally, the keyed hash-chained ledger on MongoDB Atlas, tamper detection, the emailed one-time code, '
+                      'and the voter and admin applications with public hosting. On the right, what is not implemented: Oracle with PL/SQL procedures and DCL, the POSITION entity, and a managed cloud database platform.')
+
+# 19 plan versus build
+sub(19, 'Built for Review 2', 'Built')
+sub(19, 'Hash-chained JSON documents', 'MongoDB Atlas, HMAC-keyed chain; file fallback')
+sub(19, 'Same document model without a hosted cluster', 'Document store; a unique index gives concurrency control')
+sub(19, 'POSITION deferred', 'POSITION not implemented')
+set_paras(19, 'TextBox 7', ['Result: MongoDB Atlas is in use. Oracle with PL/SQL was not used; the code is structured so it would be a migration, not a rewrite (see the conclusion slides).'])
+notes(prs.slides[18], 'This table explains every place the build differs from the plan. Oracle became SQLite for zero-setup development and repeatable tests, with the schema kept portable. MongoDB Atlas is in use, with an HMAC-keyed chain and a file fallback. '
+                      'Streamlit gained a React and FastAPI front end for separate voter and admin experiences. We added ADMIN_USERS and did not implement POSITION. The lifecycle is guarded transitions because SQLite has no stored procedures. '
+                      'Oracle with PL/SQL was not used; the code is structured so it would be a migration, not a rewrite.')
+
 prs.save(str(OUT))
 print('wrote', OUT, '| slides', len(prs.slides))
