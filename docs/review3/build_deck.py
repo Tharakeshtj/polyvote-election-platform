@@ -553,20 +553,6 @@ notes(s, 'We narrowed the list to conferences held in India and hosted by an ins
          'INDIACom and ICICC are borderline, because only the parent university is ranked, not the institute or college that hosts. i-PACT is on our own campus at VIT. '
          'Indexing: a record number on an official page is not confirmation of IEEE Xplore, and every other venue only claims it. We dropped ICRCICN, IEM-ICDC, iConCISE and ICPCSN because their hosts are not in the top one hundred.')
 
-s = slide('CAN WE GET THE MONEY BACK?', 'Reimbursement: nothing is documented yet')
-card(s, 0.5, 1.2, 4.4, 3.2)
-chip(s, 0.7, 1.34, 'WHAT WE FOUND')
-bullets(s, 0.7, 1.75, 4.0, 2.6, [('VIT:', 'the public Research Promotion Policy (2019) supports conference fees for faculty only, up to INR 20,000 a year in India. The student schemes (Raman Research Award, TRA fellowships) do not cover conference fees.'),
-                                  ('Organisers:', 'none publish a student waiver. Confluence, INDIACom and ICICC say fees are non-refundable.')], size=10.5)
-card(s, 5.1, 1.2, 4.4, 3.2)
-chip(s, 5.3, 1.34, 'WHAT TO DO BEFORE PAYING')
-bullets(s, 5.3, 1.75, 4.0, 2.6, ['Ask the School Dean or Programme Chair, the Office of Academic Research and Student Welfare whether an undergraduate scheme exists, and get the answer in writing.', 'Ask whether VIT credit needs IEEE Xplore indexing, before picking a venue.', 'Until then, budget the fee as our own cost: about INR 5,900 to 9,440 for the cheaper venues.'], size=10.5)
-card(s, 0.5, 4.55, 9.0, 0.55, fill=LAV)
-tb(s, 0.7, 4.6, 8.6, 0.45, 'The policy we read is from 2019; a newer or unpublished scheme may exist. We have not found one, and we are not assuming one.', size=10.5, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
-notes(s, 'The team asked whether we get the money back. We searched for it and the honest answer is that nothing public says so. VIT\'s published Research Promotion Policy, approved in April 2019, supports conference registration only for faculty, up to twenty thousand rupees a year within India. '
-         'The student schemes it lists, the Raman Research Award and the TRA fellowships, are for journal incentives and research fellowships, not conference fees. VIT\'s own conference pages list normal student fees with no waiver. None of the conferences on the previous slide publishes a student waiver, and Confluence, INDIACom and ICICC state fees are non-refundable. '
-         'So we will not promise reimbursement. Before paying, ask the School Dean or Programme Chair, the Office of Academic Research and the student welfare office, get the answer in writing, and ask whether VIT credit requires IEEE Xplore indexing. The policy we read is from 2019, so a newer scheme may exist.')
-
 s = slide('RECOMMENDED SUBMISSION ORDER', 'One venue at a time: dual submission is not allowed')
 table(s, 0.5, 1.2, 9.0, ['Step', 'Venue', 'Host university', 'Submit by', 'Why this order'], [
     ['1', 'IEEE SANKALP 2027', 'ABV-IIITM Gwalior', '30 Nov 2026', 'IEEE record number shown; security and distributed-database tracks; INR 7,000'],
@@ -590,12 +576,9 @@ for sh in list(thanks_slide.shapes):
 tb(thanks_slide, 0.38, 1.75, 5.6, 0.3, 'Questions and discussion', size=16, color=INK, bold=True)
 tb(thanks_slide, 0.38, 2.25, 5.6, 2.2, [
     [('Source code and documents', {'bold': True, 'color': NAVY})],
-    [('github.com/Tharakeshtj/polyvote-election-platform', {'size': 11})], [('', {})],
-    [('Run it: ', {'bold': True, 'color': NAVY}), ('python -m uvicorn server:app --port 8000', {'font': 'Consolas', 'size': 10})],
-    [('Demo copy: ', {'bold': True, 'color': NAVY}), ('Sample PolyVote, with email verification on', {})],
-    [('Reports: ', {'bold': True, 'color': NAVY}), ('Review 3 report (44 pages) and IEEE-style paper', {})]], size=12, color=INK, after=3)
+    [('github.com/Tharakeshtj/polyvote-election-platform', {'size': 11})]], size=12, color=INK, after=3)
 notes(thanks_slide, 'Thank you. To summarise: PolyVote now enforces election rules in the database, seals every ballot in a keyed ledger on MongoDB Atlas, confirms voters with an emailed one-time code, runs publicly, and is evaluated by an executable suite that shows '
-                    'automatic detection of tampering rising from six to twelve of thirteen scenarios, with the remaining gaps stated openly. The code, the long report and the short paper are available, and we are happy to take questions or run any part of the demonstration again.')
+                    'automatic detection of tampering rising from six to twelve of thirteen scenarios, with the remaining gaps stated openly. The code and documents are on GitHub, and we are happy to take questions or run any part of the demonstration again.')
 el = prs.slides._sldIdLst[R2_COUNT - 1]
 prs.slides._sldIdLst.remove(el)
 prs.slides._sldIdLst.append(el)
