@@ -287,10 +287,21 @@ def build(c, S):
              ['7 Access', 'National and mobile apps; Helios', 'QR on a phone; one-command start; live demo', c.ref('tab:demo'), 'Easier to run and join']],
             [1.7, 2.0, 3.0, 1.6, 2.3], 'Part-by-part comparison and verdicts.', 'tab:cmp-summary', size=8.5)
 
-    c.h2('7.11 What is unusual about the combination')
-    c.p('We looked for a small-election system that combines all seven parts and publishes test evidence for each. We found strong systems for individual parts (cryptographic verifiability, hosted convenience, tamper-evident logs), '
-        'but none that combines ranked-choice counting, rules enforced inside the database, a keyed audit ledger in a separate store, an emailed second factor and phone voting in one install that anyone can run with one command, '
-        'with test results for every claim. In that sense PolyVote is unusual. We cannot prove that no such system exists, so we state it as what we found, not as a guarantee.')
+    c.h2('7.11 Closest existing projects, and what is different')
+    c.p('We searched the literature, vendor pages and GitHub (about 23 web queries and 20 repository searches, 33 systems read; the full search log and a source for every cell are in `docs/review3/uniqueness_evidence.md`). '
+        'Every single feature of PolyVote exists in some system, so we do not claim that PolyVote is the first or the only one. '
+        'What we did not find is one free small-election tool that documents all of the following together. The three closest projects differ as follows.')
+    c.table(['Closest project (source)', 'What it has', 'What we found it does not document'],
+            [['FlexyVotes, Django and PostgreSQL (github.com/deOpty/flexyvotes)', 'Many organisations; instant-runoff and STV counting; database triggers that block even direct SQL edits; ballot rows with no voter key; hash-chained audit log; hashed single-use email OTP with limits',
+              'QR scan-to-vote; a keyed (HMAC) chain; a separate document store and separate email database; a sweep that reconciles ballots, receipts, flags and candidates; published attack-test results'],
+             ['VeriVote, Node, React and MongoDB (github.com/9022574361/Online_Voting_System)', 'SHA-256 chain in MongoDB with an audit endpoint; ballots without voter identity; email OTP with rate limits; receipt hash',
+              'Ranked-choice counting; many organisations; database-level rules; HMAC key; reconciliation; automated attack suite'],
+             ['BetterVoting (github.com/Equal-Vote/bettervoting)', 'Ranked-choice voting; teams and organisations; QR sharing; receipts; free and open source (AGPL)',
+              'Database-enforced rules; a hash-chain ledger of ballots (its audit log covers administrator actions); one-time-code second factor; reconciliation and attack tests']],
+            [3.0, 4.0, 3.6], 'Closest projects found, from their own repositories and pages.', 'tab:closest', size=8.5)
+    c.p('The cryptographic systems (Helios, Belenios, Civitas, ElectionGuard) are far stronger on ballot verifiability, and PolyVote does not claim to be more secure than them. '
+        'Our claim is narrower and checkable: among the systems we examined, none documents the combination of database-enforced rules, an HMAC-keyed chain in a separate store with a reconciling sweep, an emailed second factor and QR phone voting, '
+        'with published results of an executable attack suite. Limits of this search: commercial products may have features that are not documented, GitHub code search and non-English repositories were not covered, and the search ran on 23 October 2026.')
 
     c.h2('7.12 Conclusions drawn from the evidence')
     c.table(['#', 'Conclusion', 'Evidence', 'Limit'],

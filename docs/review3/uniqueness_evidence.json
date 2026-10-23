@@ -1,0 +1,1487 @@
+[
+  {
+    "name": "Helios Voting (helios-server)",
+    "url": "https://github.com/benadida/helios-server",
+    "type": "open-source, verifiable (E2E)",
+    "language_or_kind": "Python/Django + JavaScript; PostgreSQL, RabbitMQ/Celery",
+    "stars_or_users": "926 GitHub stars; hosted at vote.heliosvoting.org",
+    "last_update": "2026-08-15 (GitHub API pushed_at)",
+    "F1": {
+      "value": "no",
+      "source": "https://raw.githubusercontent.com/benadida/helios-server/master/helios/models.py"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://vote.heliosvoting.org/faq"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/benadida/helios-server/blob/master/INSTALL.md"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://vote.heliosvoting.org/"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://vote.heliosvoting.org/faq"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://vote.heliosvoting.org/"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://vote.heliosvoting.org/faq"
+    },
+    "F8": {
+      "value": "yes",
+      "source": "https://vote.heliosvoting.org/faq"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://github.com/benadida/helios-server/blob/master/INSTALL.md"
+    },
+    "notes": "F1 'no' is inferred from code: Election.one_question_winner in helios/models.py picks winners by raw vote count (result_type absolute/relative); no ranked/IRV code seen in that file; docs do not mention ranked ballots. F4: landing page says votes are private (cryptographic secrecy, not schema-level unlinking). F5: public ballot tracker + 'open-audit' verifiability, not a keyed hash chain/reconciliation sweep. F6: landing page lists GitHub/Google login only; FAQ does not cover voter auth. F9: Apache-2.0; install needs Postgres 12+, RabbitMQ, Python 3.13, uv (about 9 steps), so not one command; free hosted instance not verified as free."
+  },
+  {
+    "name": "Belenios",
+    "url": "https://www.belenios.org/",
+    "type": "open-source, verifiable (E2E), hosted platform + self-host",
+    "language_or_kind": "OCaml (AGPL-3.0); GitHub mirror glondu/belenios",
+    "stars_or_users": ">1,400 elections/yr in 2020-21 (Cortier, Gaudry, Glondu paper via search snippet); GitHub mirror 156 stars",
+    "last_update": "2026-10-16 (GitHub mirror pushed_at); belenios.org release notes through 2024",
+    "F1": {
+      "value": "partial",
+      "source": "https://www.belenios.org/"
+    },
+    "F2": {
+      "value": "partial",
+      "source": "https://www.belenios.org/"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://www.belenios.org/"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://www.belenios.org/"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://www.belenios.org/"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://www.belenios.org/"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://www.belenios.org/"
+    },
+    "F8": {
+      "value": "yes",
+      "source": "https://www.belenios.org/"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://www.belenios.org/"
+    },
+    "notes": "F1: release notes document ranking/preferential ballots with Condorcet-Schulze (1.17) and STV (2.2); IRV and round transcripts not documented. F2: public voting platform where anyone can set up an election; multi-tenant architecture not stated. F4: cryptographic secrecy, ballots appear on public ballot box tied to voter credential (not DB-level separation). F5: public verifiable ballot box; 2.0 note describes chaining of election events; no HMAC key, separate document store, reconciliation sweep or attack suite documented. F6: 1.16 note: default voter authentication is an email with a short code at voting time; hashing/expiry/limits not documented. F8: 'voters can check that their ballots have been received', 'every voter can check that her vote has been counted'. gitlab.inria.fr page was blocked by Anubis bot wall so repo README was not read. License AGPL-3.0 per release note (2016-07-25)."
+  },
+  {
+    "name": "Civitas",
+    "url": "https://research.cs.cornell.edu/civitas",
+    "type": "research prototype (coercion-resistant, verifiable)",
+    "language_or_kind": "Jif/Java (JifE), academic prototype",
+    "stars_or_users": "n/a (academic); S&P 2008 + Cornell TR 2007-2081",
+    "last_update": "Technical report revised 2008",
+    "F1": {
+      "value": "partial",
+      "source": "https://web.eecs.umich.edu/~bchandra/courses/papers/Clarkson_Civitas.pdf"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://web.eecs.umich.edu/~bchandra/courses/papers/Clarkson_Civitas.pdf"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://web.eecs.umich.edu/~bchandra/courses/papers/Clarkson_Civitas.pdf"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://web.eecs.umich.edu/~bchandra/courses/papers/Clarkson_Civitas.pdf"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://web.eecs.umich.edu/~bchandra/courses/papers/Clarkson_Civitas.pdf"
+    },
+    "F6": {
+      "value": "no",
+      "source": "https://web.eecs.umich.edu/~bchandra/courses/papers/Clarkson_Civitas.pdf"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://web.eecs.umich.edu/~bchandra/courses/papers/Clarkson_Civitas.pdf"
+    },
+    "F8": {
+      "value": "yes",
+      "source": "https://web.eecs.umich.edu/~bchandra/courses/papers/Clarkson_Civitas.pdf"
+    },
+    "F9": {
+      "value": "not documented",
+      "source": "https://research.cs.cornell.edu/civitas"
+    },
+    "notes": "Read from pdftotext of the 2008 paper (the Cornell eCommons PDF returned an HTML error to curl). Paper: prototype supports plurality, approval and ranked ballots (ranked ballots introduce covert channels for coercion); tally method for ranking not described as IRV. Voters authenticate with anonymous credentials from registration tellers (not email OTP). Bulletin board + universal/voter verifiability. Source-code availability and licence not verified (cornell.edu cert error on fetch)."
+  },
+  {
+    "name": "ElectionGuard (Microsoft / Election-Tech-Initiative)",
+    "url": "https://github.com/Election-Tech-Initiative/electionguard",
+    "type": "open-source SDK for E2E verifiable elections",
+    "language_or_kind": "C++ core + Python reference (electionguard-python); MIT",
+    "stars_or_users": "878 GitHub stars (169 for electionguard-python)",
+    "last_update": "2026-06-10 (GitHub API pushed_at)",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/Election-Tech-Initiative/electionguard"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/Election-Tech-Initiative/electionguard"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/Election-Tech-Initiative/electionguard"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://github.com/Election-Tech-Initiative/electionguard"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://github.com/Election-Tech-Initiative/electionguard"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://github.com/Election-Tech-Initiative/electionguard"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://www.electionguard.vote/"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://www.electionguard.vote/"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://www.electionguard.vote/"
+    },
+    "notes": "An SDK for vendors, not a ready voting website; README says homomorphic encryption, end-to-end verification and ballot-comparison audit support. Ranked choice, multi-election, voter authentication and ballot tracking codes were not mentioned on the pages fetched (not the same as absent in the code or spec). MIT licence, 'no fee for using ElectionGuard' per electionguard.vote."
+  },
+  {
+    "name": "Zeus (GRNET)",
+    "url": "https://zeus.grnet.gr/",
+    "type": "open-source, verifiable, hosted service (Greek research network)",
+    "language_or_kind": "Python/Django fork of Helios (per search snippet only; not verified on own page)",
+    "stars_or_users": "claims >10,000 polls / 1.56M voters on homepage (self-reported; older pages cite 700-830 elections)",
+    "last_update": "not verified",
+    "F1": {
+      "value": "partial",
+      "source": "https://zeus.grnet.gr/"
+    },
+    "F2": {
+      "value": "partial",
+      "source": "https://zeus.grnet.gr/zeus/landing"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://zeus.grnet.gr/"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://zeus.grnet.gr/zeus/landing"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://zeus.grnet.gr/"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://zeus.grnet.gr/"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://zeus.grnet.gr/"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://zeus.grnet.gr/"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://zeus.grnet.gr/zeus/landing"
+    },
+    "notes": "Homepage lists party lists, score voting or STV and 'verifiable elections with one or more polls'. Landing page says open source and free for voters. Mixnet/anonymity details are only in the JETS paper (search result), not fetched. Source repository not fetched."
+  },
+  {
+    "name": "Verificatum (vmn mix-net libraries)",
+    "url": "https://github.com/verificatum",
+    "type": "open-source cryptographic libraries (mix-net)",
+    "language_or_kind": "Java, JavaScript, C",
+    "stars_or_users": "n/a",
+    "last_update": "not verified",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/verificatum"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/verificatum"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/verificatum"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://github.com/verificatum"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://github.com/verificatum"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://github.com/verificatum"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/verificatum"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://github.com/verificatum"
+    },
+    "F9": {
+      "value": "not documented",
+      "source": "https://github.com/verificatum"
+    },
+    "notes": "Libraries only (verificatum-vmn, vjsc, ...); the org profile shows no end-user voting application, so F1-F9 are not applicable to the library itself. Included only because the brief asked for it."
+  },
+  {
+    "name": "Vocdoni (vocdoni-node)",
+    "url": "https://github.com/vocdoni/vocdoni-node",
+    "type": "open-source blockchain (Vochain) voting protocol",
+    "language_or_kind": "Go; AGPL-3.0",
+    "stars_or_users": "92 GitHub stars",
+    "last_update": "2026-10-19 (GitHub API pushed_at)",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/vocdoni-node"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/vocdoni-node"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/vocdoni-node"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/vocdoni-node"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/vocdoni-node"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/vocdoni-node"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/vocdoni-node"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/vocdoni-node"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://github.com/vocdoni/vocdoni-node"
+    },
+    "notes": "README documents purpose, Go 1.23 and AGPL-3.0 only; voting types, auth and receipts are in separate developer docs that were not fetched (vocdoni.io page returned only a title). The Decidim Vocdoni module README (github.com/vocdoni/decidim-secure_elections) mentions an optional per-election 'second-factor challenge' but does not describe types."
+  },
+  {
+    "name": "Aragon (aragon/client, Aragon 1)",
+    "url": "https://github.com/aragon/client",
+    "type": "open-source DAO / blockchain governance app",
+    "language_or_kind": "JavaScript; AGPL-3.0",
+    "stars_or_users": "824 GitHub stars",
+    "last_update": "2026-03-26 (GitHub API pushed_at)",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/aragon/client"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/aragon/client"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/aragon/client"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://github.com/aragon/client"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://github.com/aragon/client"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://github.com/aragon/client"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/aragon/client"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://github.com/aragon/client"
+    },
+    "F9": {
+      "value": "not documented",
+      "source": "https://github.com/aragon/client"
+    },
+    "notes": "README describes creating and managing decentralized organisations on Ethereum; no voting mechanism documented on the page, so all features are 'not documented'. Token-weighted DAO voting is a different problem space."
+  },
+  {
+    "name": "CIVS (Condorcet Internet Voting Service, Cornell)",
+    "url": "https://civs1.civs.us/",
+    "type": "free hosted service + open-source (MIT) software",
+    "language_or_kind": "Perl CGI (github.com/andrewcmyers/civs, MIT)",
+    "stars_or_users": "96 GitHub stars; 'tens of thousands of polls' over ~20 years (Cornell paper, via search snippet)",
+    "last_update": "2026-08-21 (GitHub API pushed_at)",
+    "F1": {
+      "value": "partial",
+      "source": "https://civs1.civs.us/"
+    },
+    "F2": {
+      "value": "partial",
+      "source": "https://civs1.civs.us/"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://civs1.civs.us/sec_priv.html"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://civs1.civs.us/sec_priv.html"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://civs1.civs.us/sec_priv.html"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://civs1.civs.us/sec_priv.html"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://civs1.civs.us/"
+    },
+    "F8": {
+      "value": "yes",
+      "source": "https://civs1.civs.us/sec_priv.html"
+    },
+    "F9": {
+      "value": "yes",
+      "source": "https://github.com/andrewcmyers/civs"
+    },
+    "notes": "F1: ranked ballots with Condorcet and a proportional-representation mode; IRV and round transcripts not documented on pages read. F2: any supervisor can create polls on the hosted service. F4: voter e-mail addresses erased once the election begins; ballots stored under a hash of the receipt. F5: security page states no separate audit process (only the voter receipt). F6: private polls give each voter a unique emailed key (hash of email + authorization key + server private key; only hashes stored) - single-use emailed key, but no second factor/expiry/attempt limits documented. The www civs.cs.cornell.edu host failed TLS validation in the fetch tool, so civs1.civs.us (same service) was used."
+  },
+  {
+    "name": "OpaVote",
+    "url": "https://www.opavote.com/",
+    "type": "commercial/freemium SaaS",
+    "language_or_kind": "closed SaaS (Google-hosted per vendor blog)",
+    "stars_or_users": "customers: nonprofits, student groups, parties (vendor/FairVote statements)",
+    "last_update": "vendor blog 2017-12; site current",
+    "F1": {
+      "value": "yes",
+      "source": "https://www.opavote.com/"
+    },
+    "F2": {
+      "value": "partial",
+      "source": "https://www.opavote.com/help"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://www.opavote.com/"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://blog.opavote.com/2017/12/opavote-security-practices.html"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://www.opavote.com/"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://blog.opavote.com/2017/12/opavote-security-practices.html"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://www.opavote.com/"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://www.opavote.com/help"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://www.opavote.com/"
+    },
+    "notes": "Homepage: plurality, STV, IRV, Condorcet, approval, Borda; 'step-by-step explanation' of each count. Voters get single-use secret email links (128-bit code per vendor blog) and on-site single-use codes; blog says 2FA applies to the admin account, not voters. Raw ballots downloadable for recount (not a tamper-evident ledger). Free up to 25 voters/10 candidates. Open source: not mentioned."
+  },
+  {
+    "name": "ElectionBuddy",
+    "url": "https://www.electionbuddy.com/features/",
+    "type": "commercial SaaS",
+    "language_or_kind": "closed SaaS",
+    "stars_or_users": "free tier up to 20 voters",
+    "last_update": "site current",
+    "F1": {
+      "value": "partial",
+      "source": "https://www.electionbuddy.com/features/"
+    },
+    "F2": {
+      "value": "partial",
+      "source": "https://www.electionbuddy.com/features/"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://www.electionbuddy.com/features/"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://www.electionbuddy.com/features/"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://www.electionbuddy.com/features/"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://www.electionbuddy.com/features/"
+    },
+    "F7": {
+      "value": "partial",
+      "source": "https://www.electionbuddy.com/features/"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://www.electionbuddy.com/features/"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://www.electionbuddy.com/features/"
+    },
+    "notes": "Lists preferential ballot and STV but no round-by-round tallies; sub-group management and multiple admins; each voter gets a single-use personal voting key, optional second password or phone confirmation (OTP/email code not named); states votes cannot be linked to voters (claim, no mechanism); voter audit report and independent verification; QR codes only on mailed postcards; no per-voter receipt documented; open source not mentioned."
+  },
+  {
+    "name": "Simply Voting",
+    "url": "https://www.simplyvoting.com/",
+    "type": "commercial SaaS",
+    "language_or_kind": "closed SaaS",
+    "stars_or_users": "not documented",
+    "last_update": "site current",
+    "F1": {
+      "value": "not documented",
+      "source": "https://www.simplyvoting.com/"
+    },
+    "F2": {
+      "value": "partial",
+      "source": "https://www.simplyvoting.com/"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://www.simplyvoting.com/"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://www.simplyvoting.com/"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://www.simplyvoting.com/"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://www.simplyvoting.com/"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://www.simplyvoting.com/"
+    },
+    "F8": {
+      "value": "yes",
+      "source": "https://www.simplyvoting.com/"
+    },
+    "F9": {
+      "value": "not documented",
+      "source": "https://www.simplyvoting.com/"
+    },
+    "notes": "Homepage: several ongoing elections selectable by voters; 'each vote is encrypted to ensure anonymity'; admin chooses a voter authentication method (types not named); receipt issued after voting and receipt codes in downloadable vote file. Ranked ballots, QR, audit and open source not mentioned on the homepage."
+  },
+  {
+    "name": "Election Runner",
+    "url": "https://www.electionrunner.com/",
+    "type": "commercial SaaS",
+    "language_or_kind": "closed SaaS",
+    "stars_or_users": "free up to 20 voters",
+    "last_update": "site current",
+    "F1": {
+      "value": "not documented",
+      "source": "https://www.electionrunner.com/"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://www.electionrunner.com/"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://www.electionrunner.com/"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://www.electionrunner.com/"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://www.electionrunner.com/"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://www.electionrunner.com/"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://www.electionrunner.com/"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://www.electionrunner.com/"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://www.electionrunner.com/"
+    },
+    "notes": "Homepage only: unique Voter ID + Voter Key, one vote each, optional email notice, import from CSV/Excel, SSL and 256-bit encryption. Voting methods, audit, receipts, QR not stated on this page (not verified elsewhere)."
+  },
+  {
+    "name": "TapVoter",
+    "url": "https://tapvoter.com/",
+    "type": "commercial/freemium SaaS aimed at student councils",
+    "language_or_kind": "closed SaaS",
+    "stars_or_users": "not documented",
+    "last_update": "site current",
+    "F1": {
+      "value": "partial",
+      "source": "https://tapvoter.com/use-cases/school-board-election/"
+    },
+    "F2": {
+      "value": "partial",
+      "source": "https://tapvoter.com/use-cases/school-board-election/"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://tapvoter.com/"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://tapvoter.com/use-cases/school-board-election/"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://tapvoter.com/"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://tapvoter.com/"
+    },
+    "F7": {
+      "value": "partial",
+      "source": "https://tapvoter.com/use-cases/school-board-election/"
+    },
+    "F8": {
+      "value": "yes",
+      "source": "https://tapvoter.com/use-cases/school-board-election/"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://tapvoter.com/"
+    },
+    "notes": "Closest commercial match for the student-council use case: Ranked Choice (IRV), STAR, Approval; each eligible voter gets a single-use key that can be distributed through a QR code on a poster or school email lists (QR distributes the key; scan-to-vote flow and HTTPS link details not described); ballots 'carry no voter identity'; Audit Center can void/restore a ballot by receipt code and a public transparency log lists receipt codes; CAPTCHA; several elections can run at once. Free tier (unlimited elections up to 10,000 voters, Pro $4.99/mo). Open source and DB-level rules not mentioned. No emailed OTP second factor documented (keys are single-use, emailed as a Pro perk)."
+  },
+  {
+    "name": "RankedVote",
+    "url": "https://rankedvote.co/",
+    "type": "commercial SaaS (ranked-choice only)",
+    "language_or_kind": "closed SaaS (Civic Tech Field Guide: not open source)",
+    "stars_or_users": "not documented",
+    "last_update": "site current",
+    "F1": {
+      "value": "partial",
+      "source": "https://rankedvote.co/"
+    },
+    "F2": {
+      "value": "partial",
+      "source": "https://rankedvote.co/program"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://rankedvote.co/"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://rankedvote.co/"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://rankedvote.co/"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://rankedvote.co/"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://rankedvote.co/"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://rankedvote.co/"
+    },
+    "F9": {
+      "value": "no",
+      "source": "https://civictech.guide/projects/rankedvote"
+    },
+    "notes": "Page says elimination and redistribution repeat automatically and non-unique votes can be filtered; team accounts with roles. Auth, receipts, audit, QR not on pages read. F9 'no' rests on a Civic Tech Field Guide statement surfaced in search (page itself not fetched)."
+  },
+  {
+    "name": "BetterVoting (Equal-Vote/bettervoting, formerly star-server)",
+    "url": "https://github.com/Equal-Vote/bettervoting",
+    "type": "open-source (AGPL-3.0) + free hosted service bettervoting.com",
+    "language_or_kind": "TypeScript; docker-compose in repo",
+    "stars_or_users": "74 GitHub stars",
+    "last_update": "2026-10-22 (GitHub API pushed_at)",
+    "F1": {
+      "value": "partial",
+      "source": "https://bettervoting.com/"
+    },
+    "F2": {
+      "value": "yes",
+      "source": "https://bettervoting.com/"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://docs.bettervoting.com/contributions/developers/6_voter_authentication_modes.html"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://docs.bettervoting.com/help/is_my_vote_secret.html"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://docs.bettervoting.com/help/security_options.html"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://docs.bettervoting.com/contributions/developers/6_voter_authentication_modes.html"
+    },
+    "F7": {
+      "value": "partial",
+      "source": "https://bettervoting.com/"
+    },
+    "F8": {
+      "value": "yes",
+      "source": "https://docs.bettervoting.com/help/after_you_vote.html"
+    },
+    "F9": {
+      "value": "yes",
+      "source": "https://github.com/Equal-Vote/bettervoting"
+    },
+    "notes": "Closest OPEN-SOURCE operating product for 'free, small elections, RCV'. Homepage lists voting methods including ranked-choice (instant-runoff), email/ID-list/one-time-code voter authentication (homepage wording), ballot receipts, QR code sharing, auditing, organisation/team support, free and open source. Docs are narrower: six auth modes (email list = BetterVoting emails each voter a unique link; ID list; open modes via cookie/Keycloak/IP) and the developer page and Security Options page explicitly mention no OTP/2FA, so the homepage 'one-time codes' is probably single-use links (not verified). 'Is My Vote Secret?': identifying info removed before ballots are published, random order, ballot ID in anonymised data. Audit log tracks admin sharing of a voter's link and revealing the voter/ballot link; vendor says more auditing is planned. Receipt = email link to your own ballot. Round-by-round RCV output and DB-level constraints not verified. QR on homepage is for sharing the election link, not a scan-to-vote flow documented in docs."
+  },
+  {
+    "name": "Google Forms",
+    "url": "https://support.google.com/docs/answer/2839588",
+    "type": "commercial free general-purpose forms",
+    "language_or_kind": "closed SaaS",
+    "stars_or_users": "n/a",
+    "last_update": "help page current",
+    "F1": {
+      "value": "not documented",
+      "source": "https://support.google.com/docs/answer/2839588"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://support.google.com/docs/answer/2839588"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://support.google.com/docs/answer/2839588"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://support.google.com/docs/answer/2839588"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://support.google.com/docs/answer/2839588"
+    },
+    "F6": {
+      "value": "no",
+      "source": "https://support.google.com/docs/answer/2839588"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://support.google.com/docs/answer/2839588"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://support.google.com/docs/answer/2839588"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://support.google.com/docs/answer/2839588"
+    },
+    "notes": "'Limit to 1 response' requires Google sign-in; usernames not recorded unless email collection is on. No ranking question type, tally, audit or receipt mentioned on that page (not proof of absence elsewhere in Google docs). Free to use but not open source."
+  },
+  {
+    "name": "Microsoft Forms",
+    "url": "https://support.microsoft.com/en-us/office/create-a-form-with-microsoft-forms-4ffb64cc-7d5d-402f-b82e-b1d49418fd9d",
+    "type": "commercial general-purpose forms (part of Microsoft 365)",
+    "language_or_kind": "closed SaaS",
+    "stars_or_users": "n/a",
+    "last_update": "help page current",
+    "F1": {
+      "value": "partial",
+      "source": "https://support.microsoft.com/en-us/office/create-a-form-with-microsoft-forms-4ffb64cc-7d5d-402f-b82e-b1d49418fd9d"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://support.microsoft.com/en-us/office/adjust-your-form-or-quiz-settings-in-microsoft-forms-f255a4ba-e03c-4e12-b880-f7e8b62e0665"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://support.microsoft.com/en-us/office/adjust-your-form-or-quiz-settings-in-microsoft-forms-f255a4ba-e03c-4e12-b880-f7e8b62e0665"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://support.microsoft.com/en-us/office/adjust-your-form-or-quiz-settings-in-microsoft-forms-f255a4ba-e03c-4e12-b880-f7e8b62e0665"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://support.microsoft.com/en-us/office/adjust-your-form-or-quiz-settings-in-microsoft-forms-f255a4ba-e03c-4e12-b880-f7e8b62e0665"
+    },
+    "F6": {
+      "value": "no",
+      "source": "https://support.microsoft.com/en-us/office/adjust-your-form-or-quiz-settings-in-microsoft-forms-f255a4ba-e03c-4e12-b880-f7e8b62e0665"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://support.microsoft.com/en-us/office/adjust-your-form-or-quiz-settings-in-microsoft-forms-f255a4ba-e03c-4e12-b880-f7e8b62e0665"
+    },
+    "F8": {
+      "value": "partial",
+      "source": "https://support.microsoft.com/en-us/office/adjust-your-form-or-quiz-settings-in-microsoft-forms-f255a4ba-e03c-4e12-b880-f7e8b62e0665"
+    },
+    "F9": {
+      "value": "not documented",
+      "source": "https://support.microsoft.com/en-us/office/create-a-form-with-microsoft-forms-4ffb64cc-7d5d-402f-b82e-b1d49418fd9d"
+    },
+    "notes": "A Ranking question type exists ('More question types'), but no ranked-choice/IRV tallying is documented; 'One response per person' and 'Record name' are org-only settings; verification codes/OTP and audit log not mentioned in the settings article; respondents can request a PDF/email receipt of their answers. Not open source."
+  },
+  {
+    "name": "Voatz (mobile voting app) - USENIX Security 2020 analysis",
+    "url": "https://www.usenix.org/conference/usenixsecurity20/presentation/specter",
+    "type": "commercial proprietary mobile voting app (independent analysis)",
+    "language_or_kind": "closed (Android/iOS app)",
+    "stars_or_users": "used in West Virginia 2018 midterms and others",
+    "last_update": "analysis 2020",
+    "F1": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity20/presentation/specter"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity20/presentation/specter"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity20/presentation/specter"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity20/presentation/specter"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://www.usenix.org/conference/usenixsecurity20/presentation/specter"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity20/presentation/specter"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity20/presentation/specter"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity20/presentation/specter"
+    },
+    "F9": {
+      "value": "no",
+      "source": "https://www.usenix.org/conference/usenixsecurity20/presentation/specter"
+    },
+    "notes": "Abstract: Voatz claims a permissioned blockchain, mixnet and biometrics/hardware keys; authors report 'no public formal description of Voatz's security model' and found vote-alteration/exposure flaws. F5 'partial' = claimed blockchain only, publicly unverified. The full MIT PDF was unreadable to the fetch tool, so only the abstract was used."
+  },
+  {
+    "name": "Democracy Live OmniBallot - USENIX Security 2021 analysis",
+    "url": "https://www.usenix.org/conference/usenixsecurity21/presentation/specter-security",
+    "type": "commercial proprietary online ballot delivery/return (independent analysis)",
+    "language_or_kind": "closed web platform",
+    "stars_or_users": "used in Delaware, New Jersey (halted per paper) and others",
+    "last_update": "analysis 2021",
+    "F1": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity21/presentation/specter-security"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity21/presentation/specter-security"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity21/presentation/specter-security"
+    },
+    "F4": {
+      "value": "no",
+      "source": "https://www.usenix.org/conference/usenixsecurity21/presentation/specter-security"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity21/presentation/specter-security"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity21/presentation/specter-security"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity21/presentation/specter-security"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://www.usenix.org/conference/usenixsecurity21/presentation/specter-security"
+    },
+    "F9": {
+      "value": "no",
+      "source": "https://www.usenix.org/conference/usenixsecurity21/presentation/specter-security"
+    },
+    "notes": "Abstract: client sends voter identity, ballot selections and browser fingerprint to the vendor, which the authors say jeopardises the secret ballot (so F4 'no'); 'simplistic' integrity model vulnerable to malware and insiders; no audit, blockchain or receipt mentioned."
+  },
+  {
+    "name": "Decidim (decidim-elections + Bulletin Board)",
+    "url": "https://github.com/decidim/decidim",
+    "type": "open-source civic participation platform (AGPL-3.0)",
+    "language_or_kind": "Ruby on Rails",
+    "stars_or_users": "1,833 GitHub stars",
+    "last_update": "2026-10-23 (GitHub API pushed_at)",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/decidim-secure_elections"
+    },
+    "F2": {
+      "value": "partial",
+      "source": "https://docs.decidim.org/bulletin-board/develop/manual/decidim-integration/elections-component"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/decidim-secure_elections"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/decidim-secure_elections"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://docs.decidim.org/bulletin-board/develop/manual/decidim-integration/elections-component"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/decidim-secure_elections"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/vocdoni/decidim-secure_elections"
+    },
+    "F8": {
+      "value": "partial",
+      "source": "https://docs.decidim.org/bulletin-board/develop/manual/decidim-integration/elections-component"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://github.com/decidim/decidim"
+    },
+    "notes": "NOT independently verified: docs.decidim.org bulletin-board pages returned HTTP 404 on direct fetch; the claims come from a web-search summary of those pages (Elections component for end-to-end verifiable elections; Bulletin Board = separate public append-only log, ElectionGuard-based per another page; 'connected instance is used by all organizations'). Vocdoni's decidim-secure_elections README (fetched) says it is an optional layer over upstream decidim-elections that 'sends ballots to the Vocdoni voting network instead of the Decidim database'. Ranked choice not mentioned."
+  },
+  {
+    "name": "Consul Democracy",
+    "url": "https://github.com/consuldemocracy/consuldemocracy",
+    "type": "open-source civic participation platform (AGPL-3.0)",
+    "language_or_kind": "Ruby on Rails",
+    "stars_or_users": "~1.6k GitHub stars (README page); API: 1,554",
+    "last_update": "2026-10-22 (GitHub API pushed_at)",
+    "F1": {
+      "value": "no",
+      "source": "https://docs.consuldemocracy.org/docs_general/participation-processes/voting"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/consuldemocracy/consuldemocracy"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://docs.consuldemocracy.org/docs_general/participation-processes/voting"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://docs.consuldemocracy.org/docs_general/participation-processes/voting"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://docs.consuldemocracy.org/docs_general/participation-processes/voting"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://docs.consuldemocracy.org/docs_general/participation-processes/voting"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://docs.consuldemocracy.org/docs_general/participation-processes/voting"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://docs.consuldemocracy.org/docs_general/participation-processes/voting"
+    },
+    "F9": {
+      "value": "yes",
+      "source": "https://github.com/consuldemocracy/consuldemocracy"
+    },
+    "notes": "Voting module 'only includes closed answers', results aggregated, voting limited to verified users; poll-officer recount compared with platform-recorded votes. Ranked ballots not mentioned (F1 'no' = module documented as closed-answer only). Multitenancy not mentioned in README."
+  },
+  {
+    "name": "deOpty/flexyvotes (Django election + paid-voting platform)",
+    "url": "https://github.com/deOpty/flexyvotes",
+    "type": "student/hobby-scale open repo (single developer, created 2026-08-10) - NEAREST MATCH FOUND",
+    "language_or_kind": "Python 3.12 / Django 6.0, PostgreSQL 16, Redis, Celery",
+    "stars_or_users": "0 stars, 0 forks (53 commits per README page)",
+    "last_update": "2026-10-23 (latest commit; created 2026-08-10)",
+    "F1": {
+      "value": "yes",
+      "source": "https://raw.githubusercontent.com/deOpty/flexyvotes/main/elections/tally.py"
+    },
+    "F2": {
+      "value": "yes",
+      "source": "https://github.com/deOpty/flexyvotes"
+    },
+    "F3": {
+      "value": "yes",
+      "source": "https://raw.githubusercontent.com/deOpty/flexyvotes/main/docs/DATABASE.md"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://raw.githubusercontent.com/deOpty/flexyvotes/main/docs/DATABASE.md"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://raw.githubusercontent.com/deOpty/flexyvotes/main/core/audit.py"
+    },
+    "F6": {
+      "value": "yes",
+      "source": "https://raw.githubusercontent.com/deOpty/flexyvotes/main/core/otp.py"
+    },
+    "F7": {
+      "value": "no",
+      "source": "https://github.com/deOpty/flexyvotes"
+    },
+    "F8": {
+      "value": "yes",
+      "source": "https://github.com/deOpty/flexyvotes"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://github.com/deOpty/flexyvotes"
+    },
+    "notes": "I read README plus docs/DATABASE.md, docs/TESTING.md, core/audit.py, core/otp.py, core/crypto.py, elections/tally.py. F1: README 'ranked (IRV for 1 seat, STV for several)'; tally.py builds a per-round list (round number, tallies, exhausted, eliminated, surplus) stored in the result - UI display of rounds not verified. F2: 'Multi-tenant organizations', per-organization audit chain, roles scoped to org/election. F3: DATABASE.md: partial unique index one_consumed_authorization_per_voter, unique token_hash, unique (chain,seq), voter-id uniqueness, plus PL/pgSQL BEFORE UPDATE/DELETE append-only trigger on core_auditevent and elections_ballot that 'raises insufficient_privilege, even from pgAdmin or a raw SQL session'. CHECK constraints not mentioned; a direct-SQL double-vote test is not documented, but mechanisms are strong. F4: elections_ballot has 'No voter FK, no token, no timestamp'; ballots sealed with per-election X25519 keys (optional k-of-n trustees); but voters, emails (encrypted columns + HMAC blind index) live in the SAME PostgreSQL database - no separate store. F5: audit log is a per-organisation SHA-256 linked list (core/audit.py uses plain sha256_hex, not HMAC), in PostgreSQL (not a separate document store), 'verified every 6 hours'; no cross-store reconciliation sweep of ballots/receipts/voter flags/candidates found; 204 tests incl. tamper, race, trigger tests but no published attack results table; Merkle-tree bulletin board and Ed25519-signed results/config snapshots are extra. F6: core/otp.py stores keyed-HMAC code hash (OTPChallenge: code_hash, attempts/max_attempts, expires_at, consumed_at), per-hour issue rate limit, constant-time compare; README lists email OTP, SMS OTP, SSO, LDAP, TOTP, passkeys. F7: README mentions QR only for the carried-over event ticketing check-in, not voting. F8: 'Ballot tracker per voter' + Merkle bulletin board inclusion proofs + offline verifier tools/verify_election.py (stronger than a plain receipt). F9: docker compose up --build documented; no LICENSE file (raw URL 404) and README shows none, so licence = not documented; deployment docs target AWS, no free-hosting claim. Project also bundles paid voting (Paystack), billing, fraud scoring - much larger scope than PolyVote."
+  },
+  {
+    "name": "nnnnnndev/voting-app (FastAPI, faculty-meeting voting)",
+    "url": "https://github.com/nnnnnndev/voting-app",
+    "type": "student/hobby repo (departmental tool)",
+    "language_or_kind": "Python / FastAPI; local JSON storage (SharePoint planned); MIT",
+    "stars_or_users": "0 stars",
+    "last_update": "2026-05-19 (pushed_at)",
+    "F1": {
+      "value": "partial",
+      "source": "https://github.com/nnnnnndev/voting-app"
+    },
+    "F2": {
+      "value": "no",
+      "source": "https://github.com/nnnnnndev/voting-app"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/nnnnnndev/voting-app"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://github.com/nnnnnndev/voting-app"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://github.com/nnnnnndev/voting-app"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://github.com/nnnnnndev/voting-app"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/nnnnnndev/voting-app"
+    },
+    "F8": {
+      "value": "partial",
+      "source": "https://github.com/nnnnnndev/voting-app"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://github.com/nnnnnndev/voting-app"
+    },
+    "notes": "README: 'instant-runoff ranked-choice with sequential multi-seat IRV' (no round transcript mentioned); built for one department (others told to fork); 'two-store separation between voter receipts and ballot contents' and a voter-receipt HMAC in app/anonymity.py (but storage is local JSON, not a relational DB); sign-in through Microsoft Entra ID with a dev bypass flag; MIT; run needs venv + pip + .env + uvicorn."
+  },
+  {
+    "name": "9022574361/Online_Voting_System ('VeriVote')",
+    "url": "https://github.com/9022574361/Online_Voting_System",
+    "type": "student/hobby repo",
+    "language_or_kind": "Node.js/Express + React (Vite); MongoDB",
+    "stars_or_users": "0 stars",
+    "last_update": "2026-09-26 (pushed_at)",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/9022574361/Online_Voting_System"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/9022574361/Online_Voting_System"
+    },
+    "F3": {
+      "value": "partial",
+      "source": "https://github.com/9022574361/Online_Voting_System"
+    },
+    "F4": {
+      "value": "partial",
+      "source": "https://github.com/9022574361/Online_Voting_System"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://github.com/9022574361/Online_Voting_System"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://github.com/9022574361/Online_Voting_System"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/9022574361/Online_Voting_System"
+    },
+    "F8": {
+      "value": "yes",
+      "source": "https://github.com/9022574361/Online_Voting_System"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://github.com/9022574361/Online_Voting_System"
+    },
+    "notes": "README: votes stored in a VoteBlock collection 'without voter identity'; SHA-256 chain currentHash = SHA256(index+electionId+candidateId+timestamp+previousHash) in MongoDB (no HMAC key); 'Run Chain Audit' endpoint checks the whole chain; 'Simulate Tamper' demo button (manual, no automated attack suite); one-vote via hasVoted map + unique constraints (no triggers/CHECK/FK); OTP via Nodemailer with route rate limits (hashing/expiry/attempt caps not documented); receipt SHA-256 hash verifiable at GET /api/votes/receipt/:hash; two terminals to run; no licence; 'Built for Academic Evaluation & Security Demonstration'. Closest repo to the MongoDB-hash-chain idea of F5."
+  },
+  {
+    "name": "DikshantMaskare/securevote-online-voting-system",
+    "url": "https://github.com/DikshantMaskare/securevote-online-voting-system",
+    "type": "student/hobby repo",
+    "language_or_kind": "Python 3.12 / Flask / SQLite / Jinja2",
+    "stars_or_users": "0 stars",
+    "last_update": "2026-09-05 (pushed_at)",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/DikshantMaskare/securevote-online-voting-system"
+    },
+    "F2": {
+      "value": "no",
+      "source": "https://github.com/DikshantMaskare/securevote-online-voting-system"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/DikshantMaskare/securevote-online-voting-system"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://github.com/DikshantMaskare/securevote-online-voting-system"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://github.com/DikshantMaskare/securevote-online-voting-system"
+    },
+    "F6": {
+      "value": "yes",
+      "source": "https://github.com/DikshantMaskare/securevote-online-voting-system"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/DikshantMaskare/securevote-online-voting-system"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://github.com/DikshantMaskare/securevote-online-voting-system"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://github.com/DikshantMaskare/securevote-online-voting-system"
+    },
+    "notes": "README: 'Hashed OTP storage with expiry, resend cooldown, and attempt limits' (F6 yes); 'hash-linked vote ledger with startup integrity validation' (no HMAC, MongoDB, sweep or attack suite documented); design 'intentionally limited to one application instance' (F2 no); 'A voter hash and encrypted ballot are written to a hash-linked block' (suggests voter linkage, F4 not documented); Dockerfile for Railway (hosting documented, free tier not stated); unittest suite without detail; licence not shown."
+  },
+  {
+    "name": "RuchikaaVerma/SentinelVote-AI",
+    "url": "https://github.com/RuchikaaVerma/SentinelVote-AI",
+    "type": "student/hobby repo",
+    "language_or_kind": "Python backend + HTML/JS; MongoDB",
+    "stars_or_users": "0 stars",
+    "last_update": "2026-03-20 (pushed_at)",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/RuchikaaVerma/SentinelVote-AI"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/RuchikaaVerma/SentinelVote-AI"
+    },
+    "F3": {
+      "value": "partial",
+      "source": "https://github.com/RuchikaaVerma/SentinelVote-AI"
+    },
+    "F4": {
+      "value": "no",
+      "source": "https://github.com/RuchikaaVerma/SentinelVote-AI"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://github.com/RuchikaaVerma/SentinelVote-AI"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://github.com/RuchikaaVerma/SentinelVote-AI"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/RuchikaaVerma/SentinelVote-AI"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://github.com/RuchikaaVerma/SentinelVote-AI"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://github.com/RuchikaaVerma/SentinelVote-AI"
+    },
+    "notes": "README: 'Double vote prevention ... enforced at DB level' (constraint type not named); one MongoDB with users/votes/audit_chain/sessions and votes keyed by user_id (so ballots ARE linked to voters, F4 no); SHA-256 chain with previous block hash in audit_chain (no HMAC/sweep/attack suite); face recognition and behavioural biometrics instead of email OTP; docker compose optional; licence not shown."
+  },
+  {
+    "name": "d-kanishka/Secure_Voting_System",
+    "url": "https://github.com/d-kanishka/Secure_Voting_System",
+    "type": "student/hobby repo",
+    "language_or_kind": "Python (Flask) + React; MIT",
+    "stars_or_users": "0 stars",
+    "last_update": "2026-01-30 (pushed_at)",
+    "F1": {
+      "value": "no",
+      "source": "https://github.com/d-kanishka/Secure_Voting_System"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/d-kanishka/Secure_Voting_System"
+    },
+    "F3": {
+      "value": "no",
+      "source": "https://github.com/d-kanishka/Secure_Voting_System"
+    },
+    "F4": {
+      "value": "no",
+      "source": "https://github.com/d-kanishka/Secure_Voting_System"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://github.com/d-kanishka/Secure_Voting_System"
+    },
+    "F6": {
+      "value": "no",
+      "source": "https://github.com/d-kanishka/Secure_Voting_System"
+    },
+    "F7": {
+      "value": "no",
+      "source": "https://github.com/d-kanishka/Secure_Voting_System"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://github.com/d-kanishka/Secure_Voting_System"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://github.com/d-kanishka/Secure_Voting_System"
+    },
+    "notes": "README: per-candidate tally only (no ranking), TOTP second factor (email only for password reset), one-time token bound to user and election, 'has_voted' application logic rather than DB constraints, 'audit logging' without hash chain, QR only for TOTP provisioning, MIT licence, multi-step run. 'No' values reflect what the README states or implies; items README is silent on are marked no only where it names a different mechanism."
+  },
+  {
+    "name": "Prakhar-Pandey20/Online-Voting-System-otp-version",
+    "url": "https://github.com/Prakhar-Pandey20/Online-Voting-System-otp-version",
+    "type": "student/hobby repo",
+    "language_or_kind": "Python / Django (email OTP 2FA)",
+    "stars_or_users": "0 stars",
+    "last_update": "2026-06-05 (pushed_at)",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/Prakhar-Pandey20/Online-Voting-System-otp-version"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/Prakhar-Pandey20/Online-Voting-System-otp-version"
+    },
+    "F3": {
+      "value": "partial",
+      "source": "https://github.com/Prakhar-Pandey20/Online-Voting-System-otp-version"
+    },
+    "F4": {
+      "value": "no",
+      "source": "https://github.com/Prakhar-Pandey20/Online-Voting-System-otp-version"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://github.com/Prakhar-Pandey20/Online-Voting-System-otp-version"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://github.com/Prakhar-Pandey20/Online-Voting-System-otp-version"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/Prakhar-Pandey20/Online-Voting-System-otp-version"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://github.com/Prakhar-Pandey20/Online-Voting-System-otp-version"
+    },
+    "F9": {
+      "value": "not documented",
+      "source": "https://github.com/Prakhar-Pandey20/Online-Voting-System-otp-version"
+    },
+    "notes": "README: unique email + ForeignKey constraints (Django ORM), Votes table has a ForeignKey to the Voter (so ballots are linked, F4 no), email OTP stored as plain string field with a request counter (hashing/expiry not documented), blockchain mirroring only as a future idea, multi-step setup, no licence shown."
+  },
+  {
+    "name": "jevk/RCVElectionSystem",
+    "url": "https://github.com/jevk/RCVElectionSystem",
+    "type": "student/hobby repo (gaming community)",
+    "language_or_kind": "Python/Flask + Waitress; HTML/JS",
+    "stars_or_users": "0 stars",
+    "last_update": "2026-06-15 (pushed_at)",
+    "F1": {
+      "value": "partial",
+      "source": "https://github.com/jevk/RCVElectionSystem"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/jevk/RCVElectionSystem"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/jevk/RCVElectionSystem"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://github.com/jevk/RCVElectionSystem"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://github.com/jevk/RCVElectionSystem"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://github.com/jevk/RCVElectionSystem"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/jevk/RCVElectionSystem"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://github.com/jevk/RCVElectionSystem"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://github.com/jevk/RCVElectionSystem"
+    },
+    "notes": "README: implements instant-runoff voting with candidates eliminated in rounds and votes redistributed (no transcript mentioned); no database, configured via settings.json; run via application.py/waitress; no licence shown."
+  },
+  {
+    "name": "dryairship/online-election-manager",
+    "url": "https://github.com/dryairship/online-election-manager",
+    "type": "student project (IIT Kanpur course ESC101A)",
+    "language_or_kind": "Go (gin) + MongoDB; client-side crypto (SJCL per topics); MIT",
+    "stars_or_users": "20 stars",
+    "last_update": "2021-07-26 (pushed_at)",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/dryairship/online-election-manager"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/dryairship/online-election-manager"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/dryairship/online-election-manager"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://github.com/dryairship/online-election-manager"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://github.com/dryairship/online-election-manager"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://github.com/dryairship/online-election-manager"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/dryairship/online-election-manager"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://github.com/dryairship/online-election-manager"
+    },
+    "F9": {
+      "value": "partial",
+      "source": "https://github.com/dryairship/online-election-manager"
+    },
+    "notes": "README: 'cryptographically secure portal', voters/ceo collections, 'Send authcodes to all the voters (TODO: Add details)'; docker-compose deployment; MIT. Algorithms not named in README body. Inactive since 2021."
+  },
+  {
+    "name": "Dharanibalan45/Online-Voting-Platform",
+    "url": "https://github.com/Dharanibalan45/Online-Voting-Platform",
+    "type": "student/hobby repo",
+    "language_or_kind": "TypeScript/Node/Express/React + MongoDB",
+    "stars_or_users": "0 stars",
+    "last_update": "2026-10-15 (pushed_at)",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/Dharanibalan45/Online-Voting-Platform"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/Dharanibalan45/Online-Voting-Platform"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/Dharanibalan45/Online-Voting-Platform"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://github.com/Dharanibalan45/Online-Voting-Platform"
+    },
+    "F5": {
+      "value": "not documented",
+      "source": "https://github.com/Dharanibalan45/Online-Voting-Platform"
+    },
+    "F6": {
+      "value": "partial",
+      "source": "https://github.com/Dharanibalan45/Online-Voting-Platform"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/Dharanibalan45/Online-Voting-Platform"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://github.com/Dharanibalan45/Online-Voting-Platform"
+    },
+    "F9": {
+      "value": "not documented",
+      "source": "https://github.com/Dharanibalan45/Online-Voting-Platform"
+    },
+    "notes": "README: 6-digit email OTP, 2-minute expiry, resend, attempt limiting (hashing not documented); duplicate-vote prevention listed without mechanism; AuditLogs mentioned without hash chaining; multi-step run; no licence shown."
+  },
+  {
+    "name": "Lervez5/Kuraone",
+    "url": "https://github.com/Lervez5/Kuraone",
+    "type": "student/hobby-scale repo (proprietary notice)",
+    "language_or_kind": "Django + React/Vite, MySQL",
+    "stars_or_users": "1 star",
+    "last_update": "2026-05-09 (pushed_at)",
+    "F1": {
+      "value": "not documented",
+      "source": "https://github.com/Lervez5/Kuraone"
+    },
+    "F2": {
+      "value": "not documented",
+      "source": "https://github.com/Lervez5/Kuraone"
+    },
+    "F3": {
+      "value": "not documented",
+      "source": "https://github.com/Lervez5/Kuraone"
+    },
+    "F4": {
+      "value": "not documented",
+      "source": "https://github.com/Lervez5/Kuraone"
+    },
+    "F5": {
+      "value": "partial",
+      "source": "https://github.com/Lervez5/Kuraone"
+    },
+    "F6": {
+      "value": "not documented",
+      "source": "https://github.com/Lervez5/Kuraone"
+    },
+    "F7": {
+      "value": "not documented",
+      "source": "https://github.com/Lervez5/Kuraone"
+    },
+    "F8": {
+      "value": "not documented",
+      "source": "https://github.com/Lervez5/Kuraone"
+    },
+    "F9": {
+      "value": "no",
+      "source": "https://github.com/Lervez5/Kuraone"
+    },
+    "notes": "README: 'hash-chained audit log for tamper detection' (no HMAC, sweep or attack suite documented); 'make start' one command to build/start/migrate/seed; footer says 'All rights reserved. Private and Confidential' so not open source."
+  }
+]
