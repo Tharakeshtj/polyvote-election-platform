@@ -89,24 +89,20 @@ def compare_slide(kicker, title, rows, strip, notes_text, widths=(2.0, 5.6, 1.4)
     return s
 
 
-# ------------------------------------------------------------------ keep the title and thank-you slides, drop the rest
-sldIdLst = prs.slides._sldIdLst
-ids = list(sldIdLst)
-for el in ids[1:-1]:
-    prs.part.drop_rel(el.rId)
-    sldIdLst.remove(el)
-title_slide, thanks_slide = prs.slides[0], prs.slides[1]
+# ------------------------------------------------------------------ keep every Review 2 slide; its thank-you slide moves to the end
+R2_COUNT = len(prs.slides)
+title_slide, thanks_slide = prs.slides[0], prs.slides[R2_COUNT - 1]
 from pptx.opc.packuri import PackURI  # noqa: E402
 thanks_slide.part.partname = PackURI('/ppt/slides/slide90.xml')   # keep new slide part names from colliding with it
-set_runs_text(by_name(title_slide, 26), ['Review 3 · Final Project Review · Guide: Dr. Katari Balakrishna'])
+set_runs_text(by_name(title_slide, 26), ['Reviews 2 and 3 · Final Project Review · Guide: Dr. Katari Balakrishna'])
 set_runs_text(by_name(title_slide, 28), [FOOT.format(n=1)])
 notes(title_slide,
-      'Good morning, sir, and everyone. This is Review 3, the final review of PolyVote, our ranked-choice election platform with a tamper-evident audit trail. '
+      'Good morning, sir, and everyone. This deck has two parts: slides 2 to 20 are the Review 2 presentation, and from slide 21 we continue with Review 3. This is Review 3, the final review of PolyVote, our ranked-choice election platform with a tamper-evident audit trail. '
       'Review 1 presented the design and Review 2 showed the working system. Today we show the completed system: a MongoDB Atlas ledger, a keyed hash chain, '
       'a second authentication factor using emailed one-time codes, public hosting, and an evaluation that tests our claims instead of asserting them. '
       'We will also show a short live demonstration of the version with email verification switched on.')
 
-N = [1]
+N = [R2_COUNT - 1]
 
 
 def slide(kicker, title):
@@ -115,25 +111,6 @@ def slide(kicker, title):
     frame(s, kicker, title, N[0])
     return s
 
-
-# ================================================================== 2 where we stand
-s = slide('REVIEW 3 · WHERE WE STAND', 'What we submitted, what we built, what is new today')
-cards = [('SUBMITTED', 'Reviews 1 and 2', 'Design, schema, ER and data-flow diagrams, literature; then a working React + FastAPI system, instant-runoff tally, hash-chained receipts and a live tamper test.'),
-         ('FEEDBACK', 'At Review 2', 'Confirm the voter with a second factor (OTP or face ID); finish MongoDB and hosting; show that the design is an improvement, not just a build.'),
-         ('NEW TODAY', 'This review', 'Atlas ledger, keyed chain, extended sweep, emailed one-time code, public link and QR, and 47 executable test scenarios with benchmarks.')]
-for i, (tg, head, body) in enumerate(cards):
-    x = 0.5 + i * 3.09
-    card(s, x, 1.2, 2.83, 2.5)
-    chip(s, x + 0.2, 1.34, tg)
-    tb(s, x + 0.2, 1.72, 2.45, 0.28, head, size=15, color=NAVY, bold=True)
-    tb(s, x + 0.2, 2.08, 2.45, 1.5, body, size=12, color=INK)
-card(s, 0.5, 3.88, 9.0, 1.2, fill=LAV)
-tb(s, 0.75, 3.96, 1.7, 0.7, '47', size=40, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
-tb(s, 0.75, 4.64, 1.9, 0.3, 'test scenarios', size=11, color=MUTED)
-tb(s, 2.8, 4.02, 6.5, 1.0, [[('Left open by choice: ', {'bold': True, 'color': NAVY}), ('Oracle with PL/SQL and roles, the POSITION entity, and a true cloud platform. SQLite stays for this project.', {})],
-                              [('', {})],
-                              [('Today: ', {'bold': True, 'color': NAVY}), ('recap, new features, evidence, feature-by-feature comparison, privacy, limits, publication plan.', {})]], size=11, color=INK, after=2)
-notes(s, 'A quick map of where we are. Review 1 was the design; Review 2 was the working system. At the end of Review 2 we received three pieces of feedback: add a second factor to confirm that the person voting is the person whose credentials are used, finish the MongoDB and hosting items, and show that the design is genuinely better rather than just built. Today answers all three, backed by forty-seven executable test scenarios. What remains open is deliberate: Oracle with PL/SQL and roles, the POSITION entity and a true cloud platform; we have kept SQLite for this project.')
 
 # ================================================================== 2b picking up from Review 2
 s = slide('PICKING UP FROM REVIEW 2', 'Review 2 left a short list; two new features lead it')
@@ -164,51 +141,6 @@ notes(s, 'This slide is the direct response to the Review 2 comments. The second
          'Hosting is a public HTTPS link with a QR code, so a phone can vote. And to prove the design is better, we built a forty-seven scenario suite and ran it against both the Review 2 design and the final one. '
          'The weaknesses we knew about, such as injected ballots, forged receipts and renamed candidates, each have a test and a fix. Where we still say future work, we explain why.')
 
-# ================================================================== whole project: problem, tour, counting
-s = slide('THE WHOLE PROJECT · WHY IT EXISTS', 'Small elections need ranked results and proof')
-cards = [('THE PROBLEM', 'Small elections today', 'Clubs, councils and classes use form tools or one-table apps: one password per voter, results held by whoever has access, and no way to show that a vote was not edited afterwards.'),
-         ('THE GOAL', 'What PolyVote does', 'Run ranked-choice (instant-runoff) elections for many organisations, keep ballots anonymous in storage, and make later tampering detectable with checks anyone can rerun.'),
-         ('THE METHOD', 'Database first', 'Rules live in the database (trigger, CHECK, UNIQUE, foreign keys); a second store holds a keyed hash-chain ledger; an executable suite attacks the design and reports what it catches.')]
-for i, (tg, head, body) in enumerate(cards):
-    x = 0.5 + i * 3.09
-    card(s, x, 1.2, 2.83, 2.45)
-    chip(s, x + 0.2, 1.34, tg)
-    tb(s, x + 0.2, 1.72, 2.45, 0.28, head, size=14, color=NAVY, bold=True)
-    tb(s, x + 0.2, 2.08, 2.45, 1.5, body, size=11.5, color=INK)
-for i, (big, lab) in enumerate([('47', 'executable test scenarios'), (f'{nd("patched")} of 13', 'tampering attacks caught automatically'), ('3', 'separate stores: election, verification, ledger')]):
-    x = 0.5 + i * 3.09
-    card(s, x, 3.85, 2.83, 1.2, fill=LAV)
-    tb(s, x + 0.15, 3.9, 1.45, 1.1, big, size=26, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, x + 1.6, 3.95, 1.15, 1.0, lab, size=10, color=INK, anchor=MSO_ANCHOR.MIDDLE)
-notes(s, 'Before the new material, the whole project in one slide. The problem: small elections at clubs, councils and classes usually run on form tools or one-table apps, with one password per voter and no way to show afterwards that a vote was not edited. '
-         'The goal: ranked-choice, instant-runoff elections for many organisations, with ballots kept anonymous in storage and tampering made detectable by checks anyone can rerun. '
-         'The method: a database project first. The rules live in the database itself; a second store holds a keyed hash-chain ledger; and an executable suite attacks the design and reports what it catches. '
-         f'The three numbers at the bottom come from the evaluation later in this deck: forty-seven test scenarios, {nd("patched")} of thirteen tampering attacks caught automatically, and three separate stores.')
-
-s = slide('THE WHOLE PROJECT · WHAT IT DOES', 'The whole system in four screens')
-tour = [(crop_box('web_home.png', 0.2, 0.12, 0.8, 0.55, 'tour'), 'Voter site: open elections, receipt check, plain-language features'),
-        (crop_box('admin_voters_email.png', 0.2, 0.0, 1.0, 0.3, 'tour'), 'Admin: voter roster with the email used for the one-time code'),
-        (crop_box('admin_results_clean.png', 0.2, 0.08, 1.0, 0.36, 'tour'), 'Admin: integrity sweep (46 / 46 / 46) and the instant-runoff tally'),
-        (crop_box('admin_ledger.png', 0.18, 0.0, 1.0, 0.62, 'tour'), 'Admin: audit ledger, chain intact, 46 receipts')]
-for i, (img, cap) in enumerate(tour):
-    x, y = 0.5 + (i % 2) * 4.6, 1.15 + (i // 2) * 2.1
-    fit_pic(s, img, x, y, 4.4, 1.68)
-    tb(s, x, y + 1.72, 4.4, 0.3, cap, size=9.5, color=NAVY, bold=True, align=PP_ALIGN.CENTER)
-notes(s, 'The whole system in four screens, all from the real running application. Top left, the voter site: open elections, the receipt check and a plain-language summary of what the system does. '
-         'Top right, the administrator roster: each voter has a registration number and an email address, which is only used to send the one-time code. '
-         'Bottom left, the results page: the integrity sweep, with ballots, receipts and voted flags all at forty-six, and below it the instant-runoff tally. '
-         'Bottom right, the audit ledger: one receipt per ballot, each linked to the one before, with a green banner when the whole chain verifies.')
-
-s = slide('THE WHOLE PROJECT · COUNTING', 'Instant-runoff counting, round by round')
-bullets(s, 0.5, 1.25, 4.3, 3.9, [('Rank:', 'each voter ranks up to three candidates.'), ('Count:', 'first choices are counted; a majority of continuing ballots wins.'),
-                                 ('Eliminate:', 'otherwise the last-place candidate drops out and those ballots move to their next choice.'), ('Repeat:', 'until someone holds a majority.'),
-                                 ('Shown in full:', 'every round, with counts and percentages, so anyone can follow the result.'),
-                                 ('Edge case, flagged:', 'round 4 here is a 22 to 22 tie; the engine eliminated one candidate by internal order and says so on screen. A published tie rule is future work.')], size=10.5)
-fit_pic(s, crop_box('admin_results_clean.png', 0.22, 0.35, 0.98, 0.9, 'irv'), 5.0, 1.15, 4.5, 4.05)
-notes(s, 'How counting works, using the demo election: forty-six ballots, five candidates. Each voter ranks up to three. The engine counts first choices; if nobody holds a majority of the continuing ballots, the last-place candidate is eliminated and those ballots move to their next choice, and so on. '
-         'The screenshot shows every round with counts and percentages. In round four there was a twenty-two to twenty-two tie for last place; the engine broke it by internal order and the page says so in a warning line. We do not hide this: a published tie rule, and a statistical audit, are listed as future work. '
-         'The winner, Chaitanya Reddy, reaches a majority in round five.')
-
 # ================================================================== 6 threat model
 s = slide('THREAT MODEL', 'Who the attacker is, and who we do not stop')
 fit_pic(s, ASSETS / 'diagrams' / 'threat_model.png', 0.5, 1.15, 9.0, 3.7, border=False)
@@ -226,23 +158,6 @@ bullets(s, 6.7, 1.3, 2.9, 3.8, [('Election DB:', 'roster, candidates, anonymous 
 notes(s, 'The architecture. One FastAPI service that also serves the React app, exposed through a tunnel. Behind it three stores. The election database holds the roster, candidates and anonymous ballots. '
          'The verification database is a separate file that holds voter emails and one-time-code challenges, and it is never joined to ballots. The ledger is a MongoDB Atlas collection. Secrets live in an environment file outside all three. '
          'The point of the separation is that an administrator of one store cannot touch the others; only the application host sees all three, which is why host compromise is outside our model.')
-
-# ================================================================== 9 ER
-s = slide('DATA MODEL', 'Data model: election, ledger and verification stores')
-fit_pic(s, ASSETS / 'diagrams' / 'er.png', 0.4, 1.15, 6.6, 4.1, border=False)
-bullets(s, 7.1, 1.3, 2.5, 3.8, ['Shared multi-tenant schema, scoped by election.', 'No column links a ballot to a voter.', 'Candidate roster hash sealed in the ledger.', 'Emails live in a different file; no key reaches ballots.', 'Trigger, CHECK, UNIQUE, FK enforce the rules.'], size=11)
-notes(s, 'The updated ER diagram. The left frame is the election database, unchanged in structure from Review 2 apart from what it protects. The dashed box is a ledger block, a JSON document linked to a ballot by its token, not by a foreign key. '
-         'The right frame is new: the verification database with voter contacts, challenges and a mail log. Notice there is deliberately no line from it to the ballot table. A voter\'s email can never be joined to a ballot.')
-
-# ================================================================== 10 casting
-s = slide('CASTING A BALLOT', 'One serialised, transactional path touches every structure')
-fit_pic(s, ASSETS / 'diagrams' / 'cast_transaction.png', 0.5, 1.1, 3.9, 4.2, border=False)
-bullets(s, 4.7, 1.3, 4.8, 3.8, [('Serialised:', 'a write lock plus the voted flag, checked inside the transaction.'), ('Atomic:', 'flag and ballot rows commit together or not at all.'),
-                                 ('Anonymous:', 'the ballot is stored under a random token.'), ('Sealed:', 'then a block with the ranks hash and roster hash joins the ledger.'),
-                                 ('Fails visibly:', 'if the ledger is down after commit, the sweep reports a ballot with no receipt.')], size=12)
-notes(s, 'Casting a ballot is the one path that touches everything, so it is serialised. After authentication the server takes a write lock, checks the election is open, validates the ranking and confirms the voter has not voted. '
-         'In one transaction it sets the voted flag and inserts the ranked rows under a random token. Then it appends a sealed block to the ledger and invalidates the session. '
-         'The ledger append happens after the commit; if the ledger were unreachable at that instant, the ballot would exist without a receipt, and the sweep reports exactly that. We chose the variant that fails visibly.')
 
 # ================================================================== 11 keyed ledger
 s = slide('KEYED AUDIT LEDGER', 'Keyed chain: rebuilding it needs the secret key')
@@ -295,18 +210,6 @@ s = slide('EMAIL ONE-TIME CODE', 'A correct password no longer opens a ballot on
 fit_pic(s, ASSETS / 'diagrams' / 'otp_sequence.png', 0.5, 1.15, 9.0, 4.05, border=False)
 notes(s, 'The second factor. The voter enters the registration number and password. If they are right, the server does not issue a session; it issues a challenge, generates a six-digit code, stores only a keyed hash of it, and emails the code from a background thread so the page never waits on the mail server. '
          'The voter types the code, the server compares it in constant time, checks the attempt count and the single-use flag, and only then issues the voting session. A failed email never blocks sign-in because the code is also visible in the administrator outbox.')
-
-# ================================================================== 15 OTP design
-s = slide('EMAIL ONE-TIME CODE · DESIGN', 'Small choices that make it hold up')
-table(s, 0.5, 1.2, 5.6, ['Choice', 'Value'], [
-    ['Code', '6 digits from a secure generator'], ['Stored as', 'HMAC of challenge and code'], ['Valid for', '5 minutes, single use'],
-    ['Guesses', '3 per code, then locked'], ['Resend', '1 per 30 s, 5 per challenge'], ['Challenges', '5 per voter per 15 min'],
-    ['Delivery', 'SMTP; failure never blocks sign-in'], ['Where emails live', 'Separate database'],
-], [1.7, 3.9], size=10, row_h=0.4)
-fit_pic(s, crop_center('voter_otp.png'), 6.35, 1.2, 3.15, 3.3)
-tb(s, 6.35, 4.55, 3.15, 0.5, 'The voter sees only a masked address.', size=10, color=MUTED, italic=True, align=PP_ALIGN.CENTER)
-notes(s, 'The choices that make it hold up. Codes come from a cryptographically secure generator, so they are unpredictable. Only an HMAC of the code is stored, so the database never holds a usable code. A code lasts five minutes, works once, and allows three guesses. '
-         'Resends are limited, and so are new challenges per voter, so a resend cannot be used to keep guessing. Emails live in their own database. A test found a real bug here, which we will show in the evaluation.')
 
 # ================================================================== 16 voter experience
 s = slide('THE VOTER EXPERIENCE', 'Sign in, confirm by code, rank, and keep a receipt')
@@ -432,43 +335,6 @@ notes(s, f'Performance. The keyed chain and the three extra rules cost little: t
          f'Against Atlas an append costs about {M["1000"]["append_ms_median"]:.0f} milliseconds at any size, which is mostly network time on a mobile hotspot. So Atlas is not about raw speed at small sizes; it is about flat growth, concurrency control, and holding the ledger off the application machine.')
 
 # ================================================================== comparative study (feature by feature, with sources)
-s = slide('COMPARATIVE STUDY · SCOPE', 'We compared PolyVote with 33 systems in five groups')
-kinds = [('Verifiable and research', '8', 'Helios, Belenios, Civitas, ElectionGuard, Zeus, Verificatum, Vocdoni, Aragon'),
-         ('Web services and form tools', '10', 'CIVS, OpaVote, ElectionBuddy, Simply Voting, Election Runner, TapVoter, RankedVote, BetterVoting, Google and Microsoft Forms'),
-         ('Independent analyses', '2', 'Voatz (USENIX 2020) and Democracy Live (USENIX 2021)'),
-         ('Civic platforms', '2', 'Decidim and Consul Democracy'),
-         ('Open-source student projects', '11', 'FlexyVotes, VeriVote and nine other GitHub repositories')]
-for i, (h, n_, ex) in enumerate(kinds):
-    x, y = 0.5 + (i % 3) * 3.09, 1.2 + (i // 3) * 1.75
-    card(s, x, y, 2.83, 1.55)
-    tb(s, x + 0.2, y + 0.1, 0.8, 0.5, n_, size=24, color=NAVY, bold=True)
-    tb(s, x + 0.95, y + 0.14, 1.75, 0.5, h, size=11, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, x + 0.2, y + 0.72, 2.45, 0.8, ex, size=9.5, color=INK)
-card(s, 6.68, 2.95, 2.83, 1.55, fill=LAV)
-tb(s, 6.88, 3.03, 2.45, 1.45, [[('How', {'bold': True, 'color': NAVY})], [('We read each project\'s own page, README or paper (23 web queries, 20 GitHub searches, 23 Oct 2026). A feature counts only if it is documented. "Not documented" is not proof of absence.', {'size': 9.5})]], size=11, color=INK, after=3)
-tb(s, 0.5, 4.75, 9.0, 0.5, 'We did not run these systems. Every cell has a source URL in the evidence file; PolyVote\'s own cells rest on the tests in this deck.', size=10.5, color=NAVY, bold=True)
-notes(s, 'The comparative study. A tool like this has no single obvious competitor, so we broke it into nine features and compared each against the kinds of systems people actually use. '
-         'We read thirty-three systems in five groups: eight verifiable or research systems such as Helios and Belenios; ten web services and form tools; two independent security analyses of commercial voting products; two civic platforms; and eleven open-source student or hobby projects from GitHub. '
-         'We ran twenty-three web searches and twenty repository searches on the twenty-third of October. For each system we read its own page, README or paper, and a feature counts only if it is documented. Not documented is not proof of absence. '
-         'We did not run these systems ourselves, and every cell has a source URL in our evidence file.')
-
-s = slide('COMPARATIVE STUDY · THE NINE FEATURES', 'Nine features, each with a way to test it')
-table(s, 0.5, 1.12, 9.0, ['', 'Feature', 'How we prove PolyVote has it'], [
-    ['F1', 'Ranked-choice counting with a round-by-round transcript', '46-ballot election, 5 rounds shown, tie flagged'],
-    ['F2', 'Many organisations on one install', 'Tests B8 and B13'],
-    ['F3', 'Voting rules enforced inside the database', '6 of 7 direct SQL attempts refused; 13 of 13 API abuses refused; 1 of 20 simultaneous casts accepted'],
-    ['F4', 'No link between ballot and voter; emails in a separate database', 'Automated check: no shared column, no email column in the election database'],
-    ['F5', 'Keyed audit ledger in a separate store, with a reconciling sweep', f'{nd("patched")} of 13 tampering attacks caught (plain chain: {nd("baseline")}); identical in 3 runs'],
-    ['F6', 'Emailed one-time code as a second factor', '14 of 14 tests, including replay, expiry and guess limits'],
-    ['F7', 'Scan-to-vote QR code on a phone', 'A real ballot cast from a phone through the public link'],
-    ['F8', 'Receipt to check a ballot is recorded and counted', 'Receipt check page; one ledger block per ballot'],
-    ['F9', 'Easy to run and host', 'One command locally; free hosted demo configured for Render']],
-    [0.45, 4.0, 4.55], size=9, header_size=9.5, row_h=0.4, head_h=0.3)
-notes(s, 'These are the nine features we compare, and next to each the evidence that PolyVote itself has it. F1 ranked counting, shown in the results screen. F2 many organisations, tests B8 and B13. '
-         f'F3 rules inside the database: six of seven direct SQL attempts refused, all thirteen API abuse tests refused, and exactly one of twenty simultaneous casts accepted. F4 no link between ballot and voter, with emails in a separate database, checked by an automated column test. '
-         f'F5 the keyed ledger and sweep: {nd("patched")} of thirteen attacks caught against {nd("baseline")} for a plain chain. F6 the emailed code: fourteen of fourteen tests. F7 QR voting: a real ballot cast from a phone. F8 the receipt, F9 easy to run. '
-         'The next slide shows which other systems document which feature, and the five slides after it go feature by feature with sources.')
-
 MATRIX = [('Helios', 'N - - P P - - Y P'), ('Belenios', 'P P - P P P - Y P'), ('OpaVote', 'Y P - - - P - - P'), ('ElectionBuddy', 'P P - P P P P - P'),
           ('TapVoter', 'P P - P P P P Y P'), ('BetterVoting', 'P Y - P P P P Y Y'), ('Google Forms', '- - - P - N - - P'),
           ('FlexyVotes', 'Y Y Y P P Y N Y P'), ('VeriVote', '- - P P P P - Y P'), ('SecureVote', '- N - - P Y - - P'), ('PolyVote (our tests)', 'Y Y Y Y Y Y Y Y Y')]
@@ -485,24 +351,12 @@ for i, (nm, codes) in enumerate(MATRIX):
         fill, col, txt = {'Y': (C_Y, GREEN, 'Yes'), 'P': (C_P, AMBER, 'Part'), 'N': (C_N, RED, 'No'), '-': (LAV, MUTED, '–')}[cd]
         label_shape(s, x0 + 2.4 + j * cw, y, cw - 0.04, rh - 0.04, txt, size=8.5, color=col, fill=fill, bold=True, rounded=False)
 tb(s, 8.75, 1.12, 0.8, 3.2, [[('Yes', {'bold': True, 'color': GREEN})], [('documented', {'size': 8})], [('', {})], [('Part', {'bold': True, 'color': AMBER})], [('partly', {'size': 8})], [('', {})], [('No', {'bold': True, 'color': RED})], [('absent', {'size': 8})], [('', {})], [('–', {'bold': True, 'color': MUTED})], [('not documented', {'size': 8})]], size=10, color=INK)
-tb(s, 0.5, 4.85, 9.0, 0.4, 'F1 ranked counting · F2 many organisations · F3 database rules · F4 unlinked ballots · F5 keyed ledger and sweep · F6 email OTP · F7 QR voting · F8 receipt · F9 easy to run. '
+tb(s, 0.5, 4.85, 9.0, 0.4, '33 systems read, 11 shown. F1 ranked counting · F2 many organisations · F3 database rules · F4 unlinked ballots · F5 keyed ledger and sweep · F6 email OTP · F7 QR voting · F8 receipt · F9 easy to run. '
    'Other rows: documentation we read. F5 is judged strictly (keyed chain, separate store, reconciling sweep, published attack results), so most systems score Part.', size=8.5, color=MUTED, italic=True)
 notes(s, 'This matrix shows eleven of the thirty-three systems against the nine features. Green means documented, amber partly, red documented as absent, and a dash means we found nothing on the pages we read, which is not the same as absent. '
          'The bottom row is PolyVote, and it is all green only because those are the cells our own tests back. Read the other rows for what they show: FlexyVotes is nearly as complete and is the closest project we found; it is missing QR voting and has a weaker form of the ledger. '
          'BetterVoting covers many features but not database rules or a ledger of ballots. The cryptographic systems, Helios and Belenios, score amber on most of these because they solve the problem differently, with encryption. '
          'Feature five is judged strictly, which is why most rows are amber there. Nothing in the matrix says PolyVote is better overall; it says that one free small-election tool documenting every column is not something we found.')
-
-compare_slide('FEATURES 1-2 · COUNTING AND MANY ORGANISATIONS', 'Ranked counting and many organisations: not unique', [
-    ['OpaVote (web service)', 'Instant-runoff, STV and Condorcet with a step-by-step explanation of each count; free up to 25 voters; sub-groups only partly.', 'F1 Yes · F2 Part'],
-    ['FlexyVotes (GitHub)', 'Instant-runoff for one seat, STV for several, with per-round data stored; many organisations with scoped roles.', 'F1 Yes · F2 Yes'],
-    ['BetterVoting (GitHub)', 'Ranked-choice listed among voting methods; organisations and teams; round-by-round output not verified.', 'F1 Part · F2 Yes'],
-    ['Belenios', 'Condorcet-Schulze and STV are documented; instant-runoff and round transcripts are not.', 'F1 Part · F2 Part'],
-    ['Microsoft Forms', 'A ranking question exists, but no instant-runoff tally is documented.', 'F1 Part']],
-    [[('PolyVote: ', {'bold': True, 'color': NAVY}), ('counts instant-runoff and shows every round (46 ballots, 5 candidates, 5 rounds, tie flagged). Several organisations and elections ran in one install in tests B8 and B13.', {})],
-     [('Verdict: ', {'bold': True, 'color': NAVY}), ('a baseline feature, not our claim. OpaVote and FlexyVotes also count ranked ballots, and OpaVote explains every count.', {})]],
-    'Features one and two. Ranked-choice counting is common: OpaVote offers instant-runoff, STV and Condorcet with an explanation of each count, and FlexyVotes stores per-round data. BetterVoting lists ranked-choice and has organisations and teams, though we could not verify its round output. '
-    'Belenios documents Condorcet and STV but not instant-runoff, and Microsoft Forms has a ranking question but no ranked tally. PolyVote counts instant-runoff and shows every round, and several organisations ran in one install in our tests. '
-    'The honest verdict is that this is a baseline feature. We list it because a voting tool without it would not be usable, not because it sets us apart.')
 
 compare_slide('FEATURES 3-4 · DATABASE RULES AND UNLINKED BALLOTS', 'Database rules and unlinked ballots', [
     ['FlexyVotes (GitHub)', 'Unique indexes and append-only triggers that block even raw SQL; ballot rows carry no voter key. Voters and encrypted emails share one PostgreSQL database.', 'F3 Yes · F4 Part'],
@@ -543,19 +397,6 @@ compare_slide('FEATURES 6-7 · SECOND FACTOR AND QR VOTING', 'Emailed codes exis
     'PolyVote adds a six-digit code, hashed, valid five minutes, single use, three guesses, with resend limits, and fourteen of fourteen tests pass, including the one that found a real defect. A QR code on the vote page opens the ballot on any phone, and we cast a real ballot from one. '
     'So feature six alone is not unique. The combination of scan-to-vote with an emailed code is what we did not find documented elsewhere, and we say so in those words.', row_h=0.4, size=9)
 
-compare_slide('FEATURES 8-9 · RECEIPT AND EASE OF RUNNING', 'Receipts, cost and ease of running', [
-    ['Helios, Belenios', 'Voters can check their ballot cryptographically, a stronger guarantee than a receipt. Helios needs PostgreSQL, RabbitMQ and about nine install steps.', 'F8 Yes · F9 Part'],
-    ['CIVS (Cornell)', 'Receipt per voter; free hosted service; MIT-licensed Perl code.', 'F8 Yes · F9 Yes'],
-    ['TapVoter', 'Receipt codes and a public transparency log; free tier up to 10,000 voters; closed source.', 'F8 Yes · F9 Part'],
-    ['BetterVoting', 'Receipt by email; AGPL licence; docker-compose in the repository; free hosted service.', 'F8 Yes · F9 Yes'],
-    ['FlexyVotes (GitHub)', 'Per-voter ballot tracker, Merkle proofs and an offline verifier; docker compose; no licence file found.', 'F8 Yes · F9 Part'],
-    ['OpaVote, ElectionBuddy', 'Free for 25 and 20 voters; closed source; no receipt documented.', 'F9 Part']],
-    [[('PolyVote: ', {'bold': True, 'color': NAVY}), ('a receipt proves a ballot is recorded and counted, not what it says, so it is weaker than Helios or Belenios. One command starts it (python -m uvicorn server:app); a free hosted demo is configured for Render; the source is public on GitHub, though without a licence file yet.', {})],
-     [('Verdict: ', {'bold': True, 'color': NAVY}), ('easy to run, but BetterVoting and CIVS are also free and open. We do not claim an advantage here.', {})]],
-    'Features eight and nine. Most systems have some kind of receipt. Helios and Belenios go further, letting a voter verify the ballot cryptographically; our receipt only proves that a ballot is recorded and counted, not what it says, so we are weaker on this one property. '
-    'On running it, CIVS and BetterVoting are also free and open, and TapVoter has a generous free tier. PolyVote starts with one command, has a free hosted demo configured for Render, and the source is public on GitHub, though we have not yet added a licence file. '
-    'We do not claim an advantage on these two features.', row_h=0.4, size=9)
-
 s = slide('COMPARATIVE STUDY · CLOSEST PROJECTS', 'The three closest projects, and what each lacks')
 table(s, 0.5, 1.12, 9.0, ['Closest project (source)', 'What it has', 'What we found it does not document'], [
     ['FlexyVotes, Django and PostgreSQL (github.com/deOpty/flexyvotes)', 'Many organisations; instant-runoff and STV; triggers that block raw SQL; ballots with no voter key; hash-chained audit log; hashed single-use email OTP',
@@ -585,17 +426,6 @@ tb(s, 0.7, 4.6, 8.6, 0.45, 'Our claim: for small elections, PolyVote adds databa
 notes(s, 'The verdict. For the problem we target, small and medium elections such as clubs, councils and classes, PolyVote is a good fit: ranked-choice results, an afternoon to set up, free to run, proof that edits and deletions are caught, and voters who confirm by email and can vote from a phone. '
          'The cryptographic systems are the better choice when the administrator cannot be trusted, when voters must verify their own ballot content, when coercion is a threat, or when a public cryptographic audit is required. We say this openly because it makes the claim credible. '
          'Our claim is modest: for small elections PolyVote adds database-level rules and tested tamper detection to an easy setup, and it is not the strongest on verifiability.')
-
-# ================================================================== 27 before/after
-s = slide('REVIEW 2 DESIGN VERSUS FINAL DESIGN', 'What improved, measured')
-table(s, 0.5, 1.2, 9.0, ['Measure', 'Review 2', 'Final'], [
-    ['Tampering detected automatically', f'{nd("baseline")} of 13', f'{nd("patched")} of 13'], ['Forged receipt or chain rewrite', 'Undetected', 'Detected (key)'],
-    ['Candidate renaming', 'Undetected', 'Detected (sealed roster)'], ['Voter authentication', 'Password', 'Password + emailed code'],
-    ['Ledger storage', 'Local file', 'MongoDB Atlas'], ['Ledger append at 10,000 ballots', f"{b['10000']['cast_ms']:.0f} ms (file, whole cast)", f"~{M['1000']['append_ms_median']:.0f} ms (Atlas, flat)"],
-    ['Sweep at 10,000 ballots', f"{b['10000']['sweep_ms']:.0f} ms", f"{p['10000']['sweep_ms']:.0f} ms"], ['Access', 'Local only', 'Public link + QR'],
-], [4.0, 2.7, 2.3], size=10.5, row_h=0.42)
-notes(s, 'The summary of improvements over our own Review 2 design. Automatic detection of tampering rises from six to twelve of thirteen. Forged receipts, rebuilt chains and renamed candidates move from undetected to detected. Authentication goes from password only to password plus an emailed code. '
-         'The ledger moves to Atlas, and the system becomes publicly reachable. The cost is small: the sweep at ten thousand ballots goes from about one hundred and twenty-nine to about one hundred and forty-seven milliseconds.')
 
 # ================================================================== website checklist
 WC = json.loads((RES / 'web_checklist.json').read_text(encoding='utf-8'))['results']
@@ -748,7 +578,7 @@ tb(thanks_slide, 0.38, 2.25, 5.6, 2.2, [
     [('Reports: ', {'bold': True, 'color': NAVY}), ('Review 3 report (44 pages) and IEEE-style paper', {})]], size=12, color=INK, after=3)
 notes(thanks_slide, 'Thank you. To summarise: PolyVote now enforces election rules in the database, seals every ballot in a keyed ledger on MongoDB Atlas, confirms voters with an emailed one-time code, runs publicly, and is evaluated by an executable suite that shows '
                     'automatic detection of tampering rising from six to twelve of thirteen scenarios, with the remaining gaps stated openly. The code, the long report and the short paper are available, and we are happy to take questions or run any part of the demonstration again.')
-el = prs.slides._sldIdLst[1]
+el = prs.slides._sldIdLst[R2_COUNT - 1]
 prs.slides._sldIdLst.remove(el)
 prs.slides._sldIdLst.append(el)
 
