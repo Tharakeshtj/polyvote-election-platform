@@ -660,11 +660,17 @@ for sh in list(thanks_slide.shapes):
     if sh.name in ('TextBox 192', 'TextBox 193'):
         sh._element.getparent().remove(sh._element)
 tb(thanks_slide, 0.38, 1.75, 5.6, 0.3, 'Questions and discussion', size=16, color=INK, bold=True)
-tb(thanks_slide, 0.38, 2.25, 5.6, 2.2, [
+box = tb(thanks_slide, 0.38, 2.25, 5.6, 2.2, [
     [('Source code and documents', {'bold': True, 'color': NAVY})],
-    [('github.com/Tharakeshtj/polyvote-election-platform', {'size': 11})]], size=12, color=INK, after=3)
+    [('https://github.com/Tharakeshtj/polyvote-election-platform', {'size': 10.5})], [('', {})],
+    [('Live project', {'bold': True, 'color': NAVY})],
+    [('https://polyvote-bacse202.onrender.com', {'size': 10.5})]], size=12, color=INK, after=3)
+for para in box.text_frame.paragraphs:
+    for r in para.runs:
+        if r.text.startswith('https://'):
+            r.hyperlink.address = r.text
 notes(thanks_slide, 'Thank you. To summarise: PolyVote now enforces election rules in the database, seals every ballot in a keyed ledger on MongoDB Atlas, confirms voters with an emailed one-time code, runs publicly, and is evaluated by an executable suite that shows '
-                    'automatic detection of tampering rising from six to twelve of thirteen scenarios, with the remaining gaps stated openly. The code and documents are on GitHub, and we are happy to take questions or run any part of the demonstration again.')
+                    'automatic detection of tampering rising from six to twelve of thirteen scenarios, with the remaining gaps stated openly. The code and documents are on GitHub and the project is live online, and we are happy to take questions or run any part of the demonstration again.')
 el = prs.slides._sldIdLst[R2_COUNT - 1]
 prs.slides._sldIdLst.remove(el)
 prs.slides._sldIdLst.append(el)
