@@ -1,0 +1,460 @@
+{
+  "checked": "2026-10-25",
+  "nirf_edition": "India Rankings 2025 (Overall, Engineering, University), fetched by curl because WebFetch returns 403",
+  "limits": "WebSearch is US-only snippet-based and its shared budget ran out after about 45 searches; later work used direct fetches of official pages and IEEE vTools; JS-rendered event lists could not be enumerated",
+  "open_venues": [
+    {
+      "id": "rfcon2027",
+      "name": "RFCoN 2027 (2nd Int. Conf. on Radio Frequency Communication and Networks)",
+      "host": "SASTRA Deemed University, School of EEE",
+      "nirf": {
+        "edition": "2025",
+        "overall": 51,
+        "engineering": 40,
+        "university": 29
+      },
+      "city": "Thanjavur",
+      "dates": "2027-02-26 to 2027-02-27",
+      "deadline": "2026-10-31",
+      "decision": "2026-11-15",
+      "camera_ready": "2026-11-30",
+      "paper_length": "6 pages incl. references, IEEE template",
+      "student_fee_inr": "not published on pages read",
+      "ieee_claim": "Technically co-sponsored by IEEE Madras Section, IEEE AP-S, IEEE MTT-S; accepted papers submitted to IEEE Xplore",
+      "record_number_visible": false,
+      "waivers": "none published",
+      "fit": "unlikely",
+      "url": "https://events.vtools.ieee.org/m/583094",
+      "in_batch": true
+    },
+    {
+      "id": "gtss2027",
+      "name": "GTSS 2027 (2nd Int. Conf. on Green Technologies and Sustainable Solutions)",
+      "host": "Madan Mohan Malaviya University of Technology, Gorakhpur (outside batch C)",
+      "nirf": {
+        "edition": "2025",
+        "overall": 99,
+        "engineering": 60,
+        "university": 68
+      },
+      "city": "Gorakhpur",
+      "dates": "official site 2027-03-12/13; vTools notice 2027-03-04/05 (inconsistent)",
+      "deadline": "2026-10-31 (extended from 2026-09-15)",
+      "decision": "2026-12-04",
+      "camera_ready": "2027-02-21",
+      "paper_length": "max 6 pages incl. references, IEEE double-column",
+      "student_fee_inr": "not read",
+      "ieee_claim": "All accepted and presented papers will be published in IEEE Xplore (site); vTools notice shows IEEE Conference Record No. 72645",
+      "record_number_visible": "72645 (vTools notice only, not on official site)",
+      "waivers": "none published",
+      "fit": "good",
+      "url": "https://www.mmmut.ac.in/gtss2027/",
+      "in_batch": false
+    },
+    {
+      "id": "ngaiet2026",
+      "name": "NGAIET 2026 (1st Int. Conf. on Next Generation AI and Emerging Technologies)",
+      "host": "Lovely Professional University",
+      "nirf": {
+        "edition": "2025",
+        "overall": 49,
+        "engineering": 48,
+        "university": 31
+      },
+      "city": "Phagwara",
+      "dates": "2026-11-16 to 2026-11-17 (hybrid)",
+      "deadline": "2026-11-01",
+      "decision": "2026-11-11",
+      "camera_ready": "2026-11-14",
+      "paper_length": "15-18 pages, Word, APA style, email submission",
+      "student_fee_inr": "2000",
+      "ieee_claim": "none found",
+      "record_number_visible": false,
+      "waivers": "none published",
+      "fit": "unlikely",
+      "url": "https://www.lpu.in/conferences/ngaiet/",
+      "in_batch": true
+    },
+    {
+      "id": "ngcaps2027",
+      "name": "NGCAPS-2027 (Int. Conf. on Next-Gen Computing, AI and Pervasive Systems)",
+      "host": "Lovely Professional University",
+      "nirf": {
+        "edition": "2025",
+        "overall": 49,
+        "engineering": 48,
+        "university": 31
+      },
+      "city": "Phagwara",
+      "dates": "2027-04-16 to 2027-04-17",
+      "deadline": "2026-11-15",
+      "decision": "2027-01-30",
+      "camera_ready": "2027-03-20",
+      "paper_length": "IEEE conference template; page limit not stated",
+      "student_fee_inr": "9000 non-IEEE / 8000 IEEE (PhD scholars / students; no UG-specific rate)",
+      "ieee_claim": "Proposed that accepted and presented papers be submitted to IEEE Xplore subject to IEEE quality standards; plenary with IEEE Delhi Section",
+      "record_number_visible": false,
+      "waivers": "none published",
+      "fit": "good",
+      "url": "https://www.lpu.in/conferences/ngcaps/",
+      "in_batch": true
+    },
+    {
+      "id": "coacons2027",
+      "name": "CoaCoNS 2027 (Conf. on Advances in Communication Networks and Systems)",
+      "host": "SRM IST, Dept of Networking and Communications",
+      "nirf": {
+        "edition": "2025",
+        "overall": 22,
+        "engineering": 14,
+        "university": 11
+      },
+      "city": "Chennai (SRMIST, Kattankulathur implied)",
+      "dates": "2027-05-03 to 2027-05-04",
+      "deadline": "2026-11-20",
+      "decision": "2026-12-26 first; 2027-02-15 final",
+      "camera_ready": "2027-03-20",
+      "paper_length": "not stated",
+      "student_fee_inr": "not published",
+      "ieee_claim": "Submitted to IEEE Xplore, Scopus-indexed; IEEE Conference Record #72806 - awaiting acceptance from IEEE",
+      "record_number_visible": "72806 (stated as awaiting acceptance)",
+      "waivers": "none published",
+      "fit": "stretch",
+      "url": "https://www.srmist.edu.in/events/coacons-2027/",
+      "in_batch": true
+    },
+    {
+      "id": "ascml2027",
+      "name": "ASCML 2027 (2nd Int. Conf. on Advanced Scientific Computing and Machine Learning)",
+      "host": "BITS Pilani, Dept of Mathematics",
+      "nirf": {
+        "edition": "2025",
+        "overall": 16,
+        "engineering": 11,
+        "university": 7
+      },
+      "city": "Pilani",
+      "dates": "2027-01-21 to 2027-01-23",
+      "deadline": "2026-11-30",
+      "decision": "2026-12-10 (abstract notification)",
+      "camera_ready": "not stated",
+      "paper_length": "not stated",
+      "student_fee_inr": "3000 (PhD scholars); no UG category; academics 5000",
+      "ieee_claim": "none; no publisher named",
+      "record_number_visible": false,
+      "waivers": "50% refund if cancelled by 2026-12-21",
+      "fit": "stretch",
+      "url": "https://www.bits-pilani.ac.in/ascml2027/",
+      "in_batch": true
+    },
+    {
+      "id": "wccst2027",
+      "name": "WcCST-2027 (2nd World Conf. on Computational Science and Technology)",
+      "host": "Chandigarh University, CSE",
+      "nirf": {
+        "edition": "2025",
+        "overall": 32,
+        "engineering": 31,
+        "university": 19
+      },
+      "city": "Gharuan, Mohali (hybrid)",
+      "dates": "2027-03-11 to 2027-03-12",
+      "deadline": "2026-12-10",
+      "decision": "2027-01-10 (rolling)",
+      "camera_ready": "2027-02-10",
+      "paper_length": "up to 6 pages; extra pages INR 1000 each; IEEE two-column",
+      "student_fee_inr": "8500 general / 7500 IEEE member (full-time B.Tech); GST not stated",
+      "ieee_claim": "Technically co-sponsored by IEEE CIS (subject to approval); submitted to IEEE Xplore for possible inclusion",
+      "record_number_visible": false,
+      "waivers": "none published",
+      "fit": "stretch",
+      "url": "https://www.cuchd.in/conference/wccst-27/",
+      "in_batch": true
+    },
+    {
+      "id": "icrito2027",
+      "name": "ICRITO 2027 (13th Int. Conf. on Reliability, Infocom Technologies and Optimization)",
+      "host": "Amity Institute of Information Technology, Amity University Uttar Pradesh",
+      "nirf": {
+        "edition": "2025",
+        "overall": 37,
+        "engineering": 37,
+        "university": 22
+      },
+      "city": "Noida",
+      "dates": "2027-02-11 to 2027-02-12",
+      "deadline": "2026-12-15 full paper (abstract 2026-11-15)",
+      "decision": "2026-12-31",
+      "camera_ready": "2027-01-15",
+      "paper_length": "max 6 pages, IEEE format",
+      "student_fee_inr": "not published on pages read (form has UG/PG category, 20% IEEE-member discount; late fee INR 1000)",
+      "ieee_claim": "Accepted and presented papers will be submitted to IEEE Xplore; technically co-sponsored; last year's proceedings Scopus indexed",
+      "record_number_visible": "72560",
+      "waivers": "none published",
+      "fit": "good",
+      "url": "https://www.amity.edu/aiit/icrito2027/",
+      "in_batch": true
+    },
+    {
+      "id": "icdsbs2027",
+      "name": "ICDSBS 2027 (4th Int. Conf. on Data Science and Business Systems)",
+      "host": "SRM IST, Dept of Data Science and Business Systems",
+      "nirf": {
+        "edition": "2025",
+        "overall": 22,
+        "engineering": 14,
+        "university": 11
+      },
+      "city": "Kattankulathur, Chennai (venue line not printed)",
+      "dates": "2027-04-22 to 2027-04-23",
+      "deadline": "2027-01-05",
+      "decision": "2027-02-20",
+      "camera_ready": "2027-03-22",
+      "paper_length": "4-5 pages, IEEE template, double-blind",
+      "student_fee_inr": "8000 non-IEEE / 7000 IEEE (UG/PG/research scholar)",
+      "ieee_claim": "Submitted to IEEE Xplore, Scopus-indexed (IEEE Conference Record # 69077)",
+      "record_number_visible": "69077 (looks like an older edition's number; confirm with organisers)",
+      "waivers": "none published",
+      "fit": "good/stretch",
+      "url": "https://www.srmist.edu.in/events/icdsbs-2027/",
+      "in_batch": true
+    },
+    {
+      "id": "icfcit2027",
+      "name": "ICFCIT 2027 (Int. Conf. on Future Computing and Intelligent Technologies)",
+      "host": "SRM IST, Dept of Computing Technologies",
+      "nirf": {
+        "edition": "2025",
+        "overall": 22,
+        "engineering": 14,
+        "university": 11
+      },
+      "city": "Kattankulathur campus, Chennai",
+      "dates": "2027-09-21 to 2027-09-23",
+      "deadline": "2027-04-20 (window 2027-01-20 to 2027-04-20)",
+      "decision": "2027-06-20 to 2027-08-05",
+      "camera_ready": "not stated",
+      "paper_length": "not stated; .doc/.docx on organiser template",
+      "student_fee_inr": "7000 (students); academicians 8000; foreign students USD 300",
+      "ieee_claim": "none; SRM page says only 'indexed proceedings, subject to acceptance'",
+      "record_number_visible": false,
+      "waivers": "registration not fully refundable; no refund once scheduled",
+      "fit": "stretch",
+      "url": "https://icfcit.in/",
+      "in_batch": true
+    }
+  ],
+  "open_not_fit_or_unverified": [
+    {
+      "name": "AI-SGE 2027",
+      "host": "SRM IST",
+      "dates": "2027-05-18/19",
+      "deadline": "2026-12-01 (digest)",
+      "why": "energy topic",
+      "url": "https://www.srmist.edu.in/events/ai-sge-2027/"
+    },
+    {
+      "name": "PACCAS 2027",
+      "host": "SRM IST with NSYSU Taiwan",
+      "dates": "2027-09-01 to 2027-09-03",
+      "deadline": "2027-06-15",
+      "why": "circuits and systems; 4-5 pages IEEE template",
+      "url": "https://www.srmist.edu.in/events/paccas-2027/"
+    },
+    {
+      "name": "AMMA-2027",
+      "host": "Amrita Chennai campus",
+      "dates": "2027-03-30/31",
+      "deadline": "abstract 2026-12-15; full paper 2027-01-15",
+      "why": "mechanical/materials; Scopus, publisher not final; INR 1500",
+      "url": "https://www.amrita.edu/?p=693769"
+    },
+    {
+      "name": "IEEE VLSI SATA 2027",
+      "host": "Amrita",
+      "dates": "2027-09-16 to 2027-09-18",
+      "deadline": "not read",
+      "why": "VLSI scope",
+      "url": "https://www.amrita.edu/events/vlsi-sata/"
+    },
+    {
+      "name": "AVARTA 2026",
+      "host": "SASTRA",
+      "dates": "2026-12-18/19",
+      "deadline": "not read",
+      "why": "VLSI scope",
+      "url": "https://events.vtools.ieee.org/m/570336"
+    },
+    {
+      "name": "ICABDAI-2026",
+      "host": "Sathyabama",
+      "dates": "2026-11-16/17",
+      "deadline": "not published on page",
+      "why": "biosciences + data science + AI; deadline and fees not published",
+      "url": "https://www.sathyabama.ac.in/event/international-conference-advances-biosciences-data-science-and-ai-icabdai-2026"
+    },
+    {
+      "name": "ICEEMLET-2027",
+      "host": "Manipal University Jaipur",
+      "dates": "2027-01-21/22",
+      "deadline": "not verified",
+      "why": "search snippet only; official page unreadable",
+      "url": "https://jaipur.manipal.edu/fosta/conference.php"
+    },
+    {
+      "name": "ICSIST 2027",
+      "host": "unknown (Punjab, India per aggregator)",
+      "dates": "2027-09-13",
+      "deadline": "2027-06-21 (aggregator)",
+      "why": "host not identified; aggregator only",
+      "url": "https://www.myhuiban.com/conference/5917"
+    }
+  ],
+  "closed_or_ruled_out": [
+    {
+      "name": "SCICS-2026",
+      "host": "Chandigarh University",
+      "reason": "full paper 2026-09-23; notification 2026-10-26; INR 8200 early UG/PG; not IEEE-sponsored",
+      "url": "https://www.cuchd.in/conference/scics26/"
+    },
+    {
+      "name": "WcAISR-2027",
+      "host": "Chandigarh University",
+      "reason": "deadline 2026-10-20 (labelled proposed); IEEE RAS TCS record 72076; robotics",
+      "url": "https://www.cuchd.in/conference/wcaisr-2027/"
+    },
+    {
+      "name": "IIHTC 2026",
+      "host": "KIIT",
+      "reason": "deadline 2026-07-20; Springer LNNS",
+      "url": "https://www.iihtconf.org/"
+    },
+    {
+      "name": "ICCoSD 2026",
+      "host": "BIT Mesra",
+      "reason": "closed 2026-07-15; record #72295; ECE scope",
+      "url": "https://www.bitmesra.ac.in/Event_Files/iccosd-10.pdf"
+    },
+    {
+      "name": "COASTS 2026",
+      "host": "SRM IST",
+      "reason": "coastal science; abstract deadline 2026-10-20",
+      "url": "https://www.srmist.edu.in/events/coasts-2026/"
+    },
+    {
+      "name": "ICSC-AISF 2026 / ICSAIT-2026",
+      "host": "LPU",
+      "reason": "closed 2026-10-15 / 2026-08-31",
+      "url": "https://www.lpu.in/conferences/"
+    },
+    {
+      "name": "INCIP 2027",
+      "host": "moved to Asia University, Taiwan",
+      "reason": "not India",
+      "url": "https://incip.in"
+    },
+    {
+      "name": "MIBT-2027",
+      "host": "BITS Pilani Dubai",
+      "reason": "UAE, management",
+      "url": "https://www.bits-pilani.ac.in/?p=3099468"
+    },
+    {
+      "name": "BDA 2026",
+      "host": "BITS Pilani Goa",
+      "reason": "held 2026-09-17 to 2026-09-20",
+      "url": "https://www.bits-pilani.ac.in/event/14th-international-conference-on-big-data-ai-2026/"
+    },
+    {
+      "name": "ICCIDS 2027 (earlier file)",
+      "host": "SSN",
+      "reason": "site now shows TBA 2027; re-check",
+      "url": "https://iccids.in/"
+    }
+  ],
+  "institutions_nothing_open": [
+    {
+      "institution": "VIT Vellore",
+      "note": "events pages 1-3: no open conference besides i-PACT"
+    },
+    {
+      "institution": "VIT Chennai",
+      "note": "events page 403; not verified"
+    },
+    {
+      "institution": "VIT-AP / VIT Bhopal",
+      "note": "only past events; no separate top-100 row"
+    },
+    {
+      "institution": "SRM IST Kattankulathur",
+      "note": "full events index read; computing events are CoaCoNS, ICDSBS, ICFCIT"
+    },
+    {
+      "institution": "SRM Ramapuram / Vadapalani / Delhi-NCR / SRM-AP",
+      "note": "no readable listing; SRM-AP not a top-100 row"
+    },
+    {
+      "institution": "Manipal Institute of Technology / MAHE",
+      "note": "JS events page; INCIP 2027 moved to Taiwan"
+    },
+    {
+      "institution": "Manipal University Jaipur",
+      "note": "only ICEEMLET-2027, unverified"
+    },
+    {
+      "institution": "Amrita (all campuses)",
+      "note": "REST feed read; nothing fitting"
+    },
+    {
+      "institution": "BITS Pilani / Goa / Hyderabad",
+      "note": "REST feed read; only ASCML fits"
+    },
+    {
+      "institution": "Thapar",
+      "note": "event pages JS or empty"
+    },
+    {
+      "institution": "KIIT (beyond ICESICSC)",
+      "note": "calendar Nov 2026-Jun 2027: ICIDeA, materials conference, IIHTC (closed)"
+    },
+    {
+      "institution": "Saveetha",
+      "note": "no conference listing visible"
+    },
+    {
+      "institution": "SASTRA (beyond RFCoN)",
+      "note": "only VLSI, civil, maths events"
+    },
+    {
+      "institution": "Sathyabama, Kalasalingam, Vel Tech, Chettinad",
+      "note": "pages read; nothing open that fits"
+    },
+    {
+      "institution": "KLEF, GITAM, Vignan, Andhra University",
+      "note": "pages read or JS; nothing found"
+    },
+    {
+      "institution": "Jain, Christ, MS Ramaiah, PSG Tech",
+      "note": "nothing found; PSG only a chemistry conference"
+    },
+    {
+      "institution": "UPES, Graphic Era, Shiv Nadar, Sharda, Symbiosis, Chitkara, SR University, PDEU, SOA",
+      "note": "nothing open found"
+    }
+  ],
+  "not_in_nirf_top100": [
+    "RV College of Engineering",
+    "BMS College",
+    "PES University",
+    "Kongu",
+    "Bannari Amman",
+    "Sri Eshwar",
+    "Karunya",
+    "Hindustan Institute",
+    "Bennett",
+    "Ashoka",
+    "MIT-WPU",
+    "Aditya",
+    "SRKR"
+  ]
+}

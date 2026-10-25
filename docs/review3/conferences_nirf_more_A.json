@@ -1,0 +1,83 @@
+{
+  "generated": "2026-10-25",
+  "batch": "A: IITs, IISc, IISER and other central institutes, IIITs",
+  "nirf_edition_used": "NIRF India Rankings 2025 (Overall and Engineering) as shown by the third-party mirror corpready.in because nirfindia.org returned HTTP 403 this session; IIT Bhubaneswar also confirmed by its own press release",
+  "limits": [
+    "Search tool is US-only and snippet-based; IIT sites and IEEE calendars are poorly indexed, so absence of results is not proof of absence.",
+    "conferences.ieee.org returned 418, wikicfp refused connection, several aggregators returned 403: the IEEE conference calendar could not be swept.",
+    "Web search budget ran out before the last two planned queries.",
+    "University list was not re-fetched."
+  ],
+  "new_qualifying_venues": [
+    {
+      "sorted_by_deadline": 1,
+      "name": "ICMOCE 2027: 4th International Conference on Microwave, Optical and Communication Engineering",
+      "host_institution": "School of Electrical and Computer Sciences, IIT Bhubaneswar",
+      "nirf": {"edition": "2025", "engineering_rank": 39, "overall_rank": 80, "source": "corpready.in mirror and IIT Bhubaneswar press release"},
+      "city": "Jatni (IIT Bhubaneswar campus), Odisha",
+      "dates": "21-23 May 2027",
+      "submission_deadline": "31 Jan 2027 (opened 1 Aug 2026)",
+      "decision_date": "10 Apr 2027 (search snippet adds early-bird scheme with notification 10 Mar 2027; not read on a page)",
+      "camera_ready": "1 May 2027",
+      "paper_length": "not stated (IEEE format)",
+      "student_fee_inr": {"regular_until_2027_05_01_ieee_member": 11800, "regular_non_member": 12980, "late_until_2027_05_10_ieee_member": 12980, "late_non_member": 14160, "note": "includes 18% GST; student ID or IEEE card required"},
+      "ieee_claim_exact": "technically co-sponsored by the IEEE Bhubaneswar Section; proceedings 'will be submitted for possible inclusion in IEEE Xplore'",
+      "ieee_record_number_visible": false,
+      "fee_waivers": "none for undergraduates found; a search snippet (not confirmed on a page) says up to 20 PhD students get a waiver; refund on cancellation to 2 May 2027 less GST and INR 500",
+      "fit": "unlikely",
+      "fit_note": "microwave/optical/communication scope; CFP lists Network and Information Security, Edge and Cloud Computing, Data Mining",
+      "official_url": "https://conference.iitbbs.ac.in/icmoce/",
+      "other_urls": [
+        "https://conference.iitbbs.ac.in/icmoce/index.php/2k27/important-dates/",
+        "https://conference.iitbbs.ac.in/icmoce/index.php/2k27/fees-mode-of-payment/",
+        "https://conference.iitbbs.ac.in/icmoce/index.php/2k27/call-for-papers/"
+      ]
+    },
+    {
+      "sorted_by_deadline": 2,
+      "name": "ICITSIF 2027: 2nd International Conference on Intelligent Technologies for a Sustainable and Inclusive Future",
+      "host_institution": "General Chair at IIT Indore; organised by IEEE Madhya Pradesh Section EDS and NTC Chapters, the Section, and IEEE Sensors Council Student Branch Chapter at IIT Indore (host test borderline)",
+      "nirf": {"edition": "2025", "engineering_rank": 12, "overall_rank": 27, "source": "corpready.in mirror"},
+      "city": "not published (venue 'to be announced')",
+      "dates": "not published (two-day hybrid event in 2027)",
+      "submission_deadline": "not published, so open status NOT verified",
+      "decision_date": "not published",
+      "paper_length": "max 5 pages, IEEE template; technical papers or 'new ideas' papers",
+      "student_fee_inr": "not published (fee table empty); IEEE members INR 1,000 off, fees include GST",
+      "ieee_claim_exact": "Selected papers are included in IEEE Xplore (Scopus indexed)",
+      "ieee_record_number_visible": false,
+      "previous_edition_proceedings_link": "https://ieeexplore.ieee.org/xpl/conhome/11608127/proceeding (linked on page, not opened)",
+      "fee_waivers": "not published",
+      "fit": "good on topic (tracks: cybersecurity and privacy technologies; blockchain and distributed technologies; digital transformation and tech-driven policy), but 5-page cap and no dates yet",
+      "contact": "ieee.icitsif@gmail.com",
+      "official_url": "https://ieee.eds.iiti.ac.in/conferences/icitsif-2027/"
+    }
+  ],
+  "already_known_touching_batch": [
+    {"name": "NCC 2027", "note": "IISc page now says deadline extended to 31 Oct 2026 23:59; co-hosts IIT Goa (not ranked), IIT Palakkad, IIIT Bangalore", "url": "https://ece.iisc.ac.in/~ncc2027/index.html"},
+    {"name": "RAIT 2027", "note": "IIT (ISM) Dhanbad; papers closed 19 Oct 2026; only Doctoral Consortium open to 2 Nov 2026", "url": "https://people.iitism.ac.in/~rait/"},
+    {"name": "ISEA-ISAP 2026-27", "note": "IIT Jammu; closed 30 Jul 2026; student fee INR 1,000; no IEEE claim on page", "url": "https://iitjammu.ac.in/isea-isap2027/"},
+    {"name": "SANKALP 2027", "note": "ABV-IIITM Gwalior; already found"}
+  ],
+  "seen_but_not_usable": [
+    {"name": "ICMC 2027", "host": "IIT Guwahati (O 11, E 8)", "reason": "Springer LNNS 12-15 pages; deadline conflicting (home page 26 Oct hard deadline vs flyer 26 Sep with notification 26 Oct); has Security and Privacy and Blockchain tracks; student fee not published", "url": "https://event.iitg.ac.in/icmc2027/"},
+    {"name": "IEEE CMES 2027", "host": "IEEE Guwahati Subsection at IIT Guwahati", "reason": "closed 22 Sep 2026; medical topic", "url": "https://www.cmes2027.in/"},
+    {"name": "InCIS 2027", "host": "DoMS IIT Madras", "reason": "closed 30 Sep 2026, no extension found", "url": "https://doms.iitm.ac.in/incis2027/"},
+    {"name": "ICMOTA 2027", "host": "IIT BHU", "reason": "mathematical optimization; abstract 31 Dec 2026; Indian student INR 6,500 early + 18% GST", "url": "https://conferences.iitbhu.ac.in/ICMOTA-2027/"},
+    {"name": "NBEC 2027", "host": "IIT Kharagpur", "reason": "nanobio energy; abstract 30 Oct 2026 per snippet", "url": "https://nbec2027.iitkgp.ac.in/"},
+    {"name": "PASS 2027", "host": "IIT Delhi", "reason": "armour systems; unrelated", "url": "https://pass2027.iitd.ac.in/"},
+    {"name": "IHERC 2026", "host": "IIIT Delhi", "reason": "higher-education research, 27-28 Nov 2026, no deadline shown", "url": "https://iiitd.ac.in/IHERN/iherc2026/"}
+  ],
+  "institutions_checked_nothing_open": [
+    "IIT Madras (InCIS closed; other events non-computing)",
+    "IIT Bombay (no 2027 call surfaced)",
+    "IIT Delhi (conferences page: no upcoming conferences; ICCCNT 2026 held Jun-Jul 2026, 2027 edition unannounced)",
+    "IIT Kanpur", "IIT Kharagpur (non-computing only)", "IIT Roorkee", "IIT Hyderabad (non-computing events only)",
+    "IIT Guwahati (ICMC unusable, CMES closed)", "IIT BHU (maths only)", "IIT Indore (ICITSIF 2027 status unverified)",
+    "IIT (ISM) Dhanbad (RAIT closed)", "IIT Patna", "IIT Gandhinagar", "IIT Jodhpur", "IIT Mandi", "IIT Ropar",
+    "IIT Tirupati", "IIT Palakkad", "IIT Dharwad", "IIT Bhilai", "IIT Jammu (ISEA-ISAP closed)", "IIT Bhubaneswar (ICMOCE only)",
+    "IISc Bengaluru (NCC known; ICLA, ICoRD not fit)", "IISER Pune/Kolkata/Mohali/Bhopal", "IIST Thiruvananthapuram", "DIAT Pune",
+    "RGIPT Amethi", "IIEST Shibpur", "IIIT Hyderabad", "IIIT Delhi", "IIIT Bangalore", "ABV-IIITM Gwalior (SANKALP known)",
+    "IIIT Allahabad / Kottayam / Sri City / Guwahati / Lucknow / Vadodara / IIT Goa (not in Overall or Engineering top 100 per mirror)"
+  ]
+}

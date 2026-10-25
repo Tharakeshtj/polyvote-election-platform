@@ -535,36 +535,52 @@ notes(s, 'This is the back-up slide for any question that starts with how do you
          'The search method and its limits are at the bottom: twenty-three web queries, twenty GitHub repository searches, thirty-three systems, on the twenty-third of October, without GitHub code search or non-English and private repositories.')
 
 # ================================================================== 29-30 conferences (from research)
-# India only, host institution in the NIRF top 100 (India Rankings 2025). Source: docs/review3/conferences_nirf.md, checked 2026-10-23.
-s = slide('INDIA ONLY · NIRF TOP-100 HOSTS · OPEN TODAY', 'India only, NIRF top-100 hosts, cheapest first')
-table(s, 0.4, 1.08, 9.2, ['#', 'Venue', 'Host university (NIRF 2025 rank)', 'Submit by', 'Student fee, INR', 'Held', 'Indexing'], [
+# India only, host institution in the NIRF top 100 (India Rankings 2025). Sources: docs/review3/conferences_nirf*.md, checked 23-25 Oct 2026.
+s = slide('INDIA ONLY · NIRF TOP-100 HOSTS · IEEE-LINKED', 'IEEE-linked venues at NIRF top-100 hosts')
+table(s, 0.4, 1.08, 9.2, ['#', 'Venue', 'Host university (NIRF 2025 rank)', 'Submit by', 'Student fee, INR', 'Held', 'IEEE status'], [
+    ['1', 'IEEE SANKALP 2027', 'ABV-IIITM, Gwalior (Engineering 96)', '30 Nov 2026', '7,000', '9-11 Apr 2027', 'Record #73342 shown'],
+    ['2', 'ICDSBS 2027', 'SRM IST (Overall 22)', '5 Jan 2027', '8,000', '22-23 Apr 2027', 'Record #69077 printed; may be an old edition'],
+    ['3', 'ICESICSC-2027', 'KIIT, Bhubaneswar (Overall 27)', '30 Oct 2026', '9,000', '20-21 Feb 2027', 'IEEE claimed, no record'],
+    ['4', 'Confluence 2027', 'Amity University, Noida (Overall 37)', '4 Dec 2026', '9,440 incl. GST', '21-22 Jan 2027', 'Record #71526 shown'],
+    ['5', 'ICRITO 2027', 'Amity University, Noida (Overall 37)', '15 Dec 2026 (abstract 15 Nov)', 'not read', '11-12 Feb 2027', 'Record #72560 on its page; last year in Xplore and Scopus'],
+    ['6', 'CoaCoNS 2027', 'SRM IST (Overall 22)', '20 Nov 2026', 'not published', '3-4 May 2027', 'Record #72806, "awaiting IEEE"'],
+    ['7', 'GTSS 2027', 'MMMUT, Gorakhpur (Overall 99)', '31 Oct 2026', 'not read', '12-13 Mar 2027*', 'Record #72645 only in an IEEE vTools notice']],
+    [0.3, 1.4, 2.5, 1.35, 1.1, 1.1, 1.95], size=8, header_size=8.5, row_h=0.45, head_h=0.3)
+tb(s, 0.4, 4.6, 9.2, 0.7, '"Record shown" means a record number is on the official page; I read ICRITO\'s page myself, and the others come from research notes. Nothing is confirmed for IEEE Xplore until proceedings are published, and record numbers should be checked on the IEEE site. *GTSS dates differ between its site and the IEEE notice. ICESICSC and GTSS close within days. Ranked by fee, unknown fees last.', size=8, color=MUTED, italic=True)
+notes(s, 'Your professor suggested IEEE conferences run by NIRF top-100 institutions, so this slide lists the open ones with IEEE signals, sorted by fee with unknown fees last. We used the 2025 India Rankings, the latest published. '
+         'SANKALP at the IIIT in Gwalior costs seven thousand rupees and shows an IEEE record number. ICDSBS and CoaCoNS are at SRM; ICDSBS prints a record number that may belong to an older edition, and CoaCoNS says it is awaiting IEEE. ICESICSC at KIIT closes on the thirtieth of October. Confluence and ICRITO are both at Amity University Noida: Confluence shows record seventy-one five twenty-six, and ICRITO shows record seventy-two five sixty on its own page, with last year\'s proceedings in IEEE Xplore and Scopus, a six-page IEEE format, and a full-paper deadline of the fifteenth of December. '
+         'GTSS at MMMUT Gorakhpur has a record number only in an IEEE notice and conflicting dates. In every case, an IEEE record number on a conference page is not a guarantee of IEEE Xplore, so we check it on the IEEE site before paying.')
+
+s = slide('INDIA ONLY · NIRF TOP-100 HOSTS · OTHER OPEN VENUES', 'Other open venues at NIRF top-100 hosts, cheapest first')
+table(s, 0.4, 1.08, 9.2, ['#', 'Venue', 'Host university (NIRF 2025 rank)', 'Submit by', 'Student fee, INR', 'Held', 'Indexing / format'], [
     ['1', 'SCES-2027', 'MNNIT Allahabad, Prayagraj (Engineering 62)', '15 Nov 2026*', '5,900 incl. GST', '12-14 Mar 2027', 'Claimed'],
-    ['2', 'IEEE COEP CON 2027', 'COEP Technological Univ., Pune (Engineering 90)', '31 Mar 2027', '6,000†', '4-6 Jun 2027', 'Claimed'],
-    ['3', 'IEEE SANKALP 2027', 'ABV-IIITM, Gwalior (Engineering 96)', '30 Nov 2026', '7,000', '9-11 Apr 2027', 'IEEE record #73342 shown'],
-    ['4', 'ICESICSC-2027', 'KIIT, Bhubaneswar (Overall 27)', '30 Oct 2026', '9,000', '20-21 Feb 2027', 'Claimed'],
-    ['5', 'Confluence 2027', 'Amity University, Noida (Overall 37)', '4 Dec 2026', '9,440 incl. GST', '21-22 Jan 2027', 'IEEE record #71526 shown'],
-    ['6', 'INDIACom-2027', 'BVICAM, Bharati Vidyapeeth, New Delhi (parent only, University 59)', '7 Dec 2026', '9,440 incl. GST', '7-9 Apr 2027', 'Claimed'],
-    ['7', 'i-PACT 2027', 'VIT, Vellore (Overall 21)', '31 May 2027', '12,000', '2-3 Sep 2027', 'Claimed'],
-    ['8', 'ICICC-2027', 'Shaheed Sukhdev College, Univ. of Delhi (parent only, Overall 15)', '30 Oct 2026', '13,000', '5-6 Feb 2027', 'Claimed (LNNS "approved")']],
-    [0.3, 1.45, 2.85, 1.0, 1.15, 1.15, 1.5], size=8, header_size=8.5, row_h=0.4, head_h=0.3)
-tb(s, 0.4, 4.7, 9.2, 0.6, '*Page marks the date tentative.  †Fee read from a flattened table.  "IEEE record shown" means a record number is on the official page, not checked on the IEEE site; nothing here is confirmed for IEEE Xplore. Also qualify, but off-topic or no published fee: ICSEAMS (Amrita), ICCIDS (SSN), PerCom work-in-progress (BITS Pilani Goa), NCC (IISc). Dropped, host not in the top 100: ICRCICN, IEM-ICDC, iConCISE, ICPCSN.', size=8, color=MUTED, italic=True)
-notes(s, 'We narrowed the list to conferences held in India and hosted by an institution in the NIRF top one hundred, using the 2025 India Rankings, which are the latest published; a 2026 edition has not been released, so ranks could change. '
-         'The cheapest is SCES at Motilal Nehru National Institute in Prayagraj, about five thousand nine hundred rupees. SANKALP at the IIIT in Gwalior costs seven thousand and shows an IEEE record number. ICESICSC at KIIT closes on the thirtieth of October. Confluence at Amity Noida is nine thousand four hundred and forty with tax and also shows an IEEE record number. '
-         'INDIACom and ICICC are borderline, because only the parent university is ranked, not the institute or college that hosts. i-PACT is on our own campus at VIT. '
-         'Indexing: a record number on an official page is not confirmation of IEEE Xplore, and every other venue only claims it. We dropped ICRCICN, IEM-ICDC, iConCISE and ICPCSN because their hosts are not in the top one hundred.')
+    ['2', 'IEEE COEP CON 2027', 'COEP Technological Univ., Pune (Engineering 90)', '31 Mar 2027', '6,000†', '4-6 Jun 2027', 'IEEE in the name; indexing claimed'],
+    ['3', 'ICFCIT 2027', 'SRM IST (Overall 22)', '20 Apr 2027', '7,000', '21-23 Sep 2027', 'No IEEE or Springer claim'],
+    ['4', 'ICSSD 2027', 'NIT Tiruchirappalli (Engineering 9)', '10 Nov 2026', '7,500 early, 10,000', '4-6 Feb 2027', 'Springer, 10-12 pages; secure software'],
+    ['5', 'WcCST-2027', 'Chandigarh University (Overall 32)', '10 Dec 2026', '8,500', '11-12 Mar 2027', 'IEEE co-sponsorship "subject to approval"'],
+    ['6', 'NGCAPS-2027', 'Lovely Professional University (Overall 49)', '15 Nov 2026', '9,000', '16-17 Apr 2027', 'IEEE Xplore only "proposed"'],
+    ['7', 'INDIACom-2027', 'BVICAM, Bharati Vidyapeeth (parent only, University 59)', '7 Dec 2026', '9,440 incl. GST', '7-9 Apr 2027', 'Claimed'],
+    ['8', 'i-PACT 2027', 'VIT, Vellore (Overall 21)', '31 May 2027', '12,000', '2-3 Sep 2027', 'Claimed; a power-engineering topic']],
+    [0.3, 1.4, 2.8, 1.0, 1.25, 1.1, 1.85], size=8, header_size=8.5, row_h=0.4, head_h=0.3)
+tb(s, 0.4, 4.6, 9.2, 0.7, '*Page marks the date tentative.  †Fee read from a flattened table.  Topic fit is best for NGCAPS-2027 (security, blockchain, database tracks) and ICSSD 2027 (secure software, privacy, databases). Not usable: venues hosted outside the top 100, closed calls, and off-topic energy, RF, power or biomedical conferences. The search tools could not read the IEEE conference calendar, so more venues may exist.', size=8, color=MUTED, italic=True)
+notes(s, 'These open venues are also at NIRF top-100 hosts, but their IEEE status is weaker or absent. SCES at Motilal Nehru National Institute is the cheapest at about five thousand nine hundred rupees. COEP CON in Pune has IEEE in its name but its indexing is only claimed. '
+         'ICSSD at NIT Tiruchirappalli is the best topic match, a secure software conference with privacy and database tracks, but it publishes with Springer in a ten to twelve page format, so it is not an IEEE venue and our paper would need expanding. '
+         'NGCAPS at Lovely Professional University has security, blockchain and database tracks, but IEEE Xplore is only proposed. INDIACom is borderline because only the parent university is ranked. i-PACT is on our own campus but is a power-engineering conference. '
+         'We could not read the IEEE conference calendar with our tools, so there may be more venues that we did not find.')
 
 s = slide('RECOMMENDED SUBMISSION ORDER', 'One venue at a time: dual submission is not allowed')
 table(s, 0.5, 1.2, 9.0, ['Step', 'Venue', 'Host university', 'Submit by', 'Why this order'], [
-    ['1', 'IEEE SANKALP 2027', 'ABV-IIITM Gwalior', '30 Nov 2026', 'IEEE record number shown; security and distributed-database tracks; INR 7,000'],
-    ['2', 'Confluence 2027', 'Amity University, Noida', '4 Dec 2026', 'IEEE record number shown; INR 9,440; fast decision'],
-    ['3', 'ICESICSC-2027', 'KIIT, Bhubaneswar', '30 Oct 2026', 'Closes in 7 days; only if the paper already fits their template'],
-    ['4', 'INDIACom-2027', 'BVICAM, Bharati Vidyapeeth', '7 Dec 2026', 'Borderline host: only the parent university is ranked'],
-    ['5', 'i-PACT 2027', 'VIT, Vellore', '31 May 2027', 'Our own campus, but a power-engineering conference']],
-    [0.6, 1.9, 2.1, 1.2, 3.2], size=9.5, row_h=0.5)
-tb(s, 0.5, 4.2, 9.0, 1.0, [[('Before submitting: ', {'bold': True, 'color': NAVY}), ('check the IEEE site for each record number, recheck the deadline and the NIRF edition (a 2026 list may be published), remove author names where double-blind, and follow each venue\'s AI-disclosure rule. Journals cost USD 2,000 to 3,000 in fees: only as a later extended version.', {})]], size=10.5)
-notes(s, 'The recommended order within the India and NIRF filter, remembering that we cannot submit to two venues at the same time. SANKALP at the IIIT in Gwalior is first: it shows an IEEE record number, has security and distributed-database tracks, and costs seven thousand rupees. '
-         'Confluence at Amity Noida is second, also with an IEEE record number. ICESICSC at KIIT closes on the thirtieth of October, so it is only realistic if the paper already fits its template. INDIACom is borderline because only the parent university is ranked. i-PACT is on our own campus but is a power-engineering conference. '
-         'Before submitting, verify each record number on the IEEE site, recheck deadlines and the NIRF edition, remove author names for double-blind venues, and follow each venue\'s AI-disclosure policy.')
+    ['1', 'ICRITO 2027', 'Amity University, Noida', '15 Dec 2026', 'IEEE record number on its own page; 6-page IEEE format; last year\'s papers are in Xplore and Scopus'],
+    ['2', 'IEEE SANKALP 2027', 'ABV-IIITM, Gwalior', '30 Nov 2026', 'Record shown; security and distributed-database tracks; INR 7,000; choose it if you want to submit sooner'],
+    ['3', 'Confluence 2027', 'Amity University, Noida', '4 Dec 2026', 'Record shown; INR 9,440; quick decision'],
+    ['4', 'NGCAPS-2027', 'Lovely Professional University', '15 Nov 2026', 'Topics fit, but IEEE Xplore is only proposed'],
+    ['5', 'ICSSD 2027', 'NIT Tiruchirappalli', '10 Nov 2026', 'On topic, but Springer, 10-12 pages and not IEEE']],
+    [0.6, 1.7, 2.1, 1.1, 3.5], size=9, row_h=0.52)
+tb(s, 0.5, 4.3, 9.0, 0.95, [[('Before submitting: ', {'bold': True, 'color': NAVY}), ('pick one venue now, because decisions arrive after most of these deadlines. Check the IEEE record number on the IEEE site, recheck the deadline and the NIRF edition (a 2026 list may appear), remove author names where double-blind, and follow the venue\'s AI-disclosure rule. No venue publishes a student fee waiver, and VIT has no public undergraduate reimbursement policy, so budget the fee as our own cost.', {})]], size=10)
+notes(s, 'The recommended order within the India and NIRF filter. Because we cannot submit to two venues at once and decisions arrive after most of these deadlines, the practical advice is to pick one venue now. '
+         'ICRITO at Amity Noida is first: its own page shows an IEEE record number, a six-page IEEE format, a full-paper deadline of the fifteenth of December, and last year\'s proceedings in IEEE Xplore and Scopus. SANKALP at Gwalior is the alternative if we want to submit earlier, with security and distributed-database tracks and a fee of seven thousand rupees. '
+         'Confluence is a quick-decision fallback. NGCAPS fits the topics but IEEE is only proposed, and ICSSD fits the topic but is Springer. Before submitting, verify the record number on the IEEE site, recheck deadlines, remove author names for double-blind venues, and follow AI-disclosure rules. '
+         'No venue publishes a student fee waiver, and VIT has no public undergraduate reimbursement policy, so we budget the fee as our own cost.')
 
 # ================================================================== project conclusion
 s = slide('PROJECT CONCLUSION', 'Planned versus delivered')
