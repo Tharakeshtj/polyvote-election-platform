@@ -13,7 +13,7 @@ REVIEW2 = ROOT / 'docs' / 'PolyVote_Review2.pptx'
 OUT = ROOT / 'docs' / 'PolyVote_Review3_Final.pptx'
 ASSETS = ROOT / 'docs' / 'review3_assets'
 RES = ROOT / 'experiments' / 'results'
-SPDIR = Path(os.environ.get('DECK_HELPERS', r'C:\Users\thenn\AppData\Local\Temp\claude\C--Mini-Desktop-PolyVote-Project\74acc99f-9563-4979-a9c2-b0aefeecec0c\scratchpad\scripts\build_deck.py'))
+SPDIR = HERE / 'r2_deck_helpers.py'
 
 # Reuse the Review 2 helper functions (text boxes, cards, tables, frame) without re-running its slide edits.
 src = SPDIR.read_text(encoding='utf-8').split('# ================================================================== edit existing slides')[0]
@@ -823,5 +823,10 @@ notes(prs.slides[18], 'This table explains every place the build differs from th
                       'Streamlit gained a React and FastAPI front end for separate voter and admin experiences. We added ADMIN_USERS and did not implement POSITION. The lifecycle is guarded transitions because SQLite has no stored procedures. '
                       'Oracle with PL/SQL was not used; the code is structured so it would be a migration, not a rewrite.')
 
+cp_ = prs.core_properties
+cp_.author = 'Tharakesharasu Thennarasu, M Pavan Durga Karthik, Shivam Malge'
+cp_.last_modified_by = 'PolyVote team'
+cp_.title = 'PolyVote: Reviews 2 and 3 (Final Project Review)'
+cp_.comments = ''
 prs.save(str(OUT))
 print('wrote', OUT, '| slides', len(prs.slides))
