@@ -12,6 +12,8 @@ and nothing there reaches the project, its database or its ledger.
 2. **New, Blueprint**, choose `Tharakeshtj/polyvote-election-platform`, branch `main`. Render reads `render.yaml` and proposes one service, `polyvote-bacse202`.
 3. **Apply**. The first build takes 5 to 10 minutes. When it says **Live**, open the link above and click **Demo guide**.
 
+**The code shown on the screen is demo-only** (`OTP_DEMO_HINT=true`). A real deployment must leave it off, so the code reaches the voter by email only.
+
 Without any secrets the demo already works: sample election, the one-time code shown on screen, admin login `admin` / `admin123`
 (set `ADMIN_PASSWORD` to keep it private). The admin **Settings, Factory reset** restores the sample election.
 

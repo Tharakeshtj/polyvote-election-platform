@@ -214,9 +214,10 @@ notes(s, 'MongoDB. Each block is a document in a collection with a unique index 
 
 # ================================================================== 14 OTP flow
 s = slide('EMAIL ONE-TIME CODE', 'A correct password no longer opens a ballot on its own')
-fit_pic(s, ASSETS / 'diagrams' / 'otp_sequence.png', 0.5, 1.15, 9.0, 4.05, border=False)
+fit_pic(s, ASSETS / 'diagrams' / 'otp_sequence.png', 0.5, 1.15, 9.0, 3.65, border=False)
+tb(s, 0.5, 4.88, 9.0, 0.4, [[('Demo only: ', {'bold': True, 'color': NAVY}), ('the public demo also shows the code on the screen so it never waits on email. A real deployment emails it only; shown on screen, it would not prove the voter owns the mailbox.', {})]], size=9.5, color=MUTED, italic=True)
 notes(s, 'The second factor. The voter enters the registration number and password. If they are right, the server does not issue a session; it issues a challenge, generates a six-digit code, stores only a keyed hash of it, and emails the code from a background thread so the page never waits on the mail server. '
-         'The voter types the code, the server compares it in constant time, checks the attempt count and the single-use flag, and only then issues the voting session. A failed email never blocks sign-in because the code is also visible in the administrator outbox.')
+         'The voter types the code, the server compares it in constant time, checks the attempt count and the single-use flag, and only then issues the voting session. A failed email never blocks sign-in because the code is also visible in the administrator outbox. The code shown on the screen exists only because this is a demo: visitors to a public demo cannot open the demo mailboxes, so the page also shows the code. A real deployment emails the code only and leaves that setting off, because a code shown on the screen would no longer prove the voter controls the mailbox.')
 
 # ================================================================== 16 voter experience
 s = slide('THE VOTER EXPERIENCE', 'Sign in, confirm by code, rank, and keep a receipt')
@@ -237,7 +238,7 @@ bullets(s, 4.3, 1.3, 5.2, 3.8, [('How:', 'a Cloudflare quick tunnel gives a temp
                                  ('Why we say so:', 'a true cloud platform with Oracle is the next step.'),
                                  ('Safe by default:', 'secrets stay in .env; the repository holds only .env.example.')], size=11.5)
 notes(s, 'Hosting. We expose the service through a Cloudflare quick tunnel, which gives a temporary public HTTPS address without opening ports. The voter page shows a QR code for it, so a phone scans and votes; we cast a real ballot from a phone this way. '
-         'To be precise, this is public hosting from a laptop, not cloud deployment: the laptop has to stay on and the address changes when the tunnel restarts. A real cloud platform is part of the Oracle migration planned next. The repository contains only a template for the environment file, never the secrets.')
+         'To be precise, this is public hosting from a laptop, not cloud deployment: the laptop has to stay on and the address changes when the tunnel restarts. A real cloud platform is part of the Oracle migration planned next. The repository contains only a template for the environment file, never the secrets. The code shown on the screen exists only because this is a demo: visitors to a public demo cannot open the demo mailboxes, so the page also shows the code. A real deployment emails the code only and leaves that setting off, because a code shown on the screen would no longer prove the voter controls the mailbox.')
 
 # ================================================================== 18 live demo
 s = slide('LIVE DEMO · SAMPLE POLYVOTE', 'The same system with email verification switched on')
@@ -254,7 +255,7 @@ tb(s, 7.45, 3.05, 1.85, 1.35, [[('Safety net', {'bold': True, 'color': NAVY})], 
 tb(s, 0.5, 4.8, 9.0, 0.4, 'Separate copy: its own database, its own Atlas collection, port 8001; START_DEMO resets it in about 20 seconds.', size=10.5, color=MUTED, italic=True)
 notes(s, 'Now a short live demonstration, on a separate copy of the project we call Sample PolyVote. It is identical except that email verification is switched on, and it has its own database and its own Atlas collection so it cannot disturb the main system. '
          'The flow: show the admin view with voter emails and the outbox; sign in as a voter, and note that the right password is not enough; take the code from the outbox, or from the inbox if mail is configured; rank and cast; check the receipt and show the new block in Atlas. '
-         'Then the tamper test: edit a ballot in DB Studio and run the sweep, and edit a block in Atlas to show the chain breaking. If email is slow, the code is always in the outbox.')
+         'Then the tamper test: edit a ballot in DB Studio and run the sweep, and edit a block in Atlas to show the chain breaking. If email is slow, the code is always in the outbox. The code shown on the screen exists only because this is a demo: visitors to a public demo cannot open the demo mailboxes, so the page also shows the code. A real deployment emails the code only and leaves that setting off, because a code shown on the screen would no longer prove the voter controls the mailbox.')
 
 # ================================================================== 19 evaluation method
 s = slide('HOW WE EVALUATED', '47 executable scenarios, old design versus final')
