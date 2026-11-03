@@ -82,6 +82,9 @@ export default function ResultsTab({ election }: TabProps) {
                 ({sweep.modified.length} modified, {sweep.deleted.length} deleted, {sweep.injected.length} without a receipt). </>}
                 {sweep.roster_changed && <>Candidate names changed after voting began. </>}
                 {sweep.count_mismatch && <>Voter flags ({sweep.count_mismatch.voted_flags}), ballots ({sweep.count_mismatch.ballots}) and receipts ({sweep.count_mismatch.receipts}) disagree.</>}
+                {sweep.roster_seal === 'changed' && <> The voter roster changed outside the application{sweep.voters_added.length > 0 && <> ({sweep.voters_added.length} voter{sweep.voters_added.length === 1 ? '' : 's'} added: {sweep.voters_added.slice(0, 5).join(', ')})</>}{sweep.voters_removed > 0 && <> ({sweep.voters_removed} removed)</>}.</>}
+                {sweep.roster_seal === 'missing' && <> The voter roster seal is missing.</>}
+                {sweep.roster_seal === 'invalid' && <> The voter roster seal does not verify.</>}
               </div>
             </div>
           ))}

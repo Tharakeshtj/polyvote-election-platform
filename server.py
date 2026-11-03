@@ -22,7 +22,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from audit_ledger import append_ballot_receipt, backend_info, get_ledger, verify_chain_integrity
-from election_core import check_election_integrity, get_db, hash_pw, init_admin_db, roster_hash, wipe_all_database_data
+from election_core import check_election_integrity, get_db, hash_pw, init_admin_db, pw_needs_upgrade, reseal_roster, roster_hash, verify_pw, wipe_all_database_data
 from setup_db import setup_database
 from tally_engine import calculate_irv_winner
 import contact
@@ -114,8 +114,12 @@ class VoterLoginIn(BaseModel):
 def admin_login(body: AdminLoginIn):
     with db() as conn:
         row = conn.execute("SELECT password_hash FROM ADMIN_USERS WHERE username = ?", (body.username.strip(),)).fetchone()
-    if not row or row[0] != hash_pw(body.password):
+    if not row or not verify_pw(body.password, row[0]):
         raise HTTPException(401, "Invalid administrator credentials.")
+    if pw_needs_upgrade(row[0]):   # an older unsalted hash: store it in the salted format now that we hold the password
+        with db() as conn:
+            conn.execute("UPDATE ADMIN_USERS SET password_hash = ? WHERE username = ?", (hash_pw(body.password), body.username.strip()))
+            conn.commit()
     token = secrets.token_urlsafe(32)
     SESSIONS[token] = {'role': 'admin', 'username': body.username.strip()}
     return {'token': token, 'username': body.username.strip()}
@@ -146,8 +150,12 @@ def voter_login(body: VoterLoginIn):
         ).fetchone()
     if not row:
         raise HTTPException(404, "That registration number isn't on this election's roster.")
-    if row['password_hash'] != hash_pw(body.password):
+    if not verify_pw(body.password, row['password_hash']):
         raise HTTPException(401, "Incorrect password.")
+    if pw_needs_upgrade(row['password_hash']):   # an older unsalted hash: re-store it salted now that we hold the password
+        with db() as conn:
+            conn.execute("UPDATE VOTER_PARTICIPATION SET password_hash = ? WHERE participation_id = ?", (hash_pw(body.password), row['participation_id']))
+            conn.commit()
     if row['has_voted']:
         raise HTTPException(409, "You have already voted in this election.")
     if otp.required():
@@ -414,6 +422,7 @@ def add_voter(e_id: int, body: VoterIn, _=Depends(require_admin)):
             conn.commit()
         except sqlite3.IntegrityError:
             raise HTTPException(409, f"{reg_no} is already on the roster.")
+        reseal_roster(e_id, conn)
     return {'reg_no': reg_no}
 
 
@@ -430,6 +439,7 @@ def bulk_register(e_id: int, body: CountIn, _=Depends(require_admin)):
             [(e_id, f'25BCE{str(n).zfill(4)}', pw) for n in range(start, start + body.count)],
         )
         conn.commit()
+        reseal_roster(e_id, conn)
     return {'added': body.count, 'first': f'25BCE{str(start).zfill(4)}', 'password': DEMO_VOTER_PASSWORD}
 
 

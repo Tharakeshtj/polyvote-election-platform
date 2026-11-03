@@ -5,7 +5,7 @@ import pandas as pd
 import random
 from audit_ledger import append_ballot_receipt
 from tally_engine import calculate_irv_winner
-from election_core import get_db, hash_pw, init_admin_db, wipe_all_database_data, check_election_integrity
+from election_core import get_db, hash_pw, init_admin_db, reseal_roster, verify_pw, wipe_all_database_data, check_election_integrity
 
 # PAGE SETUP & CSS
 st.set_page_config(page_title="PolyVote OS", page_icon="🗳️", layout="wide")
@@ -67,7 +67,7 @@ if portal_mode == "🔐 Admin Login":
             record = conn.execute("SELECT password_hash FROM ADMIN_USERS WHERE username = ?", (admin_user.strip(),)).fetchone()
             conn.close()
             
-            if record and record[0] == hash_pw(admin_pass):
+            if record and verify_pw(admin_pass, record[0]):
                 st.session_state.admin_logged_in = True
                 st.success("Authentication successful. Unlocking dashboard...")
                 st.rerun()
@@ -189,9 +189,10 @@ elif portal_mode == "⚙️ System Administration":
                             t_voters = st.number_input("Students to Authorize (Pass: vote123)", min_value=1, max_value=1000, value=25)
                             if st.form_submit_button("Bulk Register"):
                                 existing = conn.execute("SELECT COUNT(*) FROM VOTER_PARTICIPATION WHERE election_id = ?", (e_id,)).fetchone()[0]
-                                voters = [(e_id, f'25BCE{str(existing + i).zfill(4)}', hash_pw('vote123'), 0) for i in range(1, t_voters + 1)]
+                                demo_pw = hash_pw('vote123')   # one salted hash shared by this demo batch
+                                voters = [(e_id, f'25BCE{str(existing + i).zfill(4)}', demo_pw, 0) for i in range(1, t_voters + 1)]
                                 conn.executemany("INSERT INTO VOTER_PARTICIPATION (election_id, student_reg_no, password_hash, has_voted) VALUES (?, ?, ?, ?)", voters)
-                                conn.commit(); st.rerun()
+                                conn.commit(); reseal_roster(e_id, conn); st.rerun()
 
                     with tab_man_v:
                         with st.form("manual_voter_form"):
@@ -201,7 +202,7 @@ elif portal_mode == "⚙️ System Administration":
                                 if v_reg and v_pass:
                                     try:
                                         conn.execute("INSERT INTO VOTER_PARTICIPATION (election_id, student_reg_no, password_hash, has_voted) VALUES (?, ?, ?, 0)", (e_id, v_reg.strip().upper(), hash_pw(v_pass)))
-                                        conn.commit(); st.success(f"Added {v_reg.upper()}!"); st.rerun()
+                                        conn.commit(); reseal_roster(e_id, conn); st.success(f"Added {v_reg.upper()}!"); st.rerun()
                                     except sqlite3.IntegrityError: st.error("Voter already exists in roster.")
 
                 v_df = pd.read_sql_query("SELECT student_reg_no AS Registration_No, has_voted AS Voted FROM VOTER_PARTICIPATION WHERE election_id = ? ORDER BY participation_id DESC LIMIT 5", conn, params=(e_id,))
@@ -260,7 +261,7 @@ elif portal_mode == "🔒 Voter Booth":
                         record = conn.execute("SELECT participation_id, password_hash, has_voted FROM VOTER_PARTICIPATION WHERE student_reg_no = ? AND election_id = ?", (reg_input.strip().upper(), e_id)).fetchone()
                         conn.close()
                         if not record: st.error("Not found in roster.")
-                        elif record[1] != hash_pw(pass_input): st.error("Invalid password.")
+                        elif not verify_pw(pass_input, record[1]): st.error("Invalid password.")
                         elif record[2] == 1: st.error("🚫 You have already voted.")
                         else:
                             st.session_state.voter_logged_in = True

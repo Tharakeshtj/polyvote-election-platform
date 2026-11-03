@@ -177,8 +177,10 @@ def run_prevention():
             'UPDATE VOTER_PARTICIPATION SET has_voted=1 WHERE participation_id=?', (voted_pid,))
     attempt('A2', 'Insert a rank outside 1-3 (rank 4)', 'CHECK',
             'INSERT INTO BALLOT_RANKS VALUES (?,?,?,4)', (str(uuid.uuid4()), cands[0], e))
+    with raw() as c:   # a candidate that is really on that ballot (the old test picked cands[0], which was only sometimes on it)
+        dup = c.execute('SELECT candidate_id FROM BALLOT_RANKS WHERE ballot_token=? LIMIT 1', (tok,)).fetchone()[0]
     attempt('A3', 'Rank the same candidate twice on one ballot', 'composite PK',
-            'INSERT INTO BALLOT_RANKS VALUES (?,?,?,3)', (tok, cands[0], e))
+            'INSERT INTO BALLOT_RANKS VALUES (?,?,?,1)', (tok, dup, e))
     attempt('A4', 'Rank a candidate that does not exist (FK enforcement on)', 'FK',
             'INSERT INTO BALLOT_RANKS VALUES (?,?,?,1)', (str(uuid.uuid4()), 9999, e), fk=True)
     attempt('A5', 'Rank a nonexistent candidate from a default connection (FK pragma off)', 'FK',

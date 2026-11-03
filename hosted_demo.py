@@ -8,7 +8,7 @@ import random
 import uuid
 
 from audit_ledger import append_ballot_receipt, clear_ledger
-from election_core import get_db, hash_pw, roster_hash
+from election_core import get_db, hash_pw, reseal_roster, roster_hash
 from verification import otp
 
 CANDIDATES = [('Arun Kumar', 'Academics'), ('Bhavya Singh', 'Sports'), ('Chaitanya Reddy', 'Hostels'), ('Diya Sharma', 'Tech'), ('Eshaan Iyer', 'Environment')]
@@ -33,6 +33,7 @@ def seed_if_empty(voters: int = 30, prevote: int = 18) -> bool:
         regs = [f'25BCE{i:04d}' for i in range(1, voters + 1)]
         conn.executemany('INSERT INTO VOTER_PARTICIPATION (election_id, student_reg_no, password_hash, has_voted) VALUES (?, ?, ?, 0)', [(e, r, pw) for r in regs])
         conn.commit()
+        reseal_roster(e, conn)
         otp.fill_plus_addresses(e, regs, os.environ.get('DEMO_EMAIL', 'demo@example.com'))
 
         cands = [r[0] for r in conn.execute('SELECT candidate_id FROM CANDIDATE WHERE election_id = ? ORDER BY candidate_id', (e,))]

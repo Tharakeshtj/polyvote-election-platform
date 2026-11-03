@@ -82,6 +82,9 @@ export interface IntegrityResult {
   injected: string[];
   roster_changed: boolean;
   count_mismatch: { voted_flags: number; ballots: number; receipts: number } | null;
+  voters_added: string[];
+  voters_removed: number;
+  roster_seal: 'ok' | 'not_sealed' | 'changed' | 'missing' | 'invalid';
 }
 
 export interface TallyRound {
