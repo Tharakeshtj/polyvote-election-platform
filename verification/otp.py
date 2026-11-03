@@ -25,10 +25,14 @@ RESEND_AFTER = 30             # seconds between sends
 MAX_CHALLENGES = 5            # new challenges per voter per 15 minutes
 CHALLENGE_WINDOW = 900
 OUTBOX_VISIBLE = 600          # the plaintext code stays visible in the admin outbox for 10 minutes at most
+# Limits on real email, so a public instance cannot be used to send mail to strangers in bulk.
+DAILY_EMAIL_CAP = int(os.environ.get('OTP_DAILY_EMAIL_CAP', '100') or 100)   # real emails per 24 hours from this instance
+ADDRESS_HOURLY_CAP = 6                                                       # real emails per address per hour
 
 _SECRET = (os.environ.get('OTP_SECRET') or secrets.token_hex(32)).encode()
 _EMAIL = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
 _lock = threading.Lock()
+_send_lock = threading.Lock()
 # Plaintext codes are held in memory only (never in the database) so the admin can read them during a demo.
 _outbox: deque = deque(maxlen=200)
 
@@ -145,22 +149,53 @@ def _new_code() -> str:
     return str(secrets.randbelow(10 ** CODE_DIGITS)).zfill(CODE_DIGITS)
 
 
+def _over_email_cap(email: str):
+    """Return a reason when sending one more real email would exceed the daily or per-address limit, else None."""
+    now = time.time()
+    attempted = "(status IN ('queued', 'sent') OR status LIKE 'failed%')"
+    with _conn() as c:
+        day = c.execute(f'SELECT COUNT(*) FROM MAIL_LOG WHERE sent_at > ? AND {attempted}', (now - 86400,)).fetchone()[0]
+        addr = c.execute(f'SELECT COUNT(*) FROM MAIL_LOG WHERE lower(email) = lower(?) AND sent_at > ? AND {attempted}', (email, now - 3600)).fetchone()[0]
+    if day >= DAILY_EMAIL_CAP:
+        return 'daily email limit reached'
+    if addr >= ADDRESS_HOURLY_CAP:
+        return 'too many emails to this address this hour'
+    return None
+
+
+def clear_all():
+    """Forget every voter email and code challenge (used by the factory reset so ids reused by new elections start clean)."""
+    with _conn() as c:
+        c.execute('DELETE FROM VOTER_CONTACT')
+        c.execute('DELETE FROM OTP_CHALLENGE')
+
+
 def _deliver(election_id: int, reg_no: str, email: str, code: str):
     """Queue the outbox entry now and send in the background so the page never waits on SMTP."""
     entry = {'ts': time.time(), 'election_id': election_id, 'reg_no': reg_no, 'email': email, 'code': code,
              'expires_at': time.time() + TTL_SECONDS, 'status': 'queued'}
     _outbox.appendleft(entry)
     cfg = smtp_settings()
+    log_id = [None]
 
     def log(status):
+        """First call writes the MAIL_LOG row; later calls update its status."""
         entry['status'] = status
         with _conn() as c:
-            c.execute('INSERT INTO MAIL_LOG (sent_at, election_id, reg_no, email, status) VALUES (?,?,?,?,?)',
-                      (time.time(), election_id, reg_no, email, status))
+            if log_id[0] is None:
+                log_id[0] = c.execute('INSERT INTO MAIL_LOG (sent_at, election_id, reg_no, email, status) VALUES (?,?,?,?,?)',
+                                      (time.time(), election_id, reg_no, email, status)).lastrowid
+            else:
+                c.execute('UPDATE MAIL_LOG SET status = ? WHERE log_id = ?', (status, log_id[0]))
 
     if not cfg['configured']:
         log('outbox only (SMTP not configured)')
         return
+    with _send_lock:   # check the limits and reserve the slot in one step, so a burst cannot slip past them
+        reason = _over_email_cap(email)
+        log(f'skipped: {reason}' if reason else 'queued')
+    if reason:
+        return   # the code is still in the outbox (and on screen in demo mode)
 
     def run():
         import smtplib
@@ -189,7 +224,7 @@ def demo_hint() -> bool:
 
 
 def _demo_extra(code: str) -> dict:
-    return {'demo_code': code} if demo_hint() else {}
+    return {'demo_code': code, 'email_enabled': smtp_settings()['configured']} if demo_hint() else {}
 
 
 def start(election_id: int, reg_no: str) -> dict:

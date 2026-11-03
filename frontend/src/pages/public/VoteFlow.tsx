@@ -219,7 +219,9 @@ function OtpStep({ challenge, onBack, onVerified }: {
           {demoCode && (
             <div className="callout callout-info" role="note">
               <ShieldCheck />
-              <span><strong>Demo mode.</strong> This public demo cannot email you, so the code is shown here: <code style={{ fontSize: 16, letterSpacing: 2 }}>{demoCode}</code>. A live deployment sends it by email only.</span>
+              {challenge.email_enabled
+                ? <span><strong>Demo mode.</strong> The code is also emailed to the address on file. It is shown here too so the demo never waits on email: <code style={{ fontSize: 16, letterSpacing: 2 }}>{demoCode}</code>.</span>
+                : <span><strong>Demo mode.</strong> This public demo cannot email you, so the code is shown here: <code style={{ fontSize: 16, letterSpacing: 2 }}>{demoCode}</code>. A live deployment sends it by email only.</span>}
             </div>
           )}
           <div className="field">

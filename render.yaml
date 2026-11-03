@@ -1,16 +1,42 @@
 # Render Blueprint for the public demo (free plan, builds from the Dockerfile).
-# The demo needs no secrets: the one-time code is shown on screen, and /demo explains every page.
-# For real emailed codes use render-live.example.yaml (needs an SMTP relay account; see DEPLOY.md).
+# The demo runs the same code as the project: only these settings differ. Everything marked "sync: false" is a
+# secret you type into Render's dashboard; leave any of them empty and that feature simply stays off
+# (no SMTP settings: the code is shown on screen only; no MONGO_URI: the ledger is a local file).
 services:
   - type: web
     name: polyvote-bacse202
     runtime: docker
     plan: free
+    autoDeploy: true            # every push to main redeploys the demo
     healthCheckPath: /api/health
     envVars:
-      - key: HOSTED_DEMO
+      - key: HOSTED_DEMO        # seeds a sample election on every start and lets the admin reset it
         value: "true"
-      - key: OTP_REQUIRED
+      - key: OTP_REQUIRED       # emailed one-time code at sign-in, as in the project
         value: "true"
-      - key: OTP_DEMO_HINT
+      - key: OTP_DEMO_HINT      # also show the code on screen so the demo never waits on email
         value: "true"
+      - key: PUBLIC_URL         # the voter-page QR code points here
+        value: https://polyvote-bacse202.onrender.com
+      # Real emailed codes through an SMTP relay on port 2525 (Render's free plan blocks 25, 465 and 587)
+      - key: SMTP_HOST
+        value: smtp-relay.brevo.com
+      - key: SMTP_PORT
+        value: "2525"
+      - key: SMTP_USER          # your Brevo SMTP login
+        sync: false
+      - key: SMTP_PASS          # your Brevo SMTP key (not your Brevo password)
+        sync: false
+      - key: SMTP_FROM          # the sender address verified in Brevo
+        sync: false
+      - key: DEMO_EMAIL         # optional: seeded voters' codes go to you+25bce0001@gmail.com and so on
+        sync: false
+      - key: OTP_DAILY_EMAIL_CAP  # most real emails this instance will send in 24 hours
+        value: "100"
+      # The same ledger setup as the project, in its OWN database so the demo never touches the real ledger
+      - key: MONGO_URI
+        sync: false
+      - key: MONGO_DB
+        value: polyvote_demo
+      - key: LEDGER_KEY         # a new secret, different from the project's
+        sync: false

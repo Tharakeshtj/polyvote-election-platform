@@ -172,6 +172,7 @@ export interface PublicConfig {
   public_url: string | null;
   hosted_demo: boolean;
   otp_demo_hint: boolean;
+  email_enabled: boolean;
   admin_public: boolean;
 }
 
@@ -189,6 +190,7 @@ export interface OtpChallenge {
   expires_in: number;
   resend_after: number;
   demo_code?: string;
+  email_enabled?: boolean;
 }
 
 export interface OutboxEntry {

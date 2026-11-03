@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Bomb } from 'lucide-react';
-import { adminApi, errorMessage } from '../../api';
+import { adminApi, errorMessage, publicApi } from '../../api';
 import { Modal, Spinner, useToast } from '../../components/ui';
 
 export default function SettingsPage() {
@@ -10,12 +10,15 @@ export default function SettingsPage() {
   const [open, setOpen] = useState(false);
   const [typed, setTyped] = useState('');
   const [busy, setBusy] = useState(false);
+  const [demo, setDemo] = useState(false);
+
+  useEffect(() => { publicApi.config().then((c) => setDemo(c.hosted_demo)).catch(() => {}); }, []);
 
   const reset = async () => {
     setBusy(true);
     try {
       await adminApi.reset();
-      toast('success', 'All election data and the ledger were wiped.');
+      toast('success', demo ? 'The demo was reset to its sample election.' : 'All election data and the ledger were wiped.');
       setOpen(false);
       navigate('/admin');
     } catch (e) {
@@ -41,6 +44,7 @@ export default function SettingsPage() {
             <strong style={{ fontWeight: 500 }}>Factory reset</strong>
             <p className="muted" style={{ marginTop: 2 }}>
               Deletes every organisation, election, candidate, voter and ballot, and empties the audit ledger. Administrator accounts are kept.
+              {demo && ' On this public demo the sample election is created again afterwards.'}
             </p>
           </div>
           <button className="btn btn-danger" onClick={() => { setTyped(''); setOpen(true); }}><Bomb /> Factory reset</button>
@@ -50,18 +54,22 @@ export default function SettingsPage() {
       <Modal
         open={open}
         onClose={() => !busy && setOpen(false)}
-        title="Wipe all election data?"
+        title={demo ? 'Reset the demo?' : 'Wipe all election data?'}
         tone="danger"
         icon={<Bomb />}
         footer={
           <>
             <button className="btn" onClick={() => setOpen(false)} disabled={busy}>Cancel</button>
-            <button className="btn btn-danger" disabled={busy || typed !== 'RESET'} onClick={reset}>{busy && <Spinner />} Wipe everything</button>
+            <button className="btn btn-danger" disabled={busy || typed !== 'RESET'} onClick={reset}>{busy && <Spinner />} {demo ? 'Reset demo' : 'Wipe everything'}</button>
           </>
         }
       >
         <div className="stack-sm">
-          <p>This can't be undone. The audit ledger will be emptied too, so past receipts can no longer be verified.</p>
+          <p>
+            {demo
+              ? 'Everything you created on this demo is removed and the sample election comes back. The audit ledger is emptied and recreated with it.'
+              : "This can't be undone. The audit ledger will be emptied too, so past receipts can no longer be verified."}
+          </p>
           <label htmlFor="confirm-reset" className="subtle">Type <strong>RESET</strong> to confirm</label>
           <input id="confirm-reset" className="input input-mono" value={typed} onChange={(e) => setTyped(e.target.value)} autoComplete="off" />
         </div>

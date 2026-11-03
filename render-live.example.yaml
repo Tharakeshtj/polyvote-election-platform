@@ -1,3 +1,4 @@
+# NOTE: these real-email settings are now part of render.yaml (single demo service). This file is kept only so older references still resolve.
 # Optional second service: real emailed one-time codes through an SMTP relay on port 2525
 # (Render's free plan blocks ports 25, 465 and 587, so Gmail's own SMTP cannot be used there).
 # Copy the service block into render.yaml and fill the values in Render's dashboard. See DEPLOY.md.

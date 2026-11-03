@@ -202,6 +202,7 @@ def public_config():
         'public_url': os.environ.get('PUBLIC_URL', '').strip().rstrip('/') or None,
         'hosted_demo': hosted_demo.enabled(),
         'otp_demo_hint': otp.demo_hint(),
+        'email_enabled': otp.smtp_settings()['configured'],
         # The demo guide may print the default admin login only when no ADMIN_PASSWORD was set on a public demo.
         'admin_public': hosted_demo.enabled() and not os.environ.get('ADMIN_PASSWORD', '').strip(),
     }
@@ -619,10 +620,11 @@ def add_admin(body: AdminLoginIn, _=Depends(require_admin)):
 def factory_reset(body: ResetIn, _=Depends(require_admin)):
     if body.confirm != 'RESET':
         raise HTTPException(422, "Type RESET to confirm.")
-    if hosted_demo.enabled():
-        raise HTTPException(403, "Factory reset is disabled on the public demo; it resets itself when the server restarts.")
     with WRITE_LOCK:
         wipe_all_database_data()
+        otp.clear_all()
+        if hosted_demo.enabled():
+            hosted_demo.seed_if_empty()   # on the public demo a reset brings back the sample election, not an empty system
     for token in [t for t, s in SESSIONS.items() if s['role'] == 'voter']:
         SESSIONS.pop(token, None)
     return {'ok': True}

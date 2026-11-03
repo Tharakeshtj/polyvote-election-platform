@@ -26,7 +26,7 @@ const PAGES: PageRow[] = [
   { path: '/admin/outbox', name: 'Mail outbox', what: 'Every one-time code issued, its recipient and delivery status.', admin: true },
   { path: '/admin/messages', name: 'Contact messages', what: 'Messages sent through the public contact form.', admin: true },
   { path: '/admin/admins', name: 'Administrators', what: 'Add officer accounts.', admin: true },
-  { path: '/admin/settings', name: 'Settings', what: 'Reset (disabled on the public demo).', admin: true },
+  { path: '/admin/settings', name: 'Settings', what: 'Factory reset (on the public demo it restores the sample election).', admin: true },
 ];
 
 export default function DemoGuide() {
@@ -50,7 +50,9 @@ export default function DemoGuide() {
           <Info />
           <div>
             <strong>This is the public demo.</strong> Data is created fresh when the server starts and resets when it restarts. The server may take about a minute to wake after being idle.
-            {cfg?.otp_demo_hint && ' It cannot send email from here, so the one-time code is shown on the screen ("Demo mode").'}
+            {cfg?.otp_demo_hint && (cfg?.email_enabled
+              ? ' The one-time code is emailed to the voter and also shown on the screen ("Demo mode") so the demo never waits on email.'
+              : ' It cannot send email from here, so the one-time code is shown on the screen ("Demo mode").')}
           </div>
         </div>
       )}
@@ -60,7 +62,7 @@ export default function DemoGuide() {
         <div className="card-body stack-sm">
           <ol style={{ margin: 0, paddingLeft: 20, display: 'grid', gap: 8 }}>
             <li>Open <Link to="/vote/1">Vote</Link> and sign in as <code>25BCE0025</code> with password <code>vote123</code>. Voters <code>25BCE0019</code> to <code>25BCE0030</code> have not voted.</li>
-            <li>Enter the 6-digit code {cfg?.otp_demo_hint ? 'shown in the blue box' : 'sent to the voter’s email'}, rank three candidates, and cast. Copy your receipt token.</li>
+            <li>Enter the 6-digit code {cfg?.otp_demo_hint ? (cfg?.email_enabled ? 'emailed to the voter and shown in the blue box' : 'shown in the blue box') : 'sent to the voter’s email'}, rank three candidates, and cast. Copy your receipt token.</li>
             <li>Open <Link to="/verify">Check receipt</Link>, paste the token, and see that the ballot is sealed and counted.</li>
             {demo && cfg?.admin_public && (
               <li>Open <Link to="/admin/login">Admin</Link> (user <code>admin</code>, password <code>admin123</code> on this demo only), go to Election 1, then <strong>Results</strong> and run the sweep. In <strong>DB Studio</strong> delete a ballot and run it again to watch it get caught.</li>
