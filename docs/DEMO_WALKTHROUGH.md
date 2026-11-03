@@ -33,4 +33,4 @@
 5. Close, run the sweep and the count; edit one block in MongoDB Atlas and reload the Audit ledger to show the red "tampered" banner.
 
 ## Demo versus project
-The public demo runs the same code as the project (it redeploys on every push to `main`); only its settings differ (`render.yaml`). Its data and its ledger are separate, so nothing done on the demo reaches the project. Real emailed codes and the Atlas ledger on the demo are set up in `DEPLOY.md`.
+The public demo runs the same code as the project (redeploy it from the Render dashboard after a push: Manual Deploy, Deploy latest commit); only its settings differ (`render.yaml`). Its data and its ledger are separate, so nothing done on the demo reaches the project. Real emailed codes and the Atlas ledger on the demo are set up in `DEPLOY.md`.

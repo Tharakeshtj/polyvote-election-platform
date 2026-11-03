@@ -1,0 +1,3 @@
+participant,group,task,completed,hint_level,seconds,errors,seq
+P01,voter,V1,1,0,20,0,7
+P01,voter,V2,1,0,45,1,6
