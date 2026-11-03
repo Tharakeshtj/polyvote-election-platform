@@ -1,0 +1,107 @@
+[
+ {
+  "file": "figures/F01_detection_heatmap.png",
+  "title": "Detection of 31 attacks by eight design profiles",
+  "caption": "Rows are attack scenarios; columns are design profiles P0 to P7 (defined in Table 3). Green cells are detected. The count above each column is the number of the 31 scenarios it detects."
+ },
+ {
+  "file": "figures/F02_detection_rate.png",
+  "title": "Detection rate by design",
+  "caption": "Share of attack scenarios each design profile detects. In-scope excludes the three scenarios outside the stated attacker model (Table 1)."
+ },
+ {
+  "file": "figures/F03_ablation.png",
+  "title": "Ablation of the defences",
+  "caption": "Left: attacks lost when one detector is removed. Middle: attacks each detector finds on its own. Right: cumulative detection as detectors are added in the order shown."
+ },
+ {
+  "file": "figures/F04_detector_firing.png",
+  "title": "Detector firing matrix",
+  "caption": "Dark cells show which detectors fire for each attack. The number at the right is how many automatic detectors fire; two or more means the attack is caught redundantly."
+ },
+ {
+  "file": "figures/F05_key_value.png",
+  "title": "Value of the keyed chain",
+  "caption": "Scenarios detected by the full design with the HMAC key versus the same design with a plain SHA-256 chain. The ids in the amber bar are attacks that only fail when the attacker does not hold the key."
+ },
+ {
+  "file": "figures/F06_by_adversary.png",
+  "title": "Detection by attacker capability",
+  "caption": "Every scenario where the attacker lacks the ledger key is detected. The scenarios with the key (and one scenario about unsealed display text) are outside the attacker model and are reported openly."
+ },
+ {
+  "file": "figures/F07_triggers.png",
+  "title": "Append-only triggers versus detection",
+  "caption": "Triggers on the ballot table stop edits and deletions by a writer who cannot drop them, but they do not stop injection, ledger tampering or roster changes, and a writer with schema rights removes them. Detection covers what prevention cannot."
+ },
+ {
+  "file": "figures/F08_audit_time.png",
+  "title": "Audit time per scenario",
+  "caption": "Time for the integrity sweep plus the chain check on the small test election after each attack."
+ },
+ {
+  "file": "figures/F09_scaling.png",
+  "title": "Scaling with election size",
+  "caption": "Left: median time of the sweep, chain check, tally and receipt lookup from 100 to 100,000 ballots (log scales). Right: latency percentiles of casting one ballot; the file ledger rewrites the file on each append, so cost grows with size."
+ },
+ {
+  "file": "figures/F10_sizes_memory_seal.png",
+  "title": "Storage, memory and roster-seal overhead",
+  "caption": "Storage grows linearly; memory is the process size after a sweep; the roster seal costs milliseconds even at 100,000 voters."
+ },
+ {
+  "file": "figures/F11_key_overhead.png",
+  "title": "Overhead of the keyed chain",
+  "caption": "The same operations with a plain SHA-256 chain and with the HMAC-keyed chain at the largest size measured in both modes."
+ },
+ {
+  "file": "figures/F12_concurrency.png",
+  "title": "Concurrent voting",
+  "caption": "A write lock serialises ballot casts, so throughput stays flat while latency grows with the number of simultaneous voters. After every run the chain verified and the sweep passed, with zero errors."
+ },
+ {
+  "file": "figures/F13_password_cracking.png",
+  "title": "Password hash strength",
+  "caption": "Time to try every password in a character class on one CPU thread. The new format is about 361,996 times slower per guess and every hash has its own random salt, so tables built once cannot be reused."
+ },
+ {
+  "file": "figures/F14_precision_recall.png",
+  "title": "Precision and recall of anomaly identification",
+  "caption": "With 1, 5 and 20 tampered ballots per category in a 150-ballot election, the sweep reports precisely the tampered tokens: no false positives and no misses."
+ },
+ {
+  "file": "figures/F15_false_positives.png",
+  "title": "False alarms on clean elections",
+  "caption": "Randomised legitimate use (bulk registration, late voters, ballots, closing) followed by a sweep and chain check each time, with and without the key."
+ },
+ {
+  "file": "figures/F16_tally_agreement.png",
+  "title": "Tally correctness",
+  "caption": "Random elections (3-8 candidates, 5-300 ballots) counted by the application and by an independent implementation that explores every possible tie-break."
+ },
+ {
+  "file": "figures/F17_snapshot_attack.png",
+  "title": "Snapshot differencing",
+  "caption": "An attacker who copies the database before and after a single cast can link that voter to that ballot; the anonymity set is the number of casts between copies. This is a known limit of any design that stores a voted flag."
+ },
+ {
+  "file": "figures/F18_code_metrics.png",
+  "title": "Code size and complexity",
+  "caption": "Left: lines of code by component. Right: distribution of cyclomatic complexity ranks across back-end functions (radon)."
+ },
+ {
+  "file": "figures/F19_bundle.png",
+  "title": "Front-end bundle",
+  "caption": "Largest files in the production build. Routes are split into chunks that load on demand."
+ },
+ {
+  "file": "figures/F20_feature_coverage.png",
+  "title": "Documented feature coverage of related systems",
+  "caption": "From each system's own page, README or paper (URL for every cell in the evidence file). F1 ranked counting, F2 many organisations, F3 database rules, F4 unlinked ballots, F5 keyed ledger and sweep, F6 email OTP, F7 QR voting, F8 receipt, F9 easy to run. \u2013 means not documented, not absent. PolyVote's row rests on the tests in this dossier."
+ },
+ {
+  "file": "figures/F21_test_inventory.png",
+  "title": "Executed checks",
+  "caption": "Number of executed checks per category in this evaluation."
+ }
+]

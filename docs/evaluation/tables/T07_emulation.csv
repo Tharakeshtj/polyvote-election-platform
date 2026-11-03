@@ -1,0 +1,14 @@
+Scenario,Real Review 2 code (measured earlier),Emulated from the detector matrix,Agree
+C1,detected,detected,yes
+C2,detected,detected,yes
+C3,detected,detected,yes
+C4,detected,detected,yes
+C5,detected_manual_only,detected_manual_only,yes
+C6,undetected,undetected,yes
+C7,detected,detected,yes
+C8,detected,detected,yes
+C9,detected_manual_only,detected_manual_only,yes
+C10,undetected,undetected,yes
+C11,undetected,undetected,yes
+C12,detected_manual_only,detected_manual_only,yes
+C13,undetected,undetected,yes

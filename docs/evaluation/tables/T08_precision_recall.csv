@@ -1,0 +1,10 @@
+Tampered per category,Category,True,Reported,True positives,Precision,Recall
+1,modified,1,1,1,1.0,1.0
+1,deleted,1,1,1,1.0,1.0
+1,injected,1,1,1,1.0,1.0
+5,modified,5,5,5,1.0,1.0
+5,deleted,5,5,5,1.0,1.0
+5,injected,5,5,5,1.0,1.0
+20,modified,20,20,20,1.0,1.0
+20,deleted,20,20,20,1.0,1.0
+20,injected,20,20,20,1.0,1.0

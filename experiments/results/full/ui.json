@@ -1,0 +1,337 @@
+{
+  "shots": [
+    {
+      "id": "S00",
+      "title": "Clean election: sweep passes and the chain is intact",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 18 | Ledger receipts | 18 | Voters marked as voted | 18 | Sweep passed. Every ledger receipt matches its ballot in the database.",
+      "ledger_text": "Audit ledger |  | One receipt per ballot. Each entry includes the previous entry\u2019s hash, so editing any entry breaks the chain after it. |  | All elections | VIT Student Council Election 2026 (#1) | Chain intact. Cryptographic ledger is valid. Checked across the whole led",
+      "files": [
+        "screenshots/S00_sweep.png",
+        "screenshots/S00_ledger.png"
+      ]
+    },
+    {
+      "id": "C1",
+      "title": "C1 Swap the 1st and 2nd choice on one ballot",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 18 | Ledger receipts | 18 | Voters marked as voted | 18 | Tampering detected. 1 ballot don\u2019t match the ledger (1 modified, 0 deleted, 0 without a receipt). | Ballot token\tAnomaly\tWhat the ledger shows |  | 017888fb\u2026659e | \tModified\tThe ranks in the database differ from what was sealed.",
+      "ledger_text": null,
+      "files": [
+        "screenshots/C1_sweep.png"
+      ]
+    },
+    {
+      "id": "C3",
+      "title": "C3 Delete one ballot",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 17 | Ledger receipts | 18 | Voters marked as voted | 18 | These counts don\u2019t agree. Run the sweep to see which ballots or flags are responsible. | Tampering detected. 1 ballot don\u2019t match the ledger (0 modified, 1 deleted, 0 without a receipt). Voter flags (18), ballots (17) and receipts (18) disagree. | Ballot token\tAnomaly\tWhat the ledger shows |  | 12fe84de\u2026ff3d | \tDeleted\tA sealed ballot is missing from the database.",
+      "ledger_text": null,
+      "files": [
+        "screenshots/C3_sweep.png"
+      ]
+    },
+    {
+      "id": "C5",
+      "title": "C5 Inject a ballot with no receipt",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 19 | Ledger receipts | 18 | Voters marked as voted | 18 | These counts don\u2019t agree. Run the sweep to see which ballots or flags are responsible. | Tampering detected. 1 ballot don\u2019t match the ledger (0 modified, 0 deleted, 1 without a receipt). Voter flags (18), ballots (19) and receipts (18) disagree. | Ballot token\tAnomaly\tWhat the ledger shows |  | 4cd1851e\u2026a35f | \tNo receipt\tThis ballot is in the database but was never sealed in the ledger.",
+      "ledger_text": null,
+      "files": [
+        "screenshots/C5_sweep.png"
+      ]
+    },
+    {
+      "id": "C6",
+      "title": "C6 Ballot stuffing with a forged plain-hash receipt",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 19 | Ledger receipts | 19 | Voters marked as voted | 18 | These counts don\u2019t agree. Run the sweep to see which ballots or flags are responsible. | Tampering detected. Voter flags (18), ballots (19) and receipts (19) disagree.",
+      "ledger_text": "Audit ledger |  | One receipt per ballot. Each entry includes the previous entry\u2019s hash, so editing any entry breaks the chain after it. |  | All elections | VIT Student Council Election 2026 (#1) | Data tampered at block 19 Checked across the whole ledger. | 19 receipts | Ne",
+      "files": [
+        "screenshots/C6_sweep.png",
+        "screenshots/C6_ledger.png"
+      ]
+    },
+    {
+      "id": "C7",
+      "title": "C7 Edit a ledger block",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 18 | Ledger receipts | 18 | Voters marked as voted | 18 | Tampering detected. 1 ballot don\u2019t match the ledger (1 modified, 0 deleted, 0 without a receipt). | Ballot token\tAnomaly\tWhat the ledger shows |  | 6ebf376e\u20266bf2 | \tModified\tThe ranks in the database differ from what was sealed.",
+      "ledger_text": "Audit ledger |  | One receipt per ballot. Each entry includes the previous entry\u2019s hash, so editing any entry breaks the chain after it. |  | All elections | VIT Student Council Election 2026 (#1) | Data tampered at block 11 Checked across the whole ledger. | 18 receipts | Ne",
+      "files": [
+        "screenshots/C7_sweep.png",
+        "screenshots/C7_ledger.png"
+      ]
+    },
+    {
+      "id": "C9",
+      "title": "C9 Truncate the last ledger block",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 18 | Ledger receipts | 17 | Voters marked as voted | 18 | These counts don\u2019t agree. Run the sweep to see which ballots or flags are responsible. | Tampering detected. 1 ballot don\u2019t match the ledger (0 modified, 0 deleted, 1 without a receipt). Voter flags (18), ballots (18) and receipts (17) disagree. | Ballot token\tAnomaly\tWhat the ledger shows |  | d1ed92ff\u2026f92d | \tNo receipt\tThis ballot is in the database but was never sealed in the ledger.",
+      "ledger_text": null,
+      "files": [
+        "screenshots/C9_sweep.png"
+      ]
+    },
+    {
+      "id": "C10",
+      "title": "C10 Rebuild the whole chain without the key",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 18 | Ledger receipts | 18 | Voters marked as voted | 18 | Sweep passed. Every ledger receipt matches its ballot in the database.",
+      "ledger_text": "Audit ledger |  | One receipt per ballot. Each entry includes the previous entry\u2019s hash, so editing any entry breaks the chain after it. |  | All elections | VIT Student Council Election 2026 (#1) | Data tampered at block 1 Checked across the whole ledger. | 18 receipts | New",
+      "files": [
+        "screenshots/C10_sweep.png",
+        "screenshots/C10_ledger.png"
+      ]
+    },
+    {
+      "id": "C11",
+      "title": "C11 Swap two candidates' names after voting",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 18 | Ledger receipts | 18 | Voters marked as voted | 18 | Tampering detected. Candidate names changed after voting began.",
+      "ledger_text": null,
+      "files": [
+        "screenshots/C11_sweep.png"
+      ]
+    },
+    {
+      "id": "C13",
+      "title": "C13 Ghost voter added behind the application and used to vote",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 19 | Ledger receipts | 19 | Voters marked as voted | 19 | Tampering detected. The voter roster changed outside the application (1 voter added: 25BCE7777).",
+      "ledger_text": null,
+      "files": [
+        "screenshots/C13_sweep.png"
+      ]
+    },
+    {
+      "id": "C14",
+      "title": "C14 Delete an unvoted voter from the roster",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 18 | Ledger receipts | 18 | Voters marked as voted | 18 | Tampering detected. The voter roster changed outside the application (1 removed).",
+      "ledger_text": null,
+      "files": [
+        "screenshots/C14_sweep.png"
+      ]
+    },
+    {
+      "id": "C16",
+      "title": "C16 Delete the roster seal, then add a ghost voter",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 19 | Ledger receipts | 19 | Voters marked as voted | 19 | Tampering detected. The voter roster seal is missing.",
+      "ledger_text": null,
+      "files": [
+        "screenshots/C16_sweep.png"
+      ]
+    },
+    {
+      "id": "C17",
+      "title": "C17 Forge the roster seal without the key",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 19 | Ledger receipts | 19 | Voters marked as voted | 19 | Tampering detected. The voter roster seal does not verify.",
+      "ledger_text": null,
+      "files": [
+        "screenshots/C17_sweep.png"
+      ]
+    },
+    {
+      "id": "C18",
+      "title": "C18 Wipe the whole ledger",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 18 | Ledger receipts | 0 | Voters marked as voted | 18 | These counts don\u2019t agree. Run the sweep to see which ballots or flags are responsible. | Tampering detected. 18 ballots don\u2019t match the ledger (0 modified, 0 deleted, 18 without a receipt). Voter flags (18), ballots (18) and receipts (0) disagree. | Ballot token\tAnomaly\tWhat the ledger shows |  | 017888fb\u2026659e | \tNo receipt\tThis ballot is in the database but was never sealed in the ledger. |  | 0b6187ba\u2026508b | \tNo receipt\tThis b",
+      "ledger_text": "Audit ledger |  | One receipt per ballot. Each entry includes the previous entry\u2019s hash, so editing any entry breaks the chain after it. |  | All elections | VIT Student Council Election 2026 (#1) | Ledger is empty. Checked across the whole ledger. | 0 receipts | Newest first",
+      "files": [
+        "screenshots/C18_sweep.png",
+        "screenshots/C18_ledger.png"
+      ]
+    },
+    {
+      "id": "C26",
+      "title": "C26 Mark an unvoted voter as voted with no ballot",
+      "sweep_text": "Integrity sweep |  | Recomputes each sealed ballot from the database and compares it with its ledger receipt. |  | Run sweep | Ballots in database | 18 | Ledger receipts | 18 | Voters marked as voted | 19 | These counts don\u2019t agree. Run the sweep to see which ballots or flags are responsible. | Tampering detected. Voter flags (19), ballots (18) and receipts (18) disagree.",
+      "ledger_text": null,
+      "files": [
+        "screenshots/C26_sweep.png"
+      ]
+    },
+    {
+      "id": "V_results",
+      "title": "V_results",
+      "files": [
+        "screenshots/V_results.png"
+      ]
+    },
+    {
+      "id": "V_studio",
+      "title": "V_studio",
+      "files": [
+        "screenshots/V_studio.png"
+      ]
+    },
+    {
+      "id": "V_outbox",
+      "title": "V_outbox",
+      "files": [
+        "screenshots/V_outbox.png"
+      ]
+    },
+    {
+      "id": "V_elections",
+      "title": "V_elections",
+      "files": [
+        "screenshots/V_elections.png"
+      ]
+    },
+    {
+      "id": "V_voters",
+      "title": "V_voters",
+      "files": [
+        "screenshots/V_voters.png"
+      ]
+    }
+  ],
+  "a11y": [
+    {
+      "page": "Home",
+      "path": "/",
+      "violations": [],
+      "rules_passed": 21,
+      "incomplete": 0
+    },
+    {
+      "page": "Vote sign-in",
+      "path": "/vote/1",
+      "violations": [],
+      "rules_passed": 24,
+      "incomplete": 0
+    },
+    {
+      "page": "Check receipt",
+      "path": "/verify",
+      "violations": [],
+      "rules_passed": 23,
+      "incomplete": 0
+    },
+    {
+      "page": "Demo guide",
+      "path": "/demo",
+      "violations": [],
+      "rules_passed": 23,
+      "incomplete": 0
+    },
+    {
+      "page": "Privacy",
+      "path": "/privacy",
+      "violations": [],
+      "rules_passed": 20,
+      "incomplete": 0
+    },
+    {
+      "page": "Contact",
+      "path": "/contact",
+      "violations": [
+        {
+          "id": "link-in-text-block",
+          "impact": "serious",
+          "nodes": 1,
+          "help": "Links must be distinguishable without relying on color"
+        }
+      ],
+      "rules_passed": 24,
+      "incomplete": 1
+    },
+    {
+      "page": "Admin sign-in",
+      "path": "/admin/login",
+      "violations": [],
+      "rules_passed": 21,
+      "incomplete": 0
+    },
+    {
+      "page": "Elections",
+      "path": "/admin",
+      "violations": [],
+      "rules_passed": 21,
+      "incomplete": 0
+    },
+    {
+      "page": "Voters",
+      "path": "/admin/elections/1/voters",
+      "violations": [],
+      "rules_passed": 21,
+      "incomplete": 0
+    },
+    {
+      "page": "Results",
+      "path": "/admin/elections/1/results",
+      "violations": [],
+      "rules_passed": 21,
+      "incomplete": 0
+    },
+    {
+      "page": "DB Studio",
+      "path": "/admin/elections/1/studio",
+      "violations": [],
+      "rules_passed": 21,
+      "incomplete": 0
+    },
+    {
+      "page": "Audit ledger",
+      "path": "/admin/ledger",
+      "violations": [],
+      "rules_passed": 21,
+      "incomplete": 0
+    },
+    {
+      "page": "Mail outbox",
+      "path": "/admin/outbox",
+      "violations": [],
+      "rules_passed": 21,
+      "incomplete": 0
+    }
+  ],
+  "load": [
+    {
+      "page": "Home",
+      "path": "/",
+      "dom_content_loaded_ms": 173.1,
+      "load_ms": 173.6,
+      "first_contentful_paint_ms": 128,
+      "js_transfer_kb": 280.6
+    },
+    {
+      "page": "Vote sign-in",
+      "path": "/vote/1",
+      "dom_content_loaded_ms": 182.9,
+      "load_ms": 183.2,
+      "first_contentful_paint_ms": 140,
+      "js_transfer_kb": 313.6
+    },
+    {
+      "page": "Check receipt",
+      "path": "/verify",
+      "dom_content_loaded_ms": 172.6,
+      "load_ms": 173,
+      "first_contentful_paint_ms": 140,
+      "js_transfer_kb": 284.8
+    },
+    {
+      "page": "Demo guide",
+      "path": "/demo",
+      "dom_content_loaded_ms": 166.6,
+      "load_ms": 167.2,
+      "first_contentful_paint_ms": 132,
+      "js_transfer_kb": 288.1
+    },
+    {
+      "page": "Privacy",
+      "path": "/privacy",
+      "dom_content_loaded_ms": 165.7,
+      "load_ms": 165.9,
+      "first_contentful_paint_ms": 132,
+      "js_transfer_kb": 285.2
+    },
+    {
+      "page": "Contact",
+      "path": "/contact",
+      "dom_content_loaded_ms": 172.4,
+      "load_ms": 172.8,
+      "first_contentful_paint_ms": 136,
+      "js_transfer_kb": 284.6
+    },
+    {
+      "page": "Admin sign-in",
+      "path": "/admin/login",
+      "dom_content_loaded_ms": 170.9,
+      "load_ms": 171.6,
+      "first_contentful_paint_ms": 136,
+      "js_transfer_kb": 283.4
+    }
+  ]
+}

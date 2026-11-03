@@ -1,0 +1,9 @@
+Profile,Design,Detectors used,Key,Detected (all 31),Rate,Detected (in scope),Rate (in scope),Missed
+P0,CRUD app: officer compares the counters,Eyeballing counters,unkeyed,11/31,35.5%,11/28,39.3%,C1 C2 C6 C7 C10 C11 C13 C14 C15 C16 C17 C20 C21 C22 C23 C24 C25 C27 C28 C29
+P1,CRUD app + automatic count check,Rule 5 count mismatch,unkeyed,10/31,32.3%,10/28,35.7%,C1 C2 C6 C7 C10 C11 C13 C14 C15 C16 C17 C19 C20 C21 C22 C23 C24 C25 C27 C28 C29
+P2,Plain hash chain only,Chain check,unkeyed,6/31,19.4%,6/28,21.4%,C1 C2 C3 C4 C5 C6 C9 C10 C11 C12 C13 C14 C15 C16 C17 C18 C23 C24 C25 C26 C27 C28 C29 C30 C31
+P3,Plain chain + receipt sweep (Review 2 design),Chain check + Rule 1 modified + Rule 2 deleted,unkeyed,11/31,35.5%,11/28,39.3%,C5 C6 C9 C10 C11 C12 C13 C14 C15 C16 C17 C18 C23 C24 C25 C26 C27 C28 C29 C30
+P4,Plain chain + full sweep,Chain check + Rule 1 modified + Rule 2 deleted + Rule 3 injected + Rule 4 candidate seal + Rule 5 count mismatch + Rule 6 voter seal,unkeyed,24/31,77.4%,24/28,85.7%,C6 C10 C17 C23 C27 C28 C29
+P5,Keyed chain only,Chain check,keyed,9/31,29.0%,9/28,32.1%,C1 C2 C3 C4 C5 C9 C11 C12 C13 C14 C15 C16 C17 C18 C23 C24 C25 C26 C28 C29 C30 C31
+P6,Keyed chain + sweep rules 1-5 (previous final design),Chain check + Rule 1 modified + Rule 2 deleted + Rule 3 injected + Rule 4 candidate seal + Rule 5 count mismatch,keyed,23/31,74.2%,23/28,82.1%,C13 C14 C15 C16 C17 C23 C28 C29
+P7,PolyVote final (keyed chain + 6 sweep rules),Chain check + Rule 1 modified + Rule 2 deleted + Rule 3 injected + Rule 4 candidate seal + Rule 5 count mismatch + Rule 6 voter seal,keyed,28/31,90.3%,28/28,100.0%,C23 C28 C29

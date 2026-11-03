@@ -1,0 +1,8 @@
+Detector alone,Detected,Attacks
+Chain check,9/31,C6 C7 C8 C10 C19 C20 C21 C22 C27
+Rule 1 modified,3/31,C1 C2 C7
+Rule 2 deleted,3/31,C3 C4 C31
+Rule 3 injected,5/31,C5 C8 C9 C18 C30
+Rule 4 candidate seal,3/31,C11 C24 C25
+Rule 5 count mismatch,10/31,C3 C4 C5 C8 C9 C12 C18 C26 C30 C31
+Rule 6 voter seal,5/31,C13 C14 C15 C16 C17

@@ -1,0 +1,35 @@
+System,Type,F1,F2,F3,F4,F5,F6,F7,F8,F9
+Helios Voting (helios-server),"open-source, verifiable (E2E)",no,not documented,not documented,partial,partial,not documented,not documented,yes,partial
+Belenios,"open-source, verifiable (E2E), hosted platform + self-host",partial,partial,not documented,partial,partial,partial,not documented,yes,partial
+Civitas,"research prototype (coercion-resistant, verifiable)",partial,not documented,not documented,partial,partial,no,not documented,yes,not documented
+ElectionGuard (Microsoft / Election-Tech-Initiative),open-source SDK for E2E verifiable elections,not documented,not documented,not documented,partial,partial,not documented,not documented,not documented,partial
+Zeus (GRNET),"open-source, verifiable, hosted service (Greek research network)",partial,partial,not documented,not documented,partial,not documented,not documented,not documented,partial
+Verificatum (vmn mix-net libraries),open-source cryptographic libraries (mix-net),not documented,not documented,not documented,not documented,not documented,not documented,not documented,not documented,not documented
+Vocdoni (vocdoni-node),open-source blockchain (Vochain) voting protocol,not documented,not documented,not documented,not documented,not documented,not documented,not documented,not documented,partial
+"Aragon (aragon/client, Aragon 1)",open-source DAO / blockchain governance app,not documented,not documented,not documented,not documented,not documented,not documented,not documented,not documented,not documented
+"CIVS (Condorcet Internet Voting Service, Cornell)",free hosted service + open-source (MIT) software,partial,partial,not documented,partial,not documented,partial,not documented,yes,yes
+OpaVote,commercial/freemium SaaS,yes,partial,not documented,not documented,not documented,partial,not documented,not documented,partial
+ElectionBuddy,commercial SaaS,partial,partial,not documented,partial,partial,partial,partial,not documented,partial
+Simply Voting,commercial SaaS,not documented,partial,not documented,partial,not documented,not documented,not documented,yes,not documented
+Election Runner,commercial SaaS,not documented,not documented,not documented,not documented,not documented,partial,not documented,not documented,partial
+TapVoter,commercial/freemium SaaS aimed at student councils,partial,partial,not documented,partial,partial,partial,partial,yes,partial
+RankedVote,commercial SaaS (ranked-choice only),partial,partial,not documented,not documented,not documented,partial,not documented,not documented,no
+"BetterVoting (Equal-Vote/bettervoting, formerly star-server)",open-source (AGPL-3.0) + free hosted service bettervoting.com,partial,yes,not documented,partial,partial,partial,partial,yes,yes
+Google Forms,commercial free general-purpose forms,not documented,not documented,not documented,partial,not documented,no,not documented,not documented,partial
+Microsoft Forms,commercial general-purpose forms (part of Microsoft 365),partial,not documented,not documented,partial,not documented,no,not documented,partial,not documented
+Voatz (mobile voting app) - USENIX Security 2020 analysis,commercial proprietary mobile voting app (independent analysis),not documented,not documented,not documented,not documented,partial,not documented,not documented,not documented,no
+Democracy Live OmniBallot - USENIX Security 2021 analysis,commercial proprietary online ballot delivery/return (independent analysis),not documented,not documented,not documented,no,not documented,not documented,not documented,not documented,no
+Decidim (decidim-elections + Bulletin Board),open-source civic participation platform (AGPL-3.0),not documented,partial,not documented,not documented,partial,not documented,not documented,partial,partial
+Consul Democracy,open-source civic participation platform (AGPL-3.0),no,not documented,not documented,not documented,partial,partial,not documented,not documented,yes
+deOpty/flexyvotes (Django election + paid-voting platform),"student/hobby-scale open repo (single developer, created 2026-08-10) - NEAREST MATCH FOUND",yes,yes,yes,partial,partial,yes,no,yes,partial
+"nnnnnndev/voting-app (FastAPI, faculty-meeting voting)",student/hobby repo (departmental tool),partial,no,not documented,partial,not documented,not documented,not documented,partial,partial
+9022574361/Online_Voting_System ('VeriVote'),student/hobby repo,not documented,not documented,partial,partial,partial,partial,not documented,yes,partial
+DikshantMaskare/securevote-online-voting-system,student/hobby repo,not documented,no,not documented,not documented,partial,yes,not documented,not documented,partial
+RuchikaaVerma/SentinelVote-AI,student/hobby repo,not documented,not documented,partial,no,partial,not documented,not documented,not documented,partial
+d-kanishka/Secure_Voting_System,student/hobby repo,no,not documented,no,no,not documented,no,no,not documented,partial
+Prakhar-Pandey20/Online-Voting-System-otp-version,student/hobby repo,not documented,not documented,partial,no,not documented,partial,not documented,not documented,not documented
+jevk/RCVElectionSystem,student/hobby repo (gaming community),partial,not documented,not documented,not documented,not documented,not documented,not documented,not documented,partial
+dryairship/online-election-manager,student project (IIT Kanpur course ESC101A),not documented,not documented,not documented,not documented,not documented,partial,not documented,not documented,partial
+Dharanibalan45/Online-Voting-Platform,student/hobby repo,not documented,not documented,not documented,not documented,not documented,partial,not documented,not documented,not documented
+Lervez5/Kuraone,student/hobby-scale repo (proprietary notice),not documented,not documented,not documented,not documented,partial,not documented,not documented,not documented,no
+PolyVote (this project),"student project, open on GitHub",yes,yes,yes,yes,yes,yes,yes,yes,yes

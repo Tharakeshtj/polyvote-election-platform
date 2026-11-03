@@ -1,0 +1,4 @@
+Class,Count,Scenarios
+Prevented by append-only triggers,8,C1 C2 C3 C4 C10 C22 C27 C28
+Visible only in the counters,9,C5 C8 C9 C12 C18 C19 C26 C30 C31
+Neither,14,C6 C7 C11 C13 C14 C15 C16 C17 C20 C21 C23 C24 C25 C29

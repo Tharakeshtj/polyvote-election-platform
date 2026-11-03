@@ -1,0 +1,32 @@
+id,scenario,adversary,in_scope,keyed_chain,keyed_modified,keyed_deleted,keyed_injected,keyed_candidate_seal,keyed_count_mismatch,keyed_voter_seal,keyed_counters,unkeyed_chain,unkeyed_modified,unkeyed_deleted,unkeyed_injected,unkeyed_candidate_seal,unkeyed_count_mismatch,unkeyed_voter_seal,unkeyed_counters
+C1,Swap the 1st and 2nd choice on one ballot,db,True,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+C2,Replace the first-choice candidate on one ballot,db,True,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+C3,Delete one ballot,db,True,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,1
+C4,Delete a ballot and clear a voted flag to hide the gap,db,True,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,1
+C5,Inject a ballot with no receipt,db,True,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0,1
+C6,"Ballot stuffing: inject ballot, forge a plain-hash receipt, set a voted flag",both,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+C7,Edit a ledger block without repairing the chain,ledger,True,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0
+C8,Delete a block from the middle of the ledger,ledger,True,1,0,0,1,0,1,0,1,1,0,0,1,0,1,0,1
+C9,Truncate the last block of the ledger,ledger,True,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0,1
+C10,Change a ballot and rebuild the whole chain (attacker has no key),both,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+C11,Swap two candidates' names after voting,db,True,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0
+C12,"Reset a voted flag, then let that voter cast a second ballot",api,True,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,1
+C13,Add a ghost voter to the roster and vote as them through the API,api,True,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0
+C14,Delete an unvoted voter from the roster (disenfranchise),db,True,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0
+C15,Rename an unvoted voter's registration number,db,True,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0
+C16,"Delete the roster seal, then add a ghost voter and vote",both,True,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0
+C17,"Forge the roster seal without the key, then add a ghost voter and vote",both,True,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+C18,Wipe the whole ledger,ledger,True,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0,1
+C19,Append a copy of an existing ledger block (replay a receipt),ledger,True,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1
+C20,Swap two ledger blocks (reorder),ledger,True,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+C21,Edit the timestamp of a ledger block,ledger,True,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+C22,Change a ballot and its block hash but leave the chain unrepaired,both,True,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+C23,Edit a candidate's platform statement,db,False,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+C24,Add a candidate after voting,db,True,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0
+C25,Delete a candidate row after voting (foreign keys off),db,True,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0
+C26,Mark an unvoted voter as voted with no ballot (disenfranchise),db,True,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,1
+C27,"Erase a vote completely: delete the ballot, its block and the flag, rebuild the chain",both,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+C28,Insider WITH the ledger key: change a ballot and rebuild the chain with the key,key,False,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+C29,"Insider WITH the key: add a ghost voter and ballot, forge the receipt, re-seal the roster",key,False,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+C30,Roll the ledger store back to an older backup,ledger,True,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0,1
+C31,Roll the election database back to an older backup,db,True,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,1

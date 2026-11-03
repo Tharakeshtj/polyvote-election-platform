@@ -1,0 +1,316 @@
+{
+  "generated": "2026-11-04 00:24:44",
+  "loc": {
+    "lines": {
+      "Back end (Python)": 2023,
+      "Front end (TypeScript/TSX)": 3033,
+      "Styles (CSS)": 436,
+      "Experiments (Python)": 733,
+      "Document tooling (Python)": 2758,
+      "Configuration and docs (Dockerfile, YAML, Markdown)": 1966
+    },
+    "files": {
+      "Configuration and docs (Dockerfile, YAML, Markdown)": 19,
+      "Back end (Python)": 15,
+      "Document tooling (Python)": 11,
+      "Experiments (Python)": 5,
+      "Front end (TypeScript/TSX)": 29,
+      "Styles (CSS)": 1
+    },
+    "total_lines": 10949
+  },
+  "structure": {
+    "api_routes": 36,
+    "api_routes_by_method": {
+      "POST": 15,
+      "GET": 15,
+      "DELETE": 3,
+      "PUT": 3
+    },
+    "election_tables": 5,
+    "election_triggers": 1,
+    "election_views": 2,
+    "verification_tables": 3,
+    "check_constraints": 2,
+    "unique_or_pk": 6,
+    "foreign_keys": 5,
+    "frontend_pages": 23,
+    "python_deps": [
+      "fastapi==0.143.1",
+      "uvicorn",
+      "pandas",
+      "streamlit==1.65.0",
+      "pymongo"
+    ],
+    "npm_dependencies": {
+      "@fontsource-variable/geist": "^5.3.0",
+      "@fontsource-variable/geist-mono": "^5.3.0",
+      "lucide-react": "^1.57.0",
+      "qrcode.react": "^4.2.0",
+      "react": "^19.3.1",
+      "react-dom": "^19.3.1",
+      "react-router-dom": "^7.18.4"
+    },
+    "npm_devdependencies": {
+      "@types/react": "^19.3.0",
+      "@types/react-dom": "^19.3.0",
+      "@vitejs/plugin-react": "^5.2.0",
+      "typescript": "5.9",
+      "vite": "^7.3.7"
+    }
+  },
+  "complexity": {
+    "functions": 110,
+    "mean_complexity": 3.13,
+    "rank_counts": {
+      "B": 11,
+      "A": 97,
+      "E": 1,
+      "C": 1
+    },
+    "worst": [
+      {
+        "file": "election_core.py",
+        "function": "check_election_integrity",
+        "complexity": 40,
+        "rank": "E"
+      },
+      {
+        "file": "tally_engine.py",
+        "function": "calculate_irv_winner",
+        "complexity": 15,
+        "rank": "C"
+      },
+      {
+        "file": "hosted_demo.py",
+        "function": "seed_if_empty",
+        "complexity": 10,
+        "rank": "B"
+      },
+      {
+        "file": "server.py",
+        "function": "voter_login",
+        "complexity": 9,
+        "rank": "B"
+      },
+      {
+        "file": "server.py",
+        "function": "tally",
+        "complexity": 9,
+        "rank": "B"
+      },
+      {
+        "file": "contact.py",
+        "function": "submit",
+        "complexity": 9,
+        "rank": "B"
+      },
+      {
+        "file": "server.py",
+        "function": "cast_ballot",
+        "complexity": 8,
+        "rank": "B"
+      },
+      {
+        "file": "server.py",
+        "function": "simulate_ballots",
+        "complexity": 8,
+        "rank": "B"
+      }
+    ],
+    "maintainability_index": {
+      "server.py": 18.6,
+      "election_core.py": 42.4,
+      "audit_ledger.py": 42.6,
+      "tally_engine.py": 46.1,
+      "verification\\routes.py": 68.5,
+      "verification\\__init__.py": 100.0
+    }
+  },
+  "bandit": {
+    "issues": 6,
+    "by_severity": {
+      "MEDIUM": 3,
+      "LOW": 3
+    },
+    "by_confidence": {
+      "MEDIUM": 4,
+      "HIGH": 2
+    },
+    "lines_scanned": 1406,
+    "items": [
+      {
+        "test": "B608",
+        "name": "hardcoded_sql_expressions",
+        "severity": "MEDIUM",
+        "confidence": "MEDIUM",
+        "file": ".\\election_core.py",
+        "line": 81,
+        "text": "Possible SQL injection vector through string-based query construction."
+      },
+      {
+        "test": "B311",
+        "name": "blacklist",
+        "severity": "LOW",
+        "confidence": "HIGH",
+        "file": ".\\hosted_demo.py",
+        "line": 44,
+        "text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes."
+      },
+      {
+        "test": "B105",
+        "name": "hardcoded_password_string",
+        "severity": "LOW",
+        "confidence": "MEDIUM",
+        "file": ".\\server.py",
+        "line": 47,
+        "text": "Possible hardcoded password: 'vote123'"
+      },
+      {
+        "test": "B311",
+        "name": "blacklist",
+        "severity": "LOW",
+        "confidence": "HIGH",
+        "file": ".\\server.py",
+        "line": 461,
+        "text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes."
+      },
+      {
+        "test": "B608",
+        "name": "hardcoded_sql_expressions",
+        "severity": "MEDIUM",
+        "confidence": "MEDIUM",
+        "file": "verification\\otp.py",
+        "line": 157,
+        "text": "Possible SQL injection vector through string-based query construction."
+      },
+      {
+        "test": "B608",
+        "name": "hardcoded_sql_expressions",
+        "severity": "MEDIUM",
+        "confidence": "MEDIUM",
+        "file": "verification\\otp.py",
+        "line": 158,
+        "text": "Possible SQL injection vector through string-based query construction."
+      }
+    ]
+  },
+  "npm_audit": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependencies": {
+      "prod": 14,
+      "dev": 114,
+      "optional": 53,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 127
+    }
+  },
+  "pip_audit": {
+    "requirements-hosted.txt": {
+      "packages_checked": 20,
+      "vulnerabilities": 0,
+      "by_package": {},
+      "fix": {}
+    },
+    "requirements.txt": {
+      "packages_checked": 44,
+      "vulnerabilities": 39,
+      "by_package": {
+        "pillow": 39
+      },
+      "fix": {
+        "pillow": [
+          "13.0.0"
+        ]
+      }
+    }
+  },
+  "bundle": {
+    "files": 42,
+    "total_kb": 563.2,
+    "total_gzip_kb": 280.5,
+    "main_js": {
+      "file": "index-uiTpGE14.js",
+      "kb": 280.3,
+      "gzip_kb": 90.0
+    },
+    "route_chunks": 29,
+    "largest": [
+      {
+        "file": "index-uiTpGE14.js",
+        "kb": 280.3,
+        "gzip_kb": 90.0
+      },
+      {
+        "file": "ElectionPage-3hZ5LEjR.js",
+        "kb": 38.5,
+        "gzip_kb": 10.5
+      },
+      {
+        "file": "VoteFlow-B-nWKHd8.js",
+        "kb": 30.3,
+        "gzip_kb": 10.7
+      },
+      {
+        "file": "geist-latin-wght-normal-BgDaEnEv.woff2",
+        "kb": 28.7,
+        "gzip_kb": 28.7
+      },
+      {
+        "file": "index-DLt2uTT_.css",
+        "kb": 27.9,
+        "gzip_kb": 6.0
+      },
+      {
+        "file": "geist-mono-latin-wght-normal-XN7g48iV.woff2",
+        "kb": 22.6,
+        "gzip_kb": 22.6
+      },
+      {
+        "file": "geist-latin-ext-wght-normal-DC-KSUi6.woff2",
+        "kb": 16.1,
+        "gzip_kb": 16.2
+      },
+      {
+        "file": "geist-cyrillic-wght-normal-BEAKL7Jp.woff2",
+        "kb": 14.7,
+        "gzip_kb": 14.8
+      }
+    ]
+  },
+  "live": {
+    "headers": {
+      "content-security-policy": null,
+      "x-content-type-options": null,
+      "x-frame-options": null,
+      "referrer-policy": null,
+      "permissions-policy": null,
+      "strict-transport-security": null,
+      "cache-control": null
+    },
+    "server": "cloudflare",
+    "first_request_ms": 22817,
+    "health_ms": {
+      "median": 112,
+      "min": 102,
+      "max": 2244
+    },
+    "home_bytes": 4082,
+    "tls": "OpenSSL 3.0.16 11 Feb 2025",
+    "api_config": {
+      "public_url": null,
+      "hosted_demo": true,
+      "otp_demo_hint": true,
+      "email_enabled": false,
+      "admin_public": true
+    }
+  }
+}

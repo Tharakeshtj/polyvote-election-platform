@@ -1,0 +1,1989 @@
+[
+ {
+  "name": "T01_scenarios",
+  "title": "Table 1. The 31 attack scenarios",
+  "headers": [
+   "ID",
+   "Attack",
+   "Attacker capability",
+   "In the attacker model",
+   "Note"
+  ],
+  "rows": [
+   [
+    "C1",
+    "Swap the 1st and 2nd choice on one ballot",
+    "Election database",
+    "Yes",
+    ""
+   ],
+   [
+    "C2",
+    "Replace the first-choice candidate on one ballot",
+    "Election database",
+    "Yes",
+    ""
+   ],
+   [
+    "C3",
+    "Delete one ballot",
+    "Election database",
+    "Yes",
+    ""
+   ],
+   [
+    "C4",
+    "Delete a ballot and clear a voted flag to hide the gap",
+    "Election database",
+    "Yes",
+    ""
+   ],
+   [
+    "C5",
+    "Inject a ballot with no receipt",
+    "Election database",
+    "Yes",
+    ""
+   ],
+   [
+    "C6",
+    "Ballot stuffing: inject ballot, forge a plain-hash receipt, set a voted flag",
+    "Both stores, no key",
+    "Yes",
+    ""
+   ],
+   [
+    "C7",
+    "Edit a ledger block without repairing the chain",
+    "Ledger store",
+    "Yes",
+    ""
+   ],
+   [
+    "C8",
+    "Delete a block from the middle of the ledger",
+    "Ledger store",
+    "Yes",
+    ""
+   ],
+   [
+    "C9",
+    "Truncate the last block of the ledger",
+    "Ledger store",
+    "Yes",
+    ""
+   ],
+   [
+    "C10",
+    "Change a ballot and rebuild the whole chain (attacker has no key)",
+    "Both stores, no key",
+    "Yes",
+    ""
+   ],
+   [
+    "C11",
+    "Swap two candidates' names after voting",
+    "Election database",
+    "Yes",
+    ""
+   ],
+   [
+    "C12",
+    "Reset a voted flag, then let that voter cast a second ballot",
+    "Database + public API",
+    "Yes",
+    ""
+   ],
+   [
+    "C13",
+    "Add a ghost voter to the roster and vote as them through the API",
+    "Database + public API",
+    "Yes",
+    ""
+   ],
+   [
+    "C14",
+    "Delete an unvoted voter from the roster (disenfranchise)",
+    "Election database",
+    "Yes",
+    ""
+   ],
+   [
+    "C15",
+    "Rename an unvoted voter's registration number",
+    "Election database",
+    "Yes",
+    ""
+   ],
+   [
+    "C16",
+    "Delete the roster seal, then add a ghost voter and vote",
+    "Both stores, no key",
+    "Yes",
+    ""
+   ],
+   [
+    "C17",
+    "Forge the roster seal without the key, then add a ghost voter and vote",
+    "Both stores, no key",
+    "Yes",
+    ""
+   ],
+   [
+    "C18",
+    "Wipe the whole ledger",
+    "Ledger store",
+    "Yes",
+    ""
+   ],
+   [
+    "C19",
+    "Append a copy of an existing ledger block (replay a receipt)",
+    "Ledger store",
+    "Yes",
+    ""
+   ],
+   [
+    "C20",
+    "Swap two ledger blocks (reorder)",
+    "Ledger store",
+    "Yes",
+    ""
+   ],
+   [
+    "C21",
+    "Edit the timestamp of a ledger block",
+    "Ledger store",
+    "Yes",
+    ""
+   ],
+   [
+    "C22",
+    "Change a ballot and its block hash but leave the chain unrepaired",
+    "Both stores, no key",
+    "Yes",
+    ""
+   ],
+   [
+    "C23",
+    "Edit a candidate's platform statement",
+    "Election database",
+    "No",
+    "Not covered by design: only the candidate id and name are sealed."
+   ],
+   [
+    "C24",
+    "Add a candidate after voting",
+    "Election database",
+    "Yes",
+    ""
+   ],
+   [
+    "C25",
+    "Delete a candidate row after voting (foreign keys off)",
+    "Election database",
+    "Yes",
+    ""
+   ],
+   [
+    "C26",
+    "Mark an unvoted voter as voted with no ballot (disenfranchise)",
+    "Election database",
+    "Yes",
+    ""
+   ],
+   [
+    "C27",
+    "Erase a vote completely: delete the ballot, its block and the flag, rebuild the chain",
+    "Both stores, no key",
+    "Yes",
+    ""
+   ],
+   [
+    "C28",
+    "Insider WITH the ledger key: change a ballot and rebuild the chain with the key",
+    "Both stores + the key",
+    "No",
+    "Outside the attacker model: needs the secret key."
+   ],
+   [
+    "C29",
+    "Insider WITH the key: add a ghost voter and ballot, forge the receipt, re-seal the roster",
+    "Both stores + the key",
+    "No",
+    "Outside the attacker model: needs the secret key."
+   ],
+   [
+    "C30",
+    "Roll the ledger store back to an older backup",
+    "Ledger store",
+    "Yes",
+    ""
+   ],
+   [
+    "C31",
+    "Roll the election database back to an older backup",
+    "Election database",
+    "Yes",
+    ""
+   ]
+  ]
+ },
+ {
+  "name": "T02_detector_matrix",
+  "title": "Table 2. Detectors that fire for each attack (keyed chain)",
+  "headers": [
+   "ID",
+   "Chain check",
+   "Rule 1 modified",
+   "Rule 2 deleted",
+   "Rule 3 injected",
+   "Rule 4 candidate seal",
+   "Rule 5 count mismatch",
+   "Rule 6 voter seal",
+   "Eyeballing counters",
+   "Any automatic detector, plain chain"
+  ],
+  "rows": [
+   [
+    "C1",
+    "",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C2",
+    "",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C3",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "\u25cf"
+   ],
+   [
+    "C4",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "\u25cf"
+   ],
+   [
+    "C5",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "\u25cf"
+   ],
+   [
+    "C6",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   [
+    "C7",
+    "\u25cf",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C8",
+    "\u25cf",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "\u25cf"
+   ],
+   [
+    "C9",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "\u25cf"
+   ],
+   [
+    "C10",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   [
+    "C11",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C12",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "\u25cf"
+   ],
+   [
+    "C13",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C14",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C15",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C16",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C17",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    ""
+   ],
+   [
+    "C18",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "\u25cf"
+   ],
+   [
+    "C19",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "\u25cf"
+   ],
+   [
+    "C20",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C21",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C22",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C23",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   [
+    "C24",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C25",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "\u25cf"
+   ],
+   [
+    "C26",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "\u25cf"
+   ],
+   [
+    "C27",
+    "\u25cf",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   [
+    "C28",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   [
+    "C29",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   [
+    "C30",
+    "",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "\u25cf"
+   ],
+   [
+    "C31",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "",
+    "\u25cf",
+    "",
+    "\u25cf",
+    "\u25cf"
+   ]
+  ]
+ },
+ {
+  "name": "T03_design_profiles",
+  "title": "Table 3. Design profiles and what they detect",
+  "headers": [
+   "Profile",
+   "Design",
+   "Detectors used",
+   "Key",
+   "Detected (all 31)",
+   "Rate",
+   "Detected (in scope)",
+   "Rate (in scope)",
+   "Missed"
+  ],
+  "rows": [
+   [
+    "P0",
+    "CRUD app: officer compares the counters",
+    "Eyeballing counters",
+    "unkeyed",
+    "11/31",
+    "35.5%",
+    "11/28",
+    "39.3%",
+    "C1 C2 C6 C7 C10 C11 C13 C14 C15 C16 C17 C20 C21 C22 C23 C24 C25 C27 C28 C29"
+   ],
+   [
+    "P1",
+    "CRUD app + automatic count check",
+    "Rule 5 count mismatch",
+    "unkeyed",
+    "10/31",
+    "32.3%",
+    "10/28",
+    "35.7%",
+    "C1 C2 C6 C7 C10 C11 C13 C14 C15 C16 C17 C19 C20 C21 C22 C23 C24 C25 C27 C28 C29"
+   ],
+   [
+    "P2",
+    "Plain hash chain only",
+    "Chain check",
+    "unkeyed",
+    "6/31",
+    "19.4%",
+    "6/28",
+    "21.4%",
+    "C1 C2 C3 C4 C5 C6 C9 C10 C11 C12 C13 C14 C15 C16 C17 C18 C23 C24 C25 C26 C27 C28 C29 C30 C31"
+   ],
+   [
+    "P3",
+    "Plain chain + receipt sweep (Review 2 design)",
+    "Chain check + Rule 1 modified + Rule 2 deleted",
+    "unkeyed",
+    "11/31",
+    "35.5%",
+    "11/28",
+    "39.3%",
+    "C5 C6 C9 C10 C11 C12 C13 C14 C15 C16 C17 C18 C23 C24 C25 C26 C27 C28 C29 C30"
+   ],
+   [
+    "P4",
+    "Plain chain + full sweep",
+    "Chain check + Rule 1 modified + Rule 2 deleted + Rule 3 injected + Rule 4 candidate seal + Rule 5 count mismatch + Rule 6 voter seal",
+    "unkeyed",
+    "24/31",
+    "77.4%",
+    "24/28",
+    "85.7%",
+    "C6 C10 C17 C23 C27 C28 C29"
+   ],
+   [
+    "P5",
+    "Keyed chain only",
+    "Chain check",
+    "keyed",
+    "9/31",
+    "29.0%",
+    "9/28",
+    "32.1%",
+    "C1 C2 C3 C4 C5 C9 C11 C12 C13 C14 C15 C16 C17 C18 C23 C24 C25 C26 C28 C29 C30 C31"
+   ],
+   [
+    "P6",
+    "Keyed chain + sweep rules 1-5 (previous final design)",
+    "Chain check + Rule 1 modified + Rule 2 deleted + Rule 3 injected + Rule 4 candidate seal + Rule 5 count mismatch",
+    "keyed",
+    "23/31",
+    "74.2%",
+    "23/28",
+    "82.1%",
+    "C13 C14 C15 C16 C17 C23 C28 C29"
+   ],
+   [
+    "P7",
+    "PolyVote final (keyed chain + 6 sweep rules)",
+    "Chain check + Rule 1 modified + Rule 2 deleted + Rule 3 injected + Rule 4 candidate seal + Rule 5 count mismatch + Rule 6 voter seal",
+    "keyed",
+    "28/31",
+    "90.3%",
+    "28/28",
+    "100.0%",
+    "C23 C28 C29"
+   ]
+  ]
+ },
+ {
+  "name": "T04_ablation",
+  "title": "Table 4. Leave-one-out ablation",
+  "headers": [
+   "Removed detector",
+   "Still detected",
+   "Lost attacks"
+  ],
+  "rows": [
+   [
+    "Chain check",
+    "21/31",
+    "C6 C10 C19 C20 C21 C22 C27"
+   ],
+   [
+    "Rule 1 modified",
+    "26/31",
+    "C1 C2"
+   ],
+   [
+    "Rule 2 deleted",
+    "28/31",
+    "-"
+   ],
+   [
+    "Rule 3 injected",
+    "28/31",
+    "-"
+   ],
+   [
+    "Rule 4 candidate seal",
+    "25/31",
+    "C11 C24 C25"
+   ],
+   [
+    "Rule 5 count mismatch",
+    "26/31",
+    "C12 C26"
+   ],
+   [
+    "Rule 6 voter seal",
+    "23/31",
+    "C13 C14 C15 C16 C17"
+   ]
+  ]
+ },
+ {
+  "name": "T05_single",
+  "title": "Table 5. Each detector on its own",
+  "headers": [
+   "Detector alone",
+   "Detected",
+   "Attacks"
+  ],
+  "rows": [
+   [
+    "Chain check",
+    "9/31",
+    "C6 C7 C8 C10 C19 C20 C21 C22 C27"
+   ],
+   [
+    "Rule 1 modified",
+    "3/31",
+    "C1 C2 C7"
+   ],
+   [
+    "Rule 2 deleted",
+    "3/31",
+    "C3 C4 C31"
+   ],
+   [
+    "Rule 3 injected",
+    "5/31",
+    "C5 C8 C9 C18 C30"
+   ],
+   [
+    "Rule 4 candidate seal",
+    "3/31",
+    "C11 C24 C25"
+   ],
+   [
+    "Rule 5 count mismatch",
+    "10/31",
+    "C3 C4 C5 C8 C9 C12 C18 C26 C30 C31"
+   ],
+   [
+    "Rule 6 voter seal",
+    "5/31",
+    "C13 C14 C15 C16 C17"
+   ]
+  ]
+ },
+ {
+  "name": "T06_triggers",
+  "title": "Table 6. Append-only triggers on the ballot table",
+  "headers": [
+   "Class",
+   "Count",
+   "Scenarios"
+  ],
+  "rows": [
+   [
+    "Prevented by append-only triggers",
+    8,
+    "C1 C2 C3 C4 C10 C22 C27 C28"
+   ],
+   [
+    "Visible only in the counters",
+    9,
+    "C5 C8 C9 C12 C18 C19 C26 C30 C31"
+   ],
+   [
+    "Neither",
+    14,
+    "C6 C7 C11 C13 C14 C15 C16 C17 C20 C21 C23 C24 C25 C29"
+   ]
+  ]
+ },
+ {
+  "name": "T07_emulation",
+  "title": "Table 7. Emulating the Review 2 design from the matrix reproduces the real Review 2 code (13/13)",
+  "headers": [
+   "Scenario",
+   "Real Review 2 code (measured earlier)",
+   "Emulated from the detector matrix",
+   "Agree"
+  ],
+  "rows": [
+   [
+    "C1",
+    "detected",
+    "detected",
+    "yes"
+   ],
+   [
+    "C2",
+    "detected",
+    "detected",
+    "yes"
+   ],
+   [
+    "C3",
+    "detected",
+    "detected",
+    "yes"
+   ],
+   [
+    "C4",
+    "detected",
+    "detected",
+    "yes"
+   ],
+   [
+    "C5",
+    "detected_manual_only",
+    "detected_manual_only",
+    "yes"
+   ],
+   [
+    "C6",
+    "undetected",
+    "undetected",
+    "yes"
+   ],
+   [
+    "C7",
+    "detected",
+    "detected",
+    "yes"
+   ],
+   [
+    "C8",
+    "detected",
+    "detected",
+    "yes"
+   ],
+   [
+    "C9",
+    "detected_manual_only",
+    "detected_manual_only",
+    "yes"
+   ],
+   [
+    "C10",
+    "undetected",
+    "undetected",
+    "yes"
+   ],
+   [
+    "C11",
+    "undetected",
+    "undetected",
+    "yes"
+   ],
+   [
+    "C12",
+    "detected_manual_only",
+    "detected_manual_only",
+    "yes"
+   ],
+   [
+    "C13",
+    "undetected",
+    "undetected",
+    "yes"
+   ]
+  ]
+ },
+ {
+  "name": "T08_precision_recall",
+  "title": "Table 8. Precision and recall",
+  "headers": [
+   "Tampered per category",
+   "Category",
+   "True",
+   "Reported",
+   "True positives",
+   "Precision",
+   "Recall"
+  ],
+  "rows": [
+   [
+    1,
+    "modified",
+    1,
+    1,
+    1,
+    1.0,
+    1.0
+   ],
+   [
+    1,
+    "deleted",
+    1,
+    1,
+    1,
+    1.0,
+    1.0
+   ],
+   [
+    1,
+    "injected",
+    1,
+    1,
+    1,
+    1.0,
+    1.0
+   ],
+   [
+    5,
+    "modified",
+    5,
+    5,
+    5,
+    1.0,
+    1.0
+   ],
+   [
+    5,
+    "deleted",
+    5,
+    5,
+    5,
+    1.0,
+    1.0
+   ],
+   [
+    5,
+    "injected",
+    5,
+    5,
+    5,
+    1.0,
+    1.0
+   ],
+   [
+    20,
+    "modified",
+    20,
+    20,
+    20,
+    1.0,
+    1.0
+   ],
+   [
+    20,
+    "deleted",
+    20,
+    20,
+    20,
+    1.0,
+    1.0
+   ],
+   [
+    20,
+    "injected",
+    20,
+    20,
+    20,
+    1.0,
+    1.0
+   ]
+  ]
+ },
+ {
+  "name": "T09_false_positives",
+  "title": "Table 9. False alarms on clean elections",
+  "headers": [
+   "Measure",
+   "Value"
+  ],
+  "rows": [
+   [
+    "Clean elections",
+    120
+   ],
+   [
+    "Sweeps run",
+    399
+   ],
+   [
+    "False alarms",
+    0
+   ],
+   [
+    "False-positive rate",
+    0.0
+   ],
+   [
+    "Operations: bulk_register",
+    185
+   ],
+   [
+    "Operations: add_voter",
+    69
+   ],
+   [
+    "Operations: add_candidate",
+    120
+   ],
+   [
+    "Operations: simulate",
+    145
+   ],
+   [
+    "Operations: close",
+    120
+   ]
+  ]
+ },
+ {
+  "name": "T10_tally",
+  "title": "Table 10. Tally correctness",
+  "headers": [
+   "Measure",
+   "Value"
+  ],
+  "rows": [
+   [
+    "Random elections",
+    500
+   ],
+   [
+    "Agree with the reference",
+    500
+   ],
+   [
+    "Elections with a tie path",
+    66
+   ],
+   [
+    "Disagreements",
+    0
+   ]
+  ]
+ },
+ {
+  "name": "T11_password",
+  "title": "Table 11. Offline guessing cost",
+  "headers": [
+   "Password class",
+   "Unsalted SHA-256 (before)",
+   "Salted PBKDF2 (after)"
+  ],
+  "rows": [
+   [
+    "6 digits",
+    "1.4 seconds",
+    "5.8 days"
+   ],
+   [
+    "8 digits",
+    "2.3 minutes",
+    "1.6 years"
+   ],
+   [
+    "8 lowercase letters",
+    "3.3 days",
+    "3,303 years"
+   ],
+   [
+    "8 letters and digits",
+    "9.5 years",
+    "3,453,747 years"
+   ],
+   [
+    "10 letters and digits",
+    "36,675 years",
+    "13,276,201,859 years"
+   ],
+   [
+    "Hashes per second, 1 CPU thread",
+    "725,672",
+    "2.0"
+   ],
+   [
+    "Verify time at login",
+    "<0.01 ms",
+    "477.5 ms"
+   ]
+  ]
+ },
+ {
+  "name": "T12_performance",
+  "title": "Table 12. Scaling (keyed chain, file ledger)",
+  "headers": [
+   "Ballots",
+   "Sweep ms",
+   "Sweep without seal ms",
+   "Chain check ms",
+   "Tally ms",
+   "Receipt ms",
+   "Cast p50",
+   "Cast p95",
+   "Cast p99",
+   "Ledger KB",
+   "DB KB",
+   "Memory MB"
+  ],
+  "rows": [
+   [
+    100,
+    5.81,
+    3.11,
+    1.71,
+    5.82,
+    5.54,
+    13.61,
+    23.63,
+    30.56,
+    67.1,
+    24436.0,
+    116.3
+   ],
+   [
+    1000,
+    22.02,
+    18.17,
+    12.94,
+    13.87,
+    8.36,
+    45.17,
+    80.19,
+    86.07,
+    467.9,
+    24436.0,
+    118.7
+   ],
+   [
+    10000,
+    268.59,
+    167.6,
+    121.26,
+    95.22,
+    48.81,
+    251.14,
+    315.87,
+    368.12,
+    4484.5,
+    24436.0,
+    137.5
+   ],
+   [
+    50000,
+    1604.03,
+    1120.57,
+    652.73,
+    633.65,
+    195.56,
+    1234.7,
+    1385.48,
+    1399.27,
+    22359.3,
+    24436.0,
+    174.3
+   ],
+   [
+    100000,
+    5984.75,
+    4356.05,
+    2730.54,
+    2688.9,
+    692.14,
+    4658.2,
+    5425.65,
+    5432.47,
+    44722.6,
+    46024.0,
+    250.1
+   ]
+  ]
+ },
+ {
+  "name": "T13_concurrency",
+  "title": "Table 13. Concurrency",
+  "headers": [
+   "Threads",
+   "Casts",
+   "Wall s",
+   "Casts/s",
+   "p50 ms",
+   "p95 ms",
+   "Errors",
+   "Chain ok",
+   "Sweep ok"
+  ],
+  "rows": [
+   [
+    1,
+    6,
+    0.53,
+    11.25,
+    95.99,
+    101.9,
+    0,
+    true,
+    true
+   ],
+   [
+    2,
+    12,
+    0.77,
+    15.55,
+    125.64,
+    142.25,
+    0,
+    true,
+    true
+   ],
+   [
+    4,
+    24,
+    1.58,
+    15.21,
+    247.57,
+    303.18,
+    0,
+    true,
+    true
+   ],
+   [
+    8,
+    48,
+    2.96,
+    16.23,
+    482.17,
+    546.71,
+    0,
+    true,
+    true
+   ],
+   [
+    16,
+    96,
+    6.08,
+    15.8,
+    972.23,
+    1040.39,
+    0,
+    true,
+    true
+   ]
+  ]
+ },
+ {
+  "name": "T14_security",
+  "title": "Table 14. Security probes",
+  "headers": [
+   "Probe",
+   "Result",
+   "Verdict"
+  ],
+  "rows": [
+   [
+    "Brute-force password guesses",
+    "40 attempts, 0.9/s, locked out: False",
+    "Limitation: no lock-out on the password step (the emailed code is a second factor)"
+   ],
+   [
+    "Fuzzing (hostile and malformed input)",
+    "117 requests, 0 server errors, tables intact: True",
+    "Pass"
+   ],
+   [
+    "Admin endpoints without a token",
+    "elections: 401, integrity: 401, voters: 401, admins: 401, ledger: 401, outbox: 404",
+    "Pass"
+   ],
+   [
+    "User enumeration",
+    "unknown voter 404, wrong password 401",
+    "Limitation: a roster lookup reveals whether a number is registered"
+   ],
+   [
+    "Session expiry",
+    "session fields: role, username",
+    "Limitation: sessions live in memory until sign-out or restart"
+   ],
+   [
+    "API security headers",
+    "content-security-policy: absent, x-content-type-options: absent, x-frame-options: absent, referrer-policy: absent, permissions-policy: absent, strict-transport-security: absent, cache-control: absent",
+    "Limitation (see live-site headers)"
+   ],
+   [
+    "CORS from a foreign origin",
+    "None",
+    "Pass"
+   ],
+   [
+    "Receipt token guessing",
+    "122 random bits (UUID v4)",
+    "Pass"
+   ]
+  ]
+ },
+ {
+  "name": "T15_privacy",
+  "title": "Table 15. Voter privacy checks",
+  "headers": [
+   "Check",
+   "Result"
+  ],
+  "rows": [
+   [
+    "Columns shared by ballot and voter tables",
+    "none"
+   ],
+   [
+    "Timestamp on the ballot table",
+    "yes (ledger only)"
+   ],
+   [
+    "Ledger block fields",
+    "ballot_token, curr_hash, election_id, index, prev_hash, roster_hash, timestamp, vote_data_hash, voters_sealed"
+   ],
+   [
+    "Ordering attack on 150 API casts in random voter order",
+    "0 correct guesses (chance: about 1.0)"
+   ],
+   [
+    "Simulation tool casts in roster order",
+    "block order mirrors roster order; demo tool only"
+   ]
+  ]
+ },
+ {
+  "name": "T16_code",
+  "title": "Table 16. Code, structure and static analysis",
+  "headers": [
+   "Measure",
+   "Value"
+  ],
+  "rows": [
+   [
+    "Lines (non-blank), total",
+    "10,949"
+   ],
+   [
+    "Back end (Python)",
+    "2,023"
+   ],
+   [
+    "Front end (TypeScript/TSX)",
+    "3,033"
+   ],
+   [
+    "Styles (CSS)",
+    "436"
+   ],
+   [
+    "Experiments (Python)",
+    "733"
+   ],
+   [
+    "Document tooling (Python)",
+    "2,758"
+   ],
+   [
+    "Configuration and docs (Dockerfile, YAML, Markdown)",
+    "1,966"
+   ],
+   [
+    "API routes",
+    36
+   ],
+   [
+    "Election tables / triggers / views",
+    "5 / 1 / 2"
+   ],
+   [
+    "CHECK / UNIQUE+PK / FOREIGN KEY",
+    "2 / 6 / 5"
+   ],
+   [
+    "Front-end pages",
+    23
+   ],
+   [
+    "Python dependencies",
+    5
+   ],
+   [
+    "npm dependencies",
+    7
+   ],
+   [
+    "Mean cyclomatic complexity (back end)",
+    3.13
+   ],
+   [
+    "Bandit findings (severity)",
+    "6 {'MEDIUM': 3, 'LOW': 3}"
+   ],
+   [
+    "npm audit",
+    "{'info': 0, 'low': 0, 'moderate': 0, 'high': 0, 'critical': 0, 'total': 0}"
+   ],
+   [
+    "pip-audit (hosted requirements)",
+    "0 advisories in 20 packages"
+   ],
+   [
+    "pip-audit (with the legacy Streamlit UI)",
+    "39 advisories, all in pillow (fixed in 13.0.0)"
+   ]
+  ]
+ },
+ {
+  "name": "T17_live",
+  "title": "Table 17. Live deployment",
+  "headers": [
+   "Measure",
+   "Value"
+  ],
+  "rows": [
+   [
+    "Live site",
+    "https://polyvote-bacse202.onrender.com"
+   ],
+   [
+    "Website checklist",
+    "None pass, None N/A, None fail"
+   ],
+   [
+    "Health check median / min / max (ms)",
+    "112 / 102 / 2244"
+   ],
+   [
+    "First request (cold start possible) ms",
+    22817
+   ],
+   [
+    "Header content-security-policy",
+    "absent"
+   ],
+   [
+    "Header x-content-type-options",
+    "absent"
+   ],
+   [
+    "Header x-frame-options",
+    "absent"
+   ],
+   [
+    "Header referrer-policy",
+    "absent"
+   ],
+   [
+    "Header permissions-policy",
+    "absent"
+   ],
+   [
+    "Header strict-transport-security",
+    "absent"
+   ],
+   [
+    "Header cache-control",
+    "absent"
+   ]
+  ]
+ },
+ {
+  "name": "T18_related_systems",
+  "title": "Table 18. Documented features of the 33 systems read (F1-F9), from their own pages",
+  "headers": [
+   "System",
+   "Type",
+   "F1",
+   "F2",
+   "F3",
+   "F4",
+   "F5",
+   "F6",
+   "F7",
+   "F8",
+   "F9"
+  ],
+  "rows": [
+   [
+    "Helios Voting (helios-server)",
+    "open-source, verifiable (E2E)",
+    "no",
+    "not documented",
+    "not documented",
+    "partial",
+    "partial",
+    "not documented",
+    "not documented",
+    "yes",
+    "partial"
+   ],
+   [
+    "Belenios",
+    "open-source, verifiable (E2E), hosted platform + self-host",
+    "partial",
+    "partial",
+    "not documented",
+    "partial",
+    "partial",
+    "partial",
+    "not documented",
+    "yes",
+    "partial"
+   ],
+   [
+    "Civitas",
+    "research prototype (coercion-resistant, verifiable)",
+    "partial",
+    "not documented",
+    "not documented",
+    "partial",
+    "partial",
+    "no",
+    "not documented",
+    "yes",
+    "not documented"
+   ],
+   [
+    "ElectionGuard (Microsoft / Election-Tech-Initiative)",
+    "open-source SDK for E2E verifiable elections",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial"
+   ],
+   [
+    "Zeus (GRNET)",
+    "open-source, verifiable, hosted service (Greek research network)",
+    "partial",
+    "partial",
+    "not documented",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial"
+   ],
+   [
+    "Verificatum (vmn mix-net libraries)",
+    "open-source cryptographic libraries (mix-net)",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented"
+   ],
+   [
+    "Vocdoni (vocdoni-node)",
+    "open-source blockchain (Vochain) voting protocol",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial"
+   ],
+   [
+    "Aragon (aragon/client, Aragon 1)",
+    "open-source DAO / blockchain governance app",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented"
+   ],
+   [
+    "CIVS (Condorcet Internet Voting Service, Cornell)",
+    "free hosted service + open-source (MIT) software",
+    "partial",
+    "partial",
+    "not documented",
+    "partial",
+    "not documented",
+    "partial",
+    "not documented",
+    "yes",
+    "yes"
+   ],
+   [
+    "OpaVote",
+    "commercial/freemium SaaS",
+    "yes",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "partial"
+   ],
+   [
+    "ElectionBuddy",
+    "commercial SaaS",
+    "partial",
+    "partial",
+    "not documented",
+    "partial",
+    "partial",
+    "partial",
+    "partial",
+    "not documented",
+    "partial"
+   ],
+   [
+    "Simply Voting",
+    "commercial SaaS",
+    "not documented",
+    "partial",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented",
+    "yes",
+    "not documented"
+   ],
+   [
+    "Election Runner",
+    "commercial SaaS",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "partial"
+   ],
+   [
+    "TapVoter",
+    "commercial/freemium SaaS aimed at student councils",
+    "partial",
+    "partial",
+    "not documented",
+    "partial",
+    "partial",
+    "partial",
+    "partial",
+    "yes",
+    "partial"
+   ],
+   [
+    "RankedVote",
+    "commercial SaaS (ranked-choice only)",
+    "partial",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "no"
+   ],
+   [
+    "BetterVoting (Equal-Vote/bettervoting, formerly star-server)",
+    "open-source (AGPL-3.0) + free hosted service bettervoting.com",
+    "partial",
+    "yes",
+    "not documented",
+    "partial",
+    "partial",
+    "partial",
+    "partial",
+    "yes",
+    "yes"
+   ],
+   [
+    "Google Forms",
+    "commercial free general-purpose forms",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial",
+    "not documented",
+    "no",
+    "not documented",
+    "not documented",
+    "partial"
+   ],
+   [
+    "Microsoft Forms",
+    "commercial general-purpose forms (part of Microsoft 365)",
+    "partial",
+    "not documented",
+    "not documented",
+    "partial",
+    "not documented",
+    "no",
+    "not documented",
+    "partial",
+    "not documented"
+   ],
+   [
+    "Voatz (mobile voting app) - USENIX Security 2020 analysis",
+    "commercial proprietary mobile voting app (independent analysis)",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented",
+    "no"
+   ],
+   [
+    "Democracy Live OmniBallot - USENIX Security 2021 analysis",
+    "commercial proprietary online ballot delivery/return (independent analysis)",
+    "not documented",
+    "not documented",
+    "not documented",
+    "no",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "no"
+   ],
+   [
+    "Decidim (decidim-elections + Bulletin Board)",
+    "open-source civic participation platform (AGPL-3.0)",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "partial",
+    "partial"
+   ],
+   [
+    "Consul Democracy",
+    "open-source civic participation platform (AGPL-3.0)",
+    "no",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial",
+    "partial",
+    "not documented",
+    "not documented",
+    "yes"
+   ],
+   [
+    "deOpty/flexyvotes (Django election + paid-voting platform)",
+    "student/hobby-scale open repo (single developer, created 2026-08-10) - NEAREST MATCH FOUND",
+    "yes",
+    "yes",
+    "yes",
+    "partial",
+    "partial",
+    "yes",
+    "no",
+    "yes",
+    "partial"
+   ],
+   [
+    "nnnnnndev/voting-app (FastAPI, faculty-meeting voting)",
+    "student/hobby repo (departmental tool)",
+    "partial",
+    "no",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial",
+    "partial"
+   ],
+   [
+    "9022574361/Online_Voting_System ('VeriVote')",
+    "student/hobby repo",
+    "not documented",
+    "not documented",
+    "partial",
+    "partial",
+    "partial",
+    "partial",
+    "not documented",
+    "yes",
+    "partial"
+   ],
+   [
+    "DikshantMaskare/securevote-online-voting-system",
+    "student/hobby repo",
+    "not documented",
+    "no",
+    "not documented",
+    "not documented",
+    "partial",
+    "yes",
+    "not documented",
+    "not documented",
+    "partial"
+   ],
+   [
+    "RuchikaaVerma/SentinelVote-AI",
+    "student/hobby repo",
+    "not documented",
+    "not documented",
+    "partial",
+    "no",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial"
+   ],
+   [
+    "d-kanishka/Secure_Voting_System",
+    "student/hobby repo",
+    "no",
+    "not documented",
+    "no",
+    "no",
+    "not documented",
+    "no",
+    "no",
+    "not documented",
+    "partial"
+   ],
+   [
+    "Prakhar-Pandey20/Online-Voting-System-otp-version",
+    "student/hobby repo",
+    "not documented",
+    "not documented",
+    "partial",
+    "no",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented"
+   ],
+   [
+    "jevk/RCVElectionSystem",
+    "student/hobby repo (gaming community)",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial"
+   ],
+   [
+    "dryairship/online-election-manager",
+    "student project (IIT Kanpur course ESC101A)",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "partial"
+   ],
+   [
+    "Dharanibalan45/Online-Voting-Platform",
+    "student/hobby repo",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented"
+   ],
+   [
+    "Lervez5/Kuraone",
+    "student/hobby-scale repo (proprietary notice)",
+    "not documented",
+    "not documented",
+    "not documented",
+    "not documented",
+    "partial",
+    "not documented",
+    "not documented",
+    "not documented",
+    "no"
+   ],
+   [
+    "PolyVote (this project)",
+    "student project, open on GitHub",
+    "yes",
+    "yes",
+    "yes",
+    "yes",
+    "yes",
+    "yes",
+    "yes",
+    "yes",
+    "yes"
+   ]
+  ]
+ }
+]

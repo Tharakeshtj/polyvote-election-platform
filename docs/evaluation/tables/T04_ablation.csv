@@ -1,0 +1,8 @@
+Removed detector,Still detected,Lost attacks
+Chain check,21/31,C6 C10 C19 C20 C21 C22 C27
+Rule 1 modified,26/31,C1 C2
+Rule 2 deleted,28/31,-
+Rule 3 injected,28/31,-
+Rule 4 candidate seal,25/31,C11 C24 C25
+Rule 5 count mismatch,26/31,C12 C26
+Rule 6 voter seal,23/31,C13 C14 C15 C16 C17

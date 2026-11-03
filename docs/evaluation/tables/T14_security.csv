@@ -1,0 +1,9 @@
+Probe,Result,Verdict
+Brute-force password guesses,"40 attempts, 0.9/s, locked out: False",Limitation: no lock-out on the password step (the emailed code is a second factor)
+Fuzzing (hostile and malformed input),"117 requests, 0 server errors, tables intact: True",Pass
+Admin endpoints without a token,"elections: 401, integrity: 401, voters: 401, admins: 401, ledger: 401, outbox: 404",Pass
+User enumeration,"unknown voter 404, wrong password 401",Limitation: a roster lookup reveals whether a number is registered
+Session expiry,"session fields: role, username",Limitation: sessions live in memory until sign-out or restart
+API security headers,"content-security-policy: absent, x-content-type-options: absent, x-frame-options: absent, referrer-policy: absent, permissions-policy: absent, strict-transport-security: absent, cache-control: absent",Limitation (see live-site headers)
+CORS from a foreign origin,None,Pass
+Receipt token guessing,122 random bits (UUID v4),Pass

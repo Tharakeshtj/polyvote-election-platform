@@ -1,0 +1,4032 @@
+{
+  "generated": "2026-11-04 00:12:04",
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.10",
+    "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel"
+  },
+  "matrix": {
+    "scenarios": [
+      {
+        "id": "C1",
+        "title": "Swap the 1st and 2nd choice on one ballot",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": true,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 14.31,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 1,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": true,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 11.08,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 1,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C2",
+        "title": "Replace the first-choice candidate on one ballot",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": true,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.77,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 1,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": true,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.01,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 1,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C3",
+        "title": "Delete one ballot",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": true,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 6.04,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 39,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 1,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": true,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 13.72,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 39,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 1,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C4",
+        "title": "Delete a ballot and clear a voted flag to hide the gap",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": true,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 16.9,
+            "counts": {
+              "voted_flags": 39,
+              "ballots": 39,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 1,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": true,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 13.29,
+            "counts": {
+              "voted_flags": 39,
+              "ballots": 39,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 1,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C5",
+        "title": "Inject a ballot with no receipt",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": true,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 14.37,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 41,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 1,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": true,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 13.34,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 41,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 1,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C6",
+        "title": "Ballot stuffing: inject ballot, forge a plain-hash receipt, set a voted flag",
+        "adversary": "both",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Data tampered at block 41",
+            "ms": 14.49,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 11.59,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C7",
+        "title": "Edit a ledger block without repairing the chain",
+        "adversary": "ledger",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": true,
+              "modified": true,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised.",
+            "chain_msg": "Data tampered at block 11",
+            "ms": 9.78,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 1,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": true,
+              "modified": true,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised.",
+            "chain_msg": "Data tampered at block 11",
+            "ms": 10.47,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 1,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C8",
+        "title": "Delete a block from the middle of the ledger",
+        "adversary": "ledger",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": true,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Broken link at block 17",
+            "ms": 13.98,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 39
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 1,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": true,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Broken link at block 17",
+            "ms": 7.87,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 39
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 1,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C9",
+        "title": "Truncate the last block of the ledger",
+        "adversary": "ledger",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": true,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 10.13,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 39
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 1,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": true,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 1 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 11.05,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 39
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 1,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C10",
+        "title": "Change a ballot and rebuild the whole chain (attacker has no key)",
+        "adversary": "both",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Data tampered at block 1",
+            "ms": 12.85,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 11.04,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C11",
+        "title": "Swap two candidates' names after voting",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": true,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! candidate names changed since voting.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.25,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": true,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! candidate names changed since voting.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.51,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C12",
+        "title": "Reset a voted flag, then let that voter cast a second ballot",
+        "adversary": "api",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 13.54,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 15.89,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C13",
+        "title": "Add a ghost voter to the roster and vote as them through the API",
+        "adversary": "api",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": true,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! voter roster changed: 1 voter(s) added outside the application (25BCE7777).",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.45,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [
+                "25BCE7777"
+              ],
+              "voters_removed": 0,
+              "roster_seal": "changed"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": true,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! voter roster changed: 1 voter(s) added outside the application (25BCE7777).",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 11.49,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [
+                "25BCE7777"
+              ],
+              "voters_removed": 0,
+              "roster_seal": "changed"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C14",
+        "title": "Delete an unvoted voter from the roster (disenfranchise)",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": true,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! voter roster changed: 1 voter(s) removed.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.8,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 1,
+              "roster_seal": "changed"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": true,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! voter roster changed: 1 voter(s) removed.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 10.57,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 1,
+              "roster_seal": "changed"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C15",
+        "title": "Rename an unvoted voter's registration number",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": true,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! voter roster changed: 1 voter(s) added outside the application (25BCE8888); 1 voter(s) removed.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.45,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [
+                "25BCE8888"
+              ],
+              "voters_removed": 1,
+              "roster_seal": "changed"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": true,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! voter roster changed: 1 voter(s) added outside the application (25BCE8888); 1 voter(s) removed.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.27,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [
+                "25BCE8888"
+              ],
+              "voters_removed": 1,
+              "roster_seal": "changed"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C16",
+        "title": "Delete the roster seal, then add a ghost voter and vote",
+        "adversary": "both",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": true,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! voter roster seal is missing.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 10.89,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "missing"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": true,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! voter roster seal is missing.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 10.34,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "missing"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C17",
+        "title": "Forge the roster seal without the key, then add a ghost voter and vote",
+        "adversary": "both",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": true,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! voter roster seal does not verify.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 11.44,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "invalid"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.46,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C18",
+        "title": "Wipe the whole ledger",
+        "adversary": "ledger",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": true,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 40 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Ledger is empty.",
+            "ms": 9.72,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 0
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 40,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": true,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 40 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Ledger is empty.",
+            "ms": 7.66,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 0
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 40,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C19",
+        "title": "Append a copy of an existing ledger block (replay a receipt)",
+        "adversary": "ledger",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Broken link at block 5",
+            "ms": 13.67,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Broken link at block 5",
+            "ms": 12.11,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C20",
+        "title": "Swap two ledger blocks (reorder)",
+        "adversary": "ledger",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Broken link at block 8",
+            "ms": 11.08,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Broken link at block 8",
+            "ms": 10.75,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C21",
+        "title": "Edit the timestamp of a ledger block",
+        "adversary": "ledger",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Data tampered at block 13",
+            "ms": 11.09,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Data tampered at block 13",
+            "ms": 12.48,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C22",
+        "title": "Change a ballot and its block hash but leave the chain unrepaired",
+        "adversary": "both",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Data tampered at block 15",
+            "ms": 11.64,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Data tampered at block 8",
+            "ms": 9.71,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C23",
+        "title": "Edit a candidate's platform statement",
+        "adversary": "db",
+        "in_scope": false,
+        "note": "Not covered by design: only the candidate id and name are sealed.",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.01,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 11.71,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C24",
+        "title": "Add a candidate after voting",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": true,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! candidate names changed since voting.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 14.04,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": true,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! candidate names changed since voting.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 6.19,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C25",
+        "title": "Delete a candidate row after voting (foreign keys off)",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": true,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! candidate names changed since voting.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 20.69,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": true,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Integrity Breach! candidate names changed since voting.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 11.9,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C26",
+        "title": "Mark an unvoted voter as voted with no ballot (disenfranchise)",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 11.92,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 15.37,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C27",
+        "title": "Erase a vote completely: delete the ballot, its block and the flag, rebuild the chain",
+        "adversary": "both",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": true,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Data tampered at block 1",
+            "ms": 13.92,
+            "counts": {
+              "voted_flags": 39,
+              "ballots": 39,
+              "receipts": 39
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 14.55,
+            "counts": {
+              "voted_flags": 39,
+              "ballots": 39,
+              "receipts": 39
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C28",
+        "title": "Insider WITH the ledger key: change a ballot and rebuild the chain with the key",
+        "adversary": "key",
+        "in_scope": false,
+        "note": "Outside the attacker model: needs the secret key.",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 15.16,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 17.19,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C29",
+        "title": "Insider WITH the key: add a ghost voter and ballot, forge the receipt, re-seal the roster",
+        "adversary": "key",
+        "in_scope": false,
+        "note": "Outside the attacker model: needs the secret key.",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.48,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": false,
+              "voter_seal": false,
+              "counters": false
+            },
+            "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 12.89,
+            "counts": {
+              "voted_flags": 41,
+              "ballots": 41,
+              "receipts": 41
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C30",
+        "title": "Roll the ledger store back to an older backup",
+        "adversary": "ledger",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": true,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 20 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 10.58,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 20
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 20,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": false,
+              "injected": true,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 20 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 9.67,
+            "counts": {
+              "voted_flags": 40,
+              "ballots": 40,
+              "receipts": 20
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 0,
+              "injected": 20,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      },
+      {
+        "id": "C31",
+        "title": "Roll the election database back to an older backup",
+        "adversary": "db",
+        "in_scope": true,
+        "note": "",
+        "modes": {
+          "keyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": true,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 20 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 11.9,
+            "counts": {
+              "voted_flags": 20,
+              "ballots": 20,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 20,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          },
+          "unkeyed": {
+            "detectors": {
+              "chain": false,
+              "modified": false,
+              "deleted": true,
+              "injected": false,
+              "candidate_seal": false,
+              "count_mismatch": true,
+              "voter_seal": false,
+              "counters": true
+            },
+            "sweep_msg": "Integrity Breach! 20 ballot record(s) compromised; voter flags, ballots and receipts disagree.",
+            "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+            "ms": 10.87,
+            "counts": {
+              "voted_flags": 20,
+              "ballots": 20,
+              "receipts": 40
+            },
+            "anomalies": {
+              "modified": 0,
+              "deleted": 20,
+              "injected": 0,
+              "voters_added": [],
+              "voters_removed": 0,
+              "roster_seal": "ok"
+            },
+            "error": null
+          }
+        }
+      }
+    ],
+    "detectors": [
+      "chain",
+      "modified",
+      "deleted",
+      "injected",
+      "candidate_seal",
+      "count_mismatch",
+      "voter_seal",
+      "counters"
+    ],
+    "clean_baseline": {
+      "keyed": {
+        "detectors": {
+          "chain": false,
+          "modified": false,
+          "deleted": false,
+          "injected": false,
+          "candidate_seal": false,
+          "count_mismatch": false,
+          "voter_seal": false,
+          "counters": false
+        },
+        "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+        "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+        "ms": 11.02,
+        "counts": {
+          "voted_flags": 40,
+          "ballots": 40,
+          "receipts": 40
+        },
+        "anomalies": {
+          "modified": 0,
+          "deleted": 0,
+          "injected": 0,
+          "voters_added": [],
+          "voters_removed": 0,
+          "roster_seal": "ok"
+        }
+      },
+      "unkeyed": {
+        "detectors": {
+          "chain": false,
+          "modified": false,
+          "deleted": false,
+          "injected": false,
+          "candidate_seal": false,
+          "count_mismatch": false,
+          "voter_seal": false,
+          "counters": false
+        },
+        "sweep_msg": "Relational DB perfectly matches immutable ledger.",
+        "chain_msg": "Chain intact. Cryptographic ledger is valid.",
+        "ms": 11.19,
+        "counts": {
+          "voted_flags": 40,
+          "ballots": 40,
+          "receipts": 40
+        },
+        "anomalies": {
+          "modified": 0,
+          "deleted": 0,
+          "injected": 0,
+          "voters_added": [],
+          "voters_removed": 0,
+          "roster_seal": "ok"
+        }
+      }
+    }
+  },
+  "profiles_all": [
+    {
+      "id": "P0",
+      "label": "CRUD app: officer compares the counters",
+      "mode": "unkeyed",
+      "detectors": [
+        "counters"
+      ],
+      "note": "A typical student voting project: one ballot table and voted flags.",
+      "detected": 11,
+      "of": 31,
+      "rate": 35.5,
+      "ids": [
+        "C3",
+        "C4",
+        "C5",
+        "C8",
+        "C9",
+        "C12",
+        "C18",
+        "C19",
+        "C26",
+        "C30",
+        "C31"
+      ],
+      "missed": [
+        "C1",
+        "C2",
+        "C6",
+        "C7",
+        "C10",
+        "C11",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C20",
+        "C21",
+        "C22",
+        "C23",
+        "C24",
+        "C25",
+        "C27",
+        "C28",
+        "C29"
+      ]
+    },
+    {
+      "id": "P1",
+      "label": "CRUD app + automatic count check",
+      "mode": "unkeyed",
+      "detectors": [
+        "count_mismatch"
+      ],
+      "note": "The same counters checked by code.",
+      "detected": 10,
+      "of": 31,
+      "rate": 32.3,
+      "ids": [
+        "C3",
+        "C4",
+        "C5",
+        "C8",
+        "C9",
+        "C12",
+        "C18",
+        "C26",
+        "C30",
+        "C31"
+      ],
+      "missed": [
+        "C1",
+        "C2",
+        "C6",
+        "C7",
+        "C10",
+        "C11",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C23",
+        "C24",
+        "C25",
+        "C27",
+        "C28",
+        "C29"
+      ]
+    },
+    {
+      "id": "P2",
+      "label": "Plain hash chain only",
+      "mode": "unkeyed",
+      "detectors": [
+        "chain"
+      ],
+      "note": "SHA-256 chain with no key (VeriVote-class, and our Review 1 design).",
+      "detected": 6,
+      "of": 31,
+      "rate": 19.4,
+      "ids": [
+        "C7",
+        "C8",
+        "C19",
+        "C20",
+        "C21",
+        "C22"
+      ],
+      "missed": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C23",
+        "C24",
+        "C25",
+        "C26",
+        "C27",
+        "C28",
+        "C29",
+        "C30",
+        "C31"
+      ]
+    },
+    {
+      "id": "P3",
+      "label": "Plain chain + receipt sweep (Review 2 design)",
+      "mode": "unkeyed",
+      "detectors": [
+        "chain",
+        "modified",
+        "deleted"
+      ],
+      "note": "Our own Review 2 design.",
+      "detected": 11,
+      "of": 31,
+      "rate": 35.5,
+      "ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C7",
+        "C8",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C31"
+      ],
+      "missed": [
+        "C5",
+        "C6",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C23",
+        "C24",
+        "C25",
+        "C26",
+        "C27",
+        "C28",
+        "C29",
+        "C30"
+      ]
+    },
+    {
+      "id": "P4",
+      "label": "Plain chain + full sweep",
+      "mode": "unkeyed",
+      "detectors": [
+        "chain",
+        "modified",
+        "deleted",
+        "injected",
+        "candidate_seal",
+        "count_mismatch",
+        "voter_seal"
+      ],
+      "note": "Everything except the key.",
+      "detected": 24,
+      "of": 31,
+      "rate": 77.4,
+      "ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C7",
+        "C8",
+        "C9",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C18",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C24",
+        "C25",
+        "C26",
+        "C30",
+        "C31"
+      ],
+      "missed": [
+        "C6",
+        "C10",
+        "C17",
+        "C23",
+        "C27",
+        "C28",
+        "C29"
+      ]
+    },
+    {
+      "id": "P5",
+      "label": "Keyed chain only",
+      "mode": "keyed",
+      "detectors": [
+        "chain"
+      ],
+      "note": "HMAC chain, no sweep.",
+      "detected": 9,
+      "of": 31,
+      "rate": 29.0,
+      "ids": [
+        "C6",
+        "C7",
+        "C8",
+        "C10",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C27"
+      ],
+      "missed": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C9",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C23",
+        "C24",
+        "C25",
+        "C26",
+        "C28",
+        "C29",
+        "C30",
+        "C31"
+      ]
+    },
+    {
+      "id": "P6",
+      "label": "Keyed chain + sweep rules 1-5 (previous final design)",
+      "mode": "keyed",
+      "detectors": [
+        "chain",
+        "modified",
+        "deleted",
+        "injected",
+        "candidate_seal",
+        "count_mismatch"
+      ],
+      "note": "Our design before the roster seal was added.",
+      "detected": 23,
+      "of": 31,
+      "rate": 74.2,
+      "ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C18",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C24",
+        "C25",
+        "C26",
+        "C27",
+        "C30",
+        "C31"
+      ],
+      "missed": [
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C23",
+        "C28",
+        "C29"
+      ]
+    },
+    {
+      "id": "P7",
+      "label": "PolyVote final (keyed chain + 6 sweep rules)",
+      "mode": "keyed",
+      "detectors": [
+        "chain",
+        "modified",
+        "deleted",
+        "injected",
+        "candidate_seal",
+        "count_mismatch",
+        "voter_seal"
+      ],
+      "note": "Everything in this project.",
+      "detected": 28,
+      "of": 31,
+      "rate": 90.3,
+      "ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C24",
+        "C25",
+        "C26",
+        "C27",
+        "C30",
+        "C31"
+      ],
+      "missed": [
+        "C23",
+        "C28",
+        "C29"
+      ]
+    }
+  ],
+  "profiles_in_scope": [
+    {
+      "id": "P0",
+      "label": "CRUD app: officer compares the counters",
+      "mode": "unkeyed",
+      "detectors": [
+        "counters"
+      ],
+      "note": "A typical student voting project: one ballot table and voted flags.",
+      "detected": 11,
+      "of": 28,
+      "rate": 39.3,
+      "ids": [
+        "C3",
+        "C4",
+        "C5",
+        "C8",
+        "C9",
+        "C12",
+        "C18",
+        "C19",
+        "C26",
+        "C30",
+        "C31"
+      ],
+      "missed": [
+        "C1",
+        "C2",
+        "C6",
+        "C7",
+        "C10",
+        "C11",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C20",
+        "C21",
+        "C22",
+        "C24",
+        "C25",
+        "C27"
+      ]
+    },
+    {
+      "id": "P1",
+      "label": "CRUD app + automatic count check",
+      "mode": "unkeyed",
+      "detectors": [
+        "count_mismatch"
+      ],
+      "note": "The same counters checked by code.",
+      "detected": 10,
+      "of": 28,
+      "rate": 35.7,
+      "ids": [
+        "C3",
+        "C4",
+        "C5",
+        "C8",
+        "C9",
+        "C12",
+        "C18",
+        "C26",
+        "C30",
+        "C31"
+      ],
+      "missed": [
+        "C1",
+        "C2",
+        "C6",
+        "C7",
+        "C10",
+        "C11",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C24",
+        "C25",
+        "C27"
+      ]
+    },
+    {
+      "id": "P2",
+      "label": "Plain hash chain only",
+      "mode": "unkeyed",
+      "detectors": [
+        "chain"
+      ],
+      "note": "SHA-256 chain with no key (VeriVote-class, and our Review 1 design).",
+      "detected": 6,
+      "of": 28,
+      "rate": 21.4,
+      "ids": [
+        "C7",
+        "C8",
+        "C19",
+        "C20",
+        "C21",
+        "C22"
+      ],
+      "missed": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C24",
+        "C25",
+        "C26",
+        "C27",
+        "C30",
+        "C31"
+      ]
+    },
+    {
+      "id": "P3",
+      "label": "Plain chain + receipt sweep (Review 2 design)",
+      "mode": "unkeyed",
+      "detectors": [
+        "chain",
+        "modified",
+        "deleted"
+      ],
+      "note": "Our own Review 2 design.",
+      "detected": 11,
+      "of": 28,
+      "rate": 39.3,
+      "ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C7",
+        "C8",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C31"
+      ],
+      "missed": [
+        "C5",
+        "C6",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C24",
+        "C25",
+        "C26",
+        "C27",
+        "C30"
+      ]
+    },
+    {
+      "id": "P4",
+      "label": "Plain chain + full sweep",
+      "mode": "unkeyed",
+      "detectors": [
+        "chain",
+        "modified",
+        "deleted",
+        "injected",
+        "candidate_seal",
+        "count_mismatch",
+        "voter_seal"
+      ],
+      "note": "Everything except the key.",
+      "detected": 24,
+      "of": 28,
+      "rate": 85.7,
+      "ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C7",
+        "C8",
+        "C9",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C18",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C24",
+        "C25",
+        "C26",
+        "C30",
+        "C31"
+      ],
+      "missed": [
+        "C6",
+        "C10",
+        "C17",
+        "C27"
+      ]
+    },
+    {
+      "id": "P5",
+      "label": "Keyed chain only",
+      "mode": "keyed",
+      "detectors": [
+        "chain"
+      ],
+      "note": "HMAC chain, no sweep.",
+      "detected": 9,
+      "of": 28,
+      "rate": 32.1,
+      "ids": [
+        "C6",
+        "C7",
+        "C8",
+        "C10",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C27"
+      ],
+      "missed": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C9",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C24",
+        "C25",
+        "C26",
+        "C30",
+        "C31"
+      ]
+    },
+    {
+      "id": "P6",
+      "label": "Keyed chain + sweep rules 1-5 (previous final design)",
+      "mode": "keyed",
+      "detectors": [
+        "chain",
+        "modified",
+        "deleted",
+        "injected",
+        "candidate_seal",
+        "count_mismatch"
+      ],
+      "note": "Our design before the roster seal was added.",
+      "detected": 23,
+      "of": 28,
+      "rate": 82.1,
+      "ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C18",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C24",
+        "C25",
+        "C26",
+        "C27",
+        "C30",
+        "C31"
+      ],
+      "missed": [
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
+      ]
+    },
+    {
+      "id": "P7",
+      "label": "PolyVote final (keyed chain + 6 sweep rules)",
+      "mode": "keyed",
+      "detectors": [
+        "chain",
+        "modified",
+        "deleted",
+        "injected",
+        "candidate_seal",
+        "count_mismatch",
+        "voter_seal"
+      ],
+      "note": "Everything in this project.",
+      "detected": 28,
+      "of": 28,
+      "rate": 100.0,
+      "ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C24",
+        "C25",
+        "C26",
+        "C27",
+        "C30",
+        "C31"
+      ],
+      "missed": []
+    }
+  ],
+  "ablation": {
+    "leave_one_out": [
+      {
+        "removed": "chain",
+        "detected": 21,
+        "of": 31,
+        "lost": [
+          "C6",
+          "C10",
+          "C19",
+          "C20",
+          "C21",
+          "C22",
+          "C27"
+        ]
+      },
+      {
+        "removed": "modified",
+        "detected": 26,
+        "of": 31,
+        "lost": [
+          "C1",
+          "C2"
+        ]
+      },
+      {
+        "removed": "deleted",
+        "detected": 28,
+        "of": 31,
+        "lost": []
+      },
+      {
+        "removed": "injected",
+        "detected": 28,
+        "of": 31,
+        "lost": []
+      },
+      {
+        "removed": "candidate_seal",
+        "detected": 25,
+        "of": 31,
+        "lost": [
+          "C11",
+          "C24",
+          "C25"
+        ]
+      },
+      {
+        "removed": "count_mismatch",
+        "detected": 26,
+        "of": 31,
+        "lost": [
+          "C12",
+          "C26"
+        ]
+      },
+      {
+        "removed": "voter_seal",
+        "detected": 23,
+        "of": 31,
+        "lost": [
+          "C13",
+          "C14",
+          "C15",
+          "C16",
+          "C17"
+        ]
+      }
+    ],
+    "single": [
+      {
+        "detector": "chain",
+        "detected": 9,
+        "of": 31,
+        "ids": [
+          "C6",
+          "C7",
+          "C8",
+          "C10",
+          "C19",
+          "C20",
+          "C21",
+          "C22",
+          "C27"
+        ]
+      },
+      {
+        "detector": "modified",
+        "detected": 3,
+        "of": 31,
+        "ids": [
+          "C1",
+          "C2",
+          "C7"
+        ]
+      },
+      {
+        "detector": "deleted",
+        "detected": 3,
+        "of": 31,
+        "ids": [
+          "C3",
+          "C4",
+          "C31"
+        ]
+      },
+      {
+        "detector": "injected",
+        "detected": 5,
+        "of": 31,
+        "ids": [
+          "C5",
+          "C8",
+          "C9",
+          "C18",
+          "C30"
+        ]
+      },
+      {
+        "detector": "candidate_seal",
+        "detected": 3,
+        "of": 31,
+        "ids": [
+          "C11",
+          "C24",
+          "C25"
+        ]
+      },
+      {
+        "detector": "count_mismatch",
+        "detected": 10,
+        "of": 31,
+        "ids": [
+          "C3",
+          "C4",
+          "C5",
+          "C8",
+          "C9",
+          "C12",
+          "C18",
+          "C26",
+          "C30",
+          "C31"
+        ]
+      },
+      {
+        "detector": "voter_seal",
+        "detected": 5,
+        "of": 31,
+        "ids": [
+          "C13",
+          "C14",
+          "C15",
+          "C16",
+          "C17"
+        ]
+      }
+    ],
+    "cumulative": [
+      {
+        "added": "counters",
+        "detected": 11,
+        "of": 31
+      },
+      {
+        "added": "chain",
+        "detected": 18,
+        "of": 31
+      },
+      {
+        "added": "modified",
+        "detected": 20,
+        "of": 31
+      },
+      {
+        "added": "deleted",
+        "detected": 20,
+        "of": 31
+      },
+      {
+        "added": "injected",
+        "detected": 20,
+        "of": 31
+      },
+      {
+        "added": "count_mismatch",
+        "detected": 20,
+        "of": 31
+      },
+      {
+        "added": "candidate_seal",
+        "detected": 23,
+        "of": 31
+      },
+      {
+        "added": "voter_seal",
+        "detected": 28,
+        "of": 31
+      }
+    ],
+    "unkeyed_final": {
+      "detected": 24,
+      "of": 31,
+      "lost_vs_keyed": [
+        "C6",
+        "C10",
+        "C17",
+        "C27"
+      ]
+    }
+  },
+  "emulation_check": {
+    "rows": [
+      {
+        "id": "C1",
+        "real_review2": "detected",
+        "emulated": "detected",
+        "agree": true
+      },
+      {
+        "id": "C2",
+        "real_review2": "detected",
+        "emulated": "detected",
+        "agree": true
+      },
+      {
+        "id": "C3",
+        "real_review2": "detected",
+        "emulated": "detected",
+        "agree": true
+      },
+      {
+        "id": "C4",
+        "real_review2": "detected",
+        "emulated": "detected",
+        "agree": true
+      },
+      {
+        "id": "C5",
+        "real_review2": "detected_manual_only",
+        "emulated": "detected_manual_only",
+        "agree": true
+      },
+      {
+        "id": "C6",
+        "real_review2": "undetected",
+        "emulated": "undetected",
+        "agree": true
+      },
+      {
+        "id": "C7",
+        "real_review2": "detected",
+        "emulated": "detected",
+        "agree": true
+      },
+      {
+        "id": "C8",
+        "real_review2": "detected",
+        "emulated": "detected",
+        "agree": true
+      },
+      {
+        "id": "C9",
+        "real_review2": "detected_manual_only",
+        "emulated": "detected_manual_only",
+        "agree": true
+      },
+      {
+        "id": "C10",
+        "real_review2": "undetected",
+        "emulated": "undetected",
+        "agree": true
+      },
+      {
+        "id": "C11",
+        "real_review2": "undetected",
+        "emulated": "undetected",
+        "agree": true
+      },
+      {
+        "id": "C12",
+        "real_review2": "detected_manual_only",
+        "emulated": "detected_manual_only",
+        "agree": true
+      },
+      {
+        "id": "C13",
+        "real_review2": "undetected",
+        "emulated": "undetected",
+        "agree": true
+      }
+    ],
+    "agree": 13,
+    "of": 13
+  },
+  "triggers": {
+    "prevented": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C10",
+      "C22",
+      "C27",
+      "C28"
+    ],
+    "counters_only": [
+      "C5",
+      "C8",
+      "C9",
+      "C12",
+      "C18",
+      "C19",
+      "C26",
+      "C30",
+      "C31"
+    ],
+    "neither": [
+      "C6",
+      "C7",
+      "C11",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C20",
+      "C21",
+      "C23",
+      "C24",
+      "C25",
+      "C29"
+    ],
+    "total": 31,
+    "rows": [
+      {
+        "id": "C1",
+        "prevented": true,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": "append-only table"
+      },
+      {
+        "id": "C2",
+        "prevented": true,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": "append-only table"
+      },
+      {
+        "id": "C3",
+        "prevented": true,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": "append-only table"
+      },
+      {
+        "id": "C4",
+        "prevented": true,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": "append-only table"
+      },
+      {
+        "id": "C5",
+        "prevented": false,
+        "counters": true,
+        "detected_by_counters_only": true,
+        "error": null
+      },
+      {
+        "id": "C6",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C7",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C8",
+        "prevented": false,
+        "counters": true,
+        "detected_by_counters_only": true,
+        "error": null
+      },
+      {
+        "id": "C9",
+        "prevented": false,
+        "counters": true,
+        "detected_by_counters_only": true,
+        "error": null
+      },
+      {
+        "id": "C10",
+        "prevented": true,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": "append-only table"
+      },
+      {
+        "id": "C11",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C12",
+        "prevented": false,
+        "counters": true,
+        "detected_by_counters_only": true,
+        "error": null
+      },
+      {
+        "id": "C13",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C14",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C15",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C16",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C17",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C18",
+        "prevented": false,
+        "counters": true,
+        "detected_by_counters_only": true,
+        "error": null
+      },
+      {
+        "id": "C19",
+        "prevented": false,
+        "counters": true,
+        "detected_by_counters_only": true,
+        "error": null
+      },
+      {
+        "id": "C20",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C21",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C22",
+        "prevented": true,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": "append-only table"
+      },
+      {
+        "id": "C23",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C24",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C25",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C26",
+        "prevented": false,
+        "counters": true,
+        "detected_by_counters_only": true,
+        "error": null
+      },
+      {
+        "id": "C27",
+        "prevented": true,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": "append-only table"
+      },
+      {
+        "id": "C28",
+        "prevented": true,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": "append-only table"
+      },
+      {
+        "id": "C29",
+        "prevented": false,
+        "counters": false,
+        "detected_by_counters_only": false,
+        "error": null
+      },
+      {
+        "id": "C30",
+        "prevented": false,
+        "counters": true,
+        "detected_by_counters_only": true,
+        "error": null
+      },
+      {
+        "id": "C31",
+        "prevented": false,
+        "counters": true,
+        "detected_by_counters_only": true,
+        "error": null
+      }
+    ]
+  },
+  "security": {
+    "api_headers": {
+      "content-security-policy": null,
+      "x-content-type-options": null,
+      "x-frame-options": null,
+      "referrer-policy": null,
+      "permissions-policy": null,
+      "strict-transport-security": null,
+      "cache-control": null
+    },
+    "cors_foreign_origin": null,
+    "bruteforce": {
+      "attempts": 40,
+      "statuses": [
+        401
+      ],
+      "locked_out": false,
+      "attempts_per_second": 0.9
+    },
+    "fuzz": {
+      "rows": [
+        {
+          "target": "voter_login.reg_no",
+          "payloads": 16,
+          "server_errors": 0,
+          "statuses": {
+            "404": 16
+          }
+        },
+        {
+          "target": "voter_login.password",
+          "payloads": 16,
+          "server_errors": 0,
+          "statuses": {
+            "401": 16
+          }
+        },
+        {
+          "target": "admin_login.username",
+          "payloads": 16,
+          "server_errors": 0,
+          "statuses": {
+            "401": 16
+          }
+        },
+        {
+          "target": "add_candidate.name",
+          "payloads": 16,
+          "server_errors": 0,
+          "statuses": {
+            "409": 15,
+            "422": 1
+          }
+        },
+        {
+          "target": "contact.message",
+          "payloads": 16,
+          "server_errors": 0,
+          "statuses": {
+            "200": 5,
+            "429": 5,
+            "422": 6
+          }
+        },
+        {
+          "target": "receipt.path",
+          "payloads": 16,
+          "server_errors": 0,
+          "statuses": {
+            "200": 12,
+            "404": 4
+          }
+        },
+        {
+          "target": "election_id.type",
+          "payloads": 16,
+          "server_errors": 0,
+          "statuses": {
+            "404": 2,
+            "422": 14
+          }
+        }
+      ],
+      "server_errors": 0,
+      "payload_count": 117,
+      "tables_intact": true
+    },
+    "session": {
+      "fields": [
+        "role",
+        "username"
+      ],
+      "has_expiry": false
+    },
+    "enumeration": {
+      "unknown_voter_status": 404,
+      "wrong_password_status": 401,
+      "distinguishable": true
+    },
+    "receipt_token": {
+      "format": "uuid4",
+      "random_bits": 122,
+      "guess_probability_per_try": 1.88079096131566e-37
+    },
+    "unauthenticated_admin": {
+      "/api/admin/elections": 401,
+      "/api/admin/elections/2/integrity": 401,
+      "/api/admin/elections/2/voters": 401,
+      "/api/admin/admins": 401,
+      "/api/admin/ledger": 401,
+      "/api/admin/outbox": 404
+    }
+  },
+  "privacy": {
+    "ballot_columns": [
+      "ballot_token",
+      "candidate_id",
+      "election_id",
+      "preference_rank"
+    ],
+    "voter_columns": [
+      "participation_id",
+      "election_id",
+      "student_reg_no",
+      "password_hash",
+      "has_voted"
+    ],
+    "shared_columns": [],
+    "ballot_has_timestamp": true,
+    "api_order_attack": {
+      "voters": 150,
+      "correct_guesses": 0,
+      "chance_expected": 1.0
+    },
+    "simulate_tool": {
+      "note": "The administrator simulation casts ballots in roster order, so block order mirrors roster order. It is a demo tool and is not used for real casts."
+    },
+    "snapshot_differencing": [
+      {
+        "snapshot_interval_casts": 1,
+        "attacker_success": 1.0,
+        "ideal_1_over_k": 1.0
+      },
+      {
+        "snapshot_interval_casts": 2,
+        "attacker_success": 0.505,
+        "ideal_1_over_k": 0.5
+      },
+      {
+        "snapshot_interval_casts": 5,
+        "attacker_success": 0.201,
+        "ideal_1_over_k": 0.2
+      },
+      {
+        "snapshot_interval_casts": 10,
+        "attacker_success": 0.106,
+        "ideal_1_over_k": 0.1
+      },
+      {
+        "snapshot_interval_casts": 20,
+        "attacker_success": 0.051,
+        "ideal_1_over_k": 0.05
+      },
+      {
+        "snapshot_interval_casts": 50,
+        "attacker_success": 0.019,
+        "ideal_1_over_k": 0.02
+      }
+    ],
+    "ledger_fields": [
+      "ballot_token",
+      "curr_hash",
+      "election_id",
+      "index",
+      "prev_hash",
+      "roster_hash",
+      "timestamp",
+      "vote_data_hash",
+      "voters_sealed"
+    ]
+  },
+  "false_positives": {
+    "elections": 120,
+    "false_alarms": 0,
+    "ops": {
+      "bulk_register": 185,
+      "add_voter": 69,
+      "add_candidate": 120,
+      "simulate": 145,
+      "close": 120
+    },
+    "sweeps": 399,
+    "by_mode": {
+      "keyed": {
+        "sweeps": 199,
+        "false_alarms": 0
+      },
+      "unkeyed": {
+        "sweeps": 200,
+        "false_alarms": 0
+      }
+    },
+    "details": [],
+    "false_positive_rate": 0.0
+  },
+  "precision_recall": [
+    {
+      "tampered_per_category": 1,
+      "category": "modified",
+      "true": 1,
+      "reported": 1,
+      "true_positives": 1,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "tampered_per_category": 1,
+      "category": "deleted",
+      "true": 1,
+      "reported": 1,
+      "true_positives": 1,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "tampered_per_category": 1,
+      "category": "injected",
+      "true": 1,
+      "reported": 1,
+      "true_positives": 1,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "tampered_per_category": 5,
+      "category": "modified",
+      "true": 5,
+      "reported": 5,
+      "true_positives": 5,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "tampered_per_category": 5,
+      "category": "deleted",
+      "true": 5,
+      "reported": 5,
+      "true_positives": 5,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "tampered_per_category": 5,
+      "category": "injected",
+      "true": 5,
+      "reported": 5,
+      "true_positives": 5,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "tampered_per_category": 20,
+      "category": "modified",
+      "true": 20,
+      "reported": 20,
+      "true_positives": 20,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "tampered_per_category": 20,
+      "category": "deleted",
+      "true": 20,
+      "reported": 20,
+      "true_positives": 20,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "tampered_per_category": 20,
+      "category": "injected",
+      "true": 20,
+      "reported": 20,
+      "true_positives": 20,
+      "precision": 1.0,
+      "recall": 1.0
+    }
+  ],
+  "tally_check": {
+    "elections": 500,
+    "agree": 500,
+    "with_tie_paths": 66,
+    "disagreements": []
+  },
+  "password": {
+    "sha256_hashes_per_second": 725672,
+    "pbkdf2_hashes_per_second": 2.0,
+    "iterations": 600000,
+    "slowdown_factor": 361996,
+    "verify_ms": 477.5,
+    "keyspace_seconds": [
+      {
+        "class": "6 digits",
+        "space": 1000000,
+        "legacy_seconds": 1.378032376348367,
+        "new_seconds": 498842.6285708556
+      },
+      {
+        "class": "8 digits",
+        "space": 100000000,
+        "legacy_seconds": 137.8032376348367,
+        "new_seconds": 49884262.85708556
+      },
+      {
+        "class": "8 lowercase letters",
+        "space": 208827064576,
+        "legacy_seconds": 287770.45604351914,
+        "new_seconds": 104171841809.82765
+      },
+      {
+        "class": "8 letters and digits",
+        "space": 218340105584896,
+        "legacy_seconds": 300879734.55130756,
+        "new_seconds": 108917352192407.67
+      },
+      {
+        "class": "10 letters and digits",
+        "space": 839299365868340224,
+        "legacy_seconds": 1156581699615.2263,
+        "new_seconds": 4.186783018276151e+17
+      }
+    ],
+    "format": "pbkdf2_sha256",
+    "salt_bytes": 16,
+    "note": "Single CPU thread on the test laptop; GPUs are much faster for both, but the ratio is what matters."
+  },
+  "login_latency": {
+    "iterations": 600000,
+    "p50_ms": 496.25,
+    "p95_ms": 581.28,
+    "samples": 15
+  },
+  "perf_keyed": [
+    {
+      "ballots": 100,
+      "mode": "keyed",
+      "sweep_ms": 5.81,
+      "sweep_no_seal_ms": 3.11,
+      "chain_verify_ms": 1.71,
+      "tally_ms": 5.82,
+      "receipt_lookup_ms": 5.54,
+      "reseal_roster_ms": 6.21,
+      "cast_p50_ms": 13.61,
+      "cast_p95_ms": 23.63,
+      "cast_p99_ms": 30.56,
+      "cast_max_ms": 33.06,
+      "cast_samples": 40,
+      "ledger_kb": 67.1,
+      "db_kb": 24436.0,
+      "rss_mb_after_sweep": 116.3,
+      "rss_delta_mb": 0.17,
+      "chain_ok": true
+    },
+    {
+      "ballots": 1000,
+      "mode": "keyed",
+      "sweep_ms": 22.02,
+      "sweep_no_seal_ms": 18.17,
+      "chain_verify_ms": 12.94,
+      "tally_ms": 13.87,
+      "receipt_lookup_ms": 8.36,
+      "reseal_roster_ms": 9.32,
+      "cast_p50_ms": 45.17,
+      "cast_p95_ms": 80.19,
+      "cast_p99_ms": 86.07,
+      "cast_max_ms": 86.07,
+      "cast_samples": 40,
+      "ledger_kb": 467.9,
+      "db_kb": 24436.0,
+      "rss_mb_after_sweep": 118.7,
+      "rss_delta_mb": 3.1,
+      "chain_ok": true
+    },
+    {
+      "ballots": 10000,
+      "mode": "keyed",
+      "sweep_ms": 268.59,
+      "sweep_no_seal_ms": 167.6,
+      "chain_verify_ms": 121.26,
+      "tally_ms": 95.22,
+      "receipt_lookup_ms": 48.81,
+      "reseal_roster_ms": 70.28,
+      "cast_p50_ms": 251.14,
+      "cast_p95_ms": 315.87,
+      "cast_p99_ms": 368.12,
+      "cast_max_ms": 387.52,
+      "cast_samples": 40,
+      "ledger_kb": 4484.5,
+      "db_kb": 24436.0,
+      "rss_mb_after_sweep": 137.5,
+      "rss_delta_mb": 11.38,
+      "chain_ok": true
+    },
+    {
+      "ballots": 50000,
+      "mode": "keyed",
+      "sweep_ms": 1604.03,
+      "sweep_no_seal_ms": 1120.57,
+      "chain_verify_ms": 652.73,
+      "tally_ms": 633.65,
+      "receipt_lookup_ms": 195.56,
+      "reseal_roster_ms": 345.7,
+      "cast_p50_ms": 1234.7,
+      "cast_p95_ms": 1385.48,
+      "cast_p99_ms": 1399.27,
+      "cast_max_ms": 1402.72,
+      "cast_samples": 12,
+      "ledger_kb": 22359.3,
+      "db_kb": 24436.0,
+      "rss_mb_after_sweep": 174.3,
+      "rss_delta_mb": -0.16,
+      "chain_ok": true
+    },
+    {
+      "ballots": 100000,
+      "mode": "keyed",
+      "sweep_ms": 5984.75,
+      "sweep_no_seal_ms": 4356.05,
+      "chain_verify_ms": 2730.54,
+      "tally_ms": 2688.9,
+      "receipt_lookup_ms": 692.14,
+      "reseal_roster_ms": 1014.23,
+      "cast_p50_ms": 4658.2,
+      "cast_p95_ms": 5425.65,
+      "cast_p99_ms": 5432.47,
+      "cast_max_ms": 5434.18,
+      "cast_samples": 12,
+      "ledger_kb": 44722.6,
+      "db_kb": 46024.0,
+      "rss_mb_after_sweep": 250.1,
+      "rss_delta_mb": 3.54,
+      "chain_ok": true
+    }
+  ],
+  "perf_unkeyed": [
+    {
+      "ballots": 1000,
+      "mode": "unkeyed",
+      "sweep_ms": 34.42,
+      "sweep_no_seal_ms": 34.04,
+      "chain_verify_ms": 17.3,
+      "tally_ms": 22.34,
+      "receipt_lookup_ms": 14.38,
+      "reseal_roster_ms": 11.68,
+      "cast_p50_ms": 64.46,
+      "cast_p95_ms": 89.01,
+      "cast_p99_ms": 95.12,
+      "cast_max_ms": 98.13,
+      "cast_samples": 40,
+      "ledger_kb": 467.9,
+      "db_kb": 46024.0,
+      "rss_mb_after_sweep": 155.4,
+      "rss_delta_mb": 1.54,
+      "chain_ok": true
+    },
+    {
+      "ballots": 10000,
+      "mode": "unkeyed",
+      "sweep_ms": 407.24,
+      "sweep_no_seal_ms": 307.9,
+      "chain_verify_ms": 191.49,
+      "tally_ms": 133.16,
+      "receipt_lookup_ms": 72.37,
+      "reseal_roster_ms": 78.34,
+      "cast_p50_ms": 458.9,
+      "cast_p95_ms": 540.03,
+      "cast_p99_ms": 630.13,
+      "cast_max_ms": 679.81,
+      "cast_samples": 40,
+      "ledger_kb": 4484.5,
+      "db_kb": 46024.0,
+      "rss_mb_after_sweep": 148.1,
+      "rss_delta_mb": -4.51,
+      "chain_ok": true
+    }
+  ],
+  "concurrency": [
+    {
+      "threads": 1,
+      "casts": 6,
+      "wall_s": 0.53,
+      "throughput_per_s": 11.25,
+      "p50_ms": 95.99,
+      "p95_ms": 101.9,
+      "errors": 0,
+      "chain_ok_after": true,
+      "sweep_ok_after": true
+    },
+    {
+      "threads": 2,
+      "casts": 12,
+      "wall_s": 0.77,
+      "throughput_per_s": 15.55,
+      "p50_ms": 125.64,
+      "p95_ms": 142.25,
+      "errors": 0,
+      "chain_ok_after": true,
+      "sweep_ok_after": true
+    },
+    {
+      "threads": 4,
+      "casts": 24,
+      "wall_s": 1.58,
+      "throughput_per_s": 15.21,
+      "p50_ms": 247.57,
+      "p95_ms": 303.18,
+      "errors": 0,
+      "chain_ok_after": true,
+      "sweep_ok_after": true
+    },
+    {
+      "threads": 8,
+      "casts": 48,
+      "wall_s": 2.96,
+      "throughput_per_s": 16.23,
+      "p50_ms": 482.17,
+      "p95_ms": 546.71,
+      "errors": 0,
+      "chain_ok_after": true,
+      "sweep_ok_after": true
+    },
+    {
+      "threads": 16,
+      "casts": 96,
+      "wall_s": 6.08,
+      "throughput_per_s": 15.8,
+      "p50_ms": 972.23,
+      "p95_ms": 1040.39,
+      "errors": 0,
+      "chain_ok_after": true,
+      "sweep_ok_after": true
+    }
+  ],
+  "seconds": 569
+}

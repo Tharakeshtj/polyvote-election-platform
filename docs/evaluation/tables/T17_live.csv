@@ -1,0 +1,12 @@
+Measure,Value
+Live site,https://polyvote-bacse202.onrender.com
+Website checklist,"None pass, None N/A, None fail"
+Health check median / min / max (ms),112 / 102 / 2244
+First request (cold start possible) ms,22817
+Header content-security-policy,absent
+Header x-content-type-options,absent
+Header x-frame-options,absent
+Header referrer-policy,absent
+Header permissions-policy,absent
+Header strict-transport-security,absent
+Header cache-control,absent

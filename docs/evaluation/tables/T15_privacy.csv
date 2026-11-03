@@ -1,0 +1,6 @@
+Check,Result
+Columns shared by ballot and voter tables,none
+Timestamp on the ballot table,yes (ledger only)
+Ledger block fields,"ballot_token, curr_hash, election_id, index, prev_hash, roster_hash, timestamp, vote_data_hash, voters_sealed"
+Ordering attack on 150 API casts in random voter order,0 correct guesses (chance: about 1.0)
+Simulation tool casts in roster order,block order mirrors roster order; demo tool only

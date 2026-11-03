@@ -1,0 +1,9 @@
+profile,design,key_mode,detectors,detected_all_31,rate_all,detected_in_scope,of_in_scope,rate_in_scope
+P0,CRUD app: officer compares the counters,unkeyed,counters,11,35.5,11,28,39.3
+P1,CRUD app + automatic count check,unkeyed,count_mismatch,10,32.3,10,28,35.7
+P2,Plain hash chain only,unkeyed,chain,6,19.4,6,28,21.4
+P3,Plain chain + receipt sweep (Review 2 design),unkeyed,chain+modified+deleted,11,35.5,11,28,39.3
+P4,Plain chain + full sweep,unkeyed,chain+modified+deleted+injected+candidate_seal+count_mismatch+voter_seal,24,77.4,24,28,85.7
+P5,Keyed chain only,keyed,chain,9,29.0,9,28,32.1
+P6,Keyed chain + sweep rules 1-5 (previous final design),keyed,chain+modified+deleted+injected+candidate_seal+count_mismatch,23,74.2,23,28,82.1
+P7,PolyVote final (keyed chain + 6 sweep rules),keyed,chain+modified+deleted+injected+candidate_seal+count_mismatch+voter_seal,28,90.3,28,28,100.0

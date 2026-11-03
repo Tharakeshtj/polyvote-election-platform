@@ -1,0 +1,10 @@
+Measure,Value
+Clean elections,120
+Sweeps run,399
+False alarms,0
+False-positive rate,0.0
+Operations: bulk_register,185
+Operations: add_voter,69
+Operations: add_candidate,120
+Operations: simulate,145
+Operations: close,120
