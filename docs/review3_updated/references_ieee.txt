@@ -1,0 +1,79 @@
+[1] B. Adida, “Helios: Web-based Open-Audit Voting,” in Proc. 17th USENIX Security Symposium (USENIX Security 08), San Jose, CA, 2008. [Online]. Available: https://www.usenix.org/conference/17th-usenix-security-symposium/helios-web-based-open-audit-voting
+
+[2] V. Cortier, P. Gaudry, and S. Glondu, “Belenios: A Simple Private and Verifiable Electronic Voting System,” in Foundations of Security, Protocols, and Equational Reasoning (Lecture Notes in Computer Science), Springer, 2019, pp. 214–238. doi: 10.1007/978-3-030-19052-1_14.
+
+[3] M. R. Clarkson, S. Chong, and A. C. Myers, “Civitas: Toward a Secure Voting System,” in Proc. 2008 IEEE Symposium on Security and Privacy, 2008, pp. 354–368. doi: 10.1109/sp.2008.32.
+
+[4] P. Y. A. Ryan, D. Bismark, J. Heather, S. Schneider, and Z. Xia, “Prêt à Voter: a Voter-Verifiable Voting System,” IEEE Transactions on Information Forensics and Security, vol. 4, no. 4, pp. 662–673, 2009. doi: 10.1109/TIFS.2009.2033233.
+
+[5] D. Chaum et al., “Scantegrity II: End-to-End Verifiability by Voters of Optical Scan Elections Through Confirmation Codes,” IEEE Transactions on Information Forensics and Security, vol. 4, no. 4, pp. 611–627, 2009. doi: 10.1109/tifs.2009.2034919.
+
+[6] D. Springall et al., “Security Analysis of the Estonian Internet Voting System,” in Proc. 2014 ACM SIGSAC Conference on Computer and Communications Security (CCS '14), 2014, pp. 703–715. doi: 10.1145/2660267.2660315.
+
+[7] M. A. Specter, J. Koppel, and D. Weitzner, “The Ballot is Busted Before the Blockchain: A Security Analysis of Voatz, the First Internet Voting Application Used in U.S. Federal Elections,” in Proc. 29th USENIX Security Symposium (USENIX Security 20), 2020, pp. 1535–1553. [Online]. Available: https://www.usenix.org/conference/usenixsecurity20/presentation/specter
+
+[8] M. A. Specter and J. A. Halderman, “Security Analysis of the Democracy Live Online Voting System,” in Proc. 30th USENIX Security Symposium (USENIX Security 21), 2021, pp. 3077–3092. [Online]. Available: https://www.usenix.org/conference/usenixsecurity21/presentation/specter-security
+
+[9] National Academies of Sciences, Engineering, and Medicine, Securing the Vote: Protecting American Democracy. National Academies Press, Washington, DC, 2018. doi: 10.17226/25120.
+
+[10] S. Haber and W. S. Stornetta, “How to time-stamp a digital document,” Journal of Cryptology, vol. 3, no. 2, pp. 99–111, 1991. doi: 10.1007/BF00196791.
+
+[11] B. Schneier and J. Kelsey, “Secure audit logs to support computer forensics,” ACM Transactions on Information and System Security, vol. 2, no. 2, pp. 159–176, 1999. doi: 10.1145/317087.317089.
+
+[12] S. A. Crosby and D. S. Wallach, “Efficient Data Structures for Tamper-Evident Logging,” in Proc. 18th USENIX Security Symposium (USENIX Security 09), Montreal, Canada, 2009. [Online]. Available: https://www.usenix.org/conference/usenixsecurity09/technical-sessions/presentation/efficient-data-structures-tamper-evident
+
+[13] B. Laurie, A. Langley, and E. Kasper, “Certificate Transparency,” IETF, RFC 6962, 2013 (Experimental). [Online]. Available: https://www.rfc-editor.org/info/rfc6962
+
+[14] S. Park, M. Specter, N. Narula, and R. L. Rivest, “Going from bad to worse: from Internet voting to blockchain voting,” Journal of Cybersecurity, vol. 7, no. 1, 2021. doi: 10.1093/cybsec/tyaa025.
+
+[15] T. R. Magrino, R. L. Rivest, E. Shen, and D. Wagner, “Computing the Margin of Victory in IRV Elections,” in Proc. 2011 Electronic Voting Technology Workshop / Workshop on Trustworthy Elections (EVT/WOTE '11), San Francisco, CA, 2011. [Online]. Available: https://www.usenix.org/conference/evtwote-11/computing-margin-victory-irv-elections
+
+[16] M. Blom, P. J. Stuckey, and V. Teague, “RAIRE: Risk-Limiting Audits for IRV Elections,” arXiv preprint arXiv:1903.08804 [cs.DS], 2019. [Online]. Available: https://arxiv.org/abs/1903.08804
+
+[17] M. Blom, V. Teague, P. J. Stuckey, and R. Tidhar, “Efficient Computation of Exact IRV Margins,” in Proc. 22nd European Conference on Artificial Intelligence (ECAI 2016), Frontiers in Artificial Intelligence and Applications, 2016. doi: 10.3233/978-1-61499-672-9-480.
+
+[18] A. D. Sarwate, S. Checkoway, and H. Shacham, “Risk-limiting Audits and the Margin of Victory in Nonplurality Elections,” Statistics, Politics and Policy, vol. 4, no. 1, 2013. doi: 10.1515/spp-2012-0003.
+
+[19] S. Aulbach, T. Grust, D. Jacobs, A. Kemper, and J. Rittinger, “Multi-tenant databases for software as a service: schema-mapping techniques,” in Proc. 2008 ACM SIGMOD International Conference on Management of Data, 2008, pp. 1195–1206. doi: 10.1145/1376616.1376736.
+
+[20] D. Jacobs and S. Aulbach, “Ruminations on Multi-Tenant Databases,” in Datenbanksysteme in Business, Technologie und Web (BTW 2007), Lecture Notes in Informatics P-103, Gesellschaft fuer Informatik, Bonn, 2007, pp. 514–521. [Online]. Available: https://dl.gi.de/handle/20.500.12116/31821
+
+[21] P. J. Sadalage and M. Fowler, NoSQL Distilled: A Brief Guide to the Emerging World of Polyglot Persistence. Addison-Wesley Professional, 2012. [Online]. Available: https://martinfowler.com/books/nosql.html
+
+[22] M. Fowler, “Polyglot Persistence,” martinfowler.com (bliki), 2011. [Online]. Available: https://martinfowler.com/bliki/PolyglotPersistence.html (accessed Oct. 22, 2026).
+
+[23] R. Cattell, “Scalable SQL and NoSQL data stores,” ACM SIGMOD Record, vol. 39, no. 4, pp. 12–27, 2011. doi: 10.1145/1978915.1978919.
+
+[24] M. Stonebraker, “SQL databases v. NoSQL databases,” Communications of the ACM, vol. 53, no. 4, pp. 10–11, 2010. doi: 10.1145/1721654.1721659.
+
+[25] E. Bertino and R. Sandhu, “Database security - concepts, approaches, and challenges,” IEEE Transactions on Dependable and Secure Computing, vol. 2, no. 1, pp. 2–19, 2005. doi: 10.1109/TDSC.2005.9.
+
+[26] P. Antonopoulos et al., “SQL Ledger: Cryptographically Verifiable Data in Azure SQL Database,” in Proc. 2021 International Conference on Management of Data (SIGMOD '21), 2021, pp. 2437–2449. doi: 10.1145/3448016.3457558.
+
+[27] K. E. Pavlou and R. T. Snodgrass, “Forensic analysis of database tampering,” ACM Transactions on Database Systems, vol. 33, no. 4, pp. 1–47, 2008. doi: 10.1145/1412331.1412342.
+
+[28] R. T. Snodgrass, S. S. Yao, and C. Collberg, “Tamper Detection in Audit Logs,” in Proc. 2004 VLDB Conference, 2004, pp. 504–515. doi: 10.1016/b978-012088469-8.50046-2.
+
+[29] “PostgreSQL 18 Documentation, Section 5.5: Constraints,” PostgreSQL Global Development Group, PostgreSQL Documentation. [Online]. Available: https://www.postgresql.org/docs/current/ddl-constraints.html (accessed Oct. 22, 2026).
+
+[30] “PostgreSQL 18 Documentation, Chapter 37: Triggers,” PostgreSQL Global Development Group, PostgreSQL Documentation. [Online]. Available: https://www.postgresql.org/docs/current/triggers.html (accessed Oct. 22, 2026).
+
+[31] D. Temoshok et al., “Digital Identity Guidelines: Authentication and Authenticator Management,” NIST Special Publication 800-63B-4, National Institute of Standards and Technology, 2025. doi: 10.6028/NIST.SP.800-63b-4.
+
+[32] D. M'Raihi, M. Bellare, F. Hoornaert, D. Naccache, and O. Ranen, “HOTP: An HMAC-Based One-Time Password Algorithm,” IETF, RFC 4226, 2005 (Informational). [Online]. Available: https://www.rfc-editor.org/info/rfc4226
+
+[33] D. M'Raihi, S. Machani, M. Pei, and J. Rydell, “TOTP: Time-Based One-Time Password Algorithm,” IETF, RFC 6238, 2011 (Informational). [Online]. Available: https://www.rfc-editor.org/info/rfc6238
+
+[34] M. Sönmez Turan, E. Barker, W. Burr, and L. Chen, “Recommendation for Password-Based Key Derivation: Part 1: Storage Applications,” NIST Special Publication 800-132, National Institute of Standards and Technology, 2010. doi: 10.6028/NIST.SP.800-132.
+
+[35] OWASP, “Password Storage Cheat Sheet,” OWASP Cheat Sheet Series, OWASP Foundation. [Online]. Available: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html (accessed Oct. 22, 2026).
+
+[36] A. Dmitrienko, C. Liebchen, C. Rossow, and A.-R. Sadeghi, “On the (In)Security of Mobile Two-Factor Authentication,” in Financial Cryptography and Data Security (FC 2014), Lecture Notes in Computer Science, Springer, 2014, pp. 365–383. doi: 10.1007/978-3-662-45472-5_24.
+
+[37] S. L. Garfinkel, “Email-based identification and authentication: an alternative to PKI?,” IEEE Security & Privacy, vol. 1, no. 6, pp. 20–26, 2003. doi: 10.1109/MSECP.2003.1253564.
+
+[38] D. Chaum, “Secret-ballot receipts: true voter-verifiable elections,” IEEE Security & Privacy, vol. 2, no. 1, pp. 38–47, 2004. doi: 10.1109/MSECP.2004.1264852.
+
+[39] J. Benaloh and D. Tuinstra, “Receipt-free secret-ballot elections (extended abstract),” in Proc. 26th Annual ACM Symposium on Theory of Computing (STOC '94), 1994, pp. 544–553. doi: 10.1145/195058.195407.
+
+[40] A. Juels, D. Catalano, and M. Jakobsson, “Coercion-resistant electronic elections,” in Proc. 2005 ACM Workshop on Privacy in the Electronic Society (WPES '05), 2005, pp. 61–70. doi: 10.1145/1102199.1102213.

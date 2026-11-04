@@ -404,7 +404,7 @@ def f_coverage():
         for j in range(9):
             ax.text(j, i, {2: 'Yes', 1: 'Part', 0: '–', -1: 'No'}[mat[i, j]], ha='center', va='center', fontsize=7, color={2: GREEN, 1: AMBER, 0: '#888', -1: RED}[mat[i, j]])
     ax.set_xticks(np.arange(-.5, 9, 1), minor=True); ax.set_yticks(np.arange(-.5, len(order), 1), minor=True); ax.grid(which='minor', color='white', linewidth=1.2); ax.tick_params(which='minor', length=0)
-    ax.set_title('Documented features of 22 related systems (score = Yes + ½ Part)', pad=30)
+    ax.set_title(f'Documented features of {len(rows) - 1} of the 33 systems read, and PolyVote (score = Yes + ½ Part)', pad=30, fontsize=9)
     save(fig, 'F20_feature_coverage', 'Documented feature coverage of related systems',
          'From each system\'s own page, README or paper (URL for every cell in the evidence file). F1 ranked counting, F2 many organisations, F3 database rules, F4 unlinked ballots, F5 keyed ledger and sweep, F6 email OTP, F7 QR voting, F8 receipt, F9 easy to run. – means not documented, not absent. PolyVote\'s row rests on the tests in this dossier.')
     return rows, score
